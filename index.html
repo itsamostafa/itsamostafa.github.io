@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ahmed Mostafa — Product Owner</title>
+<meta name="description" content="Ahmed Mostafa — Product Owner specializing in fintech and regulated SaaS platforms.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#10161c;
+    --surface:#1a222b;
+    --surface-2:#212b35;
+    --line:rgba(237,239,241,0.09);
+    --line-strong:rgba(237,239,241,0.16);
+    --text:#edeff1;
+    --muted:#8fa0ac;
+    --gold:#d9a441;
+    --gold-dim:rgba(217,164,65,0.14);
+    --teal:#4fa192;
+    --teal-dim:rgba(79,161,146,0.14);
+    --serif:'Fraunces', Georgia, serif;
+    --mono:'IBM Plex Mono', ui-monospace, monospace;
+    --sans:'IBM Plex Sans', system-ui, sans-serif;
+    --maxw:920px;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    *{ animation:none !important; transition:none !important; }
+  }
+
+  body{
+    margin:0;
+    background:
+      radial-gradient(1100px 500px at 85% -10%, rgba(217,164,65,0.07), transparent 60%),
+      var(--ink);
+    color:var(--text);
+    font-family:var(--sans);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  a{ color:inherit; }
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--gold);
+    outline-offset:3px;
+    border-radius:2px;
+  }
+
+  .wrap{ max-width:var(--maxw); margin:0 auto; padding:0 24px; }
+
+  /* ---------- Nav ---------- */
+  header.nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(16,22,28,0.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 24px;
+    max-width:var(--maxw); margin:0 auto;
+  }
+  .nav-id{
+    font-family:var(--mono); font-size:12px; letter-spacing:.12em;
+    color:var(--muted); text-transform:uppercase; text-decoration:none;
+  }
+  .nav-id b{ color:var(--text); font-weight:600; }
+  nav.links{ display:flex; gap:28px; }
+  nav.links a{
+    font-family:var(--mono); font-size:12px; letter-spacing:.08em;
+    text-transform:uppercase; text-decoration:none; color:var(--muted);
+    transition:color .15s ease;
+  }
+  nav.links a:hover{ color:var(--gold); }
+
+  /* ---------- Hero: the ticket ---------- */
+  .hero{ padding:64px 24px 40px; }
+  .ticket{
+    background:var(--surface);
+    border:1px solid var(--line-strong);
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:0 30px 60px -30px rgba(0,0,0,0.6);
+  }
+  .ticket-top{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:14px 22px;
+    border-bottom:1px solid var(--line);
+    font-family:var(--mono); font-size:12px; letter-spacing:.08em;
+    color:var(--muted); text-transform:uppercase;
+    flex-wrap:wrap; gap:10px;
+  }
+  .status-pill{
+    display:inline-flex; align-items:center; gap:7px;
+    padding:5px 11px; border-radius:100px;
+    background:var(--gold-dim); color:var(--gold);
+    font-family:var(--mono); font-size:11px; letter-spacing:.1em;
+    text-transform:uppercase;
+  }
+  .status-pill .dot{
+    width:6px; height:6px; border-radius:50%; background:var(--gold);
+    box-shadow:0 0 0 3px var(--gold-dim);
+  }
+  .ticket-body{ padding:36px 30px 34px; }
+  .ticket-body .eyebrow{
+    font-family:var(--mono); font-size:12px; letter-spacing:.14em;
+    text-transform:uppercase; color:var(--teal); margin:0 0 14px;
+  }
+  h1.name{
+    font-family:var(--serif); font-weight:600;
+    font-size:clamp(34px, 6vw, 52px);
+    line-height:1.05; margin:0 0 10px; letter-spacing:-0.01em;
+  }
+  p.role{
+    font-family:var(--serif); font-style:italic; font-weight:500;
+    font-size:clamp(17px,2.4vw,20px);
+    color:var(--muted); margin:0 0 22px;
+  }
+  p.summary{
+    max-width:60ch; color:#c7d0d6; font-size:15.5px; margin:0 0 26px;
+  }
+  .meta-row{
+    display:flex; flex-wrap:wrap; gap:10px 22px;
+    font-family:var(--mono); font-size:12.5px; color:var(--muted);
+    border-top:1px dashed var(--line-strong);
+    padding-top:20px;
+  }
+  .meta-row a{ text-decoration:none; color:var(--muted); transition:color .15s ease; }
+  .meta-row a:hover{ color:var(--gold); }
+  .meta-row span.k{ color:#5c6a75; }
+
+  /* ---------- Section shell ---------- */
+  section{ padding:56px 24px; border-top:1px solid var(--line); }
+  .section-head{
+    display:flex; align-items:baseline; gap:14px;
+    margin-bottom:30px; flex-wrap:wrap;
+  }
+  .section-head .tag{
+    font-family:var(--mono); font-size:12px; letter-spacing:.14em;
+    color:var(--teal); text-transform:uppercase;
+  }
+  .section-head h2{
+    font-family:var(--serif); font-weight:600; font-size:28px; margin:0;
+  }
+  .section-head .rule{
+    flex:1; height:1px; background:var(--line-strong); min-width:40px;
+  }
+
+  /* ---------- Experience tickets ---------- */
+  .board{ display:flex; flex-direction:column; gap:16px; }
+  .card{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-left:3px solid var(--line-strong);
+    border-radius:8px;
+    padding:22px 24px;
+    transition:border-color .15s ease, transform .15s ease;
+  }
+  .card.is-current{ border-left-color:var(--gold); }
+  .card.is-done{ border-left-color:var(--teal); }
+  .card:hover{ border-color:var(--line-strong); }
+
+  .card-top{
+    display:flex; justify-content:space-between; align-items:flex-start;
+    gap:14px; flex-wrap:wrap; margin-bottom:6px;
+  }
+  .card-id{
+    font-family:var(--mono); font-size:11.5px; color:#5c6a75; letter-spacing:.05em;
+  }
+  .card-status{
+    font-family:var(--mono); font-size:10.5px; letter-spacing:.1em;
+    text-transform:uppercase; padding:3px 9px; border-radius:100px;
+    white-space:nowrap;
+  }
+  .card-status.current{ background:var(--gold-dim); color:var(--gold); }
+  .card-status.done{ background:var(--teal-dim); color:var(--teal); }
+
+  .card h3{
+    font-family:var(--serif); font-weight:600; font-size:20px; margin:2px 0 2px;
+  }
+  .card .org-line{
+    font-family:var(--mono); font-size:12.5px; color:var(--muted); margin-bottom:14px;
+  }
+  .card ul{ margin:0; padding-left:18px; }
+  .card li{ margin-bottom:8px; color:#c7d0d6; font-size:14.5px; }
+  .card li:last-child{ margin-bottom:0; }
+  .card li b{ color:var(--text); font-weight:600; }
+
+  /* ---------- Education ---------- */
+  .edu-card{
+    background:var(--surface); border:1px solid var(--line);
+    border-radius:8px; padding:24px 26px;
+  }
+  .edu-card h3{ font-family:var(--serif); font-size:20px; margin:0 0 2px; }
+  .edu-card .org-line{ font-family:var(--mono); font-size:12.5px; color:var(--muted); margin-bottom:6px; }
+  .edu-card .degree{ color:#c7d0d6; font-size:14.5px; margin-bottom:14px; }
+  .edu-card ul{ margin:0; padding-left:18px; }
+  .edu-card li{ font-size:14.5px; color:#c7d0d6; margin-bottom:7px; }
+  .edu-card li:last-child{ margin-bottom:0; }
+  .edu-card li b{ color:var(--text); font-weight:600; }
+
+  /* ---------- Certifications as labels ---------- */
+  .labels{ display:flex; flex-wrap:wrap; gap:10px; margin-bottom:24px; }
+  .label{
+    font-family:var(--mono); font-size:12.5px; letter-spacing:.03em;
+    padding:8px 14px; border-radius:6px;
+    background:var(--surface-2); border:1px solid var(--line-strong);
+    color:var(--text);
+  }
+  .label b{ color:var(--gold); }
+  .train-row{
+    display:grid; grid-template-columns:1fr 1fr; gap:16px;
+  }
+  @media (max-width:640px){ .train-row{ grid-template-columns:1fr; } }
+  .train-item{
+    border:1px solid var(--line); border-radius:8px; padding:16px 18px;
+    background:var(--surface);
+  }
+  .train-item .t-name{ font-weight:600; font-size:14.5px; margin-bottom:2px; }
+  .train-item .t-org{ font-family:var(--mono); font-size:11.5px; color:var(--muted); margin-bottom:8px; }
+  .train-item p{ margin:0; font-size:13.5px; color:#b7c1c8; }
+
+  /* ---------- Volunteering: quiet backlog ---------- */
+  .side-quests{ display:flex; flex-direction:column; gap:12px; }
+  .quest{
+    display:flex; gap:16px; padding:16px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .quest:last-child{ border-bottom:none; }
+  .quest .q-when{
+    font-family:var(--mono); font-size:11.5px; color:#5c6a75;
+    min-width:120px; padding-top:2px;
+  }
+  .quest .q-body h4{ margin:0 0 4px; font-size:15px; font-weight:600; }
+  .quest .q-body .q-org{ font-family:var(--mono); font-size:12px; color:var(--muted); margin-bottom:6px; }
+  .quest .q-body p{ margin:0; font-size:13.5px; color:#b7c1c8; }
+
+  /* ---------- Contact / footer ---------- */
+  footer{
+    padding:60px 24px 50px;
+    border-top:1px solid var(--line);
+    background:linear-gradient(180deg, transparent, rgba(217,164,65,0.03));
+  }
+  .contact-box{
+    max-width:var(--maxw); margin:0 auto;
+    text-align:center;
+  }
+  .contact-box .tag{
+    font-family:var(--mono); font-size:12px; letter-spacing:.14em;
+    color:var(--teal); text-transform:uppercase; display:block; margin-bottom:10px;
+  }
+  .contact-box h2{
+    font-family:var(--serif); font-weight:600; font-size:clamp(24px,4vw,34px);
+    margin:0 0 16px;
+  }
+  .contact-box p{ color:var(--muted); max-width:48ch; margin:0 auto 28px; font-size:15px; }
+  .cta-row{ display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin-bottom:26px; }
+  .btn{
+    font-family:var(--mono); font-size:12.5px; letter-spacing:.06em; text-transform:uppercase;
+    text-decoration:none; padding:13px 24px; border-radius:6px;
+    transition:transform .15s ease, background .15s ease, border-color .15s ease;
+    display:inline-flex; align-items:center; gap:8px;
+  }
+  .btn.primary{ background:var(--gold); color:#1a1204; font-weight:600; }
+  .btn.primary:hover{ transform:translateY(-1px); background:#e6b558; }
+  .btn.ghost{ border:1px solid var(--line-strong); color:var(--text); }
+  .btn.ghost:hover{ border-color:var(--teal); color:var(--teal); }
+  .foot-meta{
+    font-family:var(--mono); font-size:11.5px; color:#5c6a75;
+    display:flex; justify-content:center; gap:18px; flex-wrap:wrap;
+  }
+
+  @media (max-width:640px){
+    nav.links{ gap:16px; }
+    .nav-inner{ padding:14px 18px; }
+    .hero{ padding:44px 16px 28px; }
+    .ticket-body{ padding:26px 20px 28px; }
+    section{ padding:44px 18px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="nav-id" href="#top"><b>Ahmed Mostafa</b> · Product Owner</a>
+    <nav class="links">
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div id="top" class="hero">
+  <div class="wrap">
+    <div class="ticket">
+      <div class="ticket-top">
+        <span>Ticket · PO-2025-04</span>
+        <span class="status-pill"><span class="dot"></span> In progress</span>
+      </div>
+      <div class="ticket-body">
+        <p class="eyebrow">Assignee</p>
+        <h1 class="name">Ahmed Mostafa</h1>
+        <p class="role">Product Owner — Fintech &amp; regulated SaaS</p>
+        <p class="summary">
+          I turn compliance requirements and investment workflows into shippable product —
+          writing the backlog, the BRDs, and the acceptance criteria that get a regulated
+          fintech platform through both engineering review and audit.
+        </p>
+        <div class="meta-row">
+          <span><span class="k">Based in</span> Cairo, Egypt · open to relocation</span>
+          <a href="tel:+201022127407"><span class="k">Tel</span> +20 102 212 7407</a>
+          <a href="mailto:ahmed.mostafa.officia@gmail.com"><span class="k">Mail</span> ahmed.mostafa.officia@gmail.com</a>
+          <a href="https://linkedin.com/in/eng-ahmedmostafa" target="_blank" rel="noopener"><span class="k">In</span> /eng-ahmedmostafa</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="tag">Epics shipped</span>
+      <h2>Experience</h2>
+      <div class="rule"></div>
+    </div>
+
+    <div class="board">
+
+      <article class="card is-current">
+        <div class="card-top">
+          <span class="card-id">EPIC-04</span>
+          <span class="card-status current">In progress</span>
+        </div>
+        <h3>Product Owner</h3>
+        <div class="org-line">Areeb Technology · Jul 2025 – Present</div>
+        <ul>
+          <li>Directed product planning and backlog management for a FinTech Digital Internet Banking platform, unifying <b>legal</b> and <b>financial</b> investment workflows by integrating multiple systems into one solution.</li>
+          <li>Delivered compliance-ready features by defining user stories and acceptance criteria aligned with <b>financial compliance requirements</b> and investment operational needs.</li>
+          <li>Ensured technical delivery met <b>regulatory and financial workflow standards</b> by aligning cross-functional teams around shared compliance goals.</li>
+          <li>Enabled clear, scalable feature development by authoring <b>BRDs and PRDs</b> covering approval chains, financial transaction flows, and operational dashboards.</li>
+          <li>Strengthened delivery quality and team alignment by owning Agile ceremonies, including sprint planning, reviews, and retrospectives.</li>
+          <li>Cut rework by <b>30%</b> and accelerated development timelines by applying Agile methodologies (Scrum, Nexus) to improve cross-team communication.</li>
+          <li>Built user-centric fintech solutions within a regulated financial context, growing from an internship into a full-time Product Owner role.</li>
+        </ul>
+      </article>
+
+      <article class="card is-done">
+        <div class="card-top">
+          <span class="card-id">EPIC-03</span>
+          <span class="card-status done">Done</span>
+        </div>
+        <h3>Business Analyst</h3>
+        <div class="org-line">NEXT Expand · Jul 2024 – Oct 2024</div>
+        <ul>
+          <li>Translated e-commerce client business needs into clear functional requirements for CRM and ERP software solutions, enabling accurate technical delivery.</li>
+          <li>Aligned product capabilities with business objectives by gathering and documenting client requirements through direct stakeholder engagement.</li>
+        </ul>
+      </article>
+
+      <article class="card is-done">
+        <div class="card-top">
+          <span class="card-id">EPIC-02</span>
+          <span class="card-status done">Done</span>
+        </div>
+        <h3>Operations Lead &amp; Business Developer</h3>
+        <div class="org-line">Genius Minds · Sep 2023 – Nov 2023</div>
+        <ul>
+          <li>Directed ongoing programs and activities to maintain consistent alignment with business objectives.</li>
+          <li>Optimized productivity and project success by efficiently allocating resources across budgeting, staffing, and equipment.</li>
+          <li>Achieved consistent revenue targets and quotas by developing and executing targeted sales strategies.</li>
+          <li>Delivered child development programs in programming and robotics through focused operational oversight.</li>
+          <li>Expanded program reach by fostering partnerships with schools, educational institutions, and corporate clients.</li>
+        </ul>
+      </article>
+
+      <article class="card is-done">
+        <div class="card-top">
+          <span class="card-id">EPIC-01</span>
+          <span class="card-status done">Done</span>
+        </div>
+        <h3>Students Development Associate</h3>
+        <div class="org-line">CIC Canadian International College · Feb 2022 – Sep 2023</div>
+        <ul>
+          <li>Elevated education quality by supporting the adoption of advanced teaching methods.</li>
+          <li>Improved student performance and outcomes by collaborating on targeted development strategies.</li>
+          <li>Enriched educational resources by building partnerships with ministries and companies.</li>
+          <li>Sustained a supportive learning environment that reinforced student engagement and success.</li>
+        </ul>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="tag">Foundation</span>
+      <h2>Education</h2>
+      <div class="rule"></div>
+    </div>
+    <div class="edu-card">
+      <h3>CIC Canadian International College</h3>
+      <div class="org-line">Sep 2020 – Jun 2025</div>
+      <div class="degree">BSc, Electronics and Communications Engineering — GPA 2.94 / 4.00</div>
+      <ul>
+        <li>Graduation Project: Smart Fleet Management System, supported by <b>ITIDA</b> and <b>ASRT</b>.</li>
+        <li>1st Rank at CIC Scientific Engineering Day, 2023 &amp; 2024.</li>
+        <li>Founder &amp; Lead of the Google Developer Student Club (2022–2023); ranked Top 50 globally and Top 20 MENA at the Google Solution Challenge.</li>
+        <li>Named Huawei Academy Ambassador for two consecutive academic years (2022–2024) — Top University 2022 Award and Ambassador Award.</li>
+        <li>Active in student organizations including IEEE and Radix.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="certifications">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="tag">Labels</span>
+      <h2>Certifications</h2>
+      <div class="rule"></div>
+    </div>
+
+    <div class="labels">
+      <span class="label"><b>SFPC™</b> — Scrum Foundation Professional Certificate</span>
+      <span class="label"><b>PSPO I</b> — Professional Scrum Product Owner I, Scrum.org</span>
+    </div>
+
+    <div class="train-row">
+      <div class="train-item">
+        <div class="t-name">Agile Scrum Trainee</div>
+        <div class="t-org">Orange Digital Center · Nov 2022</div>
+        <p>Covered Agile vs. Waterfall, Scrum theory, artifacts, pillars, methodologies, and Jira.</p>
+      </div>
+      <div class="train-item">
+        <div class="t-name">SW Testing Trainee</div>
+        <div class="t-org">ITI Information Technology Institute · Aug 2024</div>
+        <p>Hands-on software testing: test case design, mobile and API testing (Postman), requirement analysis, and bug reporting.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="volunteering">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="tag">Side quests</span>
+      <h2>Volunteering</h2>
+      <div class="rule"></div>
+    </div>
+    <div class="side-quests">
+      <div class="quest">
+        <div class="q-when">May – Dec 2024</div>
+        <div class="q-body">
+          <h4>Coordinator</h4>
+          <div class="q-org">IEEE Volunteers Empowerment Program</div>
+          <p>Key liaison between participants and the program — facilitating communication, coordinating recruitment and evaluation, and managing documentation for smooth delivery.</p>
+        </div>
+      </div>
+      <div class="quest">
+        <div class="q-when">Oct 2022 – Oct 2024</div>
+        <div class="q-body">
+          <h4>Technical Team Member</h4>
+          <div class="q-org">Google Developer Group New Cairo</div>
+          <p>Organized technical events — demos, tech talks, hackathons — and supported developers adopting Google technologies including Android, Google Maps, and YouTube.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="contact-box">
+    <span class="tag">Open a ticket</span>
+    <h2>Have a fintech backlog that needs a product owner?</h2>
+    <p>I'm open to full-time roles and select freelance engagements — Cairo-based, remote-friendly, willing to relocate.</p>
+    <div class="cta-row">
+      <a class="btn primary" href="mailto:ahmed.mostafa.officia@gmail.com">Email me</a>
+      <a class="btn ghost" href="https://linkedin.com/in/eng-ahmedmostafa" target="_blank" rel="noopener">Connect on LinkedIn</a>
+    </div>
+    <div class="foot-meta">
+      <span>Cairo, Egypt</span>
+      <span>+20 102 212 7407</span>
+      <span>References available on request</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
