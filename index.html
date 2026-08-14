@@ -4,17 +4,17 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ahmed Mostafa</title>
-<meta name="description" content="Ahmed Mostafa — Product Owner bridging engineering, compliance, and business needs to ship regulated fintech products.">
-
+<meta name="description" content="Ahmed Mostafa — Product Owner (PSPO I) bridging engineering, compliance, and business to ship regulated fintech and AI-native SaaS products.">
+ 
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-
+ 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-
+ 
 <style>
   :root{
     --bg:#faf8f4;
@@ -32,14 +32,10 @@
     --sans:'IBM Plex Sans', system-ui, sans-serif;
     --maxw:1040px;
   }
-
+ 
   *{ box-sizing:border-box; }
-  html{ scroll-behavior:smooth; }
-  @media (prefers-reduced-motion: reduce){
-    html{ scroll-behavior:auto; }
-    *{ animation:none !important; transition:none !important; }
-  }
-
+  @media (prefers-reduced-motion: reduce){ *{ animation:none !important; transition:none !important; } }
+ 
   body{
     margin:0; background:var(--bg); color:var(--ink);
     font-family:var(--sans); line-height:1.65; -webkit-font-smoothing:antialiased;
@@ -47,98 +43,120 @@
   a{ color:inherit; }
   em, i{ font-family:var(--serif); font-style:italic; color:var(--accent); }
   a:focus-visible, button:focus-visible{ outline:2px solid var(--accent); outline-offset:3px; border-radius:2px; }
-
+ 
   .wrap{ max-width:var(--maxw); margin:0 auto; padding:0 24px; }
-  section{ padding:88px 24px; }
+  section{ padding:66px 24px; }
+  section:first-child{ padding-top:44px; }
   .eyebrow{
     font-family:var(--mono); font-size:12px; letter-spacing:.14em; text-transform:uppercase;
     color:var(--gold); margin:0 0 14px; display:block;
   }
-  h2.head{ font-family:var(--serif); font-weight:600; font-size:clamp(28px,4vw,38px); margin:0 0 44px; }
-
-  /* ---------- Nav ---------- */
-  header.nav{
-    position:sticky; top:0; z-index:100;
-    background:rgba(250,248,244,0.88); backdrop-filter:blur(10px);
-    border-bottom:1px solid var(--line);
+  h2.head{ font-family:var(--serif); font-weight:600; font-size:clamp(28px,4vw,38px); margin:0 0 40px; }
+ 
+  /* ---------- Floating island nav ---------- */
+  .island{
+    position:fixed; top:16px; left:50%; transform:translateX(-50%);
+    z-index:200; display:flex; align-items:center; gap:4px;
+    background:rgba(255,255,255,0.72); backdrop-filter:blur(18px) saturate(1.5); -webkit-backdrop-filter:blur(18px) saturate(1.5);
+    border:1px solid rgba(30,42,51,0.08); border-radius:100px;
+    padding:7px 10px 7px 20px; box-shadow:0 14px 38px -16px rgba(30,42,51,0.34);
+    max-width:calc(100vw - 24px);
   }
-  .nav-inner{ display:flex; align-items:center; justify-content:space-between; padding:18px 24px; max-width:var(--maxw); margin:0 auto; }
-  .nav-name{ font-family:var(--serif); font-weight:600; font-size:18px; text-decoration:none; }
-  nav.links{ display:flex; gap:30px; }
-  nav.links a{
-    font-family:var(--mono); font-size:12px; letter-spacing:.06em; text-transform:uppercase;
-    text-decoration:none; color:var(--muted); transition:color .15s ease;
+  .island .brand{ font-family:var(--serif); font-weight:600; font-size:16px; white-space:nowrap; letter-spacing:.01em; }
+  .island .divider{ width:1px; height:22px; background:var(--line-strong); margin:0 10px 0 14px; }
+  .island .tabs{ display:flex; gap:2px; }
+  .tab{
+    font-family:var(--mono); font-size:11.5px; letter-spacing:.05em; text-transform:uppercase;
+    color:var(--muted); background:none; border:none; cursor:pointer;
+    padding:9px 15px; border-radius:100px; transition:color .15s ease, background .15s ease; white-space:nowrap;
   }
-  nav.links a:hover{ color:var(--accent); }
-  .burger{ display:none; background:none; border:none; font-size:22px; cursor:pointer; color:var(--ink); }
-
-  @media (max-width:760px){
-    nav.links{
-      position:fixed; inset:64px 0 auto 0; background:var(--surface);
-      flex-direction:column; padding:20px 24px; gap:18px;
-      border-bottom:1px solid var(--line); transform:translateY(-120%); opacity:0;
-      transition:transform .25s ease, opacity .25s ease; pointer-events:none;
+  .tab:hover{ color:var(--accent); background:var(--accent-soft); }
+  .tab.active{ color:#fff; background:var(--accent); }
+  .burger{ display:none; background:none; border:none; font-size:20px; cursor:pointer; color:var(--ink); padding:4px 6px; line-height:1; }
+ 
+  @media (max-width:820px){
+    .island{
+      left:12px; right:12px; transform:none; max-width:none;
+      border-radius:20px; padding:12px 12px 12px 20px; justify-content:space-between;
     }
-    nav.links.open{ transform:translateY(0); opacity:1; pointer-events:auto; }
+    .island .divider{ display:none; }
     .burger{ display:block; }
+    .island .tabs{
+      position:absolute; top:calc(100% + 8px); left:0; right:0;
+      flex-direction:column; gap:4px;
+      background:rgba(255,255,255,0.97); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px);
+      border:1px solid var(--line); border-radius:16px; padding:10px;
+      box-shadow:0 22px 44px -18px rgba(30,42,51,0.4);
+      transform:translateY(-8px); opacity:0; pointer-events:none; transition:transform .2s ease, opacity .2s ease;
+    }
+    .island .tabs.open{ transform:translateY(0); opacity:1; pointer-events:auto; }
+    .tab{ text-align:left; font-size:12.5px; padding:11px 14px; }
   }
-
+ 
+  /* ---------- Tab panels ---------- */
+  main{ padding-top:86px; }
+  .panel{ display:none; }
+  .panel.active{ display:block; animation:fade .45s ease; }
+  @keyframes fade{ from{ opacity:0; transform:translateY(8px); } to{ opacity:1; transform:none; } }
+ 
   /* ---------- Hero ---------- */
-  .hero{ padding:80px 24px 60px; }
+  .hero{ padding:20px 24px 52px; }
   .hero-grid{
     display:grid; grid-template-columns:1.2fr 0.8fr; gap:56px; align-items:center;
     max-width:var(--maxw); margin:0 auto;
   }
-  @media (max-width:820px){ .hero-grid{ grid-template-columns:1fr; } .hero-photo{ order:-1; max-width:220px; margin:0 auto; } }
+  @media (max-width:820px){ .hero-grid{ grid-template-columns:1fr; } .hero-photo{ order:-1; max-width:200px; margin:0 auto; } }
   .kicker{ font-family:var(--mono); font-size:13px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin-bottom:18px; }
-  h1.hero-title{
-    font-family:var(--serif); font-weight:500; font-size:clamp(32px,5vw,50px);
-    line-height:1.18; margin:0 0 24px;
-  }
+  h1.hero-title{ font-family:var(--serif); font-weight:500; font-size:clamp(31px,5vw,48px); line-height:1.18; margin:0 0 24px; }
   p.hero-bio{ color:#3d4750; font-size:16px; max-width:56ch; margin:0 0 32px; }
   p.hero-bio b{ color:var(--ink); }
   .hero-ctas{ display:flex; gap:14px; flex-wrap:wrap; }
   .btn{
     font-family:var(--mono); font-size:12.5px; letter-spacing:.05em; text-transform:uppercase;
     text-decoration:none; padding:13px 24px; border-radius:6px; display:inline-flex; align-items:center; gap:8px;
+    cursor:pointer; border:none;
     transition:transform .15s ease, background .15s ease, border-color .15s ease, color .15s ease;
   }
   .btn.primary{ background:var(--accent); color:#fff; font-weight:600; }
   .btn.primary:hover{ transform:translateY(-1px); background:#16293c; }
-  .btn.ghost{ border:1px solid var(--line-strong); color:var(--ink); }
+  .btn.ghost{ border:1px solid var(--line-strong); color:var(--ink); background:none; }
   .btn.ghost:hover{ border-color:var(--accent); color:var(--accent); }
-
+ 
   .hero-photo{
     position:relative; border-radius:50%; overflow:hidden;
-    box-shadow:0 30px 60px -28px rgba(30,42,51,0.35);
-    border:1px solid var(--line);
-    width:100%; max-width:340px; margin:0 auto; aspect-ratio:1/1;
+    box-shadow:0 30px 60px -28px rgba(30,42,51,0.35); border:1px solid var(--line);
+    width:100%; max-width:320px; margin:0 auto; aspect-ratio:1/1;
   }
   .hero-photo img{ display:block; width:100%; height:100%; object-fit:cover; border-radius:50%; }
-
-  /* ---------- About ---------- */
-  .about{ background:var(--surface); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+ 
+  /* ---------- Nutshell stats strip ---------- */
+  .stats{
+    max-width:var(--maxw); margin:0 auto; padding:0 24px;
+    display:grid; grid-template-columns:repeat(4,1fr); gap:18px;
+  }
+  @media (max-width:760px){ .stats{ grid-template-columns:repeat(2,1fr); } }
+  .stat{ border-left:2px solid var(--gold-soft); padding-left:14px; }
+  .stat .n{ font-family:var(--serif); font-weight:600; font-size:21px; display:block; line-height:1.25; }
+  .stat .l{ font-family:var(--mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); }
+ 
+  /* ---------- Surface / About ---------- */
+  .surface{ background:var(--surface); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
   .about-grid{ display:grid; grid-template-columns:1fr 1fr; gap:48px; margin-bottom:52px; }
   @media (max-width:820px){ .about-grid{ grid-template-columns:1fr; } }
   .about-grid h3{ font-family:var(--serif); font-weight:600; font-size:20px; margin:0 0 12px; }
   .about-grid p{ color:#3d4750; font-size:15px; margin:0; }
-
+ 
   .feature-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
   @media (max-width:900px){ .feature-grid{ grid-template-columns:repeat(2,1fr); } }
   @media (max-width:520px){ .feature-grid{ grid-template-columns:1fr; } }
-  .feature{
-    border:1px solid var(--line); border-radius:10px; padding:24px 20px; background:var(--bg);
-  }
+  .feature{ border:1px solid var(--line); border-radius:10px; padding:24px 20px; background:var(--bg); }
   .feature .icon{ font-size:22px; margin-bottom:14px; }
   .feature h4{ font-family:var(--serif); font-weight:600; font-size:16px; margin:0 0 8px; }
   .feature p{ font-size:13.5px; color:var(--muted); margin:0; }
-
-  /* ---------- Experience ---------- */
-  .timeline{ display:flex; flex-direction:column; gap:0; }
-  .tl-item{
-    display:grid; grid-template-columns:180px 1fr; gap:28px;
-    padding:32px 0; border-top:1px solid var(--line);
-  }
+ 
+  /* ---------- Timeline ---------- */
+  .timeline{ display:flex; flex-direction:column; }
+  .tl-item{ display:grid; grid-template-columns:180px 1fr; gap:28px; padding:32px 0; border-top:1px solid var(--line); }
   .tl-item:last-child{ border-bottom:1px solid var(--line); }
   @media (max-width:680px){ .tl-item{ grid-template-columns:1fr; gap:6px; } }
   .tl-when{ font-family:var(--mono); font-size:12.5px; color:var(--muted); padding-top:3px; }
@@ -152,16 +170,12 @@
   .tl-body li{ font-size:14.5px; color:#3d4750; margin-bottom:8px; }
   .tl-body li:last-child{ margin-bottom:0; }
   .tl-body li b{ color:var(--ink); }
-
-  /* ---------- Highlights (case studies) ---------- */
-  .highlights{ background:var(--surface); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+ 
+  /* ---------- Cards grid ---------- */
   .hl-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
   @media (max-width:900px){ .hl-grid{ grid-template-columns:1fr 1fr; } }
   @media (max-width:620px){ .hl-grid{ grid-template-columns:1fr; } }
-  .hl-card{
-    border:1px solid var(--line); border-radius:12px; padding:26px 22px; background:var(--bg);
-    display:flex; flex-direction:column; gap:14px;
-  }
+  .hl-card{ border:1px solid var(--line); border-radius:12px; padding:26px 22px; background:var(--surface); display:flex; flex-direction:column; gap:14px; }
   .hl-tags{ display:flex; flex-wrap:wrap; gap:6px; }
   .hl-tags span{
     font-family:var(--mono); font-size:10.5px; letter-spacing:.03em; text-transform:uppercase;
@@ -169,7 +183,23 @@
   }
   .hl-card h3{ font-family:var(--serif); font-weight:600; font-size:18px; margin:0; }
   .hl-card p{ font-size:14px; color:var(--muted); margin:0; }
-
+  .subhead{ font-family:var(--serif); font-weight:600; font-size:22px; margin:56px 0 24px; }
+  .subhead:first-of-type{ margin-top:0; }
+ 
+  /* ---------- Featured case study ---------- */
+  .case{ border:1px solid var(--line); border-radius:16px; overflow:hidden; background:var(--surface); margin-bottom:44px; }
+  .case-top{ padding:30px 30px 26px; }
+  .case-badge{ font-family:var(--mono); font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:#8a611f; background:var(--gold-soft); padding:5px 11px; border-radius:100px; display:inline-block; margin-bottom:14px; }
+  .case-top h3{ font-family:var(--serif); font-weight:600; font-size:clamp(21px,3vw,25px); margin:0 0 10px; }
+  .case-top p{ margin:0; color:var(--muted); font-size:14.5px; max-width:72ch; }
+  .case-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); }
+  @media (max-width:760px){ .case-grid{ grid-template-columns:1fr 1fr; } }
+  @media (max-width:460px){ .case-grid{ grid-template-columns:1fr; } }
+  .case-cell{ background:var(--surface); padding:22px 24px; }
+  .case-cell h4{ font-family:var(--mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--gold); margin:0 0 9px; }
+  .case-cell p{ margin:0; font-size:13.5px; color:#3d4750; }
+  .case-cell .metric{ font-family:var(--serif); font-weight:600; font-size:21px; color:var(--accent); display:block; margin-bottom:4px; }
+ 
   /* ---------- Process ---------- */
   .process-list{ display:flex; flex-direction:column; }
   .p-item{ display:grid; grid-template-columns:70px 1fr; gap:24px; padding:26px 0; border-top:1px solid var(--line); }
@@ -178,7 +208,7 @@
   .p-num{ font-family:var(--serif); font-style:italic; font-size:26px; color:var(--gold); }
   .p-item h3{ font-family:var(--serif); font-weight:600; font-size:17px; margin:0 0 6px; }
   .p-item p{ font-size:14px; color:var(--muted); margin:0; max-width:62ch; }
-
+ 
   /* ---------- Education ---------- */
   .edu-card{ border:1px solid var(--line); border-radius:12px; padding:28px 26px; background:var(--surface); }
   .edu-card h3{ font-family:var(--serif); font-weight:600; font-size:19px; margin:0 0 4px; }
@@ -187,22 +217,16 @@
   .edu-card ul{ margin:0; padding-left:18px; }
   .edu-card li{ font-size:14px; color:#3d4750; margin-bottom:7px; }
   .edu-card li b{ color:var(--ink); }
-
+ 
   /* ---------- Skills ---------- */
   .skill-block{ margin-bottom:34px; }
   .skill-block:last-child{ margin-bottom:0; }
-  .skill-block h4{
-    font-family:var(--mono); font-size:12px; letter-spacing:.1em; text-transform:uppercase;
-    color:var(--muted); margin:0 0 14px;
-  }
+  .skill-block h4{ font-family:var(--mono); font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin:0 0 14px; }
   .pill-row{ display:flex; flex-wrap:wrap; gap:10px; }
-  .pill{
-    font-size:13.5px; padding:8px 15px; border-radius:100px; background:var(--surface);
-    border:1px solid var(--line-strong);
-  }
+  .pill{ font-size:13.5px; padding:8px 15px; border-radius:100px; background:var(--surface); border:1px solid var(--line-strong); }
   .pill.cert{ background:var(--gold-soft); border-color:transparent; color:#8a611f; font-family:var(--mono); font-size:12.5px; }
-
-  /* ---------- Volunteering ---------- */
+ 
+  /* ---------- Training / Community lists ---------- */
   .vol-list{ display:flex; flex-direction:column; gap:18px; }
   .vol-item{ display:flex; gap:18px; padding:18px 0; border-top:1px solid var(--line); }
   .vol-item:last-child{ border-bottom:1px solid var(--line); }
@@ -211,378 +235,401 @@
   .vol-body h4{ margin:0 0 3px; font-size:15px; font-family:var(--serif); font-weight:600; }
   .vol-body .org{ font-size:12.5px; color:var(--muted); margin-bottom:6px; }
   .vol-body p{ margin:0; font-size:13.5px; color:#3d4750; }
-
-  /* ---------- Contact ---------- */
-  footer.contact{
-    background:var(--accent); color:#fff; padding:90px 24px 50px; text-align:center;
+ 
+  /* ---------- Contact card ---------- */
+  .contact-card{
+    max-width:var(--maxw); margin:0 auto; background:var(--accent); color:#fff;
+    border-radius:24px; padding:72px 32px 44px; text-align:center;
   }
-  footer.contact .eyebrow{ color:#e7c98a; }
-  footer.contact h2{ font-family:var(--serif); font-weight:500; font-size:clamp(28px,4.5vw,42px); margin:0 0 18px; }
-  footer.contact h2 em{ color:#e7c98a; }
-  footer.contact p{ color:#c9d3da; max-width:52ch; margin:0 auto 34px; font-size:15.5px; }
+  .contact-card .eyebrow{ color:#e7c98a; }
+  .contact-card h2{ font-family:var(--serif); font-weight:500; font-size:clamp(28px,4.5vw,42px); margin:0 0 18px; }
+  .contact-card h2 em{ color:#e7c98a; }
+  .contact-card p{ color:#c9d3da; max-width:52ch; margin:0 auto 34px; font-size:15.5px; }
   .contact-links{ display:flex; gap:16px; justify-content:center; flex-wrap:wrap; margin-bottom:40px; }
-  footer.contact .btn.primary{ background:#e7c98a; color:#1f3b57; }
-  footer.contact .btn.primary:hover{ background:#f2d9a3; }
-  footer.contact .btn.ghost{ border-color:rgba(255,255,255,0.35); color:#fff; }
-  footer.contact .btn.ghost:hover{ border-color:#fff; }
+  .contact-card .btn.primary{ background:#e7c98a; color:#1f3b57; }
+  .contact-card .btn.primary:hover{ background:#f2d9a3; }
+  .contact-card .btn.ghost{ border-color:rgba(255,255,255,0.35); color:#fff; }
+  .contact-card .btn.ghost:hover{ border-color:#fff; }
   .foot-meta{
     font-family:var(--mono); font-size:11.5px; color:#9fb0bb;
     border-top:1px solid rgba(255,255,255,0.15); padding-top:24px;
     display:flex; justify-content:center; gap:20px; flex-wrap:wrap;
   }
-
+  .contact-panel{ padding:40px 24px 70px; }
+ 
   @media (max-width:640px){
-    section{ padding:60px 18px; }
-    .hero{ padding:50px 18px 40px; }
+    section{ padding:48px 18px; }
+    .hero{ padding:8px 18px 36px; }
   }
 </style>
 </head>
 <body>
-
-<header class="nav">
-  <div class="nav-inner">
-    <a class="nav-name" href="#top">Ahmed Mostafa</a>
-    <button class="burger" id="burger" aria-label="Toggle menu" aria-expanded="false">☰</button>
-    <nav class="links" id="navLinks">
-      <a href="#about">About</a>
-      <a href="#experience">Experience</a>
-      <a href="#highlights">Highlights</a>
-      <a href="#process">Process</a>
-      <a href="#skills">Skills</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </div>
+ 
+<header class="island">
+  <span class="brand">Ahmed Mostafa</span>
+  <span class="divider"></span>
+  <nav class="tabs" id="tabs">
+    <button class="tab active" data-tab="about">About</button>
+    <button class="tab" data-tab="experience">Experience</button>
+    <button class="tab" data-tab="work">Work</button>
+    <button class="tab" data-tab="background">Background</button>
+    <button class="tab" data-tab="contact">Contact</button>
+  </nav>
+  <button class="burger" id="burger" aria-label="Toggle menu" aria-expanded="false">☰</button>
 </header>
-
-<div id="top" class="hero">
-  <div class="hero-grid">
-    <div>
-      <span class="kicker">Product Owner · Fintech &amp; Regulated SaaS</span>
-      <h1 class="hero-title">Hello, I'm <em>Ahmed</em> — a Product Owner with an <em>Engineer's Depth</em> and a <em>Builder's Mindset</em>.</h1>
-      <p class="hero-bio">
-        I bridge engineering, compliance, and business needs to ship <b>regulated fintech products</b> —
-        turning legal and financial complexity into clear backlogs, BRDs, and acceptance criteria that both
-        engineering and audit can stand behind. Background in Electronics &amp; Communications Engineering,
-        grounded in Agile and Scrum.
-      </p>
-      <div class="hero-ctas">
-        <a class="btn primary" href="#highlights">View Highlights →</a>
-        <a class="btn ghost" href="#contact">Let's Connect</a>
+ 
+<main>
+ 
+  <!-- ========== ABOUT ========== -->
+  <div class="panel active" data-panel="about">
+    <div class="hero">
+      <div class="hero-grid">
+        <div>
+          <span class="kicker">Product Owner · PSPO™ I · Fintech &amp; AI-Native SaaS</span>
+          <h1 class="hero-title">Hello, I'm <em>Ahmed</em> — a Product Owner with an <em>Engineer's Depth</em> and a <em>Builder's Mindset</em>.</h1>
+          <p class="hero-bio">
+            I build products that connect <b>business, technology, and operations</b> — using systematic process
+            and lean principles to ship scalable, customer-centric solutions. In practice that means turning legal
+            and financial complexity into clear backlogs, BRDs, and acceptance criteria that both engineering and
+            audit can stand behind. Background in Electronics &amp; Communications Engineering, grounded in Agile
+            and Scrum. Currently focused on fintech and <b>AI-native SaaS</b>, and open to Product Owner / PM roles.
+          </p>
+          <div class="hero-ctas">
+            <button class="btn primary" data-goto="work">View My Work →</button>
+            <button class="btn ghost" data-goto="contact">Let's Connect</button>
+          </div>
+        </div>
+        <div class="hero-photo">
+          <img src="photo.jpg" alt="Portrait of Ahmed Mostafa">
+        </div>
+      </div>
+      <div class="stats">
+        <div class="stat"><span class="n">Fintech · EdTech · CRM</span><span class="l">Industries</span></div>
+        <div class="stat"><span class="n">PSPO I &amp; SFPC</span><span class="l">Certified</span></div>
+        <div class="stat"><span class="n">30% less rework</span><span class="l">Agile delivery impact</span></div>
+        <div class="stat"><span class="n">Arabic &amp; English</span><span class="l">Working languages</span></div>
       </div>
     </div>
-    <div class="hero-photo">
-      <img src="photo.jpg" alt="Portrait of Ahmed Mostafa">
-    </div>
+ 
+    <section class="surface">
+      <div class="wrap">
+        <span class="eyebrow">About Me</span>
+        <h2 class="head">Strategy meets <em>compliance</em></h2>
+        <div class="about-grid">
+          <div>
+            <h3>My Journey</h3>
+            <p>
+              I started in Electronics &amp; Communications Engineering, building things like <b>FleetX</b>, a Smart Fleet
+              Management System supported by ITIDA and ASRT. That engineering foundation — Agile training,
+              hands-on software testing, and a Scrum Product Owner certification — is what I brought into
+              product, where I now turn fintech and investment workflows into shippable features for a live
+              enterprise SaaS platform.
+            </p>
+          </div>
+          <div>
+            <h3>Product Philosophy</h3>
+            <p>
+              In a regulated space, the backlog isn't just a list of features — it's a contract with compliance,
+              engineering, and the business all at once. I believe good product work means writing requirements
+              precise enough for audit, clear enough for engineering, and valuable enough for the business —
+              without ever losing sight of the person using the platform.
+            </p>
+          </div>
+        </div>
+        <div class="feature-grid">
+          <div class="feature"><div class="icon">🎯</div><h4>Requirements &amp; Compliance</h4><p>I translate legal and financial complexity into user stories and acceptance criteria that hold up under regulatory review.</p></div>
+          <div class="feature"><div class="icon">📐</div><h4>Cross-Functional Alignment</h4><p>I keep legal, compliance, delivery, and operations moving together through BRDs, PRDs, and disciplined Agile ceremonies.</p></div>
+          <div class="feature"><div class="icon">📊</div><h4>End-to-End Delivery</h4><p>From requirements definition through UAT and rollout — Scrum and Nexus in practice, keeping delivery predictable.</p></div>
+          <div class="feature"><div class="icon">🚀</div><h4>Engineer's Depth</h4><p>An Electronics &amp; Communications Engineering background plus hands-on software testing means I can pressure-test feasibility early.</p></div>
+        </div>
+      </div>
+    </section>
   </div>
-</div>
-
-<section id="about" class="about">
-  <div class="wrap">
-    <span class="eyebrow">About Me</span>
-    <h2 class="head">Strategy meets <em>compliance</em></h2>
-
-    <div class="about-grid">
-      <div>
-        <h3>My Journey</h3>
-        <p>
-          I started in Electronics &amp; Communications Engineering, building things like a Smart Fleet
-          Management System with ITIDA and ASRT support. That engineering foundation — Agile training,
-          hands-on software testing, and a Scrum Product Owner certification — is what I brought into
-          product, where I've spent the last year turning fintech and investment workflows into shippable
-          features for a live SaaS platform.
-        </p>
+ 
+  <!-- ========== EXPERIENCE ========== -->
+  <div class="panel" data-panel="experience">
+    <section>
+      <div class="wrap">
+        <span class="eyebrow">Experience</span>
+        <h2 class="head">Where I've <em>built</em></h2>
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-when">Jul 2025 — Present<br><span class="current">Current</span></div>
+            <div class="tl-body">
+              <h3>Product Owner</h3>
+              <div class="org">Areeb Technology</div>
+              <ul>
+                <li>Directed product planning and commercial requirements gathering for a <b>FinTech SaaS platform</b>, unifying legal and financial investment workflows across multiple integrated systems to support enterprise client needs.</li>
+                <li>Prepared detailed functional specifications (<b>BRDs / PRDs</b>) covering approval chains, transaction flows, and pricing &amp; operational dashboards, translating business and compliance requirements into scalable product features.</li>
+                <li>Coordinated cross-functionally with <b>legal, compliance, delivery, and operations</b> teams to ensure product features aligned with regulatory standards and business objectives.</li>
+                <li>Supported end-to-end delivery lifecycle management, from requirements definition through <b>UAT and rollout</b>, ensuring alignment between technical delivery and commercial &amp; operational goals.</li>
+                <li>Owned Agile ceremonies — sprint planning, reviews, and retrospectives — to keep multi-team delivery aligned with business priorities and customer commitments.</li>
+                <li>Improved delivery efficiency and reduced rework by <b>30%</b> through Agile process improvements (Scrum, Nexus), strengthening cross-team communication and operational reporting.</li>
+                <li>Built user-centric, enterprise SaaS solutions within a highly regulated financial services context.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-when">Jan 2024 — Jun 2024</div>
+            <div class="tl-body">
+              <h3>Business Analyst</h3>
+              <div class="org">NEXT Expand</div>
+              <ul>
+                <li>Conducted discovery sessions with business stakeholders to uncover pain points, map business workflows, and translate complex requirements into prioritized functional specifications for <b>CRM and ERP</b> solutions.</li>
+                <li>Aligned product capabilities with business objectives by validating requirements, managing stakeholder expectations, and identifying <b>scope gaps early</b> to reduce delivery risks.</li>
+                <li>Performed gap analysis and feasibility assessments to recommend solutions that balanced business goals with technical constraints and strengthened solution quality.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-when">Apr 2023 — Dec 2023</div>
+            <div class="tl-body">
+              <h3>Operations &amp; Business Developer Lead</h3>
+              <div class="org">Genius Minds</div>
+              <ul>
+                <li>Led program design, operations, and business development for a <b>STEM education provider</b> delivering coding, robotics, and programming programs to K-12 learners.</li>
+                <li>Designed and launched a structured coding and robotics curriculum, defining learning outcomes, scoping content by age group, and iterating based on feedback from students, parents, and instructors.</li>
+                <li>Identified new market segments and institutional collaboration opportunities, contributing to business expansion strategy.</li>
+                <li>Managed <b>B2B partnerships</b> with schools, sports clubs, and corporate clients, negotiating agreements that expanded program reach and contributed to revenue growth.</li>
+                <li>Owned budget allocation, resource planning, and staffing across concurrent programs, maintaining operational continuity under tight capital constraints.</li>
+                <li>Led and coached a cross-functional team of educators and support staff, setting performance expectations and supporting professional development.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-when">Feb 2022 — Apr 2023</div>
+            <div class="tl-body">
+              <h3>Business Development Associate</h3>
+              <div class="org">CIC Canadian International College</div>
+              <ul>
+                <li>Contributed to student development and institutional growth at a technical engineering college, with a focus on technology programs and industry partnership building.</li>
+                <li>Identified, evaluated, and recommended technology training programs aligned with student career needs — early experience in <b>learning product selection and program-market fit</b>.</li>
+                <li>Developed and maintained partnerships with government ministries and private sector businesses, negotiating access to certifications, internship pipelines, and industry resources for students.</li>
+                <li>Coordinated between academic departments and external partners to ensure program delivery matched student expectations and institutional goals.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
-      <div>
-        <h3>Product Philosophy</h3>
-        <p>
-          In a regulated space, the backlog isn't just a list of features — it's a contract with compliance,
-          engineering, and the business all at once. I believe good product work means writing requirements
-          precise enough for audit, clear enough for engineering, and valuable enough for the business —
-          without ever losing sight of the person using the platform.
-        </p>
+    </section>
+ 
+    <section class="surface">
+      <div class="wrap">
+        <span class="eyebrow">Product Thinking</span>
+        <h2 class="head">How I think as a <em>Product Manager</em></h2>
+        <div class="process-list">
+          <div class="p-item"><div class="p-num">01</div><div><h3>Understand the Business Problem</h3><p>Getting to the real legal, financial, and user problem before writing a single user story — assumptions stay hypotheses until validated against compliance and operational reality.</p></div></div>
+          <div class="p-item"><div class="p-num">02</div><div><h3>Map As-Is, Find the Gaps</h3><p>Walking the current process end to end, then running gap and feasibility analysis to separate what's broken from what's simply undocumented.</p></div></div>
+          <div class="p-item"><div class="p-num">03</div><div><h3>Design the To-Be &amp; Define the MVP</h3><p>Turning the target state into BRDs, PRDs, user stories, and acceptance criteria — precise enough for audit, clear enough for engineering, and cut down to what's worth shipping first.</p></div></div>
+          <div class="p-item"><div class="p-num">04</div><div><h3>Agile Delivery</h3><p>Owning sprint planning, reviews, and retrospectives — Scrum and Nexus in practice, not just in theory.</p></div></div>
+          <div class="p-item"><div class="p-num">05</div><div><h3>Stakeholder Alignment</h3><p>Keeping legal, compliance, delivery, and operations moving together, so delivery meets regulatory and financial workflow standards the first time.</p></div></div>
+          <div class="p-item"><div class="p-num">06</div><div><h3>UAT, Rollout &amp; Improvement</h3><p>Seeing features through UAT and rollout, then feeding outcomes back into the backlog — the discipline that helped cut rework by 30%.</p></div></div>
+        </div>
       </div>
-    </div>
-
-    <div class="feature-grid">
-      <div class="feature">
-        <div class="icon">🎯</div>
-        <h4>Requirements &amp; Compliance</h4>
-        <p>I translate legal and financial complexity into user stories and acceptance criteria that hold up under regulatory review.</p>
-      </div>
-      <div class="feature">
-        <div class="icon">📐</div>
-        <h4>Cross-Functional Alignment</h4>
-        <p>I keep engineering, business, and compliance moving together through BRDs, PRDs, and disciplined Agile ceremonies.</p>
-      </div>
-      <div class="feature">
-        <div class="icon">📊</div>
-        <h4>Process-Driven Delivery</h4>
-        <p>Scrum and Nexus in practice — sprint planning, reviews, and retrospectives that cut rework and keep delivery predictable.</p>
-      </div>
-      <div class="feature">
-        <div class="icon">🚀</div>
-        <h4>Engineer's Depth</h4>
-        <p>An Electronics &amp; Communications Engineering background plus hands-on software testing means I can pressure-test feasibility early.</p>
-      </div>
-    </div>
+    </section>
   </div>
-</section>
-
-<section id="experience">
-  <div class="wrap">
-    <span class="eyebrow">Experience</span>
-    <h2 class="head">Where I've <em>built</em></h2>
-
-    <div class="timeline">
-      <div class="tl-item">
-        <div class="tl-when">Jul 2025 — Present<br><span class="current">Current</span></div>
-        <div class="tl-body">
-          <h3>Product Owner</h3>
-          <div class="org">Areeb Technology</div>
+ 
+  <!-- ========== WORK ========== -->
+  <div class="panel" data-panel="work">
+    <section>
+      <div class="wrap">
+        <span class="eyebrow">Highlights</span>
+        <h2 class="head">Problems I've <em>worked on</em></h2>
+ 
+        <div class="case">
+          <div class="case-top">
+            <span class="case-badge">Featured Case Study</span>
+            <h3>Unifying a Regulated Fintech Platform</h3>
+            <p>Bringing multiple legal and financial investment systems onto one enterprise SaaS platform — the core of my work at Areeb Technology.</p>
+          </div>
+          <div class="case-grid">
+            <div class="case-cell"><h4>Context</h4><p>Several investment and approval systems ran as separate workflows for one enterprise client base, with no single source of truth.</p></div>
+            <div class="case-cell"><h4>Problem</h4><p>Fragmented approval chains and transaction flows slowed delivery and made every release harder to audit.</p></div>
+            <div class="case-cell"><h4>What I did</h4><p>Authored the BRDs and PRDs for approval chains, transaction flows, and dashboards, and ran Scrum / Nexus ceremonies to align legal, compliance, delivery, and operations.</p></div>
+            <div class="case-cell"><h4>Result</h4><p><span class="metric">30% less rework</span>Predictable multi-team delivery, with compliance-ready features carried all the way through UAT and rollout.</p></div>
+          </div>
+        </div>
+ 
+        <div class="hl-grid">
+          <div class="hl-card"><div class="hl-tags"><span>BRD / PRD</span><span>Approval Chains</span><span>Dashboards</span></div><h3>Documenting Core Fintech Features</h3><p>Authoring BRDs and PRDs covering approval chains, transaction flows, and pricing &amp; operational dashboards for engineering to build against.</p></div>
+          <div class="hl-card"><div class="hl-tags"><span>Business Analysis</span><span>CRM / ERP</span><span>Gap Analysis</span></div><h3>Structuring Requirements for CRM &amp; ERP</h3><p>Running discovery sessions, mapping workflows, and turning complex client needs into prioritized specs technical teams could build against.</p></div>
+          <div class="hl-card"><div class="hl-tags"><span>Multi-Tenant SaaS</span><span>Access Control</span><span>Pricing</span></div><h3>Designing for Multi-Tenancy</h3><p>Shaping tenant isolation, access control, and modular pricing so one platform can serve multiple corporate clients across distinct business lines.</p></div>
+          <div class="hl-card"><div class="hl-tags"><span>AI-Native</span><span>Product Concept</span><span>Specs</span></div><h3>Building for an AI-Native Workflow</h3><p>Designing Productology — an AI-native workspace for PMs — from blueprint to release specs, staying close to how AI is reshaping the way products get built.</p></div>
+        </div>
+      </div>
+    </section>
+ 
+    <section class="surface">
+      <div class="wrap">
+        <span class="eyebrow">Projects</span>
+        <h2 class="head">Things I've <em>built</em> myself</h2>
+ 
+        <div class="case">
+          <div class="case-top">
+            <span class="case-badge">Featured Case Study · Freelance</span>
+            <h3>Client PRD — Meta Business Profile Wizard</h3>
+            <p>A production-ready PRD delivered to a client, Dr. Martin Busch GmbH, that also opened the door to a larger engagement.</p>
+          </div>
+          <div class="case-grid">
+            <div class="case-cell"><h4>Context</h4><p>A client needed founders to self-serve their Meta Business Profile setup instead of relying on manual, error-prone onboarding.</p></div>
+            <div class="case-cell"><h4>Problem</h4><p>Meta's setup spans several capabilities and prerequisites — hard to turn into a clean, foolproof flow engineers could build without guesswork.</p></div>
+            <div class="case-cell"><h4>What I did</h4><p>Wrote a 5-step wizard PRD against Graph API v25.0 — capability matrix, phased UX, and acceptance criteria written for direct engineering handoff.</p></div>
+            <div class="case-cell"><h4>Result</h4><p><span class="metric">6-wizard roadmap</span>Delivered on spec, then pitched the client an architecture-aligned roadmap of six further onboarding wizards.</p></div>
+          </div>
+        </div>
+ 
+        <div class="hl-grid">
+          <div class="hl-card"><div class="hl-tags"><span>AI-Native SaaS</span><span>Product Blueprint</span><span>Release Specs</span></div><h3>Productology — A Workspace for PMs</h3><p>My own product concept: an AI-native workspace for product managers, defined through a full technical blueprint plus incremental release specs covering prompt libraries, file management, caching, and rate limiting.</p></div>
+          <div class="hl-card"><div class="hl-tags"><span>PRD</span><span>SP-API</span><span>13-Step Wizard</span></div><h3>Sell-on-Amazon Module — PRD</h3><p>A zero-friction "sell on Amazon" onboarding module specified against the SP-API, structured as a 13-step wizard with acceptance criteria written for direct engineering handoff.</p></div>
+          <div class="hl-card"><div class="hl-tags"><span>Reporting</span><span>Delivery Metrics</span><span>Automation</span></div><h3>Executive Sprint Reporting</h3><p>Turned raw sprint data into executive-ready reports covering cost, efficiency, and commit metrics — then rebuilt the workflow as a repeatable script instead of a manual ritual.</p></div>
+          <div class="hl-card"><div class="hl-tags"><span>E-commerce</span><span>Django</span><span>End-to-End Build</span></div><h3>SheGlow — E-commerce Storefront</h3><p>A women's accessories storefront for the Egyptian market, taken from spec to working Django site — product thinking and implementation in the same pair of hands.</p></div>
+          <div class="hl-card"><div class="hl-tags"><span>IoT / Fleet Tech</span><span>ITIDA &amp; ASRT</span><span>Team of 4</span></div><h3>FleetX — Smart Fleet Management System</h3><p>Graduation project supported by ITIDA and ASRT. Led a team of four from concept to working system — the first step from engineering into building products people operate.</p></div>
+        </div>
+      </div>
+    </section>
+  </div>
+ 
+  <!-- ========== BACKGROUND ========== -->
+  <div class="panel" data-panel="background">
+    <section>
+      <div class="wrap">
+        <span class="eyebrow">Foundation</span>
+        <h2 class="head">Education</h2>
+        <div class="edu-card">
+          <h3>CIC Canadian International College</h3>
+          <div class="org">Sep 2020 – Jun 2025</div>
+          <div class="degree">BSc, Electronics and Communications Engineering — GPA 2.94 / 4.00</div>
           <ul>
-            <li>Directed product planning and backlog management for a FinTech Digital Internet Banking platform, unifying <b>legal</b> and <b>financial</b> investment workflows by integrating multiple systems into one solution.</li>
-            <li>Delivered compliance-ready features by defining user stories and acceptance criteria aligned with <b>financial compliance requirements</b> and investment operational needs.</li>
-            <li>Ensured technical delivery met <b>regulatory and financial workflow standards</b> by aligning cross-functional teams around shared compliance goals.</li>
-            <li>Enabled clear, scalable feature development by authoring <b>BRDs and PRDs</b> covering approval chains, financial transaction flows, and operational dashboards.</li>
-            <li>Strengthened delivery quality and team alignment by owning Agile ceremonies, including sprint planning, reviews, and retrospectives.</li>
-            <li>Cut rework by <b>30%</b> and accelerated development timelines by applying Agile methodologies (Scrum, Nexus) to improve cross-team communication.</li>
-            <li>Built user-centric fintech solutions within a regulated financial context, growing from an internship into a full-time Product Owner role.</li>
+            <li>Graduation Project: <b>FleetX</b> Smart Fleet Management System, supported by <b>ITIDA</b> and <b>ASRT</b>.</li>
+            <li>1st Rank at CIC Scientific Engineering Day, 2023 &amp; 2024.</li>
+            <li>Founder &amp; Lead of the Google Developer Student Club (2022–2023) — ranked Top 50 globally and Top 20 MENA at the Google Solution Challenge.</li>
+            <li>Nominated as Huawei Academy Ambassador for two academic years in a row (2022–2024) — Top University 2022 Award and Ambassador Award.</li>
+            <li>Participated in various student activities such as IEEE and Radix.</li>
           </ul>
         </div>
       </div>
-
-      <div class="tl-item">
-        <div class="tl-when">Jul 2024 — Oct 2024</div>
-        <div class="tl-body">
-          <h3>Business Analyst</h3>
-          <div class="org">NEXT Expand</div>
-          <ul>
-            <li>Translated e-commerce client business needs into clear functional requirements for CRM and ERP software solutions, enabling accurate technical delivery.</li>
-            <li>Aligned product capabilities with business objectives by gathering and documenting client requirements through direct stakeholder engagement.</li>
-          </ul>
+    </section>
+ 
+    <section class="surface">
+      <div class="wrap">
+        <span class="eyebrow">Training</span>
+        <h2 class="head">Where I <em>sharpened</em> the craft</h2>
+        <div class="vol-list">
+          <div class="vol-item"><div class="vol-when">Nov 2022</div><div class="vol-body"><h4>Agile Scrum Trainee</h4><div class="org">Orange Digital Center</div><p>Agile vs. Waterfall, Scrum theory, artifacts, pillars, methodologies, and Jira — completed with the Scrum Foundation Professional Certificate (SFPC™).</p></div></div>
+          <div class="vol-item"><div class="vol-when">Aug 2024</div><div class="vol-body"><h4>Software Testing Trainee</h4><div class="org">ITI — Information Technology Institute</div><p>Hands-on software testing: test case design, mobile and API testing (Postman, APIdog), requirement analysis, and bug reporting.</p></div></div>
         </div>
       </div>
-
-      <div class="tl-item">
-        <div class="tl-when">Sep 2023 — Nov 2023</div>
-        <div class="tl-body">
-          <h3>Operations Lead &amp; Business Developer</h3>
-          <div class="org">Genius Minds</div>
-          <ul>
-            <li>Directed ongoing programs and activities to maintain consistent alignment with business objectives.</li>
-            <li>Optimized productivity and project success by efficiently allocating resources across budgeting, staffing, and equipment.</li>
-            <li>Achieved consistent revenue targets and quotas by developing and executing targeted sales strategies.</li>
-            <li>Delivered child development programs in programming and robotics through focused operational oversight.</li>
-            <li>Expanded program reach by fostering partnerships with schools, educational institutions, and corporate clients.</li>
-          </ul>
+    </section>
+ 
+    <section>
+      <div class="wrap">
+        <span class="eyebrow">Skills &amp; Expertise</span>
+        <h2 class="head">What I <em>bring</em></h2>
+        <div class="skill-block">
+          <h4>Core Product Skills</h4>
+          <div class="pill-row">
+            <span class="pill">Product Backlog Management</span>
+            <span class="pill">User Stories &amp; Acceptance Criteria</span>
+            <span class="pill">BRDs &amp; PRDs</span>
+            <span class="pill">Agile / Scrum</span>
+            <span class="pill">Nexus</span>
+            <span class="pill">Stakeholder Management</span>
+            <span class="pill">Requirements Analysis</span>
+            <span class="pill">Gap Analysis &amp; Feasibility</span>
+            <span class="pill">UAT &amp; Rollout</span>
+            <span class="pill">Business Analysis</span>
+          </div>
+        </div>
+        <div class="skill-block">
+          <h4>Domain Expertise</h4>
+          <div class="pill-row">
+            <span class="pill">Fintech</span>
+            <span class="pill">AI-Native Product Thinking</span>
+            <span class="pill">Investment Operations</span>
+            <span class="pill">Regulatory Compliance</span>
+            <span class="pill">Enterprise SaaS / B2B</span>
+            <span class="pill">CRM &amp; ERP</span>
+            <span class="pill">Software Testing</span>
+          </div>
+        </div>
+        <div class="skill-block">
+          <h4>Certifications</h4>
+          <div class="pill-row">
+            <span class="pill cert">PSPO™ I — Professional Scrum Product Owner I (Scrum.org)</span>
+            <span class="pill cert">SFPC™ — Scrum Foundation Professional Certificate</span>
+          </div>
         </div>
       </div>
-
-      <div class="tl-item">
-        <div class="tl-when">Feb 2022 — Sep 2023</div>
-        <div class="tl-body">
-          <h3>Students Development Associate</h3>
-          <div class="org">CIC Canadian International College</div>
-          <ul>
-            <li>Elevated education quality by supporting the adoption of advanced teaching methods.</li>
-            <li>Improved student performance and outcomes by collaborating on targeted development strategies.</li>
-            <li>Enriched educational resources by building partnerships with ministries and companies.</li>
-            <li>Sustained a supportive learning environment that reinforced student engagement and success.</li>
-          </ul>
+    </section>
+ 
+    <section class="surface">
+      <div class="wrap">
+        <span class="eyebrow">Community</span>
+        <h2 class="head">Beyond the <em>day job</em></h2>
+        <div class="vol-list">
+          <div class="vol-item"><div class="vol-when">2022 – 2023</div><div class="vol-body"><h4>Founder &amp; Lead</h4><div class="org">Google Developer Student Club — CIC</div><p>Founded and led the club from zero, building a technical community on campus — the team ranked Top 50 globally and Top 20 MENA at the Google Solution Challenge.</p></div></div>
+          <div class="vol-item"><div class="vol-when">May – Dec 2024</div><div class="vol-body"><h4>Coordinator</h4><div class="org">IEEE Volunteers Empowerment Program</div><p>Key liaison between participants and the program — facilitating communication, coordinating recruitment and evaluation of participants and instructors, resolving issues, and managing documentation for smooth delivery.</p></div></div>
+          <div class="vol-item"><div class="vol-when">Oct 2022 – Oct 2024</div><div class="vol-body"><h4>Technical Team Member</h4><div class="org">Google Developer Group New Cairo</div><p>Organized technical events — demos, tech talks, hackathons — and supported developers adopting Google technologies including Android, Google Maps, and YouTube.</p></div></div>
         </div>
       </div>
-    </div>
+    </section>
   </div>
-</section>
-
-<section id="highlights" class="highlights">
-  <div class="wrap">
-    <span class="eyebrow">Highlights</span>
-    <h2 class="head">Problems I've <em>worked on</em></h2>
-
-    <div class="hl-grid">
-      <div class="hl-card">
-        <div class="hl-tags"><span>Fintech</span><span>Compliance</span><span>Systems Integration</span></div>
-        <h3>Unifying a Regulated Fintech Platform</h3>
-        <p>Bringing legal and financial investment workflows onto one Digital Internet Banking SaaS platform — multiple systems, one coherent product.</p>
+ 
+  <!-- ========== CONTACT ========== -->
+  <div class="panel contact-panel" data-panel="contact">
+    <div class="contact-card">
+      <span class="eyebrow">Contact</span>
+      <h2>Let's build something <em>great!</em></h2>
+      <p>I'm open to full-time Product Owner roles and select freelance engagements — Cairo-based, remote-friendly, and willing to relocate.</p>
+      <div class="contact-links">
+        <a class="btn primary" href="mailto:ahmed.mostafa.officia@gmail.com">✉️ Email me</a>
+        <a class="btn ghost" href="https://linkedin.com/in/eng-ahmedmostafa" target="_blank" rel="noopener">in linkedin.com/in/eng-ahmedmostafa</a>
       </div>
-      <div class="hl-card">
-        <div class="hl-tags"><span>BRD / PRD</span><span>Approval Chains</span><span>Dashboards</span></div>
-        <h3>Documenting Core Fintech Features</h3>
-        <p>Authoring BRDs and PRDs covering approval chains, financial transaction flows, and operational dashboards for engineering to build against.</p>
-      </div>
-      <div class="hl-card">
-        <div class="hl-tags"><span>Agile</span><span>Scrum / Nexus</span><span>Process Improvement</span></div>
-        <h3>Cutting Rework Through Agile Discipline</h3>
-        <p>Owning sprint planning, reviews, and retrospectives, and applying Scrum and Nexus to cut rework by 30% across the team.</p>
-      </div>
-      <div class="hl-card">
-        <div class="hl-tags"><span>Business Analysis</span><span>E-commerce</span><span>Requirements</span></div>
-        <h3>Structuring Requirements for E-commerce Clients</h3>
-        <p>Translating CRM and ERP needs from e-commerce clients into functional requirements technical teams could build against directly.</p>
-      </div>
-      <div class="hl-card">
-        <div class="hl-tags"><span>IoT / Fleet Tech</span><span>Graduation Project</span><span>ITIDA &amp; ASRT</span></div>
-        <h3>Smart Fleet Management System</h3>
-        <p>Graduation project supported by ITIDA and ASRT — first step from engineering into building products people actually operate.</p>
-      </div>
-      <div class="hl-card">
-        <div class="hl-tags"><span>Community</span><span>Google Solution Challenge</span><span>Leadership</span></div>
-        <h3>Founding a Google Developer Student Club</h3>
-        <p>Founded and led the club at CIC, ranking Top 50 globally and Top 20 MENA at the Google Solution Challenge.</p>
+      <div class="foot-meta">
+        <span>📍 Cairo, Egypt · Willing to Relocate</span>
+        <span>+20 102 212 7407</span>
+        <span>Military Status: Exempted</span>
+        <span>References available on request</span>
       </div>
     </div>
   </div>
-</section>
-
-<section id="process">
-  <div class="wrap">
-    <span class="eyebrow">Product Thinking</span>
-    <h2 class="head">How I <em>work</em></h2>
-
-    <div class="process-list">
-      <div class="p-item">
-        <div class="p-num">01</div>
-        <div><h3>Discovery</h3><p>Understanding the real legal, financial, and user problem before writing a single user story — assumptions stay hypotheses until validated against compliance and operational needs.</p></div>
-      </div>
-      <div class="p-item">
-        <div class="p-num">02</div>
-        <div><h3>Requirements &amp; Compliance Mapping</h3><p>Translating regulatory and investment requirements into BRDs and PRDs that engineering can build from and audit can approve.</p></div>
-      </div>
-      <div class="p-item">
-        <div class="p-num">03</div>
-        <div><h3>Backlog &amp; Prioritization</h3><p>Defining and refining user stories and acceptance criteria, balancing business value against technical and regulatory constraints.</p></div>
-      </div>
-      <div class="p-item">
-        <div class="p-num">04</div>
-        <div><h3>Agile Delivery</h3><p>Owning sprint planning, reviews, and retrospectives — Scrum and Nexus in practice, not just in theory.</p></div>
-      </div>
-      <div class="p-item">
-        <div class="p-num">05</div>
-        <div><h3>Stakeholder Alignment</h3><p>Keeping engineering, business, and compliance moving together, so delivery meets regulatory and financial workflow standards the first time.</p></div>
-      </div>
-      <div class="p-item">
-        <div class="p-num">06</div>
-        <div><h3>Continuous Improvement</h3><p>Feeding delivery outcomes back into the backlog — the discipline that helped cut rework by 30%.</p></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="education" class="about">
-  <div class="wrap">
-    <span class="eyebrow">Foundation</span>
-    <h2 class="head">Education</h2>
-    <div class="edu-card">
-      <h3>CIC Canadian International College</h3>
-      <div class="org">Sep 2020 – Jun 2025</div>
-      <div class="degree">BSc, Electronics and Communications Engineering — GPA 2.94 / 4.00</div>
-      <ul>
-        <li>Graduation Project: Smart Fleet Management System, supported by <b>ITIDA</b> and <b>ASRT</b>.</li>
-        <li>1st Rank at CIC Scientific Engineering Day, 2023 &amp; 2024.</li>
-        <li>Founder &amp; Lead of the Google Developer Student Club (2022–2023); Top 50 globally and Top 20 MENA at the Google Solution Challenge.</li>
-        <li>Named Huawei Academy Ambassador for two consecutive academic years (2022–2024) — Top University 2022 Award and Ambassador Award.</li>
-        <li>Active in student organizations including IEEE and Radix.</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<section id="skills">
-  <div class="wrap">
-    <span class="eyebrow">Skills &amp; Expertise</span>
-    <h2 class="head">What I <em>bring</em></h2>
-
-    <div class="skill-block">
-      <h4>Core Product Skills</h4>
-      <div class="pill-row">
-        <span class="pill">Product Backlog Management</span>
-        <span class="pill">User Stories &amp; Acceptance Criteria</span>
-        <span class="pill">BRDs &amp; PRDs</span>
-        <span class="pill">Agile / Scrum</span>
-        <span class="pill">Nexus</span>
-        <span class="pill">Stakeholder Management</span>
-        <span class="pill">Requirements Analysis</span>
-        <span class="pill">Business Analysis</span>
-      </div>
-    </div>
-
-    <div class="skill-block">
-      <h4>Domain Expertise</h4>
-      <div class="pill-row">
-        <span class="pill">Fintech</span>
-        <span class="pill">Digital Banking</span>
-        <span class="pill">Investment Operations</span>
-        <span class="pill">Regulatory Compliance</span>
-        <span class="pill">SaaS / B2B</span>
-        <span class="pill">E-commerce</span>
-      </div>
-    </div>
-
-    <div class="skill-block">
-      <h4>Certifications</h4>
-      <div class="pill-row">
-        <span class="pill cert">SFPC™ — Scrum Foundation Professional Certificate</span>
-        <span class="pill cert">PSPO I — Professional Scrum Product Owner I</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="volunteering" class="about">
-  <div class="wrap">
-    <span class="eyebrow">Community</span>
-    <h2 class="head">Beyond the <em>day job</em></h2>
-    <div class="vol-list">
-      <div class="vol-item">
-        <div class="vol-when">May – Dec 2024</div>
-        <div class="vol-body">
-          <h4>Coordinator</h4>
-          <div class="org">IEEE Volunteers Empowerment Program</div>
-          <p>Key liaison between participants and the program — facilitating communication, coordinating recruitment and evaluation, and managing documentation for smooth delivery.</p>
-        </div>
-      </div>
-      <div class="vol-item">
-        <div class="vol-when">Oct 2022 – Oct 2024</div>
-        <div class="vol-body">
-          <h4>Technical Team Member</h4>
-          <div class="org">Google Developer Group New Cairo</div>
-          <p>Organized technical events — demos, tech talks, hackathons — and supported developers adopting Google technologies including Android, Google Maps, and YouTube.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<footer id="contact" class="contact">
-  <span class="eyebrow">Contact</span>
-  <h2>Let's build something <em>great!</em></h2>
-  <p>I'm open to full-time Product Owner roles and select freelance engagements — Cairo-based, remote-friendly, and willing to relocate.</p>
-  <div class="contact-links">
-    <a class="btn primary" href="mailto:ahmed.mostafa.officia@gmail.com">✉️ Email me</a>
-    <a class="btn ghost" href="https://linkedin.com/in/eng-ahmedmostafa" target="_blank" rel="noopener">in linkedin.com/in/eng-ahmedmostafa</a>
-  </div>
-  <div class="foot-meta">
-    <span>📍 Cairo, Egypt</span>
-    <span>+20 102 212 7407</span>
-    <span>References available on request</span>
-  </div>
-</footer>
-
+ 
+</main>
+ 
 <script>
-  const burger = document.getElementById('burger');
-  const navLinks = document.getElementById('navLinks');
+  const tabs   = Array.from(document.querySelectorAll('.tab'));
+  const panels = Array.from(document.querySelectorAll('.panel'));
+  const ids    = panels.map(p => p.dataset.panel);
+  const tabsNav = document.getElementById('tabs');
+  const burger  = document.getElementById('burger');
+ 
+  function activate(id, push){
+    if(!ids.includes(id)) id = 'about';
+    tabs.forEach(t => t.classList.toggle('active', t.dataset.tab === id));
+    panels.forEach(p => p.classList.toggle('active', p.dataset.panel === id));
+    window.scrollTo({ top:0, behavior:'auto' });
+    if(push){ try{ history.replaceState(null, '', '#' + id); }catch(e){} }
+    closeMenu();
+  }
+  function closeMenu(){
+    tabsNav.classList.remove('open');
+    burger.setAttribute('aria-expanded', 'false');
+    burger.textContent = '☰';
+  }
+ 
+  tabs.forEach(t => t.addEventListener('click', () => activate(t.dataset.tab, true)));
+  document.querySelectorAll('[data-goto]').forEach(b =>
+    b.addEventListener('click', () => activate(b.dataset.goto, true)));
+ 
   burger.addEventListener('click', () => {
-    const open = navLinks.classList.toggle('open');
+    const open = tabsNav.classList.toggle('open');
     burger.setAttribute('aria-expanded', open);
     burger.textContent = open ? '✕' : '☰';
   });
-  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-    navLinks.classList.remove('open');
-    burger.setAttribute('aria-expanded', false);
-    burger.textContent = '☰';
-  }));
+ 
+  activate(location.hash.replace('#',''), false);
 </script>
-
+ 
 </body>
 </html>
+ 
