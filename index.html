@@ -693,7 +693,54 @@
           <div class="hl-card"><div class="hl-tags"><span>Sprint Data</span><span>Nexus</span><span>Reporting</span></div><h3>Making Multi-Squad Delivery Legible</h3><p>Turning six squads' sprint data into one operational picture leadership could act on, so scope trade-offs got made on evidence instead of on whoever spoke loudest.</p></div>
         </div>
 
+        <h3 class="subhead">Take-home product work</h3>
+
+        <div class="case reveal">
+          <div class="case-top">
+            <span class="case-badge">Case Study &middot; Product Manager Take-Home</span>
+            <h3>Why Users Stop Coming Back</h3>
+            <p>Daleel Store's brief called it a retention problem. The first thing I did was argue with the brief.</p>
+          </div>
+          <div class="case-grid stagger">
+            <div class="case-cell result"><h4>Result</h4><p><span class="metric">2 user types, not 1</span>Splitting "churn" into users who were failed and users who simply finished changed the metrics, the initiatives, and what got deferred.</p></div>
+            <div class="case-cell"><h4>Context</h4><p>Signups growing, retention collapsing after the first purchase. No access to internal data, so every claim had to be written as a testable hypothesis.</p></div>
+            <div class="case-cell"><h4>Problem</h4><p>A churned user and a finished user look identical on a retention chart. Optimising them the same way builds re-engagement machinery for people who were never coming back.</p></div>
+            <div class="case-cell"><h4>What I did</h4><p>Named <b>the Finished/Churned Split</b>, separated three diagnoses that all look like falling retention, then built three initiatives and a 90-day plan on top of the distinction &mdash; plus an explicit list of what I deferred.</p></div>
+          </div>
+          <a class="case-open" href="work/retention-teardown/">Read the full teardown <span class="arrow">&rarr;</span></a>
+        </div>
+
+        <div class="case reveal">
+          <div class="case-top">
+            <span class="case-badge">Case Study &middot; Product Owner Assessment</span>
+            <h3>Shipping a Live Classroom in 10 Weeks</h3>
+            <p>An interactive live-classroom product for MENA EdTech platforms. Five engineers, remote, two-week sprints.</p>
+          </div>
+          <div class="case-grid stagger">
+            <div class="case-cell result"><h4>Result</h4><p><span class="metric">5 sprints to MVP</span>Four scoped stories with acceptance criteria and edge cases, a teacher flow with its failure branch drawn, and a named owner for every kind of decision.</p></div>
+            <div class="case-cell"><h4>Context</h4><p>Zon Net Digital Solutions. Mid-to-large platforms with an existing LMS, wanting a live-classroom layer they could integrate over API. Mixed devices, mixed bandwidth.</p></div>
+            <div class="case-cell"><h4>Problem</h4><p>Five developers and a short window. Everything hinges on cutting an MVP that is genuinely small, and on knowing who decides what before the team disagrees.</p></div>
+            <div class="case-cell"><h4>What I did</h4><p>Wrote the assumptions down first, built two personas, listed the questions worth asking each stakeholder, scoped four stories, and set <b>the Decision Owner Rule</b>: value decisions to the PO, execution to the Tech Lead.</p></div>
+          </div>
+          <a class="case-open" href="work/live-classroom-po/">Read the full assessment <span class="arrow">&rarr;</span></a>
+        </div>
+
         <h3 class="subhead">Things I've built myself</h3>
+
+        <div class="case reveal">
+          <div class="case-top">
+            <span class="case-badge">Featured Case Study &middot; Product Spec</span>
+            <h3>The Zero-Friction Amazon Listing Wizard</h3>
+            <p>A 26-page PRD taking a first-time seller from "I have a product" to a live Amazon listing, specified against the Selling Partner API and written to be built without a meeting attached.</p>
+          </div>
+          <div class="case-grid stagger">
+            <div class="case-cell result"><h4>Result</h4><p><span class="metric">&le; 25 keystrokes</span>A measured typing ceiling, 11 steps, 23 specified edge cases, and a Definition of Done written as conditions you can check rather than adjectives.</p></div>
+            <div class="case-cell"><h4>Context</h4><p>Listing on Amazon means understanding product-type taxonomies, per-category attribute schemas that differ by marketplace, image specs, and Seller Central itself. First-time sellers have none of that.</p></div>
+            <div class="case-cell"><h4>Problem</h4><p>Amazon's requirements change per category, per marketplace, and over time. Any spec that hardcodes them is correct the day it ships and quietly wrong afterwards.</p></div>
+            <div class="case-cell"><h4>What I did</h4><p>Opened with <b>Rule Zero</b> &mdash; eight system rules that outrank the rest of the document, and a stated tiebreaker. Made validation schema-driven at runtime, used Amazon's own dry-run mode as the source of truth, and listed the <b>out-of-code prerequisites</b> with a named owner each.</p></div>
+          </div>
+          <a class="case-open" href="work/amazon-listing-wizard/">Read the PRD excerpt <span class="arrow">&rarr;</span></a>
+        </div>
 
         <div class="case reveal">
           <div class="case-top">
@@ -725,7 +772,7 @@
         </div>
 
         <div class="reveal hl-grid stagger">
-          <div class="hl-card"><div class="hl-tags"><span>PRD</span><span>SP-API</span><span>13-Step Wizard</span></div><h3>Sell-on-Amazon Module: PRD</h3><p>A zero-friction "sell on Amazon" onboarding module specified against the SP-API, structured as a 13-step wizard with acceptance criteria written for direct engineering handoff.</p></div>
+          <div class="hl-card"><div class="hl-tags"><span>Spec Craft</span><span>Edge Cases</span><span>Handoff</span></div><h3>Specs Engineering Can Build Without a Meeting</h3><p>The through-line across every PRD here: name the tiebreaker rule, pin the API version, and give the failure paths more pages than the happy path.</p></div>
           <div class="hl-card"><div class="hl-tags"><span>Reporting</span><span>Delivery Metrics</span><span>Automation</span></div><h3>Executive Sprint Reporting</h3><p>Turned raw sprint data into executive-ready reports covering cost, efficiency, and commit metrics, then rebuilt the workflow as a repeatable script instead of a manual ritual.</p></div>
           <div class="hl-card"><div class="hl-tags"><span>E-commerce</span><span>Django</span><span>End-to-End Build</span></div><h3>SheGlow: E-commerce Storefront</h3><p>A women's accessories storefront for the Egyptian market, taken from spec to working Django site. Product thinking and implementation, done by the same pair of hands.</p></div>
           <div class="hl-card"><div class="hl-tags"><span>IoT / Fleet Tech</span><span>ITIDA &amp; ASRT</span><span>Team of 4</span></div><h3>FleetX: Smart Fleet Management System</h3><p>Graduation project supported by ITIDA and ASRT. Led a team of four from concept to working system, my first step from engineering into building products people actually operate.</p></div>
