@@ -25,6 +25,7 @@
 <meta name="author" content="Ahmed Mostafa">
 <meta name="theme-color" content="#1f3b57">
 
+<link rel="alternate" type="application/rss+xml" title="Ahmed Mostafa — Notes on product thinking" href="https://itsamostafa.github.io/feed.xml">
 <link rel="canonical" href="https://itsamostafa.github.io/">
 
 <!-- Open Graph (WhatsApp, LinkedIn, Facebook link previews) -->
@@ -125,6 +126,7 @@
     font-family:var(--mono); font-size:11.5px; letter-spacing:.05em; text-transform:uppercase;
     color:var(--muted); background:none; border:none; cursor:pointer;
     padding:9px 15px; border-radius:100px; transition:color .15s ease, background .15s ease, transform .15s ease; white-space:nowrap;
+    text-decoration:none; display:inline-flex; align-items:center;
   }
   .tab:hover{ color:var(--accent-text); background:var(--accent-soft); }
   .tab.active{ color:#fff; background:var(--accent); }
@@ -156,11 +158,27 @@
     .tab{ text-align:left; font-size:12.5px; padding:14px; min-height:44px; display:flex; align-items:center; }
   }
 
-  /* ---------- Tab panels ---------- */
+  /* ---------- Single-scroll sections ---------- */
   main{ padding-top:86px; }
-  .panel{ display:none; }
-  .panel.active{ display:block; animation:fade .45s ease; }
-  @keyframes fade{ from{ opacity:0; transform:translateY(8px); } to{ opacity:1; transform:none; } }
+  html{ scroll-behavior:smooth; }
+  @media (prefers-reduced-motion: reduce){ html{ scroll-behavior:auto; } }
+  .panel{ display:block; scroll-margin-top:92px; }
+
+  /* ---------- Named framework ---------- */
+  .fw-def{ font-family:var(--serif); font-size:clamp(19px,2.6vw,23px); line-height:1.5; color:var(--body-text); max-width:60ch; margin:-18px 0 40px; }
+  .fw-def b{ color:var(--ink); }
+  .fw-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+  @media (max-width:820px){ .fw-grid{ grid-template-columns:1fr; } }
+  .fw-card{ border:1px solid var(--line); border-radius:12px; padding:26px 22px; background:var(--surface); transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
+  .fw-card:hover{ transform:translateY(-4px); border-color:var(--gold); box-shadow:0 16px 32px -18px rgba(30,42,51,0.28); }
+  .fw-k{ font-family:var(--mono); font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--gold-text); display:block; margin-bottom:10px; }
+  .fw-card h3{ font-family:var(--serif); font-weight:600; font-size:19px; margin:0 0 8px; }
+  .fw-card p{ font-size:14px; color:var(--muted); margin:0; }
+  .fw-rule{ margin-top:26px; border-left:3px solid var(--gold); background:var(--gold-soft); border-radius:0 12px 12px 0; padding:24px 26px; }
+  .fw-rule p{ margin:0 0 14px; font-size:15.5px; color:var(--body-text); max-width:68ch; }
+  .fw-rule p b{ font-family:var(--serif); font-size:18px; color:var(--ink); }
+  .fw-more{ font-family:var(--mono); font-size:11.5px; letter-spacing:.05em; text-transform:uppercase; color:var(--gold-text); text-decoration:none; border-bottom:1px solid transparent; transition:border-color .15s ease; }
+  .fw-more:hover{ border-bottom-color:var(--gold-text); }
 
   /* ---------- Hero ---------- */
   .hero{ padding:20px 24px 28px; }
@@ -291,6 +309,13 @@
   .case-cell h4{ font-family:var(--mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--gold-text); margin:0 0 9px; }
   .case-cell p{ margin:0; font-size:13.5px; color:var(--body-text); }
   .case-cell .metric{ font-family:var(--serif); font-weight:600; font-size:21px; color:var(--accent-text); display:block; margin-bottom:4px; }
+  .case-cell.result{ background:var(--accent-soft); }
+  .case-cell.result h4{ color:var(--accent-text); }
+  .case-cell.result .metric{ font-size:24px; }
+  .case-open{ display:flex; align-items:center; gap:10px; padding:18px 30px; border-top:1px solid var(--line); background:var(--surface); font-family:var(--mono); font-size:11.5px; letter-spacing:.05em; text-transform:uppercase; color:var(--gold-text); text-decoration:none; transition:background .18s ease, color .18s ease; }
+  .case-open:hover{ background:var(--gold-soft); }
+  .case-open .arrow{ transition:transform .18s ease; }
+  .case-open:hover .arrow{ transform:translateX(4px); }
 
   /* ---------- Process ---------- */
   .process-list{ display:flex; flex-direction:column; }
@@ -388,7 +413,6 @@
   .footer-link{ font-family:var(--mono); font-size:12px; letter-spacing:.04em; color:var(--muted); text-decoration:none; }
   .footer-link:hover{ color:var(--accent-text); }
   .footer-cta{ padding:9px 18px; font-size:13px; }
-  body[data-active-tab="contact"] .site-footer{ display:none; }
   @media (max-width:520px){ .footer-inner{ justify-content:center; text-align:center; } }
 
   /* ---------- Writing / Notes ---------- */
@@ -485,7 +509,6 @@
       "jobTitle": ["Product Owner", "Product Manager"],
       "description": "Product Owner and Product Manager (PSPO) specializing in fintech, enterprise SaaS, and regulated products.",
       "email": "mailto:ahmed.mostafa.works@gmail.com",
-      "telephone": "+201022127407",
       "address": { "@type": "PostalAddress", "addressLocality": "Cairo", "addressCountry": "EG" },
       "worksFor": { "@type": "Organization", "name": "Areeb Technology" },
       "alumniOf": { "@type": "CollegeOrUniversity", "name": "CIC Canadian International College" },
@@ -507,18 +530,18 @@
 </script>
 
 </head>
-<body data-active-tab="about">
+<body>
 
 <a class="skip-link" href="#main-content">Skip to content</a>
 <header class="island">
   <span class="brand">Ahmed Mostafa</span>
   <span class="divider"></span>
-  <nav class="tabs" id="tabs" role="tablist" aria-label="Site sections">
-    <button class="tab active" data-tab="about" role="tab" aria-selected="true" aria-controls="panel-about" id="tab-about">About</button>
-    <button class="tab" data-tab="experience" role="tab" aria-selected="false" aria-controls="panel-experience" id="tab-experience">Experience</button>
-    <button class="tab" data-tab="work" role="tab" aria-selected="false" aria-controls="panel-work" id="tab-work">Work</button>
-    <button class="tab" data-tab="writing" role="tab" aria-selected="false" aria-controls="panel-writing" id="tab-writing">Writing</button>
-    <button class="tab" data-tab="contact" role="tab" aria-selected="false" aria-controls="panel-contact" id="tab-contact">Contact</button>
+  <nav class="tabs" id="tabs" aria-label="Site sections">
+    <a class="tab active" href="#about" data-target="about">About</a>
+    <a class="tab" href="#work" data-target="work">Work</a>
+    <a class="tab" href="#writing" data-target="writing">Writing</a>
+    <a class="tab" href="#experience" data-target="experience">Experience</a>
+    <a class="tab" href="#contact" data-target="contact">Contact</a>
   </nav>
   <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" type="button">
     <svg class="sun" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
@@ -530,22 +553,21 @@
 <main id="main-content">
 
   <!-- ========== ABOUT ========== -->
-  <div class="panel active" data-panel="about" id="panel-about" role="tabpanel" aria-labelledby="tab-about">
+  <div class="panel" id="about">
     <div class="hero">
       <div class="hero-grid reveal stagger">
         <div>
-          <span class="kicker">Product Owner &amp; Product Manager · PSPO™ · Fintech &amp; SaaS</span>
-          <h1 class="hero-title">Hi, I'm <em>Ahmed Mostafa</em>, a Product Owner with an <em>Engineer's Depth</em> and a <em>Builder's Mindset</em>.</h1>
+          <span class="kicker">Ahmed Mostafa · Product Owner · PSPO™ I</span>
+          <h1 class="hero-title">I write requirements that survive an <em>audit</em>.</h1>
           <p class="hero-bio">
-            I connect <b>business, technology, and operations</b> to ship things that actually work in
-            production. Most of my day is turning legal and financial complexity into backlogs, BRDs, and
-            acceptance criteria that engineering can build from and audit can sign off on. I came up through
-            Electronics &amp; Communications Engineering, then Agile and Scrum. Right now I'm deep in fintech and
-            <b>AI-native SaaS</b>, and open to Product Owner / PM roles.
+            Product Owner at <b>Areeb Technology</b>, unifying <b>2 legal and financial investment systems</b>
+            into one regulated fintech platform across <b>6 delivery squads</b>. Engineer first — Electronics
+            &amp; Communications, then hands-on software testing — which is why feasibility arguments don't get
+            past me. Open to Product Owner / PM roles.
           </p>
           <div class="hero-ctas">
-            <button class="btn primary" data-goto="work">View My Work →</button>
-            <button class="btn ghost" data-goto="contact">Let's Connect</button>
+            <a class="btn primary" href="#work">See the work →</a>
+            <a class="btn ghost" href="work/meta-wizard-prd/">Read a real PRD</a>
           </div>
         </div>
         <div class="hero-photo">
@@ -553,10 +575,10 @@
         </div>
       </div>
       <div class="reveal stats stagger">
-        <div class="stat float"><span class="n">Fintech · EdTech · CRM</span><span class="l">Industries</span></div>
-        <div class="stat float"><span class="n">PSPO I &amp; SFPC</span><span class="l">Certified</span></div>
+        <div class="stat float"><span class="n">2 systems unified</span><span class="l">Into one fintech platform</span></div>
+        <div class="stat float"><span class="n">6 delivery squads</span><span class="l">Aligned via Scrum &amp; Nexus</span></div>
         <div class="stat float"><span class="n">30% less rework</span><span class="l">Agile delivery impact</span></div>
-        <div class="stat float"><span class="n">Arabic &amp; English</span><span class="l">Working languages</span></div>
+        <div class="stat float"><span class="n">PSPO™ I &amp; SFPC™</span><span class="l">Certified · Arabic &amp; English</span></div>
       </div>
     </div>
 
@@ -575,7 +597,38 @@
       </div>
     </section>
 
+
     <section class="surface">
+      <div class="wrap">
+        <span class="eyebrow">The framework I use</span>
+        <h2 class="head">The <em>Backlog Contract</em></h2>
+        <p class="fw-def">A backlog item is not a task. It's an agreement, and every agreement has counterparties. <b>Rework is what happens when one of them never actually signed.</b></p>
+        <div class="reveal fw-grid stagger">
+          <div class="fw-card">
+            <span class="fw-k">Counterparty 01</span>
+            <h3>Compliance</h3>
+            <p>Signs off on: can this be audited after it ships? Their signature lives in the acceptance criteria, not in a meeting.</p>
+          </div>
+          <div class="fw-card">
+            <span class="fw-k">Counterparty 02</span>
+            <h3>Engineering</h3>
+            <p>Signs off on: is this buildable exactly as written, with no "TBD in design"? A spec that hides the edge cases produces an estimate that is fiction.</p>
+          </div>
+          <div class="fw-card">
+            <span class="fw-k">Counterparty 03</span>
+            <h3>The business</h3>
+            <p>Signs off on: is this worth the sprint it costs? A story nobody will defend at review was never worth writing.</p>
+          </div>
+        </div>
+        <div class="reveal fw-rule">
+          <span class="fw-k">The rule</span>
+          <p><b>Silence isn't a signature.</b> A story with no objection from compliance is not an approved story. It's an unread one. Nearly every change request I've received traced back to a counterparty who was never actually asked.</p>
+          <a class="fw-more" href="writing/backlog-is-a-contract/">Read the full argument &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+    <section>
       <div class="wrap">
         <span class="eyebrow">About Me</span>
         <h2 class="head">Strategy meets <em>compliance</em></h2>
@@ -593,12 +646,12 @@
             </p>
           </div>
           <div>
-            <h3>Product Philosophy</h3>
+            <h3>How I work</h3>
             <p>
-              In a regulated space, the backlog isn't just a list of features. It's a contract with compliance,
-              engineering, and the business, all at once. Good product work means writing requirements precise
-              enough for audit, clear enough for engineering, and valuable enough for the business, without
-              losing sight of the person actually using the platform.
+              I write specs to be handed to an engineer with no meeting attached. That means the failure paths
+              get more pages than the happy path, acceptance criteria name the API version they were written
+              against, and every "handle this gracefully" gets replaced with the actual behaviour before the
+              document leaves my hands. The point isn't documentation. It's that nobody has to guess.
             </p>
           </div>
         </div>
@@ -612,8 +665,114 @@
     </section>
   </div>
 
+  <!-- ========== WORK ========== -->
+  <div class="panel" id="work">
+    <section>
+      <div class="wrap">
+        <span class="eyebrow">Work</span>
+        <h2 class="head">Problems I've <em>worked on</em></h2>
+
+        <div class="case reveal">
+          <div class="case-top">
+            <span class="case-badge">Featured Case Study</span>
+            <h3>Unifying a Regulated Fintech Platform</h3>
+            <p>Bringing 2 legal and financial investment systems onto one enterprise SaaS platform, across 6 delivery squads. This is the core of my current product work.</p>
+          </div>
+          <div class="case-grid stagger">
+            <div class="case-cell result"><h4>Result</h4><p><span class="metric">30% less rework</span>Predictable delivery across 6 squads, with compliance-ready features carried all the way through UAT and rollout.</p></div>
+            <div class="case-cell"><h4>Context</h4><p>2 investment and approval systems ran as separate workflows for one enterprise client base, with no single source of truth.</p></div>
+            <div class="case-cell"><h4>Problem</h4><p>Fragmented approval chains and transaction flows slowed delivery and made every release harder to audit.</p></div>
+            <div class="case-cell"><h4>What I did</h4><p>Authored the BRDs and PRDs for approval chains, transaction flows, and dashboards, and ran Scrum / Nexus ceremonies to align legal, compliance, delivery, and operations.</p></div>
+          </div>
+        </div>
+
+        <div class="reveal hl-grid stagger">
+          <div class="hl-card"><div class="hl-tags"><span>BRD / PRD</span><span>Approval Chains</span><span>Dashboards</span></div><h3>Documenting Core Fintech Features</h3><p>Authoring BRDs and PRDs covering approval chains, transaction flows, and pricing &amp; operational dashboards for engineering to build against.</p></div>
+          <div class="hl-card"><div class="hl-tags"><span>Business Analysis</span><span>CRM / ERP</span><span>Gap Analysis</span></div><h3>Structuring Requirements for CRM &amp; ERP</h3><p>Running discovery sessions, mapping workflows, and turning complex client needs into prioritized specs technical teams could build against.</p></div>
+          <div class="hl-card"><div class="hl-tags"><span>Multi-Tenant SaaS</span><span>Access Control</span><span>Pricing</span></div><h3>Designing for Multi-Tenancy</h3><p>Shaping tenant isolation, access control, and modular pricing so one platform can serve multiple corporate clients across distinct business lines.</p></div>
+          <div class="hl-card"><div class="hl-tags"><span>Sprint Data</span><span>Nexus</span><span>Reporting</span></div><h3>Making Multi-Squad Delivery Legible</h3><p>Turning six squads' sprint data into one operational picture leadership could act on, so scope trade-offs got made on evidence instead of on whoever spoke loudest.</p></div>
+        </div>
+
+        <h3 class="subhead">Things I've built myself</h3>
+
+        <div class="case reveal">
+          <div class="case-top">
+            <span class="case-badge">Featured Case Study · Freelance</span>
+            <h3>Client PRD: Meta Business Profile Wizard</h3>
+            <p>A production-ready PRD delivered to a client, that also opened the door to a larger engagement. The excerpt is published, matrix and acceptance criteria included.</p>
+          </div>
+          <div class="case-grid stagger">
+            <div class="case-cell result"><h4>Result</h4><p><span class="metric">6-wizard roadmap</span>Delivered on spec, then pitched the client an architecture-aligned roadmap of six further onboarding wizards.</p></div>
+            <div class="case-cell"><h4>Context</h4><p>A client needed founders to self-serve their Meta Business Profile setup instead of relying on manual, error-prone onboarding.</p></div>
+            <div class="case-cell"><h4>Problem</h4><p>Meta's setup spans several capabilities and prerequisites. Hard to turn into a clean, foolproof flow engineers could build without guesswork.</p></div>
+            <div class="case-cell"><h4>What I did</h4><p>Applied <b>the Decision-Point Rule</b> &mdash; a wizard has as many steps as there are decisions only the user can make &mdash; and wrote it up against Graph API v25.0: capability matrix, phased UX, acceptance criteria.</p></div>
+          </div>
+          <a class="case-open" href="work/meta-wizard-prd/">Read the redacted PRD excerpt <span class="arrow">&rarr;</span></a>
+        </div>
+
+        <div class="case reveal">
+          <div class="case-top">
+            <span class="case-badge">Featured Case Study · Personal Project</span>
+            <h3>Productology: An AI-Native Workspace for PMs</h3>
+            <p>Prototyping the tool I wish existed, while writing specs for it the same way I write them for work.</p>
+          </div>
+          <div class="case-grid stagger">
+            <div class="case-cell result"><h4>Result</h4><p><span class="metric">4 systems specced</span>Prompt libraries, file management, caching, and rate limiting, each its own release spec instead of one big-bang launch.</p></div>
+            <div class="case-cell"><h4>Context</h4><p>PM tooling is still spreadsheets, docs, and switching between chat windows for every spec. Nothing treats prompt libraries or file context as first-class.</p></div>
+            <div class="case-cell"><h4>Problem</h4><p>Every AI-native workflow I wanted for my own product work meant re-inventing structure that should already live in the tool, not the process.</p></div>
+            <div class="case-cell"><h4>What I did</h4><p>Wrote the full technical blueprint end to end, then broke it into incremental release specs the same way I'd hand off to engineering at work: BRD discipline, applied to my own product.</p></div>
+          </div>
+        </div>
+
+        <div class="reveal hl-grid stagger">
+          <div class="hl-card"><div class="hl-tags"><span>PRD</span><span>SP-API</span><span>13-Step Wizard</span></div><h3>Sell-on-Amazon Module: PRD</h3><p>A zero-friction "sell on Amazon" onboarding module specified against the SP-API, structured as a 13-step wizard with acceptance criteria written for direct engineering handoff.</p></div>
+          <div class="hl-card"><div class="hl-tags"><span>Reporting</span><span>Delivery Metrics</span><span>Automation</span></div><h3>Executive Sprint Reporting</h3><p>Turned raw sprint data into executive-ready reports covering cost, efficiency, and commit metrics, then rebuilt the workflow as a repeatable script instead of a manual ritual.</p></div>
+          <div class="hl-card"><div class="hl-tags"><span>E-commerce</span><span>Django</span><span>End-to-End Build</span></div><h3>SheGlow: E-commerce Storefront</h3><p>A women's accessories storefront for the Egyptian market, taken from spec to working Django site. Product thinking and implementation, done by the same pair of hands.</p></div>
+          <div class="hl-card"><div class="hl-tags"><span>IoT / Fleet Tech</span><span>ITIDA &amp; ASRT</span><span>Team of 4</span></div><h3>FleetX: Smart Fleet Management System</h3><p>Graduation project supported by ITIDA and ASRT. Led a team of four from concept to working system, my first step from engineering into building products people actually operate.</p></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ========== WRITING ========== -->
+  <div class="panel" id="writing">
+    <section class="surface">
+      <div class="wrap">
+        <span class="eyebrow">Writing</span>
+        <h2 class="head">Notes on <em>product thinking</em></h2>
+        <div class="reveal note-list stagger">
+          <a class="note" href="writing/backlog-is-a-contract/">
+            <div class="note-when"><time datetime="2026-08-11">Aug 11, 2026</time><br>7 min read</div>
+            <div>
+              <h3>Your backlog is a contract, not a to-do list</h3>
+              <p>Every user story is an agreement between compliance, engineering, and the business. Treating it that way is what cuts rework.</p>
+              <span class="readmore">Read &rarr;</span>
+            </div>
+          </a>
+          <a class="note" href="writing/meta-api-to-wizard/">
+            <div class="note-when"><time datetime="2026-07-06">Jul 6, 2026</time><br>8 min read</div>
+            <div>
+              <h3>Turning a sprawling API into a five-step wizard</h3>
+              <p>A real client PRD, reverse-engineered: turning a prerequisite-heavy API into a flow a non-technical founder can finish alone.</p>
+              <span class="readmore">Read &rarr;</span>
+            </div>
+          </a>
+          <a class="note" href="writing/engineer-to-product-owner/">
+            <div class="note-when"><time datetime="2026-05-19">May 19, 2026</time><br>6 min read</div>
+            <div>
+              <h3>What an engineering background actually changes about product work</h3>
+              <p>Not the cliches. The specific ways it helps, the ways it doesn't, and the trap it sets.</p>
+              <span class="readmore">Read &rarr;</span>
+            </div>
+          </a>
+        </div>
+        <p class="writing-note"><a href="writing/" style="color:var(--accent-text);text-decoration:none;">See all 8 notes →</a> · <a href="feed.xml" style="color:var(--accent-text);text-decoration:none;">RSS</a></p>
+      </div>
+    </section>
+  </div>
+
   <!-- ========== EXPERIENCE ========== -->
-  <div class="panel" data-panel="experience" id="panel-experience" role="tabpanel" aria-labelledby="tab-experience">
+  <div class="panel" id="experience">
     <section>
       <div class="wrap">
         <span class="eyebrow">Experience</span>
@@ -625,13 +784,9 @@
               <h3>Product Owner</h3>
               <div class="org">Areeb Technology</div>
               <ul>
-                <li>Directed product planning and commercial requirements gathering for a <b>FinTech SaaS platform</b>, unifying legal and financial investment workflows across multiple integrated systems to support enterprise client needs.</li>
-                <li>Prepared detailed functional specifications (<b>BRDs / PRDs</b>) covering approval chains, transaction flows, and pricing &amp; operational dashboards, translating business and compliance requirements into scalable product features.</li>
-                <li>Coordinated cross-functionally with <b>legal, compliance, delivery, and operations</b> teams to ensure product features aligned with regulatory standards and business objectives.</li>
-                <li>Supported end-to-end delivery lifecycle management, from requirements definition through <b>UAT and rollout</b>, ensuring alignment between technical delivery and commercial &amp; operational goals.</li>
-                <li>Owned Agile ceremonies (sprint planning, reviews, and retrospectives) to keep multi-team delivery aligned with business priorities and customer commitments.</li>
-                <li>Improved delivery efficiency and reduced rework by <b>30%</b> through Agile process improvements (Scrum, Nexus), strengthening cross-team communication and operational reporting.</li>
-                <li>Built user-centric, enterprise SaaS solutions within a highly regulated financial services context.</li>
+                <li>Directed product planning and commercial requirements for a regulated <b>FinTech SaaS platform</b>, unifying <b>2 legal and financial investment systems</b> into one product across <b>6 delivery squads</b>.</li>
+                <li>Authored the <b>BRDs and PRDs</b> for approval chains, transaction flows, and pricing &amp; operational dashboards, written to be handed to engineering without a meeting attached and to hold up under regulatory review.</li>
+                <li>Cut rework by <b>30%</b> by running Scrum and Nexus across the squads and carrying features through <b>UAT and rollout</b> rather than stopping at "dev complete".</li>
               </ul>
             </div>
           </div>
@@ -653,12 +808,9 @@
               <h3>Operations &amp; Business Developer Lead</h3>
               <div class="org">Genius Minds</div>
               <ul>
-                <li>Led program design, operations, and business development for a <b>STEM education provider</b> delivering coding, robotics, and programming programs to K-12 learners.</li>
-                <li>Designed and launched a structured coding and robotics curriculum, defining learning outcomes, scoping content by age group, and iterating based on feedback from students, parents, and instructors.</li>
-                <li>Identified new market segments and institutional collaboration opportunities, contributing to business expansion strategy.</li>
-                <li>Managed <b>B2B partnerships</b> with schools, sports clubs, and corporate clients, negotiating agreements that expanded program reach and contributed to revenue growth.</li>
-                <li>Owned budget allocation, resource planning, and staffing across concurrent programs, maintaining operational continuity under tight capital constraints.</li>
-                <li>Led and coached a cross-functional team of educators and support staff, setting performance expectations and supporting professional development.</li>
+                <li>Led program design, operations, and business development for a <b>STEM education provider</b> delivering coding and robotics programs to K-12 learners.</li>
+                <li>Designed and launched a structured coding and robotics curriculum, defining learning outcomes and scoping content by age group, then iterating on feedback from students, parents, and instructors.</li>
+                <li>Managed <b>B2B partnerships</b> with schools, sports clubs, and corporate clients, and owned budget, staffing, and resource planning across concurrent programs under tight capital constraints.</li>
               </ul>
             </div>
           </div>
@@ -668,7 +820,6 @@
               <h3>Business Development Associate</h3>
               <div class="org">CIC Canadian International College</div>
               <ul>
-                <li>Contributed to student development and institutional growth at a technical engineering college, with a focus on technology programs and industry partnership building.</li>
                 <li>Identified, evaluated, and recommended technology training programs aligned with student career needs, early experience in <b>learning product selection and program-market fit</b>.</li>
                 <li>Developed and maintained partnerships with government ministries and private sector businesses, negotiating access to certifications, internship pipelines, and industry resources for students.</li>
                 <li>Coordinated between academic departments and external partners to ensure program delivery matched student expectations and institutional goals.</li>
@@ -686,7 +837,7 @@
         <div class="reveal edu-card">
           <h3>CIC Canadian International College</h3>
           <div class="org">Sep 2020 – Jun 2025</div>
-          <div class="degree">BSc, Electronics and Communications Engineering (GPA 2.94 / 4.00)</div>
+          <div class="degree">BSc, Electronics and Communications Engineering</div>
           <ul>
             <li>Graduation Project: <b>FleetX</b> Smart Fleet Management System, supported by <b>ITIDA</b> and <b>ASRT</b>.</li>
             <li>1st Rank at CIC Scientific Engineering Day, 2023 &amp; 2024.</li>
@@ -716,28 +867,20 @@
         <div class="reveal skill-block">
           <h4>Core Product Skills</h4>
           <div class="pill-row stagger">
-            <span class="pill">Product Backlog Management</span>
-            <span class="pill">User Stories &amp; Acceptance Criteria</span>
             <span class="pill">BRDs &amp; PRDs</span>
-            <span class="pill">Agile / Scrum</span>
-            <span class="pill">Nexus</span>
-            <span class="pill">Stakeholder Management</span>
-            <span class="pill">Requirements Analysis</span>
-            <span class="pill">Gap Analysis &amp; Feasibility</span>
-            <span class="pill">UAT &amp; Rollout</span>
-            <span class="pill">Business Analysis</span>
+            <span class="pill">User Stories &amp; Acceptance Criteria</span>
+            <span class="pill">Backlog Management</span>
+            <span class="pill">Scrum &amp; Nexus</span>
+            <span class="pill">Stakeholder Alignment</span>
           </div>
         </div>
         <div class="reveal skill-block">
           <h4>Domain Expertise</h4>
           <div class="pill-row stagger">
-            <span class="pill">Fintech</span>
-            <span class="pill">AI-Native Product Thinking</span>
-            <span class="pill">Investment Operations</span>
+            <span class="pill">Fintech &amp; Investment Operations</span>
             <span class="pill">Regulatory Compliance</span>
             <span class="pill">Enterprise SaaS / B2B</span>
-            <span class="pill">CRM &amp; ERP</span>
-            <span class="pill">Software Testing</span>
+            <span class="pill">AI-Native Product Thinking</span>
           </div>
         </div>
         <div class="reveal skill-block">
@@ -749,135 +892,10 @@
         </div>
       </div>
     </section>
-
-    <section>
-      <div class="wrap">
-        <span class="eyebrow">Product Thinking</span>
-        <h2 class="head">How I think as a <em>Product Manager</em></h2>
-        <div class="reveal process-list stagger">
-          <div class="p-item"><div class="p-num">01</div><div><h3>Understand the Business Problem</h3><p>Getting to the real legal, financial, and user problem before writing a single user story. Assumptions stay hypotheses until they're validated against compliance and operational reality.</p></div></div>
-          <div class="p-item"><div class="p-num">02</div><div><h3>Map As-Is, Find the Gaps</h3><p>Walking the current process end to end, then running gap and feasibility analysis to separate what's broken from what's simply undocumented.</p></div></div>
-          <div class="p-item"><div class="p-num">03</div><div><h3>Design the To-Be &amp; Define the MVP</h3><p>Turning the target state into BRDs, PRDs, user stories, and acceptance criteria: precise enough for audit, clear enough for engineering, and cut down to what's worth shipping first.</p></div></div>
-          <div class="p-item"><div class="p-num">04</div><div><h3>Agile Delivery</h3><p>Owning sprint planning, reviews, and retrospectives. Scrum and Nexus in practice, not just in theory.</p></div></div>
-          <div class="p-item"><div class="p-num">05</div><div><h3>Stakeholder Alignment</h3><p>Keeping legal, compliance, delivery, and operations moving together, so delivery meets regulatory and financial workflow standards the first time.</p></div></div>
-          <div class="p-item"><div class="p-num">06</div><div><h3>UAT, Rollout &amp; Improvement</h3><p>Seeing features through UAT and rollout, then feeding outcomes back into the backlog. That discipline is what helped cut rework by 30%.</p></div></div>
-        </div>
-      </div>
-    </section>
-  </div>
-
-  <!-- ========== WORK ========== -->
-  <div class="panel" data-panel="work" id="panel-work" role="tabpanel" aria-labelledby="tab-work">
-    <section>
-      <div class="wrap">
-        <span class="eyebrow">Highlights</span>
-        <h2 class="head">Problems I've <em>worked on</em></h2>
-
-        <div class="case reveal">
-          <div class="case-top">
-            <span class="case-badge">Featured Case Study</span>
-            <h3>Unifying a Regulated Fintech Platform</h3>
-            <p>Bringing multiple legal and financial investment systems onto one enterprise SaaS platform. This is the core of my current product work.</p>
-          </div>
-          <div class="case-grid stagger">
-            <div class="case-cell"><h4>Context</h4><p>Several investment and approval systems ran as separate workflows for one enterprise client base, with no single source of truth.</p></div>
-            <div class="case-cell"><h4>Problem</h4><p>Fragmented approval chains and transaction flows slowed delivery and made every release harder to audit.</p></div>
-            <div class="case-cell"><h4>What I did</h4><p>Authored the BRDs and PRDs for approval chains, transaction flows, and dashboards, and ran Scrum / Nexus ceremonies to align legal, compliance, delivery, and operations.</p></div>
-            <div class="case-cell"><h4>Result</h4><p><span class="metric">30% less rework</span>Predictable multi-team delivery, with compliance-ready features carried all the way through UAT and rollout.</p></div>
-          </div>
-        </div>
-
-        <div class="reveal hl-grid stagger">
-          <div class="hl-card"><div class="hl-tags"><span>BRD / PRD</span><span>Approval Chains</span><span>Dashboards</span></div><h3>Documenting Core Fintech Features</h3><p>Authoring BRDs and PRDs covering approval chains, transaction flows, and pricing &amp; operational dashboards for engineering to build against.</p></div>
-          <div class="hl-card"><div class="hl-tags"><span>Business Analysis</span><span>CRM / ERP</span><span>Gap Analysis</span></div><h3>Structuring Requirements for CRM &amp; ERP</h3><p>Running discovery sessions, mapping workflows, and turning complex client needs into prioritized specs technical teams could build against.</p></div>
-          <div class="hl-card"><div class="hl-tags"><span>Multi-Tenant SaaS</span><span>Access Control</span><span>Pricing</span></div><h3>Designing for Multi-Tenancy</h3><p>Shaping tenant isolation, access control, and modular pricing so one platform can serve multiple corporate clients across distinct business lines.</p></div>
-          <div class="hl-card"><div class="hl-tags"><span>AI-Native</span><span>Product Concept</span><span>Specs</span></div><h3>Building for an AI-Native Workflow</h3><p>Designing Productology, an AI-native workspace for PMs, from blueprint to release specs. Staying close to how AI is reshaping the way products get built.</p></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="surface">
-      <div class="wrap">
-        <span class="eyebrow">Projects</span>
-        <h2 class="head">Things I've <em>built</em> myself</h2>
-
-        <div class="case reveal">
-          <div class="case-top">
-            <span class="case-badge">Featured Case Study · Freelance</span>
-            <h3>Client PRD: Meta Business Profile Wizard</h3>
-            <p>A production-ready PRD delivered to a client, that also opened the door to a larger engagement.</p>
-          </div>
-          <div class="case-grid stagger">
-            <div class="case-cell"><h4>Context</h4><p>A client needed founders to self-serve their Meta Business Profile setup instead of relying on manual, error-prone onboarding.</p></div>
-            <div class="case-cell"><h4>Problem</h4><p>Meta's setup spans several capabilities and prerequisites. Hard to turn into a clean, foolproof flow engineers could build without guesswork.</p></div>
-            <div class="case-cell"><h4>What I did</h4><p>Wrote a 5-step wizard PRD against Graph API v25.0: capability matrix, phased UX, and acceptance criteria written for direct engineering handoff.</p></div>
-            <div class="case-cell"><h4>Result</h4><p><span class="metric">6-wizard roadmap</span>Delivered on spec, then pitched the client an architecture-aligned roadmap of six further onboarding wizards.</p></div>
-          </div>
-        </div>
-
-        <div class="case reveal">
-          <div class="case-top">
-            <span class="case-badge">Featured Case Study · Personal Project</span>
-            <h3>Productology: An AI-Native Workspace for PMs</h3>
-            <p>Prototyping the tool I wish existed, while writing specs for it the same way I write them for work.</p>
-          </div>
-          <div class="case-grid stagger">
-            <div class="case-cell"><h4>Context</h4><p>PM tooling is still spreadsheets, docs, and switching between chat windows for every spec. Nothing treats prompt libraries or file context as first-class.</p></div>
-            <div class="case-cell"><h4>Problem</h4><p>Every AI-native workflow I wanted for my own product work meant re-inventing structure that should already live in the tool, not the process.</p></div>
-            <div class="case-cell"><h4>What I did</h4><p>Wrote the full technical blueprint end to end, then broke it into incremental release specs the same way I'd hand off to engineering at work: BRD discipline, applied to my own product.</p></div>
-            <div class="case-cell"><h4>Result</h4><p><span class="metric">4 systems specced</span>Prompt libraries, file management, caching, and rate limiting, each its own release spec instead of one big-bang launch.</p></div>
-          </div>
-        </div>
-
-        <div class="reveal hl-grid stagger">
-          <div class="hl-card"><div class="hl-tags"><span>PRD</span><span>SP-API</span><span>13-Step Wizard</span></div><h3>Sell-on-Amazon Module: PRD</h3><p>A zero-friction "sell on Amazon" onboarding module specified against the SP-API, structured as a 13-step wizard with acceptance criteria written for direct engineering handoff.</p></div>
-          <div class="hl-card"><div class="hl-tags"><span>Reporting</span><span>Delivery Metrics</span><span>Automation</span></div><h3>Executive Sprint Reporting</h3><p>Turned raw sprint data into executive-ready reports covering cost, efficiency, and commit metrics, then rebuilt the workflow as a repeatable script instead of a manual ritual.</p></div>
-          <div class="hl-card"><div class="hl-tags"><span>E-commerce</span><span>Django</span><span>End-to-End Build</span></div><h3>SheGlow: E-commerce Storefront</h3><p>A women's accessories storefront for the Egyptian market, taken from spec to working Django site. Product thinking and implementation, done by the same pair of hands.</p></div>
-          <div class="hl-card"><div class="hl-tags"><span>IoT / Fleet Tech</span><span>ITIDA &amp; ASRT</span><span>Team of 4</span></div><h3>FleetX: Smart Fleet Management System</h3><p>Graduation project supported by ITIDA and ASRT. Led a team of four from concept to working system, my first step from engineering into building products people actually operate.</p></div>
-        </div>
-      </div>
-    </section>
-  </div>
-
-  <!-- ========== WRITING ========== -->
-  <div class="panel" data-panel="writing" id="panel-writing" role="tabpanel" aria-labelledby="tab-writing">
-    <section class="surface">
-      <div class="wrap">
-        <span class="eyebrow">Writing</span>
-        <h2 class="head">Notes on <em>product thinking</em></h2>
-        <div class="reveal note-list stagger">
-          <a class="note" href="writing/stakeholder-map-nobody-draws">
-            <div class="note-when">Product Notes<br>6 min</div>
-            <div>
-              <h3>The stakeholder map nobody draws</h3>
-              <p>In a regulated fintech product, legal, compliance, delivery, and ops all have to say yes before a feature ships. Silence isn't a signature.</p>
-              <span class="readmore">Read →</span>
-            </div>
-          </a>
-          <a class="note" href="writing/pricing-dashboard-is-a-trust-problem">
-            <div class="note-when">Product Notes<br>6 min</div>
-            <div>
-              <h3>Your pricing dashboard is a trust problem, not a data problem</h3>
-              <p>Every dashboard project I've seen stall got blamed on the data. It was never the data. It was three teams calculating the same number differently.</p>
-              <span class="readmore">Read →</span>
-            </div>
-          </a>
-          <a class="note" href="writing/scope-cuts-happen-in-discovery">
-            <div class="note-when">Product Notes<br>6 min</div>
-            <div>
-              <h3>The best scope cuts happen in discovery, not sprint three</h3>
-              <p>Every scope gap that showed up as a change request was visible in discovery. It just wasn't looked for.</p>
-              <span class="readmore">Read →</span>
-            </div>
-          </a>
-        </div>
-        <p class="writing-note"><a href="writing/index.html" style="color:var(--accent-text);text-decoration:none;">See all notes →</a></p>
-      </div>
-    </section>
   </div>
 
   <!-- ========== CONTACT ========== -->
-  <div class="panel contact-panel" data-panel="contact" id="panel-contact" role="tabpanel" aria-labelledby="tab-contact">
+  <div class="panel contact-panel" id="contact">
     <div class="reveal contact-card">
       <span class="eyebrow">Contact</span>
       <h2>Let's build something <em>great!</em></h2>
@@ -888,9 +906,7 @@
       </div>
       <div class="foot-meta">
         <span>Cairo, Egypt · Willing to Relocate</span>
-        <span><a href="https://wa.me/201022127407" target="_blank" rel="noopener" aria-label="Message me on WhatsApp at +20 102 212 7407">+20 102 212 7407</a></span>
         <span>Military Status: Exempted</span>
-        <span>References available on request</span>
       </div>
     </div>
   </div>
@@ -903,38 +919,44 @@
     <div class="footer-actions">
       <a class="footer-link" href="mailto:ahmed.mostafa.works@gmail.com">Email</a>
       <a class="footer-link" href="https://linkedin.com/in/eng-ahmedmostafa" target="_blank" rel="noopener">LinkedIn</a>
-      <button class="btn primary footer-cta" data-goto="contact">Contact</button>
+      <a class="btn primary footer-cta" href="#contact">Contact</a>
     </div>
   </div>
 </footer>
 
 <script>
-  const tabs   = Array.from(document.querySelectorAll('.tab'));
-  const panels = Array.from(document.querySelectorAll('.panel'));
-  const ids    = panels.map(p => p.dataset.panel);
-  const tabsNav = document.getElementById('tabs');
-  const burger  = document.getElementById('burger');
+  const navLinks = Array.from(document.querySelectorAll('.tab[data-target]'));
+  const targets  = navLinks.map(a => document.getElementById(a.dataset.target)).filter(Boolean);
+  const tabsNav  = document.getElementById('tabs');
+  const burger   = document.getElementById('burger');
 
-  function activate(id, push){
-    if(!ids.includes(id)) id = 'about';
-    tabs.forEach(t => {
-      const isActive = t.dataset.tab === id;
-      t.classList.toggle('active', isActive);
-      t.setAttribute('aria-selected', String(isActive));
-    });
-    panels.forEach(p => p.classList.toggle('active', p.dataset.panel === id));
-    document.body.dataset.activeTab = id;
-    window.scrollTo({ top:0, behavior:'auto' });
-    const active = panels.find(p => p.dataset.panel === id);
-    if(active) armReveals(active);
-    if(push){ try{ history.replaceState(null, '', id === 'about' ? '/' : '/' + id); }catch(e){} }
-    closeMenu();
-  }
   function closeMenu(){
     tabsNav.classList.remove('open');
     burger.setAttribute('aria-expanded', 'false');
-    burger.textContent = '☰';
+    burger.textContent = '\u2630';
   }
+
+  // ---- Scroll spy: highlight the section currently under the nav ----
+  let ticking = false;
+  function syncNav(){
+    ticking = false;
+    const line = 140;
+    let current = targets[0];
+    for(const el of targets){
+      if(el.getBoundingClientRect().top <= line) current = el;
+    }
+    // pin the last link when the page is scrolled to the bottom
+    if(window.innerHeight + window.scrollY >= document.body.offsetHeight - 4){
+      current = targets[targets.length - 1];
+    }
+    navLinks.forEach(a => a.classList.toggle('active', current && a.dataset.target === current.id));
+  }
+  window.addEventListener('scroll', () => {
+    if(!ticking){ ticking = true; requestAnimationFrame(syncNav); }
+  }, { passive: true });
+  window.addEventListener('resize', syncNav, { passive: true });
+
+  navLinks.forEach(a => a.addEventListener('click', closeMenu));
 
   // ---- Scroll reveal ----
   const io = ('IntersectionObserver' in window)
@@ -943,29 +965,25 @@
       }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' })
     : null;
 
-  function armReveals(panel){
-    const targets = panel.querySelectorAll('.reveal');
-    targets.forEach(t => {
-      t.classList.remove('in');
+  function armReveals(scope){
+    const els = (scope || document).querySelectorAll('.reveal');
+    els.forEach(t => {
       if(io){ io.observe(t); } else { t.classList.add('in'); }
     });
-    // reveal anything already in view on load
     requestAnimationFrame(() => {
-      targets.forEach(t => {
-        const r = t.getBoundingClientRect();
-        if(r.top < window.innerHeight * 0.9){ t.classList.add('in'); if(io) io.unobserve(t); }
+      els.forEach(t => {
+        if(t.getBoundingClientRect().top < window.innerHeight * 0.9){
+          t.classList.add('in');
+          if(io) io.unobserve(t);
+        }
       });
     });
   }
 
-  tabs.forEach(t => t.addEventListener('click', () => activate(t.dataset.tab, true)));
-  document.querySelectorAll('[data-goto]').forEach(b =>
-    b.addEventListener('click', () => activate(b.dataset.goto, true)));
-
   burger.addEventListener('click', () => {
     const open = tabsNav.classList.toggle('open');
     burger.setAttribute('aria-expanded', open);
-    burger.textContent = open ? '✕' : '☰';
+    burger.textContent = open ? '\u2715' : '\u2630';
   });
 
   document.addEventListener('click', (e) => {
@@ -984,19 +1002,31 @@
   const themeToggle = document.getElementById('themeToggle');
   themeToggle.addEventListener('click', () => {
     const root = document.documentElement;
-    const current = root.getAttribute('data-theme');
-    const isDark = current === 'dark';
-    const next = isDark ? 'light' : 'dark';
+    const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
     root.setAttribute('data-theme', next);
     try{ localStorage.setItem('theme', next); }catch(e){}
   });
 
-  const redirectPath = sessionStorage.getItem('redirectPath');
-  if(redirectPath){
-    sessionStorage.removeItem('redirectPath');
-    activate(redirectPath.replace(/^\//, ''), true);
-  } else {
-    activate(location.pathname.replace(/^\//, ''), false);
+  // ---- Legacy /work, /writing, ... paths land on the right section ----
+  const SECTIONS = targets.map(t => t.id);
+  let jumpTo = null;
+  try{
+    const redirectPath = sessionStorage.getItem('redirectPath');
+    if(redirectPath){
+      sessionStorage.removeItem('redirectPath');
+      const slug = redirectPath.replace(/^\/|\/$/g, '');
+      if(SECTIONS.includes(slug)) jumpTo = slug;
+    }
+  }catch(e){}
+  if(!jumpTo && location.hash && SECTIONS.includes(location.hash.slice(1))){
+    jumpTo = location.hash.slice(1);
+  }
+
+  armReveals();
+  syncNav();
+  if(jumpTo){
+    const el = document.getElementById(jumpTo);
+    if(el) requestAnimationFrame(() => { el.scrollIntoView(); syncNav(); });
   }
 </script>
 
