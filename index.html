@@ -11,8 +11,9 @@
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ahmed Mostafa</title>
-<meta name="description" content="Ahmed Mostafa — Product Owner (PSPO I) bridging engineering, compliance, and business to ship regulated fintech and AI-native SaaS products.">
+<title>Ahmed Mostafa — Product Owner &amp; Product Manager | Fintech &amp; SaaS</title>
+<meta name="description" content="Ahmed Mostafa is a Product Owner and Product Manager (PSPO) in Cairo, Egypt, specializing in fintech, enterprise SaaS, and regulated products — backlog, BRDs, PRDs, and Agile delivery. أحمد مصطفى — برودكت أونر وبرودكت مانجر متخصص في إدارة المنتجات الرقمية والفينتك.">
+<meta name="keywords" content="Ahmed Mostafa, Ahmed Mostafa Product Owner, Ahmed Mostafa Product Manager, أحمد مصطفى, product owner, product manager, product management, إدارة منتجات, برودكت أونر, برودكت مانجر, PSPO, Scrum, Agile, fintech product owner, SaaS product manager, Cairo, Egypt">
 <meta name="author" content="Ahmed Mostafa">
 <meta name="theme-color" content="#1f3b57">
  
@@ -288,11 +289,71 @@
   }
   .contact-panel{ padding:40px 24px 70px; }
  
+  /* ---------- Writing / Notes ---------- */
+  .note-list{ display:flex; flex-direction:column; }
+  .note{ display:grid; grid-template-columns:120px 1fr; gap:28px; padding:28px 0; border-top:1px solid var(--line); text-decoration:none; transition:opacity .15s ease; }
+  .note:last-child{ border-bottom:1px solid var(--line); }
+  .note:hover{ opacity:.7; }
+  @media (max-width:640px){ .note{ grid-template-columns:1fr; gap:6px; } }
+  .note-when{ font-family:var(--mono); font-size:12px; color:var(--muted); padding-top:5px; }
+  .note h3{ font-family:var(--serif); font-weight:600; font-size:19px; margin:0 0 6px; color:var(--ink); }
+  .note p{ margin:0; font-size:14px; color:var(--muted); max-width:66ch; }
+  .note .readmore{ font-family:var(--mono); font-size:11.5px; letter-spacing:.05em; text-transform:uppercase; color:var(--gold); margin-top:10px; display:inline-block; }
+  .writing-note{ font-size:13.5px; color:var(--muted); margin:26px 0 0; font-style:italic; }
+ 
+  /* ---------- Now ---------- */
+  .now-card{ border:1px solid var(--line); border-radius:14px; padding:30px 28px; background:var(--surface); }
+  .now-card ul{ margin:0; padding:0; list-style:none; }
+  .now-card li{ display:grid; grid-template-columns:120px 1fr; gap:20px; padding:16px 0; border-top:1px solid var(--line); font-size:14.5px; color:#3d4750; }
+  .now-card li:first-child{ border-top:none; padding-top:0; }
+  @media (max-width:600px){ .now-card li{ grid-template-columns:1fr; gap:4px; } }
+  .now-card li b{ color:var(--ink); }
+  .now-label{ font-family:var(--mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--gold); padding-top:2px; }
+ 
+  /* ---------- Scroll reveal ---------- */
+  .reveal{ opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease; }
+  .reveal.in{ opacity:1; transform:none; }
+  @media (prefers-reduced-motion: reduce){ .reveal{ opacity:1 !important; transform:none !important; } }
+ 
   @media (max-width:640px){
     section{ padding:48px 18px; }
     .hero{ padding:8px 18px 36px; }
   }
-</style>
+</style><script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://itsamostafa.github.io/#person",
+      "name": "Ahmed Mostafa",
+      "alternateName": ["أحمد مصطفى", "Ahmed Mostafa Product Owner", "Ahmed Mostafa Product Manager"],
+      "url": "https://itsamostafa.github.io/",
+      "image": "https://itsamostafa.github.io/og-image.png",
+      "jobTitle": ["Product Owner", "Product Manager"],
+      "description": "Product Owner and Product Manager (PSPO) specializing in fintech, enterprise SaaS, and regulated products.",
+      "email": "mailto:ahmed.mostafa.officia@gmail.com",
+      "telephone": "+201022127407",
+      "address": { "@type": "PostalAddress", "addressLocality": "Cairo", "addressCountry": "EG" },
+      "worksFor": { "@type": "Organization", "name": "Areeb Technology" },
+      "alumniOf": { "@type": "CollegeOrUniversity", "name": "CIC Canadian International College" },
+      "knowsAbout": ["Product Management", "Product Ownership", "إدارة المنتجات", "Fintech", "Agile", "Scrum", "Business Analysis", "Requirements Engineering", "SaaS"],
+      "knowsLanguage": ["en", "ar"],
+      "sameAs": ["https://linkedin.com/in/eng-ahmedmostafa"]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://itsamostafa.github.io/#website",
+      "url": "https://itsamostafa.github.io/",
+      "name": "Ahmed Mostafa — Product Owner & Product Manager",
+      "inLanguage": "en",
+      "about": { "@id": "https://itsamostafa.github.io/#person" },
+      "publisher": { "@id": "https://itsamostafa.github.io/#person" }
+    }
+  ]
+}
+</script>
+ 
 </head>
 <body>
  
@@ -303,6 +364,7 @@
     <button class="tab active" data-tab="about">About</button>
     <button class="tab" data-tab="experience">Experience</button>
     <button class="tab" data-tab="work">Work</button>
+    <button class="tab" data-tab="writing">Writing</button>
     <button class="tab" data-tab="background">Background</button>
     <button class="tab" data-tab="contact">Contact</button>
   </nav>
@@ -316,8 +378,8 @@
     <div class="hero">
       <div class="hero-grid">
         <div>
-          <span class="kicker">Product Owner · PSPO™ I · Fintech &amp; AI-Native SaaS</span>
-          <h1 class="hero-title">Hello, I'm <em>Ahmed</em> — a Product Owner with an <em>Engineer's Depth</em> and a <em>Builder's Mindset</em>.</h1>
+          <span class="kicker">Product Owner &amp; Product Manager · PSPO™ · Fintech &amp; SaaS</span>
+          <h1 class="hero-title">Hello, I'm <em>Ahmed Mostafa</em> — a Product Owner with an <em>Engineer's Depth</em> and a <em>Builder's Mindset</em>.</h1>
           <p class="hero-bio">
             I build products that connect <b>business, technology, and operations</b> — using systematic process
             and lean principles to ship scalable, customer-centric solutions. In practice that means turning legal
@@ -346,7 +408,7 @@
       <div class="wrap">
         <span class="eyebrow">About Me</span>
         <h2 class="head">Strategy meets <em>compliance</em></h2>
-        <div class="about-grid">
+        <div class="reveal about-grid">
           <div>
             <h3>My Journey</h3>
             <p>
@@ -367,7 +429,7 @@
             </p>
           </div>
         </div>
-        <div class="feature-grid">
+        <div class="reveal feature-grid">
           <div class="feature"><div class="icon">🎯</div><h4>Requirements &amp; Compliance</h4><p>I translate legal and financial complexity into user stories and acceptance criteria that hold up under regulatory review.</p></div>
           <div class="feature"><div class="icon">📐</div><h4>Cross-Functional Alignment</h4><p>I keep legal, compliance, delivery, and operations moving together through BRDs, PRDs, and disciplined Agile ceremonies.</p></div>
           <div class="feature"><div class="icon">📊</div><h4>End-to-End Delivery</h4><p>From requirements definition through UAT and rollout — Scrum and Nexus in practice, keeping delivery predictable.</p></div>
@@ -384,7 +446,7 @@
         <span class="eyebrow">Experience</span>
         <h2 class="head">Where I've <em>built</em></h2>
         <div class="timeline">
-          <div class="tl-item">
+          <div class="reveal tl-item">
             <div class="tl-when">Jul 2025 — Present<br><span class="current">Current</span></div>
             <div class="tl-body">
               <h3>Product Owner</h3>
@@ -400,7 +462,7 @@
               </ul>
             </div>
           </div>
-          <div class="tl-item">
+          <div class="reveal tl-item">
             <div class="tl-when">Jan 2024 — Jun 2024</div>
             <div class="tl-body">
               <h3>Business Analyst</h3>
@@ -412,7 +474,7 @@
               </ul>
             </div>
           </div>
-          <div class="tl-item">
+          <div class="reveal tl-item">
             <div class="tl-when">Apr 2023 — Dec 2023</div>
             <div class="tl-body">
               <h3>Operations &amp; Business Developer Lead</h3>
@@ -427,7 +489,7 @@
               </ul>
             </div>
           </div>
-          <div class="tl-item">
+          <div class="reveal tl-item">
             <div class="tl-when">Feb 2022 — Apr 2023</div>
             <div class="tl-body">
               <h3>Business Development Associate</h3>
@@ -448,7 +510,7 @@
       <div class="wrap">
         <span class="eyebrow">Product Thinking</span>
         <h2 class="head">How I think as a <em>Product Manager</em></h2>
-        <div class="process-list">
+        <div class="reveal process-list">
           <div class="p-item"><div class="p-num">01</div><div><h3>Understand the Business Problem</h3><p>Getting to the real legal, financial, and user problem before writing a single user story — assumptions stay hypotheses until validated against compliance and operational reality.</p></div></div>
           <div class="p-item"><div class="p-num">02</div><div><h3>Map As-Is, Find the Gaps</h3><p>Walking the current process end to end, then running gap and feasibility analysis to separate what's broken from what's simply undocumented.</p></div></div>
           <div class="p-item"><div class="p-num">03</div><div><h3>Design the To-Be &amp; Define the MVP</h3><p>Turning the target state into BRDs, PRDs, user stories, and acceptance criteria — precise enough for audit, clear enough for engineering, and cut down to what's worth shipping first.</p></div></div>
@@ -467,7 +529,7 @@
         <span class="eyebrow">Highlights</span>
         <h2 class="head">Problems I've <em>worked on</em></h2>
  
-        <div class="case">
+        <div class="case reveal">
           <div class="case-top">
             <span class="case-badge">Featured Case Study</span>
             <h3>Unifying a Regulated Fintech Platform</h3>
@@ -481,7 +543,7 @@
           </div>
         </div>
  
-        <div class="hl-grid">
+        <div class="reveal hl-grid">
           <div class="hl-card"><div class="hl-tags"><span>BRD / PRD</span><span>Approval Chains</span><span>Dashboards</span></div><h3>Documenting Core Fintech Features</h3><p>Authoring BRDs and PRDs covering approval chains, transaction flows, and pricing &amp; operational dashboards for engineering to build against.</p></div>
           <div class="hl-card"><div class="hl-tags"><span>Business Analysis</span><span>CRM / ERP</span><span>Gap Analysis</span></div><h3>Structuring Requirements for CRM &amp; ERP</h3><p>Running discovery sessions, mapping workflows, and turning complex client needs into prioritized specs technical teams could build against.</p></div>
           <div class="hl-card"><div class="hl-tags"><span>Multi-Tenant SaaS</span><span>Access Control</span><span>Pricing</span></div><h3>Designing for Multi-Tenancy</h3><p>Shaping tenant isolation, access control, and modular pricing so one platform can serve multiple corporate clients across distinct business lines.</p></div>
@@ -495,7 +557,7 @@
         <span class="eyebrow">Projects</span>
         <h2 class="head">Things I've <em>built</em> myself</h2>
  
-        <div class="case">
+        <div class="case reveal">
           <div class="case-top">
             <span class="case-badge">Featured Case Study · Freelance</span>
             <h3>Client PRD — Meta Business Profile Wizard</h3>
@@ -509,7 +571,7 @@
           </div>
         </div>
  
-        <div class="hl-grid">
+        <div class="reveal hl-grid">
           <div class="hl-card"><div class="hl-tags"><span>AI-Native SaaS</span><span>Product Blueprint</span><span>Release Specs</span></div><h3>Productology — A Workspace for PMs</h3><p>My own product concept: an AI-native workspace for product managers, defined through a full technical blueprint plus incremental release specs covering prompt libraries, file management, caching, and rate limiting.</p></div>
           <div class="hl-card"><div class="hl-tags"><span>PRD</span><span>SP-API</span><span>13-Step Wizard</span></div><h3>Sell-on-Amazon Module — PRD</h3><p>A zero-friction "sell on Amazon" onboarding module specified against the SP-API, structured as a 13-step wizard with acceptance criteria written for direct engineering handoff.</p></div>
           <div class="hl-card"><div class="hl-tags"><span>Reporting</span><span>Delivery Metrics</span><span>Automation</span></div><h3>Executive Sprint Reporting</h3><p>Turned raw sprint data into executive-ready reports covering cost, efficiency, and commit metrics — then rebuilt the workflow as a repeatable script instead of a manual ritual.</p></div>
@@ -520,13 +582,65 @@
     </section>
   </div>
  
+  <!-- ========== WRITING ========== -->
+  <div class="panel" data-panel="writing">
+    <section>
+      <div class="wrap">
+        <span class="eyebrow">Now</span>
+        <h2 class="head">What I'm <em>focused on</em></h2>
+        <div class="reveal now-card">
+          <ul>
+            <li><span class="now-label">Building</span><span>Owning fintech and enterprise SaaS products end to end as Product Owner at <b>Areeb Technology</b> — approval flows, transaction logic, and operational dashboards.</span></li>
+            <li><span class="now-label">Exploring</span><span>How <b>AI-native workflows</b> change the way products get specced and built — prototyping my own concept, <b>Productology</b>, a workspace for PMs.</span></li>
+            <li><span class="now-label">Learning</span><span>Going deeper on <b>multi-tenant SaaS architecture</b> and pricing design — tenant isolation, access control, and modular packaging.</span></li>
+            <li><span class="now-label">Open to</span><span>Full-time Product Owner / PM roles and select freelance PRD engagements — Cairo-based, remote-friendly, willing to relocate.</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+ 
+    <section class="surface">
+      <div class="wrap">
+        <span class="eyebrow">Writing</span>
+        <h2 class="head">Notes on <em>product thinking</em></h2>
+        <div class="reveal note-list">
+          <a class="note" href="#writing">
+            <div class="note-when">Draft</div>
+            <div>
+              <h3>The backlog is a contract, not a to-do list</h3>
+              <p>Why, in a regulated product, every user story is really an agreement between compliance, engineering, and the business — and how writing them that way cuts rework.</p>
+              <span class="readmore">Coming soon →</span>
+            </div>
+          </a>
+          <a class="note" href="#writing">
+            <div class="note-when">Draft</div>
+            <div>
+              <h3>Turning a Meta API into a 5-step wizard</h3>
+              <p>A walk through the thinking behind a real client PRD: how I turned a sprawling API surface into a flow a founder could finish without a manual.</p>
+              <span class="readmore">Coming soon →</span>
+            </div>
+          </a>
+          <a class="note" href="#writing">
+            <div class="note-when">Draft</div>
+            <div>
+              <h3>From engineer to product owner</h3>
+              <p>What an Electronics &amp; Communications background actually changes about how I pressure-test feasibility and talk to engineering teams.</p>
+              <span class="readmore">Coming soon →</span>
+            </div>
+          </a>
+        </div>
+        <p class="writing-note">These are in progress — I'm publishing short, practical notes on how I approach product work. Check back soon.</p>
+      </div>
+    </section>
+  </div>
+ 
   <!-- ========== BACKGROUND ========== -->
   <div class="panel" data-panel="background">
     <section>
       <div class="wrap">
         <span class="eyebrow">Foundation</span>
         <h2 class="head">Education</h2>
-        <div class="edu-card">
+        <div class="reveal edu-card">
           <h3>CIC Canadian International College</h3>
           <div class="org">Sep 2020 – Jun 2025</div>
           <div class="degree">BSc, Electronics and Communications Engineering — GPA 2.94 / 4.00</div>
@@ -545,7 +659,7 @@
       <div class="wrap">
         <span class="eyebrow">Training</span>
         <h2 class="head">Where I <em>sharpened</em> the craft</h2>
-        <div class="vol-list">
+        <div class="reveal vol-list">
           <div class="vol-item"><div class="vol-when">Nov 2022</div><div class="vol-body"><h4>Agile Scrum Trainee</h4><div class="org">Orange Digital Center</div><p>Agile vs. Waterfall, Scrum theory, artifacts, pillars, methodologies, and Jira — completed with the Scrum Foundation Professional Certificate (SFPC™).</p></div></div>
           <div class="vol-item"><div class="vol-when">Aug 2024</div><div class="vol-body"><h4>Software Testing Trainee</h4><div class="org">ITI — Information Technology Institute</div><p>Hands-on software testing: test case design, mobile and API testing (Postman, APIdog), requirement analysis, and bug reporting.</p></div></div>
         </div>
@@ -556,7 +670,7 @@
       <div class="wrap">
         <span class="eyebrow">Skills &amp; Expertise</span>
         <h2 class="head">What I <em>bring</em></h2>
-        <div class="skill-block">
+        <div class="reveal skill-block">
           <h4>Core Product Skills</h4>
           <div class="pill-row">
             <span class="pill">Product Backlog Management</span>
@@ -571,7 +685,7 @@
             <span class="pill">Business Analysis</span>
           </div>
         </div>
-        <div class="skill-block">
+        <div class="reveal skill-block">
           <h4>Domain Expertise</h4>
           <div class="pill-row">
             <span class="pill">Fintech</span>
@@ -583,7 +697,7 @@
             <span class="pill">Software Testing</span>
           </div>
         </div>
-        <div class="skill-block">
+        <div class="reveal skill-block">
           <h4>Certifications</h4>
           <div class="pill-row">
             <span class="pill cert">PSPO™ I — Professional Scrum Product Owner I (Scrum.org)</span>
@@ -597,7 +711,7 @@
       <div class="wrap">
         <span class="eyebrow">Community</span>
         <h2 class="head">Beyond the <em>day job</em></h2>
-        <div class="vol-list">
+        <div class="reveal vol-list">
           <div class="vol-item"><div class="vol-when">2022 – 2023</div><div class="vol-body"><h4>Founder &amp; Lead</h4><div class="org">Google Developer Student Club — CIC</div><p>Founded and led the club from zero, building a technical community on campus — the team ranked Top 50 globally and Top 20 MENA at the Google Solution Challenge.</p></div></div>
           <div class="vol-item"><div class="vol-when">May – Dec 2024</div><div class="vol-body"><h4>Coordinator</h4><div class="org">IEEE Volunteers Empowerment Program</div><p>Key liaison between participants and the program — facilitating communication, coordinating recruitment and evaluation of participants and instructors, resolving issues, and managing documentation for smooth delivery.</p></div></div>
           <div class="vol-item"><div class="vol-when">Oct 2022 – Oct 2024</div><div class="vol-body"><h4>Technical Team Member</h4><div class="org">Google Developer Group New Cairo</div><p>Organized technical events — demos, tech talks, hackathons — and supported developers adopting Google technologies including Android, Google Maps, and YouTube.</p></div></div>
@@ -639,6 +753,8 @@
     tabs.forEach(t => t.classList.toggle('active', t.dataset.tab === id));
     panels.forEach(p => p.classList.toggle('active', p.dataset.panel === id));
     window.scrollTo({ top:0, behavior:'auto' });
+    const active = panels.find(p => p.dataset.panel === id);
+    if(active) armReveals(active);
     if(push){ try{ history.replaceState(null, '', '#' + id); }catch(e){} }
     closeMenu();
   }
@@ -646,6 +762,28 @@
     tabsNav.classList.remove('open');
     burger.setAttribute('aria-expanded', 'false');
     burger.textContent = '☰';
+  }
+ 
+  // ---- Scroll reveal ----
+  const io = ('IntersectionObserver' in window)
+    ? new IntersectionObserver((entries) => {
+        entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' })
+    : null;
+ 
+  function armReveals(panel){
+    const targets = panel.querySelectorAll('.reveal');
+    targets.forEach(t => {
+      t.classList.remove('in');
+      if(io){ io.observe(t); } else { t.classList.add('in'); }
+    });
+    // reveal anything already in view on load
+    requestAnimationFrame(() => {
+      targets.forEach(t => {
+        const r = t.getBoundingClientRect();
+        if(r.top < window.innerHeight * 0.9){ t.classList.add('in'); if(io) io.unobserve(t); }
+      });
+    });
   }
  
   tabs.forEach(t => t.addEventListener('click', () => activate(t.dataset.tab, true)));
@@ -663,3 +801,4 @@
  
 </body>
 </html>
+ 
