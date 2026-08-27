@@ -17,7 +17,6 @@
 <meta name="author" content="Ahmed Mostafa">
 <meta name="theme-color" content="#1f3b57">
 
-<!-- Canonical — replace with your real GitHub Pages URL, e.g. https://USERNAME.github.io/ -->
 <link rel="canonical" href="https://itsamostafa.github.io/">
 
 <!-- Open Graph (WhatsApp, LinkedIn, Facebook link previews) -->
@@ -100,7 +99,7 @@
   .tab{
     font-family:var(--mono); font-size:11.5px; letter-spacing:.05em; text-transform:uppercase;
     color:var(--muted); background:none; border:none; cursor:pointer;
-    padding:9px 15px; border-radius:100px; transition:color .15s ease, background .15s ease; white-space:nowrap;
+    padding:9px 15px; border-radius:100px; transition:color .15s ease, background .15s ease, transform .15s ease; white-space:nowrap;
   }
   .tab:hover{ color:var(--accent); background:var(--accent-soft); }
   .tab.active{ color:#fff; background:var(--accent); }
@@ -181,8 +180,8 @@
   .feature-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
   @media (max-width:900px){ .feature-grid{ grid-template-columns:repeat(2,1fr); } }
   @media (max-width:520px){ .feature-grid{ grid-template-columns:1fr; } }
-  .feature{ border:1px solid var(--line); border-radius:10px; padding:24px 20px; background:var(--bg); }
-  .feature .icon{ font-size:22px; margin-bottom:14px; }
+  .feature{ border:1px solid var(--line); border-radius:10px; padding:24px 20px; background:var(--bg); transition:transform .25s ease, box-shadow .25s ease; }
+  .feature .mark{ font-family:var(--serif); font-style:italic; font-weight:600; font-size:30px; line-height:1; color:var(--gold); display:block; margin-bottom:14px; }
   .feature h4{ font-family:var(--serif); font-weight:600; font-size:16px; margin:0 0 8px; }
   .feature p{ font-size:13.5px; color:var(--muted); margin:0; }
 
@@ -207,7 +206,7 @@
   .hl-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
   @media (max-width:900px){ .hl-grid{ grid-template-columns:1fr 1fr; } }
   @media (max-width:620px){ .hl-grid{ grid-template-columns:1fr; } }
-  .hl-card{ border:1px solid var(--line); border-radius:12px; padding:26px 22px; background:var(--surface); display:flex; flex-direction:column; gap:14px; }
+  .hl-card{ border:1px solid var(--line); border-radius:12px; padding:26px 22px; background:var(--surface); display:flex; flex-direction:column; gap:14px; transition:transform .25s ease, box-shadow .25s ease; }
   .hl-tags{ display:flex; flex-wrap:wrap; gap:6px; }
   .hl-tags span{
     font-family:var(--mono); font-size:10.5px; letter-spacing:.03em; text-transform:uppercase;
@@ -299,10 +298,6 @@
     0%, 100%{ box-shadow:0 0 0 0 rgba(231,201,138,0.45); }
     50%{ box-shadow:0 0 0 10px rgba(231,201,138,0); }
   }
-  @media (prefers-reduced-motion: reduce){
-    .contact-card::before{ animation:none; }
-    .contact-card .btn.primary{ animation:none; }
-  }
   .foot-meta{
     font-family:var(--mono); font-size:11.5px; color:#9fb0bb;
     border-top:1px solid rgba(255,255,255,0.15); padding-top:24px;
@@ -351,9 +346,7 @@
   .stagger > *:nth-child(10){ transition-delay:.56s; }
 
   /* ---------- Card & pill micro-interactions ---------- */
-  .feature{ transition:transform .25s ease, box-shadow .25s ease; }
   .feature:hover{ transform:translateY(-4px); box-shadow:0 16px 32px -18px rgba(30,42,51,0.28); }
-  .hl-card{ transition:transform .25s ease, box-shadow .25s ease; }
   .hl-card:hover{ transform:translateY(-4px); box-shadow:0 16px 32px -18px rgba(30,42,51,0.28); }
   .case{ transition:box-shadow .3s ease; }
   .case:hover{ box-shadow:0 20px 44px -24px rgba(30,42,51,0.3); }
@@ -370,7 +363,6 @@
   /* ---------- Press feedback ---------- */
   .btn.primary:active{ transform:scale(.96); }
   .btn.ghost:active{ transform:scale(.96); }
-  .tab{ transition:color .15s ease, background .15s ease, transform .15s ease; }
   .tab:active{ transform:scale(.95); }
   .burger{ transition:transform .15s ease; }
   .burger:active{ transform:scale(.9); }
@@ -495,10 +487,10 @@
           </div>
         </div>
         <div class="reveal feature-grid stagger">
-          <div class="feature"><div class="icon">🎯</div><h4>Requirements &amp; Compliance</h4><p>I translate legal and financial complexity into user stories and acceptance criteria that hold up under regulatory review.</p></div>
-          <div class="feature"><div class="icon">📐</div><h4>Cross-Functional Alignment</h4><p>I keep legal, compliance, delivery, and operations moving together through BRDs, PRDs, and disciplined Agile ceremonies.</p></div>
-          <div class="feature"><div class="icon">📊</div><h4>End-to-End Delivery</h4><p>From requirements definition through UAT and rollout — Scrum and Nexus in practice, keeping delivery predictable.</p></div>
-          <div class="feature"><div class="icon">🚀</div><h4>Engineer's Depth</h4><p>An Electronics &amp; Communications Engineering background plus hands-on software testing means I can pressure-test feasibility early.</p></div>
+          <div class="feature"><span class="mark">R</span><h4>Requirements &amp; Compliance</h4><p>I translate legal and financial complexity into user stories and acceptance criteria that hold up under regulatory review.</p></div>
+          <div class="feature"><span class="mark">C</span><h4>Cross-Functional Alignment</h4><p>I keep legal, compliance, delivery, and operations moving together through BRDs, PRDs, and disciplined Agile ceremonies.</p></div>
+          <div class="feature"><span class="mark">D</span><h4>End-to-End Delivery</h4><p>From requirements definition through UAT and rollout — Scrum and Nexus in practice, keeping delivery predictable.</p></div>
+          <div class="feature"><span class="mark">E</span><h4>Engineer's Depth</h4><p>An Electronics &amp; Communications Engineering background plus hands-on software testing means I can pressure-test feasibility early.</p></div>
         </div>
       </div>
     </section>
@@ -777,11 +769,11 @@
       <h2>Let's build something <em>great!</em></h2>
       <p>I'm open to full-time Product Owner roles and select freelance engagements — Cairo-based, remote-friendly, and willing to relocate.</p>
       <div class="contact-links">
-        <a class="btn primary" href="mailto:ahmed.mostafa.officia@gmail.com">✉️ Email me</a>
+        <a class="btn primary" href="mailto:ahmed.mostafa.officia@gmail.com">Email me</a>
         <a class="btn ghost" href="https://linkedin.com/in/eng-ahmedmostafa" target="_blank" rel="noopener">in linkedin.com/in/eng-ahmedmostafa</a>
       </div>
       <div class="foot-meta">
-        <span>📍 Cairo, Egypt · Willing to Relocate</span>
+        <span>Cairo, Egypt · Willing to Relocate</span>
         <span>+20 102 212 7407</span>
         <span>Military Status: Exempted</span>
         <span>References available on request</span>
