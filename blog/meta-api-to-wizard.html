@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LCK4RZ2K12"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-LCK4RZ2K12");</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Turning a sprawling API into a five-step wizard</title>
+<meta name="description" content="A real client PRD, reverse-engineered. How I turned a large, prerequisite-heavy Meta API surface into a flow a non-technical founder could finish without a manual.">
+<meta name="author" content="Ahmed Mostafa">
+<meta name="theme-color" content="#1f3b57">
+<link rel="canonical" href="https://itsamostafa.github.io/blog/meta-api-to-wizard.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Ahmed Mostafa">
+<meta property="og:title" content="Turning a sprawling API into a five-step wizard">
+<meta property="og:description" content="A real client PRD, reverse-engineered. How I turned a large, prerequisite-heavy Meta API surface into a flow a non-technical founder could finish without a manual.">
+<meta property="og:url" content="https://itsamostafa.github.io/blog/meta-api-to-wizard.html">
+<meta property="og:image" content="https://itsamostafa.github.io/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Turning a sprawling API into a five-step wizard">
+<meta name="twitter:description" content="A real client PRD, reverse-engineered. How I turned a large, prerequisite-heavy Meta API surface into a flow a non-technical founder could finish without a manual.">
+<meta name="twitter:image" content="https://itsamostafa.github.io/og-image.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Turning a sprawling API into a five-step wizard", "description": "A real client PRD, reverse-engineered. How I turned a large, prerequisite-heavy Meta API surface into a flow a non-technical founder could finish without a manual.", "url": "https://itsamostafa.github.io/blog/meta-api-to-wizard.html", "image": "https://itsamostafa.github.io/og-image.png", "author": {"@type": "Person", "name": "Ahmed Mostafa", "url": "https://itsamostafa.github.io/"}, "publisher": {"@type": "Person", "name": "Ahmed Mostafa"}, "mainEntityOfPage": "https://itsamostafa.github.io/blog/meta-api-to-wizard.html", "inLanguage": "en"}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500;1,9..144,600&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#faf8f4; --surface:#ffffff; --ink:#1e2a33; --muted:#5c6770;
+    --line:rgba(30,42,51,0.10); --line-strong:rgba(30,42,51,0.18);
+    --accent:#1f3b57; --accent-soft:rgba(31,59,87,0.07);
+    --gold:#b8863b; --gold-soft:rgba(184,134,59,0.12);
+    --serif:'Fraunces', Georgia, serif; --mono:'IBM Plex Mono', ui-monospace, monospace;
+    --sans:'IBM Plex Sans', system-ui, sans-serif; --maxw:720px;
+  }
+  *{ box-sizing:border-box; }
+  @media (prefers-reduced-motion: reduce){ *{ animation:none !important; transition:none !important; } }
+  body{ margin:0; background:var(--bg); color:var(--ink); font-family:var(--sans); line-height:1.7; -webkit-font-smoothing:antialiased; }
+  a{ color:var(--accent); }
+  em,i{ font-family:var(--serif); font-style:italic; }
+  .island{
+    position:fixed; top:16px; left:50%; transform:translateX(-50%); z-index:200;
+    display:flex; align-items:center; gap:14px;
+    background:rgba(255,255,255,0.72); backdrop-filter:blur(18px) saturate(1.5); -webkit-backdrop-filter:blur(18px) saturate(1.5);
+    border:1px solid rgba(30,42,51,0.08); border-radius:100px;
+    padding:9px 20px; box-shadow:0 14px 38px -16px rgba(30,42,51,0.34); max-width:calc(100vw - 24px);
+  }
+  .island a.brand{ font-family:var(--serif); font-weight:600; font-size:16px; text-decoration:none; color:var(--ink); white-space:nowrap; }
+  .island .sep{ width:1px; height:20px; background:var(--line-strong); }
+  .island a.back{ font-family:var(--mono); font-size:11.5px; letter-spacing:.05em; text-transform:uppercase; text-decoration:none; color:var(--muted); }
+  .island a.back:hover{ color:var(--accent); }
+  .wrap{ max-width:var(--maxw); margin:0 auto; padding:0 24px; }
+  main{ padding-top:120px; padding-bottom:80px; }
+  .eyebrow{ font-family:var(--mono); font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--gold); display:block; margin-bottom:16px; }
+  h1.title{ font-family:var(--serif); font-weight:600; font-size:clamp(30px,5vw,44px); line-height:1.18; margin:0 0 20px; }
+  .meta{ font-family:var(--mono); font-size:12.5px; color:var(--muted); margin-bottom:12px; display:flex; gap:14px; flex-wrap:wrap; }
+  .lede{ font-size:19px; color:#3d4750; margin:0 0 10px; padding:0 0 34px; border-bottom:1px solid var(--line); }
+  article h2{ font-family:var(--serif); font-weight:600; font-size:clamp(22px,3.4vw,28px); margin:52px 0 8px; line-height:1.25; }
+  article h3{ font-family:var(--serif); font-weight:600; font-size:19px; margin:34px 0 6px; }
+  article p{ font-size:16.5px; color:#2b353d; margin:18px 0; }
+  article ul,article ol{ margin:18px 0; padding-left:22px; }
+  article li{ font-size:16.5px; color:#2b353d; margin-bottom:10px; }
+  article li b, article p b{ color:var(--ink); }
+  article blockquote{ margin:28px 0; padding:6px 0 6px 22px; border-left:3px solid var(--gold); font-family:var(--serif); font-style:italic; font-size:19px; color:var(--accent); }
+  .callout{ background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:22px 24px; margin:30px 0; }
+  .callout p{ margin:0; font-size:15.5px; color:#3d4750; }
+  .callout .k{ font-family:var(--mono); font-size:11px; letter-spacing:.09em; text-transform:uppercase; color:var(--gold); display:block; margin-bottom:8px; }
+  .share{ margin:56px 0 0; padding-top:30px; border-top:1px solid var(--line); }
+  .share .k{ font-family:var(--mono); font-size:11px; letter-spacing:.09em; text-transform:uppercase; color:var(--muted); margin:0 0 14px; }
+  .share-row{ display:flex; gap:10px; flex-wrap:wrap; }
+  .share-btn{ font-family:var(--mono); font-size:12px; letter-spacing:.03em; text-decoration:none; padding:10px 16px; border-radius:100px; border:1px solid var(--line-strong); color:var(--ink); display:inline-flex; align-items:center; gap:8px; transition:border-color .15s, color .15s, background .15s; cursor:pointer; background:none; }
+  .share-btn:hover{ border-color:var(--accent); color:var(--accent); background:var(--accent-soft); }
+  .postnav{ margin-top:40px; display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; }
+  .postnav a{ font-family:var(--mono); font-size:12px; text-decoration:none; color:var(--muted); }
+  .postnav a:hover{ color:var(--accent); }
+  footer.f{ border-top:1px solid var(--line); background:var(--surface); padding:40px 24px; text-align:center; font-family:var(--mono); font-size:12px; color:var(--muted); }
+  footer.f a{ color:var(--muted); }
+  /* index list */
+  .post-list{ display:flex; flex-direction:column; }
+  .post-item{ display:block; text-decoration:none; padding:30px 0; border-top:1px solid var(--line); }
+  .post-item:last-child{ border-bottom:1px solid var(--line); }
+  .post-item:hover h2{ color:var(--accent); }
+  .post-item .when{ font-family:var(--mono); font-size:12px; color:var(--muted); margin-bottom:8px; }
+  .post-item h2{ font-family:var(--serif); font-weight:600; font-size:24px; margin:0 0 8px; color:var(--ink); }
+  .post-item p{ margin:0; color:var(--muted); font-size:15px; }
+  .blog-intro{ font-size:17px; color:#3d4750; max-width:60ch; margin:0 0 40px; }
+</style>
+</head>
+<body>
+<header class="island">
+  <a class="brand" href="../index.html">Ahmed Mostafa</a>
+  <span class="sep"></span>
+  <a class="back" href="index.html">← All notes</a>
+</header>
+<main>
+<div class="wrap">
+
+<span class="eyebrow">Product Notes</span>
+<h1 class="title">Turning a sprawling API into a five-step wizard</h1>
+<div class="meta"><span>By Ahmed Mostafa</span><span>8 min read</span></div>
+<p class="lede">A client needed founders to set up their own Meta Business Profile instead of relying on manual onboarding. The API that powers this is large, order-dependent, and full of prerequisites. The users are not technical. This is a walk through how I closed that gap on paper before a line of it was built.</p>
+
+<article>
+<p>The brief sounded small. "Let users connect their Meta Business Profile themselves." The reality was not small. The underlying surface spans several capabilities, and they are not independent. Some steps cannot happen until others have. Some fail silently. Some require permissions the user does not know they need until they are already blocked.</p>
+
+<p>So the actual problem was never "call the API." The actual problem was: how do you take something that assumes an engineer's mental model and hand it to a founder who just wants to sell, and have them finish, alone, without support tickets.</p>
+
+<h2>Why not just expose the steps?</h2>
+
+<p>The tempting move is to mirror the API in the UI. One screen per capability. It feels honest. It is also a trap, for a reason worth stating plainly:</p>
+
+<blockquote>Users do not have a model of your system. They have a model of their goal. Every place those two models diverge is a place they get stuck.</blockquote>
+
+<p>The API's structure is optimized for the machine. It groups things by capability. But the user does not think in capabilities. They think "I want my business to show up and take payments." If the flow is organized around the API, the user is forced to learn the API's shape just to complete a task they never wanted to understand. That is where drop-off comes from.</p>
+
+<p>So the first real decision was to throw away the API's ordering as a UX principle and rebuild the sequence around the user's goal, then map that sequence back onto what the API actually requires under the hood.</p>
+
+<h2>How do you find the real sequence?</h2>
+
+<p>I did this in a boring, mechanical way, because boring and mechanical is what prevents surprises at build time.</p>
+
+<ul>
+<li><b>List every capability</b> the flow touches, ignoring UI entirely.</li>
+<li><b>For each one, write its prerequisites.</b> Not the happy path. The actual "this will fail unless X is already true" conditions.</li>
+<li><b>Build the dependency graph.</b> Once you see what truly blocks what, the legal orderings fall out on their own. Most of the "steps" you imagined turn out to be fake choices. The graph only allows a few real sequences.</li>
+<li><b>Collapse anything the user should not have to think about</b> into a step they never see.</li>
+</ul>
+
+<p>What came out was five steps. Not because five is a nice number, but because that is how many decision points genuinely require the user. Everything else was either automatic, or a prerequisite check that belonged behind the scenes.</p>
+
+<div class="callout"><span class="k">The principle</span><p>The number of steps in a good wizard equals the number of decisions only the user can make. Every extra step is you making the user do your system's bookkeeping.</p></div>
+
+<h2>What goes in a PRD that engineering can actually build from?</h2>
+
+<p>This is where a lot of PRDs quietly fail. They describe the feature and leave the hard parts as "TBD in design" or "handle errors gracefully." Those phrases are where the project goes to die.</p>
+
+<p>The version I delivered was written to be handed straight to an engineer with no meeting attached. That meant three things had to be non-negotiable.</p>
+
+<h3>A capability matrix, not prose</h3>
+<p>For each step: which API capabilities it touches, what must be true before it runs, what it writes, and what states it can leave the user in. A paragraph hides edge cases. A matrix forces you to fill in the cell for "what if this is already connected," which is exactly the cell everyone forgets.</p>
+
+<h3>Acceptance criteria written against the API version</h3>
+<p>Pinned to Graph API v25.0, not "the Meta API" in the abstract. Versions change behavior. A criterion that does not name its version is a criterion that expires without telling you.</p>
+
+<h3>Failure as a first-class path</h3>
+<p>The happy path is the easy 20 percent. The PRD spent most of its length on what the user sees when a prerequisite is missing, when a token expires mid-flow, when they abandon and return. If your spec is mostly happy path, you have not written a spec. You have written a demo.</p>
+
+<h2>The part that mattered more than the flow</h2>
+
+<p>I delivered the five-step wizard on spec. But the thing I am actually glad I did was what came after: I used the same dependency-graph method to sketch a roadmap of six more onboarding wizards, all built on the same architecture, and brought that to the client unprompted.</p>
+
+<p>That reframed the engagement. It stopped being "here is the thing you asked for" and became "here is a repeatable way to onboard users onto anything, and here is what to build next." One is a deliverable. The other is a reason to keep working together.</p>
+
+<blockquote>The deliverable answers the question you were asked. The good version also answers the question they were about to ask next.</blockquote>
+
+<p>If you take one thing from this: do not model your UI on your API. Model it on the user's goal, then let the dependency graph tell you the smallest honest number of steps. The API is a constraint to satisfy, not a structure to inherit.</p>
+</article>
+
+<div class="share">
+  <p class="k">Share this</p>
+  <div class="share-row">
+    <a class="share-btn" href="https://wa.me/?text=Turning%20a%20sprawling%20API%20into%20a%20five-step%20wizard%20https%3A%2F%2Fitsamostafa.github.io%2Fblog%2Fmeta-api-to-wizard.html" target="_blank" rel="noopener">WhatsApp</a>
+    <a class="share-btn" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fitsamostafa.github.io%2Fblog%2Fmeta-api-to-wizard.html" target="_blank" rel="noopener">LinkedIn</a>
+    <a class="share-btn" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fitsamostafa.github.io%2Fblog%2Fmeta-api-to-wizard.html" target="_blank" rel="noopener">Facebook</a>
+    <a class="share-btn" href="https://twitter.com/intent/tweet?text=Turning%20a%20sprawling%20API%20into%20a%20five-step%20wizard&url=https%3A%2F%2Fitsamostafa.github.io%2Fblog%2Fmeta-api-to-wizard.html" target="_blank" rel="noopener">X / Twitter</a>
+    <button class="share-btn" onclick="navigator.clipboard.writeText('https://itsamostafa.github.io/blog/meta-api-to-wizard.html').then(()=>{this.textContent='Copied ✓';setTimeout(()=>this.textContent='Copy link',1600);})">Copy link</button>
+  </div>
+</div>
+<div class="postnav">
+  <a href="backlog-is-a-contract.html">← Previous: Your backlog is a contract</a>
+  <a href="engineer-to-product-owner.html">Next: What an engineering background actually changes →</a>
+</div>
+
+</div>
+</main>
+<footer class="f">
+  © <span id="y"></span> Ahmed Mostafa · <a href="../index.html">Portfolio</a> · <a href="mailto:ahmed.mostafa.officia@gmail.com">Email</a> · <a href="https://linkedin.com/in/eng-ahmedmostafa" target="_blank" rel="noopener">LinkedIn</a>
+  <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+</footer>
+</body>
+</html>
