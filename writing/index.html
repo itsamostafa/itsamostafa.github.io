@@ -28,7 +28,7 @@
     --bg:#faf8f4; --surface:#ffffff; --ink:#1e2a33; --muted:#5c6770;
     --line:rgba(30,42,51,0.10); --line-strong:rgba(30,42,51,0.18);
     --accent:#1f3b57; --accent-soft:rgba(31,59,87,0.07);
-    --gold:#b8863b; --gold-soft:rgba(184,134,59,0.12);
+    --gold:#b8863b; --gold-soft:rgba(184,134,59,0.12); --gold-text:#8a611f;
     --serif:'Fraunces', Georgia, serif; --mono:'IBM Plex Mono', ui-monospace, monospace;
     --sans:'IBM Plex Sans', system-ui, sans-serif; --maxw:720px;
   }
@@ -50,7 +50,7 @@
   .island a.back:hover{ color:var(--accent); }
   .wrap{ max-width:var(--maxw); margin:0 auto; padding:0 24px; }
   main{ padding-top:120px; padding-bottom:80px; }
-  .eyebrow{ font-family:var(--mono); font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--gold); display:block; margin-bottom:16px; }
+  .eyebrow{ font-family:var(--mono); font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--gold-text); display:block; margin-bottom:16px; }
   h1.title{ font-family:var(--serif); font-weight:600; font-size:clamp(30px,5vw,44px); line-height:1.18; margin:0 0 20px; }
   .meta{ font-family:var(--mono); font-size:12.5px; color:var(--muted); margin-bottom:12px; display:flex; gap:14px; flex-wrap:wrap; }
   .lede{ font-size:19px; color:#3d4750; margin:0 0 10px; padding:0 0 34px; border-bottom:1px solid var(--line); }
@@ -63,7 +63,7 @@
   article blockquote{ margin:28px 0; padding:6px 0 6px 22px; border-left:3px solid var(--gold); font-family:var(--serif); font-style:italic; font-size:19px; color:var(--accent); }
   .callout{ background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:22px 24px; margin:30px 0; }
   .callout p{ margin:0; font-size:15.5px; color:#3d4750; }
-  .callout .k{ font-family:var(--mono); font-size:11px; letter-spacing:.09em; text-transform:uppercase; color:var(--gold); display:block; margin-bottom:8px; }
+  .callout .k{ font-family:var(--mono); font-size:11px; letter-spacing:.09em; text-transform:uppercase; color:var(--gold-text); display:block; margin-bottom:8px; }
   .share{ margin:56px 0 0; padding-top:30px; border-top:1px solid var(--line); }
   .share .k{ font-family:var(--mono); font-size:11px; letter-spacing:.09em; text-transform:uppercase; color:var(--muted); margin:0 0 14px; }
   .share-row{ display:flex; gap:10px; flex-wrap:wrap; }
@@ -112,6 +112,31 @@
     <div class="when">Product Notes · 6 min</div>
     <h2>What an engineering background actually changes about product work</h2>
     <p>Not the cliches. The specific ways it helps, the ways it doesn't, and the trap it sets.</p>
+  </a>
+  <a class="post-item" href="stakeholder-map-nobody-draws/">
+    <div class="when">Product Notes · 6 min</div>
+    <h2>The stakeholder map nobody draws</h2>
+    <p>In a regulated fintech product, legal, compliance, delivery, and ops all have to say yes before a feature ships. Silence isn't a signature.</p>
+  </a>
+  <a class="post-item" href="pricing-dashboard-is-a-trust-problem/">
+    <div class="when">Product Notes · 6 min</div>
+    <h2>Your pricing dashboard is a trust problem, not a data problem</h2>
+    <p>Every dashboard project I've seen stall got blamed on the data. It was never the data. It was three teams calculating the same number differently.</p>
+  </a>
+  <a class="post-item" href="scope-cuts-happen-in-discovery/">
+    <div class="when">Product Notes · 6 min</div>
+    <h2>The best scope cuts happen in discovery, not sprint three</h2>
+    <p>Every scope gap that showed up as a change request was visible in discovery. It just wasn't looked for.</p>
+  </a>
+  <a class="post-item" href="curriculum-is-a-roadmap/">
+    <div class="when">Product Notes · 7 min</div>
+    <h2>A curriculum is a product roadmap wearing a different outfit</h2>
+    <p>Designing a K-12 coding curriculum under a real budget taught me more about roadmapping than most software projects have.</p>
+  </a>
+  <a class="post-item" href="program-market-fit-before-product-market-fit/">
+    <div class="when">Product Notes · 6 min</div>
+    <h2>I learned product-market fit before I had the words for it</h2>
+    <p>Years before I could define it, I was matching training programs to what students actually needed, not what looked good in a brochure.</p>
   </a>
 </div>
 
