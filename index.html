@@ -163,7 +163,8 @@
   @keyframes fade{ from{ opacity:0; transform:translateY(8px); } to{ opacity:1; transform:none; } }
 
   /* ---------- Hero ---------- */
-  .hero{ padding:20px 24px 52px; }
+  .hero{ padding:20px 24px 28px; }
+  .hero + section{ padding-top:40px; }
   .hero-grid{
     display:grid; grid-template-columns:1.2fr 0.8fr; gap:56px; align-items:center;
     max-width:var(--maxw); margin:0 auto;
@@ -224,7 +225,15 @@
   .feature-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
   @media (max-width:900px){ .feature-grid{ grid-template-columns:repeat(2,1fr); } }
   @media (max-width:520px){ .feature-grid{ grid-template-columns:1fr; } }
-  .feature{ border:1px solid var(--line); border-radius:10px; padding:24px 20px; background:var(--bg); transition:transform .25s ease, box-shadow .25s ease; }
+  .feature{
+    border:1px solid var(--line); border-radius:10px; padding:24px 20px; background:var(--bg);
+    transition:transform .25s ease, box-shadow .25s ease;
+    animation:cardFloat 6s ease-in-out infinite;
+  }
+  .feature:nth-child(1){ animation-delay:0s; }
+  .feature:nth-child(2){ animation-delay:.7s; }
+  .feature:nth-child(3){ animation-delay:1.4s; }
+  .feature:nth-child(4){ animation-delay:2.1s; }
   .feature h4{ font-family:var(--serif); font-weight:600; font-size:16px; margin:0 0 8px; }
   .feature p{ font-size:13.5px; color:var(--muted); margin:0; }
 
@@ -249,7 +258,16 @@
   .hl-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
   @media (max-width:900px){ .hl-grid{ grid-template-columns:1fr 1fr; } }
   @media (max-width:620px){ .hl-grid{ grid-template-columns:1fr; } }
-  .hl-card{ border:1px solid var(--line); border-radius:12px; padding:26px 22px; background:var(--surface); display:flex; flex-direction:column; gap:14px; transition:transform .25s ease, box-shadow .25s ease; }
+  .hl-card{
+    border:1px solid var(--line); border-radius:12px; padding:26px 22px; background:var(--surface);
+    display:flex; flex-direction:column; gap:14px;
+    transition:transform .25s ease, box-shadow .25s ease;
+    animation:cardFloat 6s ease-in-out infinite;
+  }
+  .hl-card:nth-child(1){ animation-delay:0s; }
+  .hl-card:nth-child(2){ animation-delay:.7s; }
+  .hl-card:nth-child(3){ animation-delay:1.4s; }
+  .hl-card:nth-child(4){ animation-delay:2.1s; }
   .hl-tags{ display:flex; flex-wrap:wrap; gap:6px; }
   .hl-tags span{
     font-family:var(--mono); font-size:10.5px; letter-spacing:.03em; text-transform:uppercase;
@@ -293,7 +311,11 @@
   .edu-card li b{ color:var(--ink); }
 
   /* ---------- Skills ---------- */
-  .skill-block{ margin-bottom:34px; }
+  .skill-block{ margin-bottom:34px; animation:cardFloat 6s ease-in-out infinite; }
+  .skill-block:nth-of-type(1){ animation-delay:0s; }
+  .skill-block:nth-of-type(2){ animation-delay:.9s; }
+  .skill-block:nth-of-type(3){ animation-delay:1.8s; }
+  .skill-block:hover{ animation-play-state:paused; }
   .skill-block:last-child{ margin-bottom:0; }
   .skill-block h4{ font-family:var(--mono); font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin:0 0 14px; }
   .pill-row{ display:flex; flex-wrap:wrap; gap:10px; }
@@ -316,8 +338,9 @@
     max-width:var(--maxw); margin:0 auto; background:var(--accent); color:#fff;
     border-radius:24px; padding:72px 32px 44px; text-align:center;
     transition:transform .4s ease, box-shadow .4s ease;
+    animation:cardFloat 6s ease-in-out infinite;
   }
-  .contact-card.in:hover{ transform:translateY(-4px); box-shadow:0 24px 60px -20px rgba(0,0,0,0.45); }
+  .contact-card.in:hover{ animation-play-state:paused; transform:translateY(-4px); box-shadow:0 24px 60px -20px rgba(0,0,0,0.45); }
   .contact-card::before{
     content:''; position:absolute; inset:-40%; z-index:-1; pointer-events:none;
     background:radial-gradient(circle at 30% 30%, rgba(231,201,138,0.25), transparent 55%),
@@ -346,6 +369,12 @@
     border-top:1px solid rgba(255,255,255,0.15); padding-top:24px;
     display:flex; justify-content:center; gap:20px; flex-wrap:wrap;
   }
+  .foot-meta a{
+    color:inherit; text-decoration:none;
+    border-bottom:1px dotted rgba(159,176,187,0.55);
+    transition:color .2s ease, border-color .2s ease;
+  }
+  .foot-meta a:hover, .foot-meta a:focus-visible{ color:#e7c98a; border-bottom-color:#e7c98a; }
   .contact-panel{ padding:40px 24px 70px; }
 
   /* ---------- Site footer ---------- */
@@ -403,8 +432,8 @@
   .stagger > *:nth-child(10){ transition-delay:.56s; }
 
   /* ---------- Card & pill micro-interactions ---------- */
-  .feature:hover{ transform:translateY(-4px); box-shadow:0 16px 32px -18px rgba(30,42,51,0.28); }
-  .hl-card:hover{ transform:translateY(-4px); box-shadow:0 16px 32px -18px rgba(30,42,51,0.28); }
+  .feature:hover{ animation-play-state:paused; transform:translateY(-4px); box-shadow:0 16px 32px -18px rgba(30,42,51,0.28); }
+  .hl-card:hover{ animation-play-state:paused; transform:translateY(-4px); box-shadow:0 16px 32px -18px rgba(30,42,51,0.28); }
   .case{ transition:box-shadow .3s ease; }
   .case:hover{ box-shadow:0 20px 44px -24px rgba(30,42,51,0.3); }
   .case-cell{ transition:background .2s ease; }
@@ -412,7 +441,7 @@
   .stat{ transition:border-color .2s ease; }
   .stat:hover{ border-color:var(--gold); }
   .pill{ transition:transform .2s ease, background .2s ease, border-color .2s ease, color .2s ease; }
-  .pill:hover{ transform:translateY(-2px); border-color:var(--accent-text); color:var(--accent-text); background:var(--accent-soft); }
+  .pill:hover{ animation-play-state:paused; transform:translateY(-2px); border-color:var(--accent-text); color:var(--accent-text); background:var(--accent-soft); }
   .pill.cert:hover{ border-color:var(--gold); color:var(--gold-text); background:var(--gold-soft); }
   .note .readmore{ display:inline-block; transition:transform .2s ease; }
   .note:hover .readmore{ transform:translateX(4px); }
@@ -439,7 +468,8 @@
 
   @media (max-width:640px){
     section{ padding:48px 18px; }
-    .hero{ padding:8px 18px 36px; }
+    .hero{ padding:8px 18px 20px; }
+    .hero + section{ padding-top:28px; }
   }
 </style><script type="application/ld+json">
 {
@@ -858,7 +888,7 @@
       </div>
       <div class="foot-meta">
         <span>Cairo, Egypt · Willing to Relocate</span>
-        <span>+20 102 212 7407</span>
+        <span><a href="https://wa.me/201022127407" target="_blank" rel="noopener" aria-label="Message me on WhatsApp at +20 102 212 7407">+20 102 212 7407</a></span>
         <span>Military Status: Exempted</span>
         <span>References available on request</span>
       </div>
