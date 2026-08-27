@@ -5,9 +5,9 @@
 <title>Redirecting…</title>
 <script>
   var path = location.pathname;
-  var nestedBlogMatch = path.match(/^\/blog\/[^/]+\/([^/]+)\/?$/);
+  var nestedBlogMatch = path.match(/^\/(?:blog|writing)\/[^/]+\/([^/]+)\/?$/);
   if(nestedBlogMatch){
-    location.replace('/blog/' + nestedBlogMatch[1] + '/');
+    location.replace('/writing/' + nestedBlogMatch[1] + '/');
   } else {
     sessionStorage.setItem('redirectPath', path);
     location.replace('/');

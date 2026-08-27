@@ -338,7 +338,7 @@
 
   /* ---------- Stagger reveal: children cascade in one after another ---------- */
   .stagger > *{ opacity:0; transform:translateY(14px); transition:opacity .5s ease, transform .5s ease; }
-  :where(.stagger.in, .in .stagger) > *{ opacity:1; transform:none; }
+  .stagger.in > *, .in .stagger > *{ opacity:1; transform:none; }
   .stagger > *:nth-child(1){ transition-delay:.02s; }
   .stagger > *:nth-child(2){ transition-delay:.08s; }
   .stagger > *:nth-child(3){ transition-delay:.14s; }
@@ -429,7 +429,6 @@
     <button class="tab" data-tab="experience">Experience</button>
     <button class="tab" data-tab="work">Work</button>
     <button class="tab" data-tab="writing">Writing</button>
-    <button class="tab" data-tab="background">Background</button>
     <button class="tab" data-tab="contact">Contact</button>
   </nav>
   <button class="burger" id="burger" aria-label="Toggle menu" aria-expanded="false">☰</button>
@@ -480,7 +479,9 @@
               Management System supported by ITIDA and ASRT. That engineering foundation — Agile training,
               hands-on software testing, and a Scrum Product Owner certification — is what I brought into
               product, where I now turn fintech and investment workflows into shippable features for a live
-              enterprise SaaS platform.
+              enterprise SaaS platform. Alongside that, I founded and led CIC's Google Developer Student Club
+              (Top 50 globally, Top 20 MENA at the Google Solution Challenge) and coordinated IEEE and Google
+              Developer Group programs — community leadership that runs in parallel with the delivery work.
             </p>
           </div>
           <div>
@@ -571,6 +572,77 @@
     </section>
 
     <section class="surface">
+      <div class="wrap">
+        <span class="eyebrow">Foundation</span>
+        <h2 class="head">Education</h2>
+        <div class="reveal edu-card">
+          <h3>CIC Canadian International College</h3>
+          <div class="org">Sep 2020 – Jun 2025</div>
+          <div class="degree">BSc, Electronics and Communications Engineering — GPA 2.94 / 4.00</div>
+          <ul>
+            <li>Graduation Project: <b>FleetX</b> Smart Fleet Management System, supported by <b>ITIDA</b> and <b>ASRT</b>.</li>
+            <li>1st Rank at CIC Scientific Engineering Day, 2023 &amp; 2024.</li>
+            <li>Founder &amp; Lead of the Google Developer Student Club (2022–2023) — ranked Top 50 globally and Top 20 MENA at the Google Solution Challenge.</li>
+            <li>Nominated as Huawei Academy Ambassador for two academic years in a row (2022–2024) — Top University 2022 Award and Ambassador Award.</li>
+            <li>Participated in various student activities such as IEEE and Radix.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <span class="eyebrow">Training</span>
+        <h2 class="head">Where I <em>sharpened</em> the craft</h2>
+        <div class="reveal vol-list stagger">
+          <div class="vol-item"><div class="vol-when">Nov 2022</div><div class="vol-body"><h4>Agile Scrum Trainee</h4><div class="org">Orange Digital Center</div><p>Agile vs. Waterfall, Scrum theory, artifacts, pillars, methodologies, and Jira — completed with the Scrum Foundation Professional Certificate (SFPC™).</p></div></div>
+          <div class="vol-item"><div class="vol-when">Aug 2024</div><div class="vol-body"><h4>Software Testing Trainee</h4><div class="org">ITI — Information Technology Institute</div><p>Hands-on software testing: test case design, mobile and API testing (Postman, APIdog), requirement analysis, and bug reporting.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="surface">
+      <div class="wrap">
+        <span class="eyebrow">Skills &amp; Expertise</span>
+        <h2 class="head">What I <em>bring</em></h2>
+        <div class="reveal skill-block">
+          <h4>Core Product Skills</h4>
+          <div class="pill-row stagger">
+            <span class="pill">Product Backlog Management</span>
+            <span class="pill">User Stories &amp; Acceptance Criteria</span>
+            <span class="pill">BRDs &amp; PRDs</span>
+            <span class="pill">Agile / Scrum</span>
+            <span class="pill">Nexus</span>
+            <span class="pill">Stakeholder Management</span>
+            <span class="pill">Requirements Analysis</span>
+            <span class="pill">Gap Analysis &amp; Feasibility</span>
+            <span class="pill">UAT &amp; Rollout</span>
+            <span class="pill">Business Analysis</span>
+          </div>
+        </div>
+        <div class="reveal skill-block">
+          <h4>Domain Expertise</h4>
+          <div class="pill-row stagger">
+            <span class="pill">Fintech</span>
+            <span class="pill">AI-Native Product Thinking</span>
+            <span class="pill">Investment Operations</span>
+            <span class="pill">Regulatory Compliance</span>
+            <span class="pill">Enterprise SaaS / B2B</span>
+            <span class="pill">CRM &amp; ERP</span>
+            <span class="pill">Software Testing</span>
+          </div>
+        </div>
+        <div class="reveal skill-block">
+          <h4>Certifications</h4>
+          <div class="pill-row stagger">
+            <span class="pill cert">PSPO™ I — Professional Scrum Product Owner I (Scrum.org)</span>
+            <span class="pill cert">SFPC™ — Scrum Foundation Professional Certificate</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
       <div class="wrap">
         <span class="eyebrow">Product Thinking</span>
         <h2 class="head">How I think as a <em>Product Manager</em></h2>
@@ -668,7 +740,7 @@
         <span class="eyebrow">Writing</span>
         <h2 class="head">Notes on <em>product thinking</em></h2>
         <div class="reveal note-list stagger">
-          <a class="note" href="blog/backlog-is-a-contract">
+          <a class="note" href="writing/backlog-is-a-contract">
             <div class="note-when">Product Notes<br>7 min</div>
             <div>
               <h3>Your backlog is a contract, not a to-do list</h3>
@@ -676,7 +748,7 @@
               <span class="readmore">Read →</span>
             </div>
           </a>
-          <a class="note" href="blog/meta-api-to-wizard">
+          <a class="note" href="writing/meta-api-to-wizard">
             <div class="note-when">Product Notes<br>8 min</div>
             <div>
               <h3>Turning a sprawling API into a five-step wizard</h3>
@@ -684,7 +756,7 @@
               <span class="readmore">Read →</span>
             </div>
           </a>
-          <a class="note" href="blog/engineer-to-product-owner">
+          <a class="note" href="writing/engineer-to-product-owner">
             <div class="note-when">Product Notes<br>6 min</div>
             <div>
               <h3>What an engineering background actually changes</h3>
@@ -693,93 +765,7 @@
             </div>
           </a>
         </div>
-        <p class="writing-note"><a href="blog/index.html" style="color:var(--accent);text-decoration:none;">See all notes →</a></p>
-      </div>
-    </section>
-  </div>
-
-  <!-- ========== BACKGROUND ========== -->
-  <div class="panel" data-panel="background">
-    <section>
-      <div class="wrap">
-        <span class="eyebrow">Foundation</span>
-        <h2 class="head">Education</h2>
-        <div class="reveal edu-card">
-          <h3>CIC Canadian International College</h3>
-          <div class="org">Sep 2020 – Jun 2025</div>
-          <div class="degree">BSc, Electronics and Communications Engineering — GPA 2.94 / 4.00</div>
-          <ul>
-            <li>Graduation Project: <b>FleetX</b> Smart Fleet Management System, supported by <b>ITIDA</b> and <b>ASRT</b>.</li>
-            <li>1st Rank at CIC Scientific Engineering Day, 2023 &amp; 2024.</li>
-            <li>Founder &amp; Lead of the Google Developer Student Club (2022–2023) — ranked Top 50 globally and Top 20 MENA at the Google Solution Challenge.</li>
-            <li>Nominated as Huawei Academy Ambassador for two academic years in a row (2022–2024) — Top University 2022 Award and Ambassador Award.</li>
-            <li>Participated in various student activities such as IEEE and Radix.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="surface">
-      <div class="wrap">
-        <span class="eyebrow">Training</span>
-        <h2 class="head">Where I <em>sharpened</em> the craft</h2>
-        <div class="reveal vol-list stagger">
-          <div class="vol-item"><div class="vol-when">Nov 2022</div><div class="vol-body"><h4>Agile Scrum Trainee</h4><div class="org">Orange Digital Center</div><p>Agile vs. Waterfall, Scrum theory, artifacts, pillars, methodologies, and Jira — completed with the Scrum Foundation Professional Certificate (SFPC™).</p></div></div>
-          <div class="vol-item"><div class="vol-when">Aug 2024</div><div class="vol-body"><h4>Software Testing Trainee</h4><div class="org">ITI — Information Technology Institute</div><p>Hands-on software testing: test case design, mobile and API testing (Postman, APIdog), requirement analysis, and bug reporting.</p></div></div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="wrap">
-        <span class="eyebrow">Skills &amp; Expertise</span>
-        <h2 class="head">What I <em>bring</em></h2>
-        <div class="reveal skill-block">
-          <h4>Core Product Skills</h4>
-          <div class="pill-row stagger">
-            <span class="pill">Product Backlog Management</span>
-            <span class="pill">User Stories &amp; Acceptance Criteria</span>
-            <span class="pill">BRDs &amp; PRDs</span>
-            <span class="pill">Agile / Scrum</span>
-            <span class="pill">Nexus</span>
-            <span class="pill">Stakeholder Management</span>
-            <span class="pill">Requirements Analysis</span>
-            <span class="pill">Gap Analysis &amp; Feasibility</span>
-            <span class="pill">UAT &amp; Rollout</span>
-            <span class="pill">Business Analysis</span>
-          </div>
-        </div>
-        <div class="reveal skill-block">
-          <h4>Domain Expertise</h4>
-          <div class="pill-row stagger">
-            <span class="pill">Fintech</span>
-            <span class="pill">AI-Native Product Thinking</span>
-            <span class="pill">Investment Operations</span>
-            <span class="pill">Regulatory Compliance</span>
-            <span class="pill">Enterprise SaaS / B2B</span>
-            <span class="pill">CRM &amp; ERP</span>
-            <span class="pill">Software Testing</span>
-          </div>
-        </div>
-        <div class="reveal skill-block">
-          <h4>Certifications</h4>
-          <div class="pill-row stagger">
-            <span class="pill cert">PSPO™ I — Professional Scrum Product Owner I (Scrum.org)</span>
-            <span class="pill cert">SFPC™ — Scrum Foundation Professional Certificate</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="surface">
-      <div class="wrap">
-        <span class="eyebrow">Community</span>
-        <h2 class="head">Beyond the <em>day job</em></h2>
-        <div class="reveal vol-list stagger">
-          <div class="vol-item"><div class="vol-when">2022 – 2023</div><div class="vol-body"><h4>Founder &amp; Lead</h4><div class="org">Google Developer Student Club — CIC</div><p>Founded and led the club from zero, building a technical community on campus — the team ranked Top 50 globally and Top 20 MENA at the Google Solution Challenge.</p></div></div>
-          <div class="vol-item"><div class="vol-when">May – Dec 2024</div><div class="vol-body"><h4>Coordinator</h4><div class="org">IEEE Volunteers Empowerment Program</div><p>Key liaison between participants and the program — facilitating communication, coordinating recruitment and evaluation of participants and instructors, resolving issues, and managing documentation for smooth delivery.</p></div></div>
-          <div class="vol-item"><div class="vol-when">Oct 2022 – Oct 2024</div><div class="vol-body"><h4>Technical Team Member</h4><div class="org">Google Developer Group New Cairo</div><p>Organized technical events — demos, tech talks, hackathons — and supported developers adopting Google technologies including Android, Google Maps, and YouTube.</p></div></div>
-        </div>
+        <p class="writing-note"><a href="writing/index.html" style="color:var(--accent);text-decoration:none;">See all notes →</a></p>
       </div>
     </section>
   </div>
