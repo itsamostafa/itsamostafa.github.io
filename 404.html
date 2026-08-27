@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Redirecting…</title>
+<script>
+  var path = location.pathname;
+  var nestedBlogMatch = path.match(/^\/blog\/[^/]+\/([^/]+)\/?$/);
+  if(nestedBlogMatch){
+    location.replace('/blog/' + nestedBlogMatch[1] + '/');
+  } else {
+    sessionStorage.setItem('redirectPath', path);
+    location.replace('/');
+  }
+</script>
+</head>
+<body></body>
+</html>

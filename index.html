@@ -11,7 +11,7 @@
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ahmed Mostafa — Product Owner &amp; Product Manager | Fintech &amp; SaaS</title>
+<title>Ahmed Mostafa</title>
 <meta name="description" content="Ahmed Mostafa is a Product Owner and Product Manager (PSPO) in Cairo, Egypt, specializing in fintech, enterprise SaaS, and regulated products — backlog, BRDs, PRDs, and Agile delivery. أحمد مصطفى — برودكت أونر وبرودكت مانجر متخصص في إدارة المنتجات الرقمية والفينتك.">
 <meta name="keywords" content="Ahmed Mostafa, Ahmed Mostafa Product Owner, Ahmed Mostafa Product Manager, أحمد مصطفى, product owner, product manager, product management, إدارة منتجات, برودكت أونر, برودكت مانجر, PSPO, Scrum, Agile, fintech product owner, SaaS product manager, Cairo, Egypt">
 <meta name="author" content="Ahmed Mostafa">
@@ -270,18 +270,39 @@
 
   /* ---------- Contact card ---------- */
   .contact-card{
+    position:relative; overflow:hidden; isolation:isolate;
     max-width:var(--maxw); margin:0 auto; background:var(--accent); color:#fff;
     border-radius:24px; padding:72px 32px 44px; text-align:center;
+    transition:transform .4s ease, box-shadow .4s ease;
   }
-  .contact-card .eyebrow{ color:#e7c98a; }
+  .contact-card.in:hover{ transform:translateY(-4px); box-shadow:0 24px 60px -20px rgba(0,0,0,0.45); }
+  .contact-card::before{
+    content:''; position:absolute; inset:-40%; z-index:-1; pointer-events:none;
+    background:radial-gradient(circle at 30% 30%, rgba(231,201,138,0.25), transparent 55%),
+               radial-gradient(circle at 75% 70%, rgba(231,201,138,0.16), transparent 50%);
+    animation:contact-glow 12s ease-in-out infinite;
+  }
+  @keyframes contact-glow{
+    0%, 100%{ transform:translate(0,0) scale(1); }
+    50%{ transform:translate(3%,-3%) scale(1.08); }
+  }
+  .contact-card .eyebrow{ color:#e7c98a; display:inline-block; }
   .contact-card h2{ font-family:var(--serif); font-weight:500; font-size:clamp(28px,4.5vw,42px); margin:0 0 18px; }
   .contact-card h2 em{ color:#e7c98a; }
   .contact-card p{ color:#c9d3da; max-width:52ch; margin:0 auto 34px; font-size:15.5px; }
   .contact-links{ display:flex; gap:16px; justify-content:center; flex-wrap:wrap; margin-bottom:40px; }
-  .contact-card .btn.primary{ background:#e7c98a; color:#1f3b57; }
-  .contact-card .btn.primary:hover{ background:#f2d9a3; }
+  .contact-card .btn.primary{ background:#e7c98a; color:#1f3b57; animation:contact-pulse 2.8s ease-in-out infinite; }
+  .contact-card .btn.primary:hover{ background:#f2d9a3; transform:translateY(-2px) scale(1.03); animation-play-state:paused; }
   .contact-card .btn.ghost{ border-color:rgba(255,255,255,0.35); color:#fff; }
-  .contact-card .btn.ghost:hover{ border-color:#fff; }
+  .contact-card .btn.ghost:hover{ border-color:#fff; transform:translateY(-2px); }
+  @keyframes contact-pulse{
+    0%, 100%{ box-shadow:0 0 0 0 rgba(231,201,138,0.45); }
+    50%{ box-shadow:0 0 0 10px rgba(231,201,138,0); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .contact-card::before{ animation:none; }
+    .contact-card .btn.primary{ animation:none; }
+  }
   .foot-meta{
     font-family:var(--mono); font-size:11.5px; color:#9fb0bb;
     border-top:1px solid rgba(255,255,255,0.15); padding-top:24px;
@@ -314,6 +335,49 @@
   .reveal{ opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease; }
   .reveal.in{ opacity:1; transform:none; }
   @media (prefers-reduced-motion: reduce){ .reveal{ opacity:1 !important; transform:none !important; } }
+
+  /* ---------- Stagger reveal: children cascade in one after another ---------- */
+  .stagger > *{ opacity:0; transform:translateY(14px); transition:opacity .5s ease, transform .5s ease; }
+  :where(.stagger.in, .in .stagger) > *{ opacity:1; transform:none; }
+  .stagger > *:nth-child(1){ transition-delay:.02s; }
+  .stagger > *:nth-child(2){ transition-delay:.08s; }
+  .stagger > *:nth-child(3){ transition-delay:.14s; }
+  .stagger > *:nth-child(4){ transition-delay:.2s; }
+  .stagger > *:nth-child(5){ transition-delay:.26s; }
+  .stagger > *:nth-child(6){ transition-delay:.32s; }
+  .stagger > *:nth-child(7){ transition-delay:.38s; }
+  .stagger > *:nth-child(8){ transition-delay:.44s; }
+  .stagger > *:nth-child(9){ transition-delay:.5s; }
+  .stagger > *:nth-child(10){ transition-delay:.56s; }
+
+  /* ---------- Card & pill micro-interactions ---------- */
+  .feature{ transition:transform .25s ease, box-shadow .25s ease; }
+  .feature:hover{ transform:translateY(-4px); box-shadow:0 16px 32px -18px rgba(30,42,51,0.28); }
+  .hl-card{ transition:transform .25s ease, box-shadow .25s ease; }
+  .hl-card:hover{ transform:translateY(-4px); box-shadow:0 16px 32px -18px rgba(30,42,51,0.28); }
+  .case{ transition:box-shadow .3s ease; }
+  .case:hover{ box-shadow:0 20px 44px -24px rgba(30,42,51,0.3); }
+  .case-cell{ transition:background .2s ease; }
+  .case-cell:hover{ background:var(--accent-soft); }
+  .stat{ transition:border-color .2s ease; }
+  .stat:hover{ border-color:var(--gold); }
+  .pill{ transition:transform .2s ease, background .2s ease, border-color .2s ease, color .2s ease; }
+  .pill:hover{ transform:translateY(-2px); border-color:var(--accent); color:var(--accent); background:var(--accent-soft); }
+  .pill.cert:hover{ border-color:var(--gold); color:#8a611f; background:var(--gold-soft); }
+  .note .readmore{ display:inline-block; transition:transform .2s ease; }
+  .note:hover .readmore{ transform:translateX(4px); }
+
+  /* ---------- Press feedback ---------- */
+  .btn.primary:active{ transform:scale(.96); }
+  .btn.ghost:active{ transform:scale(.96); }
+  .tab{ transition:color .15s ease, background .15s ease, transform .15s ease; }
+  .tab:active{ transform:scale(.95); }
+  .burger{ transition:transform .15s ease; }
+  .burger:active{ transform:scale(.9); }
+
+  /* ---------- Nav entrance ---------- */
+  @keyframes navIn{ from{ opacity:0; } to{ opacity:1; } }
+  .island{ animation:navIn .5s ease; }
 
   @media (max-width:640px){
     section{ padding:48px 18px; }
@@ -376,7 +440,7 @@
   <!-- ========== ABOUT ========== -->
   <div class="panel active" data-panel="about">
     <div class="hero">
-      <div class="hero-grid">
+      <div class="hero-grid reveal stagger">
         <div>
           <span class="kicker">Product Owner &amp; Product Manager · PSPO™ · Fintech &amp; SaaS</span>
           <h1 class="hero-title">Hello, I'm <em>Ahmed Mostafa</em> — a Product Owner with an <em>Engineer's Depth</em> and a <em>Builder's Mindset</em>.</h1>
@@ -396,7 +460,7 @@
           <img src="photo.jpg" alt="Portrait of Ahmed Mostafa">
         </div>
       </div>
-      <div class="stats">
+      <div class="reveal stats stagger">
         <div class="stat"><span class="n">Fintech · EdTech · CRM</span><span class="l">Industries</span></div>
         <div class="stat"><span class="n">PSPO I &amp; SFPC</span><span class="l">Certified</span></div>
         <div class="stat"><span class="n">30% less rework</span><span class="l">Agile delivery impact</span></div>
@@ -408,7 +472,7 @@
       <div class="wrap">
         <span class="eyebrow">About Me</span>
         <h2 class="head">Strategy meets <em>compliance</em></h2>
-        <div class="reveal about-grid">
+        <div class="reveal about-grid stagger">
           <div>
             <h3>My Journey</h3>
             <p>
@@ -429,7 +493,7 @@
             </p>
           </div>
         </div>
-        <div class="reveal feature-grid">
+        <div class="reveal feature-grid stagger">
           <div class="feature"><div class="icon">🎯</div><h4>Requirements &amp; Compliance</h4><p>I translate legal and financial complexity into user stories and acceptance criteria that hold up under regulatory review.</p></div>
           <div class="feature"><div class="icon">📐</div><h4>Cross-Functional Alignment</h4><p>I keep legal, compliance, delivery, and operations moving together through BRDs, PRDs, and disciplined Agile ceremonies.</p></div>
           <div class="feature"><div class="icon">📊</div><h4>End-to-End Delivery</h4><p>From requirements definition through UAT and rollout — Scrum and Nexus in practice, keeping delivery predictable.</p></div>
@@ -510,7 +574,7 @@
       <div class="wrap">
         <span class="eyebrow">Product Thinking</span>
         <h2 class="head">How I think as a <em>Product Manager</em></h2>
-        <div class="reveal process-list">
+        <div class="reveal process-list stagger">
           <div class="p-item"><div class="p-num">01</div><div><h3>Understand the Business Problem</h3><p>Getting to the real legal, financial, and user problem before writing a single user story — assumptions stay hypotheses until validated against compliance and operational reality.</p></div></div>
           <div class="p-item"><div class="p-num">02</div><div><h3>Map As-Is, Find the Gaps</h3><p>Walking the current process end to end, then running gap and feasibility analysis to separate what's broken from what's simply undocumented.</p></div></div>
           <div class="p-item"><div class="p-num">03</div><div><h3>Design the To-Be &amp; Define the MVP</h3><p>Turning the target state into BRDs, PRDs, user stories, and acceptance criteria — precise enough for audit, clear enough for engineering, and cut down to what's worth shipping first.</p></div></div>
@@ -535,7 +599,7 @@
             <h3>Unifying a Regulated Fintech Platform</h3>
             <p>Bringing multiple legal and financial investment systems onto one enterprise SaaS platform — the core of my work at Areeb Technology.</p>
           </div>
-          <div class="case-grid">
+          <div class="case-grid stagger">
             <div class="case-cell"><h4>Context</h4><p>Several investment and approval systems ran as separate workflows for one enterprise client base, with no single source of truth.</p></div>
             <div class="case-cell"><h4>Problem</h4><p>Fragmented approval chains and transaction flows slowed delivery and made every release harder to audit.</p></div>
             <div class="case-cell"><h4>What I did</h4><p>Authored the BRDs and PRDs for approval chains, transaction flows, and dashboards, and ran Scrum / Nexus ceremonies to align legal, compliance, delivery, and operations.</p></div>
@@ -543,7 +607,7 @@
           </div>
         </div>
 
-        <div class="reveal hl-grid">
+        <div class="reveal hl-grid stagger">
           <div class="hl-card"><div class="hl-tags"><span>BRD / PRD</span><span>Approval Chains</span><span>Dashboards</span></div><h3>Documenting Core Fintech Features</h3><p>Authoring BRDs and PRDs covering approval chains, transaction flows, and pricing &amp; operational dashboards for engineering to build against.</p></div>
           <div class="hl-card"><div class="hl-tags"><span>Business Analysis</span><span>CRM / ERP</span><span>Gap Analysis</span></div><h3>Structuring Requirements for CRM &amp; ERP</h3><p>Running discovery sessions, mapping workflows, and turning complex client needs into prioritized specs technical teams could build against.</p></div>
           <div class="hl-card"><div class="hl-tags"><span>Multi-Tenant SaaS</span><span>Access Control</span><span>Pricing</span></div><h3>Designing for Multi-Tenancy</h3><p>Shaping tenant isolation, access control, and modular pricing so one platform can serve multiple corporate clients across distinct business lines.</p></div>
@@ -563,7 +627,7 @@
             <h3>Client PRD — Meta Business Profile Wizard</h3>
             <p>A production-ready PRD delivered to a client, Dr. Martin Busch GmbH, that also opened the door to a larger engagement.</p>
           </div>
-          <div class="case-grid">
+          <div class="case-grid stagger">
             <div class="case-cell"><h4>Context</h4><p>A client needed founders to self-serve their Meta Business Profile setup instead of relying on manual, error-prone onboarding.</p></div>
             <div class="case-cell"><h4>Problem</h4><p>Meta's setup spans several capabilities and prerequisites — hard to turn into a clean, foolproof flow engineers could build without guesswork.</p></div>
             <div class="case-cell"><h4>What I did</h4><p>Wrote a 5-step wizard PRD against Graph API v25.0 — capability matrix, phased UX, and acceptance criteria written for direct engineering handoff.</p></div>
@@ -571,7 +635,7 @@
           </div>
         </div>
 
-        <div class="reveal hl-grid">
+        <div class="reveal hl-grid stagger">
           <div class="hl-card"><div class="hl-tags"><span>AI-Native SaaS</span><span>Product Blueprint</span><span>Release Specs</span></div><h3>Productology — A Workspace for PMs</h3><p>My own product concept: an AI-native workspace for product managers, defined through a full technical blueprint plus incremental release specs covering prompt libraries, file management, caching, and rate limiting.</p></div>
           <div class="hl-card"><div class="hl-tags"><span>PRD</span><span>SP-API</span><span>13-Step Wizard</span></div><h3>Sell-on-Amazon Module — PRD</h3><p>A zero-friction "sell on Amazon" onboarding module specified against the SP-API, structured as a 13-step wizard with acceptance criteria written for direct engineering handoff.</p></div>
           <div class="hl-card"><div class="hl-tags"><span>Reporting</span><span>Delivery Metrics</span><span>Automation</span></div><h3>Executive Sprint Reporting</h3><p>Turned raw sprint data into executive-ready reports covering cost, efficiency, and commit metrics — then rebuilt the workflow as a repeatable script instead of a manual ritual.</p></div>
@@ -589,7 +653,7 @@
         <span class="eyebrow">Now</span>
         <h2 class="head">What I'm <em>focused on</em></h2>
         <div class="reveal now-card">
-          <ul>
+          <ul class="stagger">
             <li><span class="now-label">Building</span><span>Owning fintech and enterprise SaaS products end to end as Product Owner at <b>Areeb Technology</b> — approval flows, transaction logic, and operational dashboards.</span></li>
             <li><span class="now-label">Exploring</span><span>How <b>AI-native workflows</b> change the way products get specced and built — prototyping my own concept, <b>Productology</b>, a workspace for PMs.</span></li>
             <li><span class="now-label">Learning</span><span>Going deeper on <b>multi-tenant SaaS architecture</b> and pricing design — tenant isolation, access control, and modular packaging.</span></li>
@@ -603,7 +667,7 @@
       <div class="wrap">
         <span class="eyebrow">Writing</span>
         <h2 class="head">Notes on <em>product thinking</em></h2>
-        <div class="reveal note-list">
+        <div class="reveal note-list stagger">
           <a class="note" href="blog/backlog-is-a-contract">
             <div class="note-when">Product Notes<br>7 min</div>
             <div>
@@ -659,7 +723,7 @@
       <div class="wrap">
         <span class="eyebrow">Training</span>
         <h2 class="head">Where I <em>sharpened</em> the craft</h2>
-        <div class="reveal vol-list">
+        <div class="reveal vol-list stagger">
           <div class="vol-item"><div class="vol-when">Nov 2022</div><div class="vol-body"><h4>Agile Scrum Trainee</h4><div class="org">Orange Digital Center</div><p>Agile vs. Waterfall, Scrum theory, artifacts, pillars, methodologies, and Jira — completed with the Scrum Foundation Professional Certificate (SFPC™).</p></div></div>
           <div class="vol-item"><div class="vol-when">Aug 2024</div><div class="vol-body"><h4>Software Testing Trainee</h4><div class="org">ITI — Information Technology Institute</div><p>Hands-on software testing: test case design, mobile and API testing (Postman, APIdog), requirement analysis, and bug reporting.</p></div></div>
         </div>
@@ -672,7 +736,7 @@
         <h2 class="head">What I <em>bring</em></h2>
         <div class="reveal skill-block">
           <h4>Core Product Skills</h4>
-          <div class="pill-row">
+          <div class="pill-row stagger">
             <span class="pill">Product Backlog Management</span>
             <span class="pill">User Stories &amp; Acceptance Criteria</span>
             <span class="pill">BRDs &amp; PRDs</span>
@@ -687,7 +751,7 @@
         </div>
         <div class="reveal skill-block">
           <h4>Domain Expertise</h4>
-          <div class="pill-row">
+          <div class="pill-row stagger">
             <span class="pill">Fintech</span>
             <span class="pill">AI-Native Product Thinking</span>
             <span class="pill">Investment Operations</span>
@@ -699,7 +763,7 @@
         </div>
         <div class="reveal skill-block">
           <h4>Certifications</h4>
-          <div class="pill-row">
+          <div class="pill-row stagger">
             <span class="pill cert">PSPO™ I — Professional Scrum Product Owner I (Scrum.org)</span>
             <span class="pill cert">SFPC™ — Scrum Foundation Professional Certificate</span>
           </div>
@@ -711,7 +775,7 @@
       <div class="wrap">
         <span class="eyebrow">Community</span>
         <h2 class="head">Beyond the <em>day job</em></h2>
-        <div class="reveal vol-list">
+        <div class="reveal vol-list stagger">
           <div class="vol-item"><div class="vol-when">2022 – 2023</div><div class="vol-body"><h4>Founder &amp; Lead</h4><div class="org">Google Developer Student Club — CIC</div><p>Founded and led the club from zero, building a technical community on campus — the team ranked Top 50 globally and Top 20 MENA at the Google Solution Challenge.</p></div></div>
           <div class="vol-item"><div class="vol-when">May – Dec 2024</div><div class="vol-body"><h4>Coordinator</h4><div class="org">IEEE Volunteers Empowerment Program</div><p>Key liaison between participants and the program — facilitating communication, coordinating recruitment and evaluation of participants and instructors, resolving issues, and managing documentation for smooth delivery.</p></div></div>
           <div class="vol-item"><div class="vol-when">Oct 2022 – Oct 2024</div><div class="vol-body"><h4>Technical Team Member</h4><div class="org">Google Developer Group New Cairo</div><p>Organized technical events — demos, tech talks, hackathons — and supported developers adopting Google technologies including Android, Google Maps, and YouTube.</p></div></div>
@@ -722,7 +786,7 @@
 
   <!-- ========== CONTACT ========== -->
   <div class="panel contact-panel" data-panel="contact">
-    <div class="contact-card">
+    <div class="reveal contact-card">
       <span class="eyebrow">Contact</span>
       <h2>Let's build something <em>great!</em></h2>
       <p>I'm open to full-time Product Owner roles and select freelance engagements — Cairo-based, remote-friendly, and willing to relocate.</p>
@@ -755,7 +819,7 @@
     window.scrollTo({ top:0, behavior:'auto' });
     const active = panels.find(p => p.dataset.panel === id);
     if(active) armReveals(active);
-    if(push){ try{ history.replaceState(null, '', '#' + id); }catch(e){} }
+    if(push){ try{ history.replaceState(null, '', id === 'about' ? '/' : '/' + id); }catch(e){} }
     closeMenu();
   }
   function closeMenu(){
@@ -796,7 +860,13 @@
     burger.textContent = open ? '✕' : '☰';
   });
 
-  activate(location.hash.replace('#',''), false);
+  const redirectPath = sessionStorage.getItem('redirectPath');
+  if(redirectPath){
+    sessionStorage.removeItem('redirectPath');
+    activate(redirectPath.replace(/^\//, ''), true);
+  } else {
+    activate(location.pathname.replace(/^\//, ''), false);
+  }
 </script>
 
 </body>
