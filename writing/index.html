@@ -3,188 +3,333 @@
 <head>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LCK4RZ2K12"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-LCK4RZ2K12");</script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-LCK4RZ2K12');
+</script>
 <meta charset="UTF-8">
 <script>
 (function(){
+  // Flag JS availability so reveal animations never hide content without it
+  document.documentElement.classList.add('js');
+
+  // Never show /index.html in the address bar
+  try{
+    if(location.pathname.slice(-11) === '/index.html'){
+      history.replaceState(null, '', location.pathname.slice(0, -10) + location.search + location.hash);
+    }
+  }catch(e){}
+
   try{
     var t = localStorage.getItem('theme');
     if(t === 'light' || t === 'dark'){ document.documentElement.setAttribute('data-theme', t); }
   }catch(e){}
 })();
 </script>
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Writing | Ahmed Mostafa | Notes on Product Management</title>
 <meta name="description" content="Practical notes on product management, product ownership, and building regulated fintech and SaaS products, by Ahmed Mostafa.">
 <meta name="author" content="Ahmed Mostafa">
 <meta name="theme-color" content="#1f3b57">
-<link rel="alternate" type="application/rss+xml" title="Ahmed Mostafa — Notes on product thinking" href="https://itsamostafa.github.io/feed.xml">
+
+<link rel="alternate" type="application/rss+xml" title="Ahmed Mostafa: Notes on product thinking" href="https://itsamostafa.github.io/feed.xml">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
 <link rel="canonical" href="https://itsamostafa.github.io/writing/">
+
+<!-- Open Graph (WhatsApp, LinkedIn, Facebook link previews) -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Ahmed Mostafa">
-<meta property="og:title" content="Writing | Ahmed Mostafa | Notes on Product Management">
-<meta property="og:description" content="Practical notes on product management, product ownership, and building regulated fintech and SaaS products, by Ahmed Mostafa.">
+<meta property="og:title" content="Writing | Ahmed Mostafa">
+<meta property="og:description" content="Practical notes on product management, product ownership, and building regulated fintech and SaaS products.">
 <meta property="og:url" content="https://itsamostafa.github.io/writing/">
 <meta property="og:image" content="https://itsamostafa.github.io/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Ahmed Mostafa, Product Owner">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter / X card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Writing | Ahmed Mostafa | Notes on Product Management">
-<meta name="twitter:description" content="Practical notes on product management, product ownership, and building regulated fintech and SaaS products, by Ahmed Mostafa.">
+<meta name="twitter:title" content="Writing | Ahmed Mostafa">
+<meta name="twitter:description" content="Practical notes on product management, product ownership, and building regulated fintech and SaaS products.">
 <meta name="twitter:image" content="https://itsamostafa.github.io/og-image.png">
 
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500;1,9..144,600&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --bg:#faf8f4; --surface:#ffffff; --ink:#1e2a33; --muted:#5c6770; --body-text:#3d4750; --body-strong:#2b353d;
-    --line:rgba(30,42,51,0.10); --line-strong:rgba(30,42,51,0.18);
-    --accent:#1f3b57; --accent-text:#1f3b57; --accent-soft:rgba(31,59,87,0.07);
-    --gold:#b8863b; --gold-soft:rgba(184,134,59,0.12); --gold-text:#8a611f;
-    --serif:'Fraunces', Georgia, serif; --mono:'IBM Plex Mono', ui-monospace, monospace;
-    --sans:'IBM Plex Sans', system-ui, sans-serif; --maxw:720px;
-  }
-  :root[data-theme="dark"]{
-    --bg:#15171a; --surface:#1c1f23; --ink:#eef0f2; --muted:#9aa4ac; --body-text:#c9ced3; --body-strong:#dfe3e6;
-    --line:rgba(255,255,255,0.10); --line-strong:rgba(255,255,255,0.18);
-    --accent:#2f5578; --accent-text:#7fb0e6; --accent-soft:rgba(127,176,230,0.16);
-    --gold:#c99a52; --gold-soft:rgba(230,189,118,0.18); --gold-text:#e6bd76;
-  }
-  *{ box-sizing:border-box; }
-  @media (prefers-reduced-motion: reduce){ *{ animation:none !important; transition:none !important; } }
-  body{ margin:0; background:var(--bg); color:var(--ink); font-family:var(--sans); line-height:1.7; -webkit-font-smoothing:antialiased; transition:background-color .2s ease, color .2s ease; }
-  a{ color:var(--accent-text); }
-  em,i{ font-family:var(--serif); font-style:italic; }
-  .island{
-    position:fixed; top:16px; left:50%; transform:translateX(-50%); z-index:200;
-    display:flex; align-items:center; gap:14px;
-    background:rgba(255,255,255,0.72); backdrop-filter:blur(18px) saturate(1.5); -webkit-backdrop-filter:blur(18px) saturate(1.5);
-    border:1px solid rgba(30,42,51,0.08); border-radius:100px;
-    padding:9px 20px; box-shadow:0 14px 38px -16px rgba(30,42,51,0.34); max-width:calc(100vw - 24px);
-  }
-  .island a.brand{ font-family:var(--serif); font-weight:600; font-size:16px; text-decoration:none; color:var(--ink); white-space:nowrap; }
-  .island .sep{ width:1px; height:20px; background:var(--line-strong); }
-  .island a.back{ font-family:var(--mono); font-size:11.5px; letter-spacing:.05em; text-transform:uppercase; text-decoration:none; color:var(--muted); }
-  .island a.back:hover{ color:var(--accent-text); }
-  .wrap{ max-width:var(--maxw); margin:0 auto; padding:0 24px; }
-  main{ padding-top:120px; padding-bottom:80px; }
-  .eyebrow{ font-family:var(--mono); font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--gold-text); display:block; margin-bottom:16px; }
-  h1.title{ font-family:var(--serif); font-weight:600; font-size:clamp(30px,5vw,44px); line-height:1.18; margin:0 0 20px; }
-  .meta{ font-family:var(--mono); font-size:12.5px; color:var(--muted); margin-bottom:12px; display:flex; gap:14px; flex-wrap:wrap; }
-  .lede{ font-size:19px; color:var(--body-text); margin:0 0 10px; padding:0 0 34px; border-bottom:1px solid var(--line); }
-  article h2{ font-family:var(--serif); font-weight:600; font-size:clamp(22px,3.4vw,28px); margin:52px 0 8px; line-height:1.25; }
-  article h3{ font-family:var(--serif); font-weight:600; font-size:19px; margin:34px 0 6px; }
-  article p{ font-size:16.5px; color:var(--body-strong); margin:18px 0; }
-  article ul,article ol{ margin:18px 0; padding-left:22px; }
-  article li{ font-size:16.5px; color:var(--body-strong); margin-bottom:10px; }
-  article li b, article p b{ color:var(--ink); }
-  article blockquote{ margin:28px 0; padding:6px 0 6px 22px; border-left:3px solid var(--gold); font-family:var(--serif); font-style:italic; font-size:19px; color:var(--accent-text); }
-  .callout{ background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:22px 24px; margin:30px 0; }
-  .callout p{ margin:0; font-size:15.5px; color:var(--body-text); }
-  .callout .k{ font-family:var(--mono); font-size:11px; letter-spacing:.09em; text-transform:uppercase; color:var(--gold-text); display:block; margin-bottom:8px; }
-  .share{ margin:56px 0 0; padding-top:30px; border-top:1px solid var(--line); }
-  .share .k{ font-family:var(--mono); font-size:11px; letter-spacing:.09em; text-transform:uppercase; color:var(--muted); margin:0 0 14px; }
-  .share-row{ display:flex; gap:10px; flex-wrap:wrap; }
-  .share-btn{ font-family:var(--mono); font-size:12px; letter-spacing:.03em; text-decoration:none; padding:10px 16px; border-radius:100px; border:1px solid var(--line-strong); color:var(--ink); display:inline-flex; align-items:center; gap:8px; transition:border-color .15s, color .15s, background .15s; cursor:pointer; background:none; }
-  .share-btn:hover{ border-color:var(--accent-text); color:var(--accent-text); background:var(--accent-soft); }
-  .postnav{ margin-top:40px; display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; }
-  .postnav a{ font-family:var(--mono); font-size:12px; text-decoration:none; color:var(--muted); }
-  .postnav a:hover{ color:var(--accent-text); }
-  footer.f{ border-top:1px solid var(--line); background:var(--surface); padding:40px 24px; text-align:center; font-family:var(--mono); font-size:12px; color:var(--muted); }
-  footer.f a{ color:var(--muted); }
-  /* index list */
-  .post-list{ display:flex; flex-direction:column; }
-  .post-item{ display:block; text-decoration:none; padding:30px 0; border-top:1px solid var(--line); }
-  .post-item:last-child{ border-bottom:1px solid var(--line); }
-  .post-item:hover h2{ color:var(--accent-text); }
-  .post-item .when{ font-family:var(--mono); font-size:12px; color:var(--muted); margin-bottom:8px; }
-  .post-item h2{ font-family:var(--serif); font-weight:600; font-size:24px; margin:0 0 8px; color:var(--ink); }
-  .post-item p{ margin:0; color:var(--muted); font-size:15px; }
-  .writing-intro{ font-size:17px; color:var(--body-text); max-width:60ch; margin:0 0 40px; }
-  .theme-toggle{ background:none; border:none; cursor:pointer; color:var(--muted); padding:4px; width:28px; height:28px; display:flex; align-items:center; justify-content:center; border-radius:50%; transition:color .15s ease, background .15s ease; }
-  .theme-toggle:hover{ color:var(--accent-text); background:var(--accent-soft); }
-  .theme-toggle svg{ display:block; }
-  .theme-toggle .sun{ display:none; }
-  :root[data-theme="dark"] .theme-toggle .moon{ display:none; }
-  :root[data-theme="dark"] .theme-toggle .sun{ display:block; }
-</style>
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      "@id": "https://itsamostafa.github.io/writing/#blog",
+      "url": "https://itsamostafa.github.io/writing/",
+      "name": "Ahmed Mostafa: Notes on product thinking",
+      "description": "Practical notes on product management, product ownership, and building regulated fintech and SaaS products.",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://itsamostafa.github.io/#website"
+      },
+      "author": {
+        "@id": "https://itsamostafa.github.io/#person"
+      },
+      "publisher": {
+        "@id": "https://itsamostafa.github.io/#person"
+      },
+      "blogPost": [
+        {
+          "@type": "BlogPosting",
+          "@id": "https://itsamostafa.github.io/writing/backlog-is-a-contract/#article",
+          "headline": "Your backlog is a contract, not a to-do list",
+          "url": "https://itsamostafa.github.io/writing/backlog-is-a-contract/",
+          "datePublished": "2026-08-11T09:00:00+00:00",
+          "author": {
+            "@id": "https://itsamostafa.github.io/#person"
+          }
+        },
+        {
+          "@type": "BlogPosting",
+          "@id": "https://itsamostafa.github.io/writing/meta-api-to-wizard/#article",
+          "headline": "Turning a sprawling API into a five-step wizard",
+          "url": "https://itsamostafa.github.io/writing/meta-api-to-wizard/",
+          "datePublished": "2026-07-06T09:00:00+00:00",
+          "author": {
+            "@id": "https://itsamostafa.github.io/#person"
+          }
+        },
+        {
+          "@type": "BlogPosting",
+          "@id": "https://itsamostafa.github.io/writing/engineer-to-product-owner/#article",
+          "headline": "What an engineering background changes, and what it doesn't",
+          "url": "https://itsamostafa.github.io/writing/engineer-to-product-owner/",
+          "datePublished": "2026-05-19T09:00:00+00:00",
+          "author": {
+            "@id": "https://itsamostafa.github.io/#person"
+          }
+        },
+        {
+          "@type": "BlogPosting",
+          "@id": "https://itsamostafa.github.io/writing/stakeholder-map-nobody-draws/#article",
+          "headline": "The stakeholder map nobody draws",
+          "url": "https://itsamostafa.github.io/writing/stakeholder-map-nobody-draws/",
+          "datePublished": "2026-04-02T09:00:00+00:00",
+          "author": {
+            "@id": "https://itsamostafa.github.io/#person"
+          }
+        },
+        {
+          "@type": "BlogPosting",
+          "@id": "https://itsamostafa.github.io/writing/pricing-dashboard-is-a-trust-problem/#article",
+          "headline": "Your pricing dashboard is a trust problem, not a data problem",
+          "url": "https://itsamostafa.github.io/writing/pricing-dashboard-is-a-trust-problem/",
+          "datePublished": "2026-02-24T09:00:00+00:00",
+          "author": {
+            "@id": "https://itsamostafa.github.io/#person"
+          }
+        },
+        {
+          "@type": "BlogPosting",
+          "@id": "https://itsamostafa.github.io/writing/scope-cuts-happen-in-discovery/#article",
+          "headline": "The best scope cuts happen in discovery, not sprint three",
+          "url": "https://itsamostafa.github.io/writing/scope-cuts-happen-in-discovery/",
+          "datePublished": "2026-01-13T09:00:00+00:00",
+          "author": {
+            "@id": "https://itsamostafa.github.io/#person"
+          }
+        },
+        {
+          "@type": "BlogPosting",
+          "@id": "https://itsamostafa.github.io/writing/curriculum-is-a-roadmap/#article",
+          "headline": "A curriculum is a product roadmap wearing a different outfit",
+          "url": "https://itsamostafa.github.io/writing/curriculum-is-a-roadmap/",
+          "datePublished": "2025-12-08T09:00:00+00:00",
+          "author": {
+            "@id": "https://itsamostafa.github.io/#person"
+          }
+        },
+        {
+          "@type": "BlogPosting",
+          "@id": "https://itsamostafa.github.io/writing/program-market-fit-before-product-market-fit/#article",
+          "headline": "I learned product-market fit before I had the words for it",
+          "url": "https://itsamostafa.github.io/writing/program-market-fit-before-product-market-fit/",
+          "datePublished": "2025-11-17T09:00:00+00:00",
+          "author": {
+            "@id": "https://itsamostafa.github.io/#person"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "CollectionPage",
+      "@id": "https://itsamostafa.github.io/writing/#webpage",
+      "url": "https://itsamostafa.github.io/writing/",
+      "name": "Writing | Ahmed Mostafa | Notes on Product Management",
+      "description": "Practical notes on product management, product ownership, and building regulated fintech and SaaS products, by Ahmed Mostafa.",
+      "isPartOf": {
+        "@id": "https://itsamostafa.github.io/#website"
+      },
+      "about": {
+        "@id": "https://itsamostafa.github.io/#person"
+      },
+      "inLanguage": "en",
+      "breadcrumb": {
+        "@id": "https://itsamostafa.github.io/writing/#breadcrumb"
+      },
+      "mainEntity": {
+        "@id": "https://itsamostafa.github.io/writing/#blog"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://itsamostafa.github.io/writing/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://itsamostafa.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Writing",
+          "item": "https://itsamostafa.github.io/writing/"
+        }
+      ]
+    }
+  ]
+}</script>
+
 </head>
 <body>
+
+<a class="skip-link" href="#main-content">Skip to content</a>
 <header class="island">
-  <a class="brand" href="../index.html">Ahmed Mostafa</a>
-  <span class="sep"></span>
-  <a class="back" href="../index.html">← Portfolio</a>
+  <a class="brand" href="/">Ahmed Mostafa</a>
+  <span class="divider"></span>
+  <nav class="tabs" id="tabs" aria-label="Primary">
+    <a class="tab" href="/" data-path="/">About</a>
+    <a class="tab" href="/work/" data-path="/work/">Work</a>
+    <a class="tab active" href="/writing/" data-path="/writing/">Writing</a>
+    <a class="tab" href="/experience/" data-path="/experience/">Experience</a>
+    <a class="tab" href="/contact/" data-path="/contact/">Contact</a>
+  </nav>
   <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" type="button">
     <svg class="sun" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
     <svg class="moon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
   </button>
+  <button class="burger" id="burger" aria-label="Toggle menu" aria-expanded="false">☰</button>
 </header>
-<main>
-<div class="wrap">
 
-<span class="eyebrow">Writing</span>
-<h1 class="title">Notes on <em>product thinking</em></h1>
-<p class="writing-intro">Short, practical notes on how I approach product work in regulated and enterprise contexts. No frameworks for their own sake. Just the reasoning I actually use.</p>
-<div class="post-list">
-  <a class="post-item" href="backlog-is-a-contract/">
-    <div class="when"><time datetime="2026-08-11">Aug 11, 2026</time> · Product Notes · 7 min</div>
-    <h2>Your backlog is a contract, not a to-do list</h2>
-    <p>Every user story is an agreement between compliance, engineering, and the business. Treating it that way is what cuts rework.</p>
-  </a>
-  <a class="post-item" href="meta-api-to-wizard/">
-    <div class="when"><time datetime="2026-07-06">Jul 6, 2026</time> · Product Notes · 8 min</div>
-    <h2>Turning a sprawling API into a five-step wizard</h2>
-    <p>A real client PRD, reverse-engineered: turning a prerequisite-heavy API into a flow a non-technical founder can finish alone.</p>
-  </a>
-  <a class="post-item" href="engineer-to-product-owner/">
-    <div class="when"><time datetime="2026-05-19">May 19, 2026</time> · Product Notes · 6 min</div>
-    <h2>What an engineering background actually changes about product work</h2>
-    <p>Not the cliches. The specific ways it helps, the ways it doesn't, and the trap it sets.</p>
-  </a>
-  <a class="post-item" href="stakeholder-map-nobody-draws/">
-    <div class="when"><time datetime="2026-04-02">Apr 2, 2026</time> · Product Notes · 6 min</div>
-    <h2>The stakeholder map nobody draws</h2>
-    <p>In a regulated fintech product, legal, compliance, delivery, and ops all have to say yes before a feature ships. Silence isn't a signature.</p>
-  </a>
-  <a class="post-item" href="pricing-dashboard-is-a-trust-problem/">
-    <div class="when"><time datetime="2026-02-24">Feb 24, 2026</time> · Product Notes · 6 min</div>
-    <h2>Your pricing dashboard is a trust problem, not a data problem</h2>
-    <p>Every dashboard project I've seen stall got blamed on the data. It was never the data. It was three teams calculating the same number differently.</p>
-  </a>
-  <a class="post-item" href="scope-cuts-happen-in-discovery/">
-    <div class="when"><time datetime="2026-01-13">Jan 13, 2026</time> · Product Notes · 6 min</div>
-    <h2>The best scope cuts happen in discovery, not sprint three</h2>
-    <p>Every scope gap that showed up as a change request was visible in discovery. It just wasn't looked for.</p>
-  </a>
-  <a class="post-item" href="curriculum-is-a-roadmap/">
-    <div class="when"><time datetime="2025-12-08">Dec 8, 2025</time> · Product Notes · 7 min</div>
-    <h2>A curriculum is a product roadmap wearing a different outfit</h2>
-    <p>Designing a K-12 coding curriculum under a real budget taught me more about roadmapping than most software projects have.</p>
-  </a>
-  <a class="post-item" href="program-market-fit-before-product-market-fit/">
-    <div class="when"><time datetime="2025-11-17">Nov 17, 2025</time> · Product Notes · 6 min</div>
-    <h2>I learned product-market fit before I had the words for it</h2>
-    <p>Years before I could define it, I was matching training programs to what students actually needed, not what looked good in a brochure.</p>
-  </a>
-</div>
+<main id="main-content">
 
-</div>
+    <section>
+      <div class="wrap">
+        <span class="eyebrow">Ahmed Mostafa · Product Management Notes</span>
+        <h1 class="head">Notes on <em>product thinking</em></h1>
+        <p class="page-intro">Short, practical notes on how I approach product work in regulated and enterprise contexts. No frameworks for their own sake. Just the reasoning I actually use. <a href="/feed.xml" style="color:var(--accent-text);text-decoration:none;">Subscribe via RSS &rarr;</a></p>
+        <div class="reveal note-list stagger">
+          <a class="note" href="/writing/backlog-is-a-contract/">
+            <div class="note-when"><time datetime="2026-08-11">Aug 11, 2026</time><br>7 min read</div>
+            <div>
+              <h3>Your backlog is a contract, not a to-do list</h3>
+              <p>Every user story is an agreement between compliance, engineering, and the business. Treating it that way is what cuts rework.</p>
+              <span class="readmore">Read &rarr;</span>
+            </div>
+          </a>
+          <a class="note" href="/writing/meta-api-to-wizard/">
+            <div class="note-when"><time datetime="2026-07-06">Jul 6, 2026</time><br>8 min read</div>
+            <div>
+              <h3>Turning a sprawling API into a five-step wizard</h3>
+              <p>A real client PRD, reverse-engineered: turning a prerequisite-heavy API into a flow a non-technical founder can finish alone.</p>
+              <span class="readmore">Read &rarr;</span>
+            </div>
+          </a>
+          <a class="note" href="/writing/engineer-to-product-owner/">
+            <div class="note-when"><time datetime="2026-05-19">May 19, 2026</time><br>6 min read</div>
+            <div>
+              <h3>What an engineering background changes, and what it doesn't</h3>
+              <p>Not the cliches. The specific ways it helps, the ways it doesn't, and the trap it sets.</p>
+              <span class="readmore">Read &rarr;</span>
+            </div>
+          </a>
+          <a class="note" href="/writing/stakeholder-map-nobody-draws/">
+            <div class="note-when"><time datetime="2026-04-02">Apr 2, 2026</time><br>6 min read</div>
+            <div>
+              <h3>The stakeholder map nobody draws</h3>
+              <p>In a regulated fintech product, legal, compliance, delivery, and ops all have to say yes before a feature ships. Silence isn't a signature.</p>
+              <span class="readmore">Read &rarr;</span>
+            </div>
+          </a>
+          <a class="note" href="/writing/pricing-dashboard-is-a-trust-problem/">
+            <div class="note-when"><time datetime="2026-02-24">Feb 24, 2026</time><br>6 min read</div>
+            <div>
+              <h3>Your pricing dashboard is a trust problem, not a data problem</h3>
+              <p>Every dashboard project I've seen stall got blamed on the data. It was never the data. It was three teams calculating the same number differently.</p>
+              <span class="readmore">Read &rarr;</span>
+            </div>
+          </a>
+          <a class="note" href="/writing/scope-cuts-happen-in-discovery/">
+            <div class="note-when"><time datetime="2026-01-13">Jan 13, 2026</time><br>6 min read</div>
+            <div>
+              <h3>The best scope cuts happen in discovery, not sprint three</h3>
+              <p>Every scope gap that showed up as a change request was visible in discovery. It just wasn't looked for.</p>
+              <span class="readmore">Read &rarr;</span>
+            </div>
+          </a>
+          <a class="note" href="/writing/curriculum-is-a-roadmap/">
+            <div class="note-when"><time datetime="2025-12-08">Dec 8, 2025</time><br>7 min read</div>
+            <div>
+              <h3>A curriculum is a product roadmap wearing a different outfit</h3>
+              <p>Designing a K-12 coding curriculum under a real budget taught me more about roadmapping than most software projects have.</p>
+              <span class="readmore">Read &rarr;</span>
+            </div>
+          </a>
+          <a class="note" href="/writing/program-market-fit-before-product-market-fit/">
+            <div class="note-when"><time datetime="2025-11-17">Nov 17, 2025</time><br>6 min read</div>
+            <div>
+              <h3>I learned product-market fit before I had the words for it</h3>
+              <p>Years before I could define it, I was matching training programs to what students actually needed, not what looked good in a brochure.</p>
+              <span class="readmore">Read &rarr;</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  <section>
+    <div class="wrap">
+      <div class="page-nav">
+        <a href="/work/">&larr; Work</a>
+        <a href="/experience/">Experience &rarr;</a>
+      </div>
+    </div>
+  </section>
+
 </main>
-<footer class="f">
-  © <span id="y"></span> Ahmed Mostafa · <a href="../index.html">Portfolio</a> · <a href="mailto:ahmed.mostafa.works@gmail.com">Email</a> · <a href="https://linkedin.com/in/eng-ahmedmostafa" target="_blank" rel="noopener">LinkedIn</a>
-  <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <span class="footer-note">Open to Product Owner / Product Manager roles. Let's talk.</span>
+    <div class="footer-actions">
+      <a class="footer-link" href="mailto:ahmed.mostafa.works@gmail.com">Email</a>
+      <a class="footer-link" href="https://linkedin.com/in/eng-ahmedmostafa" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="footer-link" href="/feed.xml">RSS</a>
+      <a class="btn primary footer-cta" href="/contact/">Contact</a>
+    </div>
+  </div>
 </footer>
-<script>
-(function(){
-  var btn = document.getElementById('themeToggle');
-  if(!btn) return;
-  btn.addEventListener('click', function(){
-    var root = document.documentElement;
-    var current = root.getAttribute('data-theme');
-    var isDark = current === 'dark';
-    var next = isDark ? 'light' : 'dark';
-    root.setAttribute('data-theme', next);
-    try{ localStorage.setItem('theme', next); }catch(e){}
-  });
-})();
-</script>
+
+<script src="/site.js" defer></script>
+
 </body>
 </html>

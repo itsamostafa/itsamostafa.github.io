@@ -7,6 +7,13 @@
 <meta charset="UTF-8">
 <script>
 (function(){
+  // Never show /index.html in the address bar
+  try{
+    if(location.pathname.slice(-11) === '/index.html'){
+      history.replaceState(null, '', location.pathname.slice(0, -10) + location.search + location.hash);
+    }
+  }catch(e){}
+
   try{
     var t = localStorage.getItem('theme');
     if(t === 'light' || t === 'dark'){ document.documentElement.setAttribute('data-theme', t); }
@@ -14,20 +21,21 @@
 })();
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Live Classroom: A Product Owner Take-Home | Ahmed Mostafa</title>
-<meta name="description" content="A Product Owner take-home for Zon Net: assumptions, personas, four scoped user stories with edge cases, the teacher flow, and a 5-sprint delivery plan.">
+<title>Product Owner Case Study: User Stories &amp; a 5-Sprint MVP Plan</title>
+<meta name="description" content="A freelance Product Owner engagement: assumptions, personas, four scoped user stories with edge cases, and a five-sprint MVP delivery plan.">
 <meta name="author" content="Ahmed Mostafa">
 <meta name="theme-color" content="#1f3b57">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
 <link rel="canonical" href="https://itsamostafa.github.io/work/live-classroom-po/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Ahmed Mostafa">
-<meta property="og:title" content="Live Classroom: A Product Owner Take-Home">
-<meta property="og:description" content="A Product Owner take-home for Zon Net: assumptions, personas, four scoped user stories with edge cases, the teacher flow, and a 5-sprint delivery plan.">
+<meta property="og:title" content="Product Owner Case Study: User Stories &amp; a 5-Sprint MVP Plan">
+<meta property="og:description" content="A freelance Product Owner engagement: assumptions, personas, four scoped user stories with edge cases, and a five-sprint MVP delivery plan.">
 <meta property="og:url" content="https://itsamostafa.github.io/work/live-classroom-po/">
 <meta property="og:image" content="https://itsamostafa.github.io/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Live Classroom: A Product Owner Take-Home">
-<meta name="twitter:description" content="A Product Owner take-home for Zon Net: assumptions, personas, four scoped user stories with edge cases, the teacher flow, and a 5-sprint delivery plan.">
+<meta name="twitter:title" content="Product Owner Case Study: User Stories &amp; a 5-Sprint MVP Plan">
+<meta name="twitter:description" content="A freelance Product Owner engagement: assumptions, personas, four scoped user stories with edge cases, and a five-sprint MVP delivery plan.">
 <meta name="twitter:image" content="https://itsamostafa.github.io/og-image.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500;1,9..144,600&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -138,7 +146,7 @@
   .ac b{ font-family:var(--mono); font-size:12.5px; color:var(--accent-text); text-transform:uppercase; letter-spacing:.05em; }
   .lede{ font-size:18px; }
 
-  /* ---- extras for teardown / assessment pages ---- */
+  /* ---- extras for case-study pages ---- */
   .pill-row{ display:flex; flex-wrap:wrap; gap:8px; margin:18px 0 4px; }
   .pill-row span{ font-family:var(--mono); font-size:11px; letter-spacing:.04em; text-transform:uppercase; background:var(--accent-soft); color:var(--accent-text); padding:5px 11px; border-radius:100px; }
   .persona{ border:1px solid var(--line); border-radius:12px; background:var(--surface); padding:22px 24px; margin:18px 0; }
@@ -161,12 +169,99 @@
   .flow-label{ font-family:var(--mono); font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--gold-text); text-align:center; margin-bottom:10px; }
   .gutter{ display:flex; align-items:center; justify-content:center; font-family:var(--mono); font-size:10px; color:var(--muted); writing-mode:vertical-rl; padding-top:120px; }
 </style>
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": [
+        "Article",
+        "CreativeWork"
+      ],
+      "@id": "https://itsamostafa.github.io/work/live-classroom-po/#article",
+      "headline": "Shipping a live classroom in 10 weeks",
+      "name": "Shipping a live classroom in 10 weeks",
+      "description": "A freelance Product Owner engagement: assumptions, personas, four scoped user stories with edge cases, and a five-sprint MVP delivery plan.",
+      "url": "https://itsamostafa.github.io/work/live-classroom-po/",
+      "inLanguage": "en",
+      "articleSection": "Product Management Case Studies",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://itsamostafa.github.io/og-image.png",
+        "width": 1200,
+        "height": 630
+      },
+      "author": {
+        "@id": "https://itsamostafa.github.io/#person"
+      },
+      "creator": {
+        "@id": "https://itsamostafa.github.io/#person"
+      },
+      "publisher": {
+        "@id": "https://itsamostafa.github.io/#person"
+      },
+      "copyrightHolder": {
+        "@id": "https://itsamostafa.github.io/#person"
+      },
+      "about": {
+        "@id": "https://itsamostafa.github.io/#person"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://itsamostafa.github.io/work/live-classroom-po/"
+      },
+      "isPartOf": {
+        "@id": "https://itsamostafa.github.io/#website"
+      },
+      "keywords": "product owner, product manager, PRD, product requirements document, case study, Ahmed Mostafa"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://itsamostafa.github.io/work/live-classroom-po/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://itsamostafa.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Work",
+          "item": "https://itsamostafa.github.io/work/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Shipping a live classroom in 10 weeks",
+          "item": "https://itsamostafa.github.io/work/live-classroom-po/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://itsamostafa.github.io/work/live-classroom-po/#webpage",
+      "url": "https://itsamostafa.github.io/work/live-classroom-po/",
+      "name": "Shipping a live classroom in 10 weeks",
+      "isPartOf": {
+        "@id": "https://itsamostafa.github.io/#website"
+      },
+      "about": {
+        "@id": "https://itsamostafa.github.io/#person"
+      },
+      "breadcrumb": {
+        "@id": "https://itsamostafa.github.io/work/live-classroom-po/#breadcrumb"
+      },
+      "inLanguage": "en"
+    }
+  ]
+}</script>
 </head>
 <body>
 <header class="island">
-  <a class="brand" href="../../index.html">Ahmed Mostafa</a>
+  <a class="brand" href="/">Ahmed Mostafa</a>
   <span class="sep"></span>
-  <a class="back" href="../../index.html#work">&larr; Work</a>
+  <a class="back" href="/work/">&larr; Work</a>
   <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" type="button">
     <svg class="sun" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
     <svg class="moon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
@@ -176,10 +271,10 @@
 <main>
 <div class="wrap">
 
-<span class="eyebrow">Work Sample &middot; PO Assessment</span>
+<span class="eyebrow">Work Sample &middot; Freelance Engagement</span>
 <h1 class="title">Shipping a live classroom in 10 weeks</h1>
-<div class="meta"><span>Zon Net Digital Solutions</span><span>Product Owner take-home</span><span>5 engineers &middot; 2-week sprints</span></div>
-<p class="lede">The brief: lead the first usable release of an interactive live-classroom product for MENA EdTech platforms, remote team, eight to ten weeks. Below is the whole reasoning chain &mdash; assumptions, personas, the questions I'd ask before building anything, four scoped stories, the flow, and who decides what when people disagree.</p>
+<div class="meta"><span>Zon Net Digital Solutions</span><span>Freelance engagement</span><span>5 engineers &middot; 2-week sprints</span></div>
+<p class="lede">The brief: lead the first usable release of an interactive live-classroom product for MENA EdTech platforms, remote team, eight to ten weeks. Below is the whole reasoning chain: assumptions, personas, the questions I'd ask before building anything, four scoped stories, the flow, and who decides what when people disagree.</p>
 
 <div class="redact">
   <span class="k">Method note</span>
@@ -189,7 +284,7 @@
 <div class="spec">
 
 <h2><span class="num">01</span>Assumptions, stated before anything else</h2>
-<p>An assessment with no stated assumptions is a guess wearing a suit. Every decision downstream inherits these, so they go first and they go in writing.</p>
+<p>A plan with no stated assumptions is a guess wearing a suit. Every decision downstream inherits these, so they go first and they go in writing.</p>
 <div class="tablewrap">
 <table class="matrix">
   <thead><tr><th>Area</th><th>What I'm assuming</th></tr></thead>
@@ -198,7 +293,7 @@
     <tr><td class="step">Users</td><td>Teachers have moderate technical fluency and use digital tools daily, but struggle to manage interaction in a live room. Students are on mixed devices and mixed bandwidth. Platform admins care about operational reporting and stability, in that order.</td></tr>
     <tr><td class="step">Technical</td><td>Enterprise architecture, scalable to many concurrent sessions without losing performance. Priority order: stream stability, fast API integration, data security.</td></tr>
     <tr><td class="step">Business model</td><td>Buyers evaluate on ease of integration, reliability, and direct effect on learning quality. Speed of implementation and lower support cost move the purchase decision.</td></tr>
-    <tr><td class="step">Constraints</td><td>Five developers, two-week sprints, a short window to a usable first release. Which forces a genuinely small MVP, not a rhetorical one.</td></tr>
+    <tr><td class="step">Constraints</td><td>Five developers, two-week sprints, a short window to a usable first release. That forces a small MVP rather than a rhetorical one.</td></tr>
   </tbody>
 </table>
 </div>
@@ -228,13 +323,13 @@
 </div>
 
 <h2><span class="num">03</span>The questions I'd ask before writing a single story</h2>
-<p>Grouped by what the answer would actually change. A question that changes nothing doesn't get asked.</p>
+<p>Grouped by what the answer would change. A question that changes nothing doesn't get asked.</p>
 
 <div class="qgroup">
   <h3>Founders &amp; leadership</h3>
   <div class="aim">Aim &middot; commercial shape</div>
   <ul>
-    <li>Which customers are we for in phase one &mdash; large platforms or mid-size?</li>
+    <li>Which customers are we for in phase one: large platforms or mid-size?</li>
     <li>What are the success criteria for the first release, stated as numbers?</li>
     <li>How is this priced, and does the pricing model change what we build first?</li>
     <li>Which features do you consider non-negotiable for the MVP?</li>
@@ -257,7 +352,7 @@
 
 <div class="qgroup">
   <h3>Sales</h3>
-  <div class="aim">Aim &middot; what customers actually complain about</div>
+  <div class="aim">Aim &middot; what customers complain about</div>
   <ul>
     <li>What do customers complain about most in the tools they use today?</li>
     <li>Which features decide the purchase, as opposed to appearing on the comparison sheet?</li>
@@ -266,7 +361,7 @@
 </div>
 
 <h2><span class="num">04</span>Four stories, and the format they're written in</h2>
-<p>Every story carries priority, points, dependencies, the layers it touches, acceptance criteria, and &mdash; the part that earns its keep &mdash; a named edge case with its handling. A story without an edge case is a story whose estimate is fiction.</p>
+<p>Every story carries priority, points, dependencies, the layers it touches, acceptance criteria, and a named edge case with its handling. That last one does most of the work. A story without an edge case is a story whose estimate is fiction.</p>
 
 <div class="tablewrap">
 <table class="matrix">
@@ -286,12 +381,12 @@
   <span class="id">Story 01 &middot; Start the class &middot; Must have &middot; 8 points</span>
   <p><b>As a</b> teacher, <b>I want</b> to create and start a live class easily, <b>so that</b> I can begin teaching immediately without technical friction.</p>
   <p><b>Why it's first:</b> this is the entry point to the entire product for a teacher. If it is slow or unreliable, nothing downstream gets a fair hearing.</p>
-  <p><b>Acceptance criteria</b> &mdash; a session can be created in 5 seconds or less; a unique join link is generated automatically; connection status is visible at all times; the session can be started and stopped without hunting for the control.</p>
-  <p><b>Edge case</b> &mdash; session creation fails at the moment the class is due to start. Handling: cache the session state, retry automatically, notify the teacher in plain language, and fall back to audio-only rather than to nothing.</p>
-  <p><b>Notes for the team</b> &mdash; automatic retry, a minimal interface that reduces the number of decisions in a moment of stress, and error logging for monitoring.</p>
+  <p><b>Acceptance criteria.</b> A session can be created in 5 seconds or less; a unique join link is generated automatically; connection status is visible at all times; the session can be started and stopped without hunting for the control.</p>
+  <p><b>Edge case.</b> Session creation fails at the moment the class is due to start. Handling: cache the session state, retry automatically, notify the teacher in plain language, and fall back to audio-only rather than to nothing.</p>
+  <p><b>Notes for the team.</b> Automatic retry, a minimal interface that reduces the number of decisions in a moment of stress, and error logging for monitoring.</p>
 </div>
 
-<p>The same discipline runs through the rest. Hand-raise requests must appear instantly with no refresh, ordered chronologically, accept or reject in one action &mdash; and when updates lag, resync automatically and show the connection state rather than leaving the teacher guessing. Students join in three steps or fewer with no plugin install and automatic quality adaptation &mdash; and on a drop, reconnect automatically and restore the prior state. Attendance logs entry and exit per user, generates after the session ends, and exports to <code>PDF</code> and <code>CSV</code>, with live backup because a lost attendance record is a compliance problem, not an inconvenience.</p>
+<p>The same discipline runs through the rest. Hand-raise requests must appear instantly with no refresh, ordered chronologically, accept or reject in one action. When updates lag, resync automatically and show the connection state rather than leaving the teacher guessing. Students join in three steps or fewer with no plugin install and automatic quality adaptation. On a drop, reconnect automatically and restore the prior state. Attendance logs entry and exit per user, generates after the session ends, and exports to <code>PDF</code> and <code>CSV</code>, with live backup because a lost attendance record is a compliance problem, not an inconvenience.</p>
 
 <h2><span class="num">05</span>The teacher's flow, including the part that fails</h2>
 <p>Most flow diagrams draw the happy path and label the rest "error handling." The connection branch is not an error state here. On mixed MENA bandwidth it is a routine state, so it gets drawn as one.</p>
@@ -353,22 +448,22 @@
     <tr><td class="step">1&ndash;2</td><td>Core classroom infrastructure</td><td>Session creation, joining, stable streaming. Nothing else, because nothing else matters if these three are shaky.</td></tr>
     <tr><td class="step">3</td><td>Interaction layer</td><td>Interaction tools and performance work.</td></tr>
     <tr><td class="step">4</td><td>Reporting &amp; stability</td><td>Attendance reporting, stability hardening.</td></tr>
-    <tr><td class="step">5</td><td>Polish &amp; optimisation</td><td>UX refinement and the technical debt deliberately parked in sprints 1&ndash;4.</td></tr>
+    <tr><td class="step">5</td><td>Polish &amp; optimisation</td><td>UX refinement and the technical debt parked on purpose in sprints 1&ndash;4.</td></tr>
   </tbody>
 </table>
 </div>
 <p>The working loop between teams is short and repeating: <b>Product</b> sets priorities &rarr; <b>UX</b> turns requirements into buildable designs &rarr; <b>Engineering</b> builds and returns feedback early. Communication is continuous through shared tools, because the real risk on a remote team isn't disagreement, it's people working in isolation and only discovering it at review.</p>
 
 <h2><span class="num">08</span>Async-first, and what that costs you</h2>
-<p>Asynchronous by default, with short meetings when a decision needs one. Four ceremonies: planning, daily standup, review, retrospective. <b>Meetings are for decisions and for clearing blockers &mdash; not for status updates that a board can deliver better.</b></p>
-<p>Async only works if the written artefacts carry their weight, so: a backlog that is genuinely current, stories detailed enough to build from without a call, important decisions documented and circulated to everyone affected, and a progress board visible to all. Skip any of those and "async-first" becomes "nobody knows anything."</p>
-<p>The backlog itself is ordered around three things &mdash; user value, technical risk, and dependencies &mdash; with the PO owning the final order after the team has had its say.</p>
+<p>Asynchronous by default, with short meetings when a decision needs one. Four ceremonies: planning, daily standup, review, retrospective. <b>Meetings are for decisions and for clearing blockers, not for status updates a board delivers better.</b></p>
+<p>Async only works if the written artefacts carry their weight, so: a backlog that is current, stories detailed enough to build from without a call, important decisions documented and circulated to everyone affected, and a progress board visible to all. Skip any of those and "async-first" becomes "nobody knows anything."</p>
+<p>The backlog itself is ordered around three things: user value, technical risk, and dependencies. The PO owns the final order after the team has had its say.</p>
 
 <h2><span class="num">09</span>When it goes wrong</h2>
 
 <h3>The release is going to be late</h3>
 <ul>
-  <li>Name the cause honestly: scope, technical, or resources. They have different fixes and only one of them is solved by working harder.</li>
+  <li>Name the cause: scope, technical, or resources. They have different fixes and only one of them is solved by working harder.</li>
   <li><b>Cut scope, don't extend time.</b> Hold the core value and let the rest go.</li>
   <li>Update stakeholder expectations early, while the news is still cheap.</li>
   <li>This is easier when stories were kept small and features were sliced into pieces that each deliver value alone. Slicing is not a formality; it's what makes cutting scope possible without cutting value.</li>
@@ -378,7 +473,7 @@
 <ul>
   <li>Take it out of the meeting if it doesn't concern everyone. Other people's time is a real cost.</li>
   <li>Hear both positions properly, then return to the product goal.</li>
-  <li>Final call sits with the Tech Lead &mdash; as long as the value lands either way, the decision matters less than the speed of making it.</li>
+  <li>Final call sits with the Tech Lead. As long as the value lands either way, the decision matters less than the speed of making it.</li>
 </ul>
 
 <h3>The team says requirements keep moving</h3>
@@ -386,7 +481,7 @@
   <li>Explain the value, then re-order priorities and explain <em>why</em> that order. Priorities without reasons read as randomness.</li>
   <li>Update the stories so the written source of truth matches what was said.</li>
   <li>Protect the sprint from mid-flight change wherever possible. Every unprotected sprint is a rework invoice arriving later.</li>
-  <li>When change is genuinely necessary: assess the impact on the goal, tell stakeholders what it costs the rest of the delivery date, defer anything non-urgent to a later sprint, and use feature flags so a half-built capability can be hidden rather than rushed.</li>
+  <li>When change is necessary: assess the impact on the goal, tell stakeholders what it costs the rest of the delivery date, defer anything non-urgent to a later sprint, and use feature flags so a half-built capability can be hidden rather than rushed.</li>
 </ul>
 
 <blockquote>A backlog tells people what to build. A named decision owner tells them what to do when they disagree about it. Only one of those is usually written down.</blockquote>
@@ -395,14 +490,14 @@
 
 <div class="postnav">
   <a href="../retention-teardown/">&larr; Retention teardown: why users stop coming back</a>
-  <a href="../../index.html#work">Back to work &rarr;</a>
+  <a href="/work/">Back to work &rarr;</a>
 </div>
 
 </div>
 </main>
 
 <footer class="f">
-  &copy; <span id="y"></span> Ahmed Mostafa &middot; <a href="../../index.html">Portfolio</a> &middot; <a href="mailto:ahmed.mostafa.works@gmail.com">Email</a> &middot; <a href="https://linkedin.com/in/eng-ahmedmostafa" target="_blank" rel="noopener">LinkedIn</a>
+  &copy; <span id="y"></span> Ahmed Mostafa &middot; <a href="/">Home</a> &middot; <a href="/work/">Work</a> &middot; <a href="mailto:ahmed.mostafa.works@gmail.com">Email</a> &middot; <a href="https://linkedin.com/in/eng-ahmedmostafa" target="_blank" rel="noopener">LinkedIn</a>
   <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
 </footer>
 <script>

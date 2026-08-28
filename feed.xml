@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Ahmed Mostafa — Notes on product thinking</title>
+    <title>Ahmed Mostafa: Notes on product thinking</title>
     <link>https://itsamostafa.github.io/writing/</link>
     <atom:link href="https://itsamostafa.github.io/feed.xml" rel="self" type="application/rss+xml"/>
     <description>Short, practical notes on product work in regulated and enterprise contexts, by Ahmed Mostafa.</description>
@@ -22,7 +22,7 @@
       <description>A real client PRD, reverse-engineered. How I turned a large, prerequisite-heavy Meta API surface into a flow a non-technical founder could finish without a manual.</description>
     </item>
     <item>
-      <title>What an engineering background actually changes about product work</title>
+      <title>What an engineering background changes, and what it doesn't</title>
       <link>https://itsamostafa.github.io/writing/engineer-to-product-owner/</link>
       <guid isPermaLink="true">https://itsamostafa.github.io/writing/engineer-to-product-owner/</guid>
       <pubDate>Tue, 19 May 2026 09:00:00 +0000</pubDate>

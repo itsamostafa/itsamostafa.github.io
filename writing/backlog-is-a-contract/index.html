@@ -7,6 +7,13 @@
 <meta charset="UTF-8">
 <script>
 (function(){
+  // Never show /index.html in the address bar
+  try{
+    if(location.pathname.slice(-11) === '/index.html'){
+      history.replaceState(null, '', location.pathname.slice(0, -10) + location.search + location.hash);
+    }
+  }catch(e){}
+
   try{
     var t = localStorage.getItem('theme');
     if(t === 'light' || t === 'dark'){ document.documentElement.setAttribute('data-theme', t); }
@@ -19,7 +26,8 @@
 <meta name="description" content="In a regulated product, every user story is an agreement between compliance, engineering, and the business. Treating the backlog that way is what actually cuts rework.">
 <meta name="author" content="Ahmed Mostafa">
 <meta name="theme-color" content="#1f3b57">
-<link rel="alternate" type="application/rss+xml" title="Ahmed Mostafa — Notes on product thinking" href="https://itsamostafa.github.io/feed.xml">
+<link rel="alternate" type="application/rss+xml" title="Ahmed Mostafa: Notes on product thinking" href="https://itsamostafa.github.io/feed.xml">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
 <link rel="canonical" href="https://itsamostafa.github.io/writing/backlog-is-a-contract/">
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2026-08-11T09:00:00+00:00">
@@ -33,7 +41,89 @@
 <meta name="twitter:title" content="Your backlog is a contract, not a to-do list">
 <meta name="twitter:description" content="In a regulated product, every user story is an agreement between compliance, engineering, and the business. Treating the backlog that way is what actually cuts rework.">
 <meta name="twitter:image" content="https://itsamostafa.github.io/og-image.png">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Your backlog is a contract, not a to-do list", "description": "In a regulated product, every user story is an agreement between compliance, engineering, and the business. Treating the backlog that way is what actually cuts rework.", "url": "https://itsamostafa.github.io/writing/backlog-is-a-contract/", "image": "https://itsamostafa.github.io/og-image.png", "author": {"@type": "Person", "name": "Ahmed Mostafa", "url": "https://itsamostafa.github.io/"}, "publisher": {"@type": "Person", "name": "Ahmed Mostafa"}, "mainEntityOfPage": "https://itsamostafa.github.io/writing/backlog-is-a-contract/", "inLanguage": "en", "datePublished": "2026-08-11T09:00:00+00:00", "dateModified": "2026-08-11T09:00:00+00:00"}</script>
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Your backlog is a contract, not a to-do list",
+      "description": "In a regulated product, every user story is an agreement between compliance, engineering, and the business. Treating the backlog that way is what actually cuts rework.",
+      "url": "https://itsamostafa.github.io/writing/backlog-is-a-contract/",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://itsamostafa.github.io/og-image.png",
+        "width": 1200,
+        "height": 630
+      },
+      "author": {
+        "@id": "https://itsamostafa.github.io/#person"
+      },
+      "publisher": {
+        "@id": "https://itsamostafa.github.io/#person"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://itsamostafa.github.io/writing/backlog-is-a-contract/"
+      },
+      "inLanguage": "en",
+      "datePublished": "2026-08-11T09:00:00+00:00",
+      "dateModified": "2026-08-11T09:00:00+00:00",
+      "@id": "https://itsamostafa.github.io/writing/backlog-is-a-contract/#article",
+      "copyrightHolder": {
+        "@id": "https://itsamostafa.github.io/#person"
+      },
+      "isPartOf": {
+        "@id": "https://itsamostafa.github.io/writing/#blog"
+      },
+      "articleSection": "Product Management"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://itsamostafa.github.io/writing/backlog-is-a-contract/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://itsamostafa.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Writing",
+          "item": "https://itsamostafa.github.io/writing/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Your backlog is a contract, not a to-do list",
+          "item": "https://itsamostafa.github.io/writing/backlog-is-a-contract/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://itsamostafa.github.io/writing/backlog-is-a-contract/#webpage",
+      "url": "https://itsamostafa.github.io/writing/backlog-is-a-contract/",
+      "name": "Your backlog is a contract, not a to-do list",
+      "isPartOf": {
+        "@id": "https://itsamostafa.github.io/#website"
+      },
+      "about": {
+        "@id": "https://itsamostafa.github.io/#person"
+      },
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "https://itsamostafa.github.io/og-image.png"
+      },
+      "breadcrumb": {
+        "@id": "https://itsamostafa.github.io/writing/backlog-is-a-contract/#breadcrumb"
+      },
+      "inLanguage": "en"
+    }
+  ]
+}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500;1,9..144,600&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
@@ -122,7 +212,7 @@
 </head>
 <body>
 <header class="island">
-  <a class="brand" href="../index.html">Ahmed Mostafa</a>
+  <a class="brand" href="/">Ahmed Mostafa</a>
   <span class="sep"></span>
   <a class="back" href="https://itsamostafa.github.io/writing/">← All notes</a>
   <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" type="button">
@@ -136,10 +226,10 @@
 <span class="eyebrow">Product Notes</span>
 <h1 class="title">Your backlog is a contract, not a to-do list</h1>
 <div class="meta"><span>By Ahmed Mostafa</span><span><time datetime="2026-08-11">Aug 11, 2026</time></span><span>7 min read</span></div>
-<p class="lede">Most teams treat the backlog as a queue of things to build. In a regulated product, that framing is quietly expensive. The backlog is not a list of tasks. It is a set of agreements, and every one of them has a counterparty.</p>
+<p class="lede">Most teams treat the backlog as a queue of things to build. In a regulated product, that framing is expensive. The backlog is not a list of tasks. It is a set of agreements, and every one of them has a counterparty.</p>
 
 <article>
-<p>Here is a pattern I kept running into. A story looks done. It passes review. It ships. Then three weeks later it comes back, because compliance reads it differently than engineering did, and the version that shipped satisfies neither. Nobody lied. Nobody was careless. The story was just never actually agreed on. It only looked agreed on.</p>
+<p>Here is a pattern I kept running into. A story looks done. It passes review. It ships. Then three weeks later it comes back, because compliance reads it differently than engineering did, and the version that shipped satisfies neither. Nobody lied. Nobody was careless. The story was never agreed on. It only looked agreed on.</p>
 
 <p>That gap is where rework lives. And it does not close by writing more detailed tickets. It closes by changing what you think a backlog item is for.</p>
 
@@ -151,8 +241,8 @@
 
 <ul>
 <li><b>Compliance</b>, who cares whether the flow is auditable and whether it can be defended to a regulator later.</li>
-<li><b>Engineering</b>, who cares whether the flow is buildable, testable, and doesn't quietly assume a system that doesn't exist.</li>
-<li><b>The business</b>, who cares whether the flow actually moves the number it was supposed to move.</li>
+<li><b>Engineering</b>, who cares whether the flow is buildable, testable, and doesn't assume a system that doesn't exist.</li>
+<li><b>The business</b>, who cares whether the flow moves the number it was supposed to move.</li>
 </ul>
 
 <p>If you write the story for only one of them, the other two will renegotiate it later. Except "later" means after it's built, which is the most expensive possible time to negotiate.</p>
@@ -169,7 +259,7 @@
 
 <p>On one platform I worked on, reframing stories this way was a meaningful part of cutting rework by about 30 percent. Not because the stories got longer. Some of them got shorter. Because the acceptance criteria stopped being my prediction of what "good" meant and started being a thing compliance and engineering had both already nodded at.</p>
 
-<h2>How do you actually write one?</h2>
+<h2>How do you write one?</h2>
 
 <p>I do not have a template to sell you, and I'd be suspicious of anyone who does. But there are a few habits that make a story behave like a contract instead of a wish.</p>
 
@@ -186,7 +276,7 @@
 
 <h2>What this changes about your job</h2>
 
-<p>If you accept the framing, the product owner's job shifts a little. You are less of a scribe who captures requirements and more of a broker who gets parties to actually agree, and then writes down what they agreed to in language none of them can later wriggle out of.</p>
+<p>If you accept the framing, the product owner's job shifts a little. You are less of a scribe who captures requirements and more of a broker who gets parties to agree, and then writes down what they agreed to in language none of them can later wriggle out of.</p>
 
 <p>That is less glamorous than "product visionary." It is also most of the job, in any domain where getting it wrong has a cost beyond a bug report.</p>
 
@@ -211,7 +301,7 @@
 </div>
 </main>
 <footer class="f">
-  © <span id="y"></span> Ahmed Mostafa · <a href="../index.html">Portfolio</a> · <a href="mailto:ahmed.mostafa.works@gmail.com">Email</a> · <a href="https://linkedin.com/in/eng-ahmedmostafa" target="_blank" rel="noopener">LinkedIn</a>
+  © <span id="y"></span> Ahmed Mostafa · <a href="/">Home</a> · <a href="/writing/">Writing</a> · <a href="mailto:ahmed.mostafa.works@gmail.com">Email</a> · <a href="https://linkedin.com/in/eng-ahmedmostafa" target="_blank" rel="noopener">LinkedIn</a>
   <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
 </footer>
 <script>

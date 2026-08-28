@@ -7,6 +7,13 @@
 <meta charset="UTF-8">
 <script>
 (function(){
+  // Never show /index.html in the address bar
+  try{
+    if(location.pathname.slice(-11) === '/index.html'){
+      history.replaceState(null, '', location.pathname.slice(0, -10) + location.search + location.hash);
+    }
+  }catch(e){}
+
   try{
     var t = localStorage.getItem('theme');
     if(t === 'light' || t === 'dark'){ document.documentElement.setAttribute('data-theme', t); }
@@ -19,7 +26,8 @@
 <meta name="description" content="A real client PRD, reverse-engineered. How I turned a large, prerequisite-heavy Meta API surface into a flow a non-technical founder could finish without a manual.">
 <meta name="author" content="Ahmed Mostafa">
 <meta name="theme-color" content="#1f3b57">
-<link rel="alternate" type="application/rss+xml" title="Ahmed Mostafa — Notes on product thinking" href="https://itsamostafa.github.io/feed.xml">
+<link rel="alternate" type="application/rss+xml" title="Ahmed Mostafa: Notes on product thinking" href="https://itsamostafa.github.io/feed.xml">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
 <link rel="canonical" href="https://itsamostafa.github.io/writing/meta-api-to-wizard/">
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2026-07-06T09:00:00+00:00">
@@ -33,7 +41,89 @@
 <meta name="twitter:title" content="Turning a sprawling API into a five-step wizard">
 <meta name="twitter:description" content="A real client PRD, reverse-engineered. How I turned a large, prerequisite-heavy Meta API surface into a flow a non-technical founder could finish without a manual.">
 <meta name="twitter:image" content="https://itsamostafa.github.io/og-image.png">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Turning a sprawling API into a five-step wizard", "description": "A real client PRD, reverse-engineered. How I turned a large, prerequisite-heavy Meta API surface into a flow a non-technical founder could finish without a manual.", "url": "https://itsamostafa.github.io/writing/meta-api-to-wizard/", "image": "https://itsamostafa.github.io/og-image.png", "author": {"@type": "Person", "name": "Ahmed Mostafa", "url": "https://itsamostafa.github.io/"}, "publisher": {"@type": "Person", "name": "Ahmed Mostafa"}, "mainEntityOfPage": "https://itsamostafa.github.io/writing/meta-api-to-wizard/", "inLanguage": "en", "datePublished": "2026-07-06T09:00:00+00:00", "dateModified": "2026-07-06T09:00:00+00:00"}</script>
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Turning a sprawling API into a five-step wizard",
+      "description": "A real client PRD, reverse-engineered. How I turned a large, prerequisite-heavy Meta API surface into a flow a non-technical founder could finish without a manual.",
+      "url": "https://itsamostafa.github.io/writing/meta-api-to-wizard/",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://itsamostafa.github.io/og-image.png",
+        "width": 1200,
+        "height": 630
+      },
+      "author": {
+        "@id": "https://itsamostafa.github.io/#person"
+      },
+      "publisher": {
+        "@id": "https://itsamostafa.github.io/#person"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://itsamostafa.github.io/writing/meta-api-to-wizard/"
+      },
+      "inLanguage": "en",
+      "datePublished": "2026-07-06T09:00:00+00:00",
+      "dateModified": "2026-07-06T09:00:00+00:00",
+      "@id": "https://itsamostafa.github.io/writing/meta-api-to-wizard/#article",
+      "copyrightHolder": {
+        "@id": "https://itsamostafa.github.io/#person"
+      },
+      "isPartOf": {
+        "@id": "https://itsamostafa.github.io/writing/#blog"
+      },
+      "articleSection": "Product Management"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://itsamostafa.github.io/writing/meta-api-to-wizard/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://itsamostafa.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Writing",
+          "item": "https://itsamostafa.github.io/writing/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Turning a sprawling API into a five-step wizard",
+          "item": "https://itsamostafa.github.io/writing/meta-api-to-wizard/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://itsamostafa.github.io/writing/meta-api-to-wizard/#webpage",
+      "url": "https://itsamostafa.github.io/writing/meta-api-to-wizard/",
+      "name": "Turning a sprawling API into a five-step wizard",
+      "isPartOf": {
+        "@id": "https://itsamostafa.github.io/#website"
+      },
+      "about": {
+        "@id": "https://itsamostafa.github.io/#person"
+      },
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "https://itsamostafa.github.io/og-image.png"
+      },
+      "breadcrumb": {
+        "@id": "https://itsamostafa.github.io/writing/meta-api-to-wizard/#breadcrumb"
+      },
+      "inLanguage": "en"
+    }
+  ]
+}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500;1,9..144,600&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
@@ -122,7 +212,7 @@
 </head>
 <body>
 <header class="island">
-  <a class="brand" href="../index.html">Ahmed Mostafa</a>
+  <a class="brand" href="/">Ahmed Mostafa</a>
   <span class="sep"></span>
   <a class="back" href="https://itsamostafa.github.io/writing/">← All notes</a>
   <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" type="button">
@@ -151,7 +241,7 @@
 
 <p>The API's structure is optimized for the machine. It groups things by capability. But the user does not think in capabilities. They think "I want my business to show up and take payments." If the flow is organized around the API, the user is forced to learn the API's shape just to complete a task they never wanted to understand. That is where drop-off comes from.</p>
 
-<p>So the first real decision was to throw away the API's ordering as a UX principle and rebuild the sequence around the user's goal, then map that sequence back onto what the API actually requires under the hood.</p>
+<p>So the first real decision was to throw away the API's ordering as a UX principle and rebuild the sequence around the user's goal, then map that sequence back onto what the API requires under the hood.</p>
 
 <h2>How do you find the real sequence?</h2>
 
@@ -164,13 +254,13 @@
 <li><b>Collapse anything the user should not have to think about</b> into a step they never see.</li>
 </ul>
 
-<p>What came out was five steps. Not because five is a nice number, but because that is how many decision points genuinely require the user. Everything else was either automatic, or a prerequisite check that belonged behind the scenes.</p>
+<p>What came out was five steps. Not because five is a nice number, but because that is how many decision points require the user. Everything else was either automatic, or a prerequisite check that belonged behind the scenes.</p>
 
 <div class="callout"><span class="k">The Decision-Point Rule</span><p>The number of steps in a good wizard equals the number of decisions only the user can make. Not the number of API calls, not the number of capabilities, not the number of screens that felt natural to design. Every step beyond that count is you making the user do your system's bookkeeping.</p></div>
 
-<h2>What goes in a PRD that engineering can actually build from?</h2>
+<h2>What goes in a PRD that engineering can build from?</h2>
 
-<p>This is where a lot of PRDs quietly fail. They describe the feature and leave the hard parts as "TBD in design" or "handle errors gracefully." Those phrases are where the project goes to die.</p>
+<p>This is where a lot of PRDs fail. They describe the feature and leave the hard parts as "TBD in design" or "handle errors gracefully." Those phrases are where the project goes to die.</p>
 
 <p>The version I delivered was written to be handed straight to an engineer with no meeting attached. That meant three things had to be non-negotiable.</p>
 
@@ -185,7 +275,7 @@
 
 <h2>The part that mattered more than the flow</h2>
 
-<p>I delivered the five-step wizard on spec. But the thing I am actually glad I did was what came after: I used the same dependency-graph method to sketch a roadmap of six more onboarding wizards, all built on the same architecture, and brought that to the client unprompted.</p>
+<p>I delivered the five-step wizard on spec. But the thing I am glad I did was what came after: I used the same dependency-graph method to sketch a roadmap of six more onboarding wizards, all built on the same architecture, and brought that to the client unprompted.</p>
 
 <p>That reframed the engagement. It stopped being "here is the thing you asked for" and became "here is a repeatable way to onboard users onto anything, and here is what to build next." One is a deliverable. The other is a reason to keep working together.</p>
 
@@ -206,13 +296,13 @@
 </div>
 <div class="postnav">
   <a href="/writing/backlog-is-a-contract/">← Previous: Your backlog is a contract</a>
-  <a href="/writing/engineer-to-product-owner/">Next: What an engineering background actually changes →</a>
+  <a href="/writing/engineer-to-product-owner/">Next: What an engineering background changes →</a>
 </div>
 
 </div>
 </main>
 <footer class="f">
-  © <span id="y"></span> Ahmed Mostafa · <a href="../index.html">Portfolio</a> · <a href="mailto:ahmed.mostafa.works@gmail.com">Email</a> · <a href="https://linkedin.com/in/eng-ahmedmostafa" target="_blank" rel="noopener">LinkedIn</a>
+  © <span id="y"></span> Ahmed Mostafa · <a href="/">Home</a> · <a href="/writing/">Writing</a> · <a href="mailto:ahmed.mostafa.works@gmail.com">Email</a> · <a href="https://linkedin.com/in/eng-ahmedmostafa" target="_blank" rel="noopener">LinkedIn</a>
   <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
 </footer>
 <script>

@@ -7,6 +7,13 @@
 <meta charset="UTF-8">
 <script>
 (function(){
+  // Never show /index.html in the address bar
+  try{
+    if(location.pathname.slice(-11) === '/index.html'){
+      history.replaceState(null, '', location.pathname.slice(0, -10) + location.search + location.hash);
+    }
+  }catch(e){}
+
   try{
     var t = localStorage.getItem('theme');
     if(t === 'light' || t === 'dark'){ document.documentElement.setAttribute('data-theme', t); }
@@ -15,25 +22,108 @@
 </script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>What an engineering background actually changes about product work</title>
+<title>What an engineering background changes, and what it doesn't</title>
 <meta name="description" content="Not the cliches. The specific, concrete ways an Electronics and Communications Engineering background changes how I pressure-test feasibility and talk to engineering teams.">
 <meta name="author" content="Ahmed Mostafa">
 <meta name="theme-color" content="#1f3b57">
-<link rel="alternate" type="application/rss+xml" title="Ahmed Mostafa — Notes on product thinking" href="https://itsamostafa.github.io/feed.xml">
+<link rel="alternate" type="application/rss+xml" title="Ahmed Mostafa: Notes on product thinking" href="https://itsamostafa.github.io/feed.xml">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
 <link rel="canonical" href="https://itsamostafa.github.io/writing/engineer-to-product-owner/">
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2026-05-19T09:00:00+00:00">
 <meta property="article:modified_time" content="2026-05-19T09:00:00+00:00">
 <meta property="og:site_name" content="Ahmed Mostafa">
-<meta property="og:title" content="What an engineering background actually changes about product work">
+<meta property="og:title" content="What an engineering background changes, and what it doesn't">
 <meta property="og:description" content="Not the cliches. The specific, concrete ways an Electronics and Communications Engineering background changes how I pressure-test feasibility and talk to engineering teams.">
 <meta property="og:url" content="https://itsamostafa.github.io/writing/engineer-to-product-owner/">
 <meta property="og:image" content="https://itsamostafa.github.io/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="What an engineering background actually changes about product work">
+<meta name="twitter:title" content="What an engineering background changes, and what it doesn't">
 <meta name="twitter:description" content="Not the cliches. The specific, concrete ways an Electronics and Communications Engineering background changes how I pressure-test feasibility and talk to engineering teams.">
 <meta name="twitter:image" content="https://itsamostafa.github.io/og-image.png">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "What an engineering background actually changes about product work", "description": "Not the cliches. The specific, concrete ways an Electronics and Communications Engineering background changes how I pressure-test feasibility and talk to engineering teams.", "url": "https://itsamostafa.github.io/writing/engineer-to-product-owner/", "image": "https://itsamostafa.github.io/og-image.png", "author": {"@type": "Person", "name": "Ahmed Mostafa", "url": "https://itsamostafa.github.io/"}, "publisher": {"@type": "Person", "name": "Ahmed Mostafa"}, "mainEntityOfPage": "https://itsamostafa.github.io/writing/engineer-to-product-owner/", "inLanguage": "en", "datePublished": "2026-05-19T09:00:00+00:00", "dateModified": "2026-05-19T09:00:00+00:00"}</script>
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "What an engineering background changes, and what it doesn't",
+      "description": "Not the cliches. The specific, concrete ways an Electronics and Communications Engineering background changes how I pressure-test feasibility and talk to engineering teams.",
+      "url": "https://itsamostafa.github.io/writing/engineer-to-product-owner/",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://itsamostafa.github.io/og-image.png",
+        "width": 1200,
+        "height": 630
+      },
+      "author": {
+        "@id": "https://itsamostafa.github.io/#person"
+      },
+      "publisher": {
+        "@id": "https://itsamostafa.github.io/#person"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://itsamostafa.github.io/writing/engineer-to-product-owner/"
+      },
+      "inLanguage": "en",
+      "datePublished": "2026-05-19T09:00:00+00:00",
+      "dateModified": "2026-05-19T09:00:00+00:00",
+      "@id": "https://itsamostafa.github.io/writing/engineer-to-product-owner/#article",
+      "copyrightHolder": {
+        "@id": "https://itsamostafa.github.io/#person"
+      },
+      "isPartOf": {
+        "@id": "https://itsamostafa.github.io/writing/#blog"
+      },
+      "articleSection": "Product Management"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://itsamostafa.github.io/writing/engineer-to-product-owner/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://itsamostafa.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Writing",
+          "item": "https://itsamostafa.github.io/writing/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "What an engineering background changes, and what it doesn't",
+          "item": "https://itsamostafa.github.io/writing/engineer-to-product-owner/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://itsamostafa.github.io/writing/engineer-to-product-owner/#webpage",
+      "url": "https://itsamostafa.github.io/writing/engineer-to-product-owner/",
+      "name": "What an engineering background changes, and what it doesn't",
+      "isPartOf": {
+        "@id": "https://itsamostafa.github.io/#website"
+      },
+      "about": {
+        "@id": "https://itsamostafa.github.io/#person"
+      },
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "https://itsamostafa.github.io/og-image.png"
+      },
+      "breadcrumb": {
+        "@id": "https://itsamostafa.github.io/writing/engineer-to-product-owner/#breadcrumb"
+      },
+      "inLanguage": "en"
+    }
+  ]
+}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500;1,9..144,600&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
@@ -122,7 +212,7 @@
 </head>
 <body>
 <header class="island">
-  <a class="brand" href="../index.html">Ahmed Mostafa</a>
+  <a class="brand" href="/">Ahmed Mostafa</a>
   <span class="sep"></span>
   <a class="back" href="https://itsamostafa.github.io/writing/">← All notes</a>
   <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" type="button">
@@ -134,14 +224,14 @@
 <div class="wrap">
 
 <span class="eyebrow">Product Notes</span>
-<h1 class="title">What an engineering background actually changes about product work</h1>
+<h1 class="title">What an engineering background changes, and what it doesn't</h1>
 <div class="meta"><span>By Ahmed Mostafa</span><span><time datetime="2026-05-19">May 19, 2026</time></span><span>6 min read</span></div>
 <p class="lede">"Technical PM" is a phrase people use to mean nothing in particular. I want to be precise about what an engineering background does and does not give you in a product role, because most of the claimed benefits are fake and one or two are real.</p>
 
 <article>
 <p>I studied Electronics and Communications Engineering. I did hands-on software testing before I did product. When people hear that, they assume it means I can "talk to engineers," which is true but useless as a claim, because everyone says it and it commits to nothing.</p>
 
-<p>So let me be concrete about what actually transfers, and what does not.</p>
+<p>So let me be concrete about what transfers, and what does not.</p>
 
 <h2>What does not transfer (say it first)</h2>
 
@@ -151,7 +241,7 @@
 
 <p>If you come from engineering, this is the tax you have to pay on purpose. You will feel drawn to elegant solutions and hard technical challenges. Most of your job is talking people, including yourself, out of those when they do not serve the user.</p>
 
-<h2>What actually transfers</h2>
+<h2>What transfers</h2>
 
 <p>With that said, two things transfer, and they are worth a lot.</p>
 
@@ -168,11 +258,11 @@
 <p>Here is the part people mean but never explain. "Talking to engineers" is not about vocabulary. It is about asking questions that let an engineer tell you the truth without having to translate it down first.</p>
 
 <ul>
-<li>A non-technical PM asks "can we do this by Friday." The honest answer is complicated, so the engineer gives a simplified one, and information is lost.</li>
+<li>A non-technical PM asks "can we do this by Friday." The real answer is complicated, so the engineer gives a simplified one, and information is lost.</li>
 <li>A question like "what would have to be true for this to be safe by Friday, and what are we trading away to get there" invites the real answer. The tradeoff, the risk, the shortcut and its cost.</li>
 </ul>
 
-<p>The background helps because you can hold the real answer once you get it. Engineers ration detail based on whether they think you can use it. When they sense you can, they stop rounding, and you start getting the information you actually need to decide.</p>
+<p>The background helps because you can hold the real answer once you get it. Engineers ration detail based on whether they think you can use it. When they sense you can, they stop rounding, and you start getting the information you need to decide.</p>
 
 <div class="callout"><span class="k">The Rounding Problem</span><p>Engineers round the truth down for whoever is asking, because handing over the full, messy version to someone who can't act on it just wastes everyone's time. The benefit of a technical background is not that you speak the language. It is that engineers stop rounding for you, so you get to make decisions on the un-rounded version of reality.</p></div>
 
@@ -185,14 +275,14 @@
 <ul>
 <li><b>Use the technical read to find the risk, then hand the solution back.</b> My job is to surface "this is harder than it looks and here is why." It is not to decide how they solve it.</li>
 <li><b>State feasibility as a question, not a verdict.</b> "Does this assume X" leaves room to be wrong, which I frequently am. "This won't work" closes a door I don't have the standing to close.</li>
-<li><b>Let the metric, not the elegance, break ties.</b> When I feel pulled toward the interesting solution, that pull is the signal to go re-check what the user actually needs.</li>
+<li><b>Let the metric, not the elegance, break ties.</b> When I feel pulled toward the interesting solution, that pull is the signal to go re-check what the user needs.</li>
 </ul>
 
 <h2>So is it an advantage?</h2>
 
 <p>Yes, but a narrow and specific one. It buys you earlier feasibility signals and un-rounded conversations with engineering. It buys you nothing on prioritization, taste, or knowing what matters, and it actively tempts you toward building the wrong thing well.</p>
 
-<p>Treated honestly, it is a very good tool for one part of the job. Treated as an identity, it quietly makes you worse at the rest of it. The trick is knowing which part you are in.</p>
+<p>Treated as a tool, it is a very good one for one part of the job. Treated as an identity, it makes you worse at the rest of it. The trick is knowing which part you are in.</p>
 </article>
 
 <div class="share">
@@ -213,7 +303,7 @@
 </div>
 </main>
 <footer class="f">
-  © <span id="y"></span> Ahmed Mostafa · <a href="../index.html">Portfolio</a> · <a href="mailto:ahmed.mostafa.works@gmail.com">Email</a> · <a href="https://linkedin.com/in/eng-ahmedmostafa" target="_blank" rel="noopener">LinkedIn</a>
+  © <span id="y"></span> Ahmed Mostafa · <a href="/">Home</a> · <a href="/writing/">Writing</a> · <a href="mailto:ahmed.mostafa.works@gmail.com">Email</a> · <a href="https://linkedin.com/in/eng-ahmedmostafa" target="_blank" rel="noopener">LinkedIn</a>
   <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
 </footer>
 <script>

@@ -7,6 +7,13 @@
 <meta charset="UTF-8">
 <script>
 (function(){
+  // Never show /index.html in the address bar
+  try{
+    if(location.pathname.slice(-11) === '/index.html'){
+      history.replaceState(null, '', location.pathname.slice(0, -10) + location.search + location.hash);
+    }
+  }catch(e){}
+
   try{
     var t = localStorage.getItem('theme');
     if(t === 'light' || t === 'dark'){ document.documentElement.setAttribute('data-theme', t); }
@@ -14,20 +21,21 @@
 })();
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Retention Teardown: Why Users Stop Coming Back | Ahmed Mostafa</title>
-<meta name="description" content="A product take-home for Daleel Store: separating users who churned from users who simply finished, and a 90-day plan built on that split.">
+<title>Retention Analysis Example: Churn vs. Users Who Finished</title>
+<meta name="description" content="Retention analysis from a real client engagement: separating churned users from users who simply finished, and the 90-day plan built on that split.">
 <meta name="author" content="Ahmed Mostafa">
 <meta name="theme-color" content="#1f3b57">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
 <link rel="canonical" href="https://itsamostafa.github.io/work/retention-teardown/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Ahmed Mostafa">
-<meta property="og:title" content="Retention Teardown: Why Users Stop Coming Back">
-<meta property="og:description" content="A product take-home for Daleel Store: separating users who churned from users who simply finished, and a 90-day plan built on that split.">
+<meta property="og:title" content="Retention Analysis Example: Churn vs. Users Who Finished">
+<meta property="og:description" content="Retention analysis from a real client engagement: separating churned users from users who simply finished, and the 90-day plan built on that split.">
 <meta property="og:url" content="https://itsamostafa.github.io/work/retention-teardown/">
 <meta property="og:image" content="https://itsamostafa.github.io/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Retention Teardown: Why Users Stop Coming Back">
-<meta name="twitter:description" content="A product take-home for Daleel Store: separating users who churned from users who simply finished, and a 90-day plan built on that split.">
+<meta name="twitter:title" content="Retention Analysis Example: Churn vs. Users Who Finished">
+<meta name="twitter:description" content="Retention analysis from a real client engagement: separating churned users from users who simply finished, and the 90-day plan built on that split.">
 <meta name="twitter:image" content="https://itsamostafa.github.io/og-image.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500;1,9..144,600&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -138,7 +146,7 @@
   .ac b{ font-family:var(--mono); font-size:12.5px; color:var(--accent-text); text-transform:uppercase; letter-spacing:.05em; }
   .lede{ font-size:18px; }
 
-  /* ---- extras for teardown / assessment pages ---- */
+  /* ---- extras for case-study pages ---- */
   .pill-row{ display:flex; flex-wrap:wrap; gap:8px; margin:18px 0 4px; }
   .pill-row span{ font-family:var(--mono); font-size:11px; letter-spacing:.04em; text-transform:uppercase; background:var(--accent-soft); color:var(--accent-text); padding:5px 11px; border-radius:100px; }
   .persona{ border:1px solid var(--line); border-radius:12px; background:var(--surface); padding:22px 24px; margin:18px 0; }
@@ -161,12 +169,99 @@
   .flow-label{ font-family:var(--mono); font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--gold-text); text-align:center; margin-bottom:10px; }
   .gutter{ display:flex; align-items:center; justify-content:center; font-family:var(--mono); font-size:10px; color:var(--muted); writing-mode:vertical-rl; padding-top:120px; }
 </style>
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": [
+        "Article",
+        "CreativeWork"
+      ],
+      "@id": "https://itsamostafa.github.io/work/retention-teardown/#article",
+      "headline": "Why users stop coming back",
+      "name": "Why users stop coming back",
+      "description": "Retention analysis from a real client engagement: separating churned users from users who simply finished, and the 90-day plan built on that split.",
+      "url": "https://itsamostafa.github.io/work/retention-teardown/",
+      "inLanguage": "en",
+      "articleSection": "Product Management Case Studies",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://itsamostafa.github.io/og-image.png",
+        "width": 1200,
+        "height": 630
+      },
+      "author": {
+        "@id": "https://itsamostafa.github.io/#person"
+      },
+      "creator": {
+        "@id": "https://itsamostafa.github.io/#person"
+      },
+      "publisher": {
+        "@id": "https://itsamostafa.github.io/#person"
+      },
+      "copyrightHolder": {
+        "@id": "https://itsamostafa.github.io/#person"
+      },
+      "about": {
+        "@id": "https://itsamostafa.github.io/#person"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://itsamostafa.github.io/work/retention-teardown/"
+      },
+      "isPartOf": {
+        "@id": "https://itsamostafa.github.io/#website"
+      },
+      "keywords": "product owner, product manager, PRD, product requirements document, case study, Ahmed Mostafa"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://itsamostafa.github.io/work/retention-teardown/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://itsamostafa.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Work",
+          "item": "https://itsamostafa.github.io/work/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Why users stop coming back",
+          "item": "https://itsamostafa.github.io/work/retention-teardown/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://itsamostafa.github.io/work/retention-teardown/#webpage",
+      "url": "https://itsamostafa.github.io/work/retention-teardown/",
+      "name": "Why users stop coming back",
+      "isPartOf": {
+        "@id": "https://itsamostafa.github.io/#website"
+      },
+      "about": {
+        "@id": "https://itsamostafa.github.io/#person"
+      },
+      "breadcrumb": {
+        "@id": "https://itsamostafa.github.io/work/retention-teardown/#breadcrumb"
+      },
+      "inLanguage": "en"
+    }
+  ]
+}</script>
 </head>
 <body>
 <header class="island">
-  <a class="brand" href="../../index.html">Ahmed Mostafa</a>
+  <a class="brand" href="/">Ahmed Mostafa</a>
   <span class="sep"></span>
-  <a class="back" href="../../index.html#work">&larr; Work</a>
+  <a class="back" href="/work/">&larr; Work</a>
   <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" type="button">
     <svg class="sun" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
     <svg class="moon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
@@ -178,27 +273,27 @@
 
 <span class="eyebrow">Work Sample &middot; Retention Teardown</span>
 <h1 class="title">Why users stop coming back</h1>
-<div class="meta"><span>Daleel Store</span><span>Product Manager take-home</span><span>Jan 2026</span><span>90-day plan</span></div>
+<div class="meta"><span>Daleel Store</span><span>Freelance consultation</span><span>Jan 2026</span><span>90-day plan</span></div>
 <p class="lede">Signups were growing. Retention after the first purchase was not. The brief called it a retention problem. The first thing I did was argue with the brief.</p>
 
 <div class="redact">
   <span class="k">Context note</span>
-  <p>Written as a take-home for Daleel Store with no access to their internal data, so every claim below is framed as a hypothesis with a way to test it, not a finding. Originally delivered in Arabic; this is my own translation, tightened. Names and commercial details of the people involved are omitted.</p>
+  <p>Written for Daleel Store at the opening of the engagement, before any access to their internal data, so every claim below is framed as a hypothesis with a way to test it, not a finding. Originally delivered in Arabic; this is my own translation, tightened. Names and commercial details of the people involved are omitted.</p>
 </div>
 
 <div class="spec">
 
 <h2><span class="num">01</span>The reframe: the Finished/Churned Split</h2>
-<p><b>Churn is a user who had a reason to come back and didn't. "Finished" is a user whose job is genuinely done.</b> They look identical in a retention chart. They are opposite problems.</p>
+<p><b>Churn is a user who had a reason to come back and didn't. "Finished" is a user whose job is done.</b> They look identical in a retention chart. They are opposite problems.</p>
 <p>This is the whole argument. If you treat a finished user as churned, you build re-engagement machinery for people who were never coming back, and you make the product heavier for everyone who was. If you treat a churned user as finished, you accept a leak as a law of nature.</p>
 <p>So before any initiative: split the base behaviourally into <b>single-purpose usage</b> and <b>plausible repeat usage</b>, and only optimise against the second.</p>
 
 <h2><span class="num">02</span>Three diagnoses that all look like "retention is down"</h2>
 <div class="tablewrap">
 <table class="matrix">
-  <thead><tr><th>Diagnosis</th><th>What actually happened</th><th>What it demands</th></tr></thead>
+  <thead><tr><th>Diagnosis</th><th>What happened</th><th>What it demands</th></tr></thead>
   <tbody>
-    <tr><td class="step">Churn</td><td>The user reached core value and had a clear reason to return &mdash; and didn't.</td><td>Fix the return path. This is the only one re-engagement work belongs to.</td></tr>
+    <tr><td class="step">Churn</td><td>The user reached core value and had a clear reason to return, and didn't.</td><td>Fix the return path. This is the only one re-engagement work belongs to.</td></tr>
     <tr><td class="step">Low engagement</td><td>The user never reached core value in the first place, or not enough of it to judge.</td><td>Fix activation and time-to-first-value. Reminders here just annoy someone who never got the point.</td></tr>
     <tr><td class="step">Weak PMF</td><td>The product doesn't solve a recurring or high-priority problem <em>at its current price</em>.</td><td>Fix positioning, pricing, or segment. No amount of UX work moves this.</td></tr>
   </tbody>
@@ -217,21 +312,21 @@
 </ul>
 <p>That last one is the uncomfortable hypothesis, which is exactly why it goes on the list.</p>
 
-<h2><span class="num">04</span>Three metrics, deliberately</h2>
+<h2><span class="num">04</span>Three metrics, and no more</h2>
 <ul>
-  <li><b>Activation rate</b> &mdash; did the user actually reach core value?</li>
-  <li><b>Time to First Value (TTFV)</b> &mdash; how much time and effort before the product feels useful?</li>
-  <li><b>Repeat usage / re-engagement</b> &mdash; does a natural return pattern exist at all?</li>
+  <li><b>Activation rate.</b> Did the user reach core value?</li>
+  <li><b>Time to First Value (TTFV).</b> How much time and effort before the product feels useful?</li>
+  <li><b>Repeat usage / re-engagement.</b> Does a natural return pattern exist at all?</li>
 </ul>
 <p>Alongside those, three things to trace: the last step completed before the drop, the gap between first use and any return attempt, and what returners did differently in their <em>first</em> session.</p>
-<blockquote>The goal isn't to collect more data. It's to locate the moment of separation precisely.</blockquote>
+<blockquote>The goal isn't to collect more data. It's to locate the moment of separation.</blockquote>
 
 <h2><span class="num">05</span>The journey, and where it breaks</h2>
 <p>Signup &rarr; browse &rarr; purchase &rarr; first real use &rarr; first value &rarr; <b>the post-value moment</b> &rarr; second and third return attempts, if any.</p>
 <p>Every break I'd expect sits in that sixth step, the one most journey maps don't draw:</p>
 <ul>
   <li>Immediately after the first goal is met.</li>
-  <li>When there is no clear next step &mdash; no behaviour-triggered nudge, no timed prompt, nothing.</li>
+  <li>When there is no clear next step: no behaviour-triggered nudge, no timed prompt, nothing.</li>
   <li>When the experience feels like it <em>ended successfully</em>. Success with no sequel is still an exit.</li>
 </ul>
 <p>Why doesn't the user come back, given the product worked? Because they see no logical repeat use, or they don't believe a return adds new value, or the product never tied this use to a future context.</p>
@@ -250,13 +345,13 @@
     <tr>
       <td class="step">02 &middot; Post-purchase simplification</td>
       <td>Unnecessary friction between paying and using.</td>
-      <td>Connect purchase directly to use with no intermediate steps. In a category like game top-ups this is expensive to build and to market &mdash; and it buys a customer who trusts the store with their account, which in that market is the entire purchase decision.</td>
+      <td>Connect purchase directly to use with no intermediate steps. In a category like game top-ups this is expensive to build and to market. It also buys a customer who trusts the store with their account, which in that market is the whole purchase decision.</td>
       <td>Share completing first use; repeat purchase of the same service</td>
     </tr>
     <tr>
       <td class="step">03 &middot; A real reason to return</td>
       <td>No reminder, and no natural occasion.</td>
-      <td>Make "when and why you should come back" explicit. Behaviour-triggered prompts, or timing tied to the user's actual capacity to buy &mdash; for salaried users, a monthly prompt landing a day or two before payday, not on a marketing calendar.</td>
+      <td>Make "when and why you should come back" explicit. Behaviour-triggered prompts, or timing tied to the user's capacity to buy. For salaried users that means a monthly prompt landing a day or two before payday, not on a marketing calendar.</td>
       <td>Repeat usage; re-engagement within 60 days</td>
     </tr>
   </tbody>
@@ -282,21 +377,21 @@
   </tbody>
 </table>
 </div>
-<p>And in week one, before any of it: share the problem with Engineering, Data, Marketing and Customer Experience, say plainly what we're chasing &mdash; the return &mdash; and listen. Data defines the metrics and instruments the behaviour. Marketing stops promising what the product doesn't deliver and starts targeting lookalikes of people who <em>did</em> come back. CX brings the qualitative half: why people say they didn't return.</p>
+<p>And in week one, before any of it: share the problem with Engineering, Data, Marketing and Customer Experience, say plainly what we're chasing, which is the return, and listen. Data defines the metrics and instruments the behaviour. Marketing stops promising what the product doesn't deliver and starts targeting lookalikes of people who <em>did</em> come back. CX brings the qualitative half: why people say they didn't return.</p>
 
 <h2><span class="num">09</span>What I left out on purpose</h2>
 <p>A plan is also a list of things you decided not to do. These were cut for priority or for lack of information, not because they're bad:</p>
 <ul>
   <li><b>Customer service and support channels.</b> Real, but a different project.</li>
   <li><b>Points and loyalty systems.</b> The common failure is a currency whose value nobody can compute. "You have 340 points" means nothing. "This covers your next delivery" means something.</li>
-  <li><b>Need-based bundles.</b> For Daleel Store, something like a home-and-school essentials bundle with a games voucher included as the gift &mdash; parents carry real guilt about discretionary spend, and a bundle can absorb it.</li>
-  <li><b>User involvement</b> through surveys or user-generated content incentivised with free coupons &mdash; with the caveat that you listen for the need behind the answer. Users are honest about their problems and unreliable about their solutions.</li>
+  <li><b>Need-based bundles.</b> For Daleel Store, something like a home-and-school essentials bundle with a games voucher included as the gift. Parents carry real guilt about discretionary spend, and a bundle absorbs it.</li>
+  <li><b>User involvement</b> through surveys or user-generated content incentivised with free coupons, as long as you listen for the need behind the answer. Users are reliable about their problems and unreliable about their solutions.</li>
   <li><b>More payment options</b>, including instalments, for segments the current set excludes.</li>
 </ul>
 
 <div class="redact">
   <span class="k">Stated limitation</span>
-  <p>The plan was built inside a general hypothetical frame. Change the assumptions and the diagnosis changes with them. That's not a hedge &mdash; it's the reason the first 30 days are spent proving which of the three diagnoses is actually true before anyone writes a ticket.</p>
+  <p>The plan was built inside a general hypothetical frame. Change the assumptions and the diagnosis changes with them. That's not a hedge. It's the reason the first 30 days go on proving which of the three diagnoses is true before anyone writes a ticket.</p>
 </div>
 
 <blockquote>A retention chart can't tell you the difference between a user you lost and a user you finished serving. That distinction is the entire job.</blockquote>
@@ -304,15 +399,15 @@
 </div>
 
 <div class="postnav">
-  <a href="../live-classroom-po/">&larr; Live Classroom: a PO take-home</a>
-  <a href="../../index.html#work">Back to work &rarr;</a>
+  <a href="../live-classroom-po/">&larr; Live Classroom: leading an MVP in 10 weeks</a>
+  <a href="/work/">Back to work &rarr;</a>
 </div>
 
 </div>
 </main>
 
 <footer class="f">
-  &copy; <span id="y"></span> Ahmed Mostafa &middot; <a href="../../index.html">Portfolio</a> &middot; <a href="mailto:ahmed.mostafa.works@gmail.com">Email</a> &middot; <a href="https://linkedin.com/in/eng-ahmedmostafa" target="_blank" rel="noopener">LinkedIn</a>
+  &copy; <span id="y"></span> Ahmed Mostafa &middot; <a href="/">Home</a> &middot; <a href="/work/">Work</a> &middot; <a href="mailto:ahmed.mostafa.works@gmail.com">Email</a> &middot; <a href="https://linkedin.com/in/eng-ahmedmostafa" target="_blank" rel="noopener">LinkedIn</a>
   <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
 </footer>
 <script>

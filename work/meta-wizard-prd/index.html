@@ -7,6 +7,13 @@
 <meta charset="UTF-8">
 <script>
 (function(){
+  // Never show /index.html in the address bar
+  try{
+    if(location.pathname.slice(-11) === '/index.html'){
+      history.replaceState(null, '', location.pathname.slice(0, -10) + location.search + location.hash);
+    }
+  }catch(e){}
+
   try{
     var t = localStorage.getItem('theme');
     if(t === 'light' || t === 'dark'){ document.documentElement.setAttribute('data-theme', t); }
@@ -14,20 +21,21 @@
 })();
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PRD Excerpt: Meta Business Profile Wizard | Ahmed Mostafa</title>
-<meta name="description" content="A redacted excerpt from a client PRD: the capability matrix, the acceptance criteria pinned to Graph API v25.0, and the failure paths. The format I hand to engineering.">
+<title>Meta Graph API PRD: A Real Product Requirements Document</title>
+<meta name="description" content="A redacted excerpt from a real client PRD: the capability matrix, acceptance criteria pinned to Meta Graph API v25.0, and the failure paths.">
 <meta name="author" content="Ahmed Mostafa">
 <meta name="theme-color" content="#1f3b57">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
 <link rel="canonical" href="https://itsamostafa.github.io/work/meta-wizard-prd/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Ahmed Mostafa">
-<meta property="og:title" content="PRD Excerpt: Meta Business Profile Wizard">
-<meta property="og:description" content="A redacted excerpt from a client PRD: capability matrix, acceptance criteria pinned to Graph API v25.0, and failure paths.">
+<meta property="og:title" content="Meta Graph API PRD: A Real Product Requirements Document">
+<meta property="og:description" content="A redacted excerpt from a real client PRD: the capability matrix, acceptance criteria pinned to Meta Graph API v25.0, and the failure paths.">
 <meta property="og:url" content="https://itsamostafa.github.io/work/meta-wizard-prd/">
 <meta property="og:image" content="https://itsamostafa.github.io/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="PRD Excerpt: Meta Business Profile Wizard">
-<meta name="twitter:description" content="A redacted excerpt from a client PRD: capability matrix, acceptance criteria pinned to Graph API v25.0, and failure paths.">
+<meta name="twitter:title" content="Meta Graph API PRD: A Real Product Requirements Document">
+<meta name="twitter:description" content="A redacted excerpt from a real client PRD: the capability matrix, acceptance criteria pinned to Meta Graph API v25.0, and the failure paths.">
 <meta name="twitter:image" content="https://itsamostafa.github.io/og-image.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500;1,9..144,600&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -138,12 +146,99 @@
   .ac b{ font-family:var(--mono); font-size:12.5px; color:var(--accent-text); text-transform:uppercase; letter-spacing:.05em; }
   .lede{ font-size:18px; }
 </style>
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": [
+        "Article",
+        "CreativeWork"
+      ],
+      "@id": "https://itsamostafa.github.io/work/meta-wizard-prd/#article",
+      "headline": "Meta Business Profile Wizard",
+      "name": "Meta Business Profile Wizard",
+      "description": "A redacted excerpt from a real client PRD: the capability matrix, acceptance criteria pinned to Meta Graph API v25.0, and the failure paths.",
+      "url": "https://itsamostafa.github.io/work/meta-wizard-prd/",
+      "inLanguage": "en",
+      "articleSection": "Product Management Case Studies",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://itsamostafa.github.io/og-image.png",
+        "width": 1200,
+        "height": 630
+      },
+      "author": {
+        "@id": "https://itsamostafa.github.io/#person"
+      },
+      "creator": {
+        "@id": "https://itsamostafa.github.io/#person"
+      },
+      "publisher": {
+        "@id": "https://itsamostafa.github.io/#person"
+      },
+      "copyrightHolder": {
+        "@id": "https://itsamostafa.github.io/#person"
+      },
+      "about": {
+        "@id": "https://itsamostafa.github.io/#person"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://itsamostafa.github.io/work/meta-wizard-prd/"
+      },
+      "isPartOf": {
+        "@id": "https://itsamostafa.github.io/#website"
+      },
+      "keywords": "product owner, product manager, PRD, product requirements document, case study, Ahmed Mostafa"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://itsamostafa.github.io/work/meta-wizard-prd/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://itsamostafa.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Work",
+          "item": "https://itsamostafa.github.io/work/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Meta Business Profile Wizard",
+          "item": "https://itsamostafa.github.io/work/meta-wizard-prd/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://itsamostafa.github.io/work/meta-wizard-prd/#webpage",
+      "url": "https://itsamostafa.github.io/work/meta-wizard-prd/",
+      "name": "Meta Business Profile Wizard",
+      "isPartOf": {
+        "@id": "https://itsamostafa.github.io/#website"
+      },
+      "about": {
+        "@id": "https://itsamostafa.github.io/#person"
+      },
+      "breadcrumb": {
+        "@id": "https://itsamostafa.github.io/work/meta-wizard-prd/#breadcrumb"
+      },
+      "inLanguage": "en"
+    }
+  ]
+}</script>
 </head>
 <body>
 <header class="island">
-  <a class="brand" href="../../index.html">Ahmed Mostafa</a>
+  <a class="brand" href="/">Ahmed Mostafa</a>
   <span class="sep"></span>
-  <a class="back" href="../../index.html#work">&larr; Work</a>
+  <a class="back" href="/work/">&larr; Work</a>
   <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" type="button">
     <svg class="sun" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
     <svg class="moon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
@@ -156,7 +251,7 @@
 <span class="eyebrow">Work Sample &middot; PRD Excerpt</span>
 <h1 class="title">Meta Business Profile Wizard</h1>
 <div class="meta"><span>Freelance client engagement</span><span>Graph API v25.0</span><span>5 steps</span></div>
-<p class="lede">People ask what a PRD from me actually looks like. Rather than describe it, here is the load-bearing part of a real one: the capability matrix, the acceptance criteria, and the failure paths. This is the section engineering builds from.</p>
+<p class="lede">People ask what a PRD from me looks like. Rather than describe it, here is the load-bearing part of a real one: the capability matrix, the acceptance criteria, and the failure paths. This is the section engineering builds from.</p>
 
 <div class="redact">
   <span class="k">Redaction note</span>
@@ -175,7 +270,7 @@
 
 <h2><span class="num">02</span>The Decision-Point Rule</h2>
 <p><b>The number of steps in a wizard equals the number of decisions only the user can make.</b> Not the number of API calls, not the number of capabilities, not the number of screens that felt natural to design.</p>
-<p>Applying it here produced five steps, not because five is tidy, but because the dependency graph only contained five points where the system genuinely could not proceed without a human choice. Everything else became a precondition check the user never sees.</p>
+<p>Applying it here produced five steps, not because five is tidy, but because the dependency graph only contained five points where the system could not proceed without a human choice. Everything else became a precondition check the user never sees.</p>
 
 <h2><span class="num">03</span>Capability matrix</h2>
 <p>One row per step. A paragraph lets you skip the awkward cases; a matrix forces you to fill in the cell for <em>"what if this is already connected"</em>, which is the cell everyone forgets.</p>
@@ -225,7 +320,7 @@
 </table>
 </div>
 
-<p>The column that earns its keep is <b>Exit states</b>. Every bolded value in it is a case a prose spec would have called "handle gracefully" and left to be discovered during QA.</p>
+<p>The column that does the work is <b>Exit states</b>. Every bolded value in it is a case a prose spec would have called "handle gracefully" and left to be discovered during QA.</p>
 
 <h2><span class="num">04</span>Acceptance criteria</h2>
 <p>Pinned to a named API version. A criterion that does not name its version is a criterion that expires without telling you.</p>
@@ -283,7 +378,7 @@
 </main>
 
 <footer class="f">
-  &copy; <span id="y"></span> Ahmed Mostafa &middot; <a href="../../index.html">Portfolio</a> &middot; <a href="mailto:ahmed.mostafa.works@gmail.com">Email</a> &middot; <a href="https://linkedin.com/in/eng-ahmedmostafa" target="_blank" rel="noopener">LinkedIn</a>
+  &copy; <span id="y"></span> Ahmed Mostafa &middot; <a href="/">Home</a> &middot; <a href="/work/">Work</a> &middot; <a href="mailto:ahmed.mostafa.works@gmail.com">Email</a> &middot; <a href="https://linkedin.com/in/eng-ahmedmostafa" target="_blank" rel="noopener">LinkedIn</a>
   <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
 </footer>
 <script>

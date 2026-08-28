@@ -7,6 +7,13 @@
 <meta charset="UTF-8">
 <script>
 (function(){
+  // Never show /index.html in the address bar
+  try{
+    if(location.pathname.slice(-11) === '/index.html'){
+      history.replaceState(null, '', location.pathname.slice(0, -10) + location.search + location.hash);
+    }
+  }catch(e){}
+
   try{
     var t = localStorage.getItem('theme');
     if(t === 'light' || t === 'dark'){ document.documentElement.setAttribute('data-theme', t); }
@@ -19,7 +26,8 @@
 <meta name="description" content="Years before I could define product-market fit, I was doing a version of it: matching training programs to what students actually needed, not what looked good in a brochure.">
 <meta name="author" content="Ahmed Mostafa">
 <meta name="theme-color" content="#1f3b57">
-<link rel="alternate" type="application/rss+xml" title="Ahmed Mostafa — Notes on product thinking" href="https://itsamostafa.github.io/feed.xml">
+<link rel="alternate" type="application/rss+xml" title="Ahmed Mostafa: Notes on product thinking" href="https://itsamostafa.github.io/feed.xml">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
 <link rel="canonical" href="https://itsamostafa.github.io/writing/program-market-fit-before-product-market-fit/">
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2025-11-17T09:00:00+00:00">
@@ -33,7 +41,89 @@
 <meta name="twitter:title" content="I learned product-market fit before I had the words for it">
 <meta name="twitter:description" content="Years before I could define product-market fit, I was doing a version of it: matching training programs to what students actually needed, not what looked good in a brochure.">
 <meta name="twitter:image" content="https://itsamostafa.github.io/og-image.png">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "I learned product-market fit before I had the words for it", "description": "Years before I could define product-market fit, I was doing a version of it: matching training programs to what students actually needed, not what looked good in a brochure.", "url": "https://itsamostafa.github.io/writing/program-market-fit-before-product-market-fit/", "image": "https://itsamostafa.github.io/og-image.png", "author": {"@type": "Person", "name": "Ahmed Mostafa", "url": "https://itsamostafa.github.io/"}, "publisher": {"@type": "Person", "name": "Ahmed Mostafa"}, "mainEntityOfPage": "https://itsamostafa.github.io/writing/program-market-fit-before-product-market-fit/", "inLanguage": "en", "datePublished": "2025-11-17T09:00:00+00:00", "dateModified": "2025-11-17T09:00:00+00:00"}</script>
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "I learned product-market fit before I had the words for it",
+      "description": "Years before I could define product-market fit, I was doing a version of it: matching training programs to what students actually needed, not what looked good in a brochure.",
+      "url": "https://itsamostafa.github.io/writing/program-market-fit-before-product-market-fit/",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://itsamostafa.github.io/og-image.png",
+        "width": 1200,
+        "height": 630
+      },
+      "author": {
+        "@id": "https://itsamostafa.github.io/#person"
+      },
+      "publisher": {
+        "@id": "https://itsamostafa.github.io/#person"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://itsamostafa.github.io/writing/program-market-fit-before-product-market-fit/"
+      },
+      "inLanguage": "en",
+      "datePublished": "2025-11-17T09:00:00+00:00",
+      "dateModified": "2025-11-17T09:00:00+00:00",
+      "@id": "https://itsamostafa.github.io/writing/program-market-fit-before-product-market-fit/#article",
+      "copyrightHolder": {
+        "@id": "https://itsamostafa.github.io/#person"
+      },
+      "isPartOf": {
+        "@id": "https://itsamostafa.github.io/writing/#blog"
+      },
+      "articleSection": "Product Management"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://itsamostafa.github.io/writing/program-market-fit-before-product-market-fit/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://itsamostafa.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Writing",
+          "item": "https://itsamostafa.github.io/writing/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "I learned product-market fit before I had the words for it",
+          "item": "https://itsamostafa.github.io/writing/program-market-fit-before-product-market-fit/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://itsamostafa.github.io/writing/program-market-fit-before-product-market-fit/#webpage",
+      "url": "https://itsamostafa.github.io/writing/program-market-fit-before-product-market-fit/",
+      "name": "I learned product-market fit before I had the words for it",
+      "isPartOf": {
+        "@id": "https://itsamostafa.github.io/#website"
+      },
+      "about": {
+        "@id": "https://itsamostafa.github.io/#person"
+      },
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "https://itsamostafa.github.io/og-image.png"
+      },
+      "breadcrumb": {
+        "@id": "https://itsamostafa.github.io/writing/program-market-fit-before-product-market-fit/#breadcrumb"
+      },
+      "inLanguage": "en"
+    }
+  ]
+}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500;1,9..144,600&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
@@ -122,7 +212,7 @@
 </head>
 <body>
 <header class="island">
-  <a class="brand" href="../index.html">Ahmed Mostafa</a>
+  <a class="brand" href="/">Ahmed Mostafa</a>
   <span class="sep"></span>
   <a class="back" href="https://itsamostafa.github.io/writing/">← All notes</a>
   <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" type="button">
@@ -139,17 +229,17 @@
 <p class="lede">My first job wasn't a product job on paper. I was evaluating and recommending technology training programs for students, matching what we offered against what students actually needed for their careers. Nobody called it product-market fit. I didn't have the term yet. I had the problem anyway.</p>
 
 <article>
-<p>My first job out of the gate wasn't a product job on paper. I was evaluating and recommending technology training programs for students at an engineering college, matching what we offered against what students actually needed for their careers. Nobody called it "product-market fit." I didn't have the term yet. I had the problem anyway.</p>
+<p>My first job out of the gate wasn't a product job on paper. I was evaluating and recommending technology training programs for students at an engineering college, matching what we offered against what students needed for their careers. Nobody called it "product-market fit." I didn't have the term yet. I had the problem anyway.</p>
 
 <h2>The trap every early-career version of this falls into</h2>
-<p>The obvious move, and the wrong one, is to recommend the program that looks most impressive: the flashiest certification, the partner with the biggest logo. That's optimizing for the pitch, not the fit. Most of those programs failed the same way an over-engineered feature fails: technically credible, adopted by almost nobody, because it solved a problem the student didn't actually have.</p>
+<p>The obvious move, and the wrong one, is to recommend the program that looks most impressive: the flashiest certification, the partner with the biggest logo. That's optimizing for the pitch, not the fit. Most of those programs failed the same way an over-engineered feature fails: technically credible, adopted by almost nobody, because it solved a problem the student didn't have.</p>
 
 <div class="callout"><span class="k">Program-Market Fit</span><p>A training program fits when a student can name, specifically, the job or path it gets them closer to, before they finish it. If the honest answer is "it'll look good on a resume," that's not fit. That's decoration.</p></div>
 
-<h2>What actually predicted a good recommendation</h2>
+<h2>What predicted a good recommendation</h2>
 <p>The programs that worked shared one trait: I could trace a straight line from the certification to an actual internship pipeline or job requirement, because the partnership behind it, with a ministry or a company, was built for that specific outcome, not bolted on afterward for credibility.</p>
 
-<p>The programs that didn't work had impressive names and vague outcomes. Nobody could tell you, precisely, what a student would be able to do differently after finishing one. That vagueness is the tell. It shows up in enterprise software the same way: a feature with an impressive name and no one who can describe the specific job it does.</p>
+<p>The programs that didn't work had impressive names and vague outcomes. Nobody could tell you what a student would be able to do differently after finishing one. That vagueness is the tell. It shows up in enterprise software the same way: a feature with an impressive name and no one who can describe the specific job it does.</p>
 
 <blockquote>If you can't name the exact door a program, or a feature, opens for the person on the other end, you haven't found fit. You've found a good demo.</blockquote>
 
@@ -177,7 +267,7 @@
 </div>
 </main>
 <footer class="f">
-  © <span id="y"></span> Ahmed Mostafa · <a href="../index.html">Portfolio</a> · <a href="mailto:ahmed.mostafa.works@gmail.com">Email</a> · <a href="https://linkedin.com/in/eng-ahmedmostafa" target="_blank" rel="noopener">LinkedIn</a>
+  © <span id="y"></span> Ahmed Mostafa · <a href="/">Home</a> · <a href="/writing/">Writing</a> · <a href="mailto:ahmed.mostafa.works@gmail.com">Email</a> · <a href="https://linkedin.com/in/eng-ahmedmostafa" target="_blank" rel="noopener">LinkedIn</a>
   <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
 </footer>
 <script>

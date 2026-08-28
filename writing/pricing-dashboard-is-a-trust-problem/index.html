@@ -7,6 +7,13 @@
 <meta charset="UTF-8">
 <script>
 (function(){
+  // Never show /index.html in the address bar
+  try{
+    if(location.pathname.slice(-11) === '/index.html'){
+      history.replaceState(null, '', location.pathname.slice(0, -10) + location.search + location.hash);
+    }
+  }catch(e){}
+
   try{
     var t = localStorage.getItem('theme');
     if(t === 'light' || t === 'dark'){ document.documentElement.setAttribute('data-theme', t); }
@@ -19,7 +26,8 @@
 <meta name="description" content="Pricing and operational dashboards fail for a different reason than most PMs think. It's rarely the data. It's who's allowed to disagree with what the dashboard says.">
 <meta name="author" content="Ahmed Mostafa">
 <meta name="theme-color" content="#1f3b57">
-<link rel="alternate" type="application/rss+xml" title="Ahmed Mostafa — Notes on product thinking" href="https://itsamostafa.github.io/feed.xml">
+<link rel="alternate" type="application/rss+xml" title="Ahmed Mostafa: Notes on product thinking" href="https://itsamostafa.github.io/feed.xml">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
 <link rel="canonical" href="https://itsamostafa.github.io/writing/pricing-dashboard-is-a-trust-problem/">
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2026-02-24T09:00:00+00:00">
@@ -33,7 +41,89 @@
 <meta name="twitter:title" content="Your pricing dashboard is a trust problem, not a data problem">
 <meta name="twitter:description" content="Pricing and operational dashboards fail for a different reason than most PMs think. It's rarely the data. It's who's allowed to disagree with what the dashboard says.">
 <meta name="twitter:image" content="https://itsamostafa.github.io/og-image.png">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Your pricing dashboard is a trust problem, not a data problem", "description": "Pricing and operational dashboards fail for a different reason than most PMs think. It's rarely the data. It's who's allowed to disagree with what the dashboard says.", "url": "https://itsamostafa.github.io/writing/pricing-dashboard-is-a-trust-problem/", "image": "https://itsamostafa.github.io/og-image.png", "author": {"@type": "Person", "name": "Ahmed Mostafa", "url": "https://itsamostafa.github.io/"}, "publisher": {"@type": "Person", "name": "Ahmed Mostafa"}, "mainEntityOfPage": "https://itsamostafa.github.io/writing/pricing-dashboard-is-a-trust-problem/", "inLanguage": "en", "datePublished": "2026-02-24T09:00:00+00:00", "dateModified": "2026-02-24T09:00:00+00:00"}</script>
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Your pricing dashboard is a trust problem, not a data problem",
+      "description": "Pricing and operational dashboards fail for a different reason than most PMs think. It's rarely the data. It's who's allowed to disagree with what the dashboard says.",
+      "url": "https://itsamostafa.github.io/writing/pricing-dashboard-is-a-trust-problem/",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://itsamostafa.github.io/og-image.png",
+        "width": 1200,
+        "height": 630
+      },
+      "author": {
+        "@id": "https://itsamostafa.github.io/#person"
+      },
+      "publisher": {
+        "@id": "https://itsamostafa.github.io/#person"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://itsamostafa.github.io/writing/pricing-dashboard-is-a-trust-problem/"
+      },
+      "inLanguage": "en",
+      "datePublished": "2026-02-24T09:00:00+00:00",
+      "dateModified": "2026-02-24T09:00:00+00:00",
+      "@id": "https://itsamostafa.github.io/writing/pricing-dashboard-is-a-trust-problem/#article",
+      "copyrightHolder": {
+        "@id": "https://itsamostafa.github.io/#person"
+      },
+      "isPartOf": {
+        "@id": "https://itsamostafa.github.io/writing/#blog"
+      },
+      "articleSection": "Product Management"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://itsamostafa.github.io/writing/pricing-dashboard-is-a-trust-problem/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://itsamostafa.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Writing",
+          "item": "https://itsamostafa.github.io/writing/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Your pricing dashboard is a trust problem, not a data problem",
+          "item": "https://itsamostafa.github.io/writing/pricing-dashboard-is-a-trust-problem/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://itsamostafa.github.io/writing/pricing-dashboard-is-a-trust-problem/#webpage",
+      "url": "https://itsamostafa.github.io/writing/pricing-dashboard-is-a-trust-problem/",
+      "name": "Your pricing dashboard is a trust problem, not a data problem",
+      "isPartOf": {
+        "@id": "https://itsamostafa.github.io/#website"
+      },
+      "about": {
+        "@id": "https://itsamostafa.github.io/#person"
+      },
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "https://itsamostafa.github.io/og-image.png"
+      },
+      "breadcrumb": {
+        "@id": "https://itsamostafa.github.io/writing/pricing-dashboard-is-a-trust-problem/#breadcrumb"
+      },
+      "inLanguage": "en"
+    }
+  ]
+}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500;1,9..144,600&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
@@ -122,7 +212,7 @@
 </head>
 <body>
 <header class="island">
-  <a class="brand" href="../index.html">Ahmed Mostafa</a>
+  <a class="brand" href="/">Ahmed Mostafa</a>
   <span class="sep"></span>
   <a class="back" href="https://itsamostafa.github.io/writing/">← All notes</a>
   <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" type="button">
@@ -142,7 +232,7 @@
 <p>Among the things I owned building a fintech SaaS platform were pricing and operational dashboards, meant to give both our team and enterprise clients a single, shared view of what a transaction actually cost and why. On paper, that's a data engineering problem: pull the numbers, join the tables, render the chart. In practice, every stall I hit had nothing to do with data quality and everything to do with trust.</p>
 
 <h2>The dashboard isn't the deliverable. Agreement on the numbers is.</h2>
-<p>Here's the pattern. Finance has a number. Operations has a slightly different number, calculated a slightly different way, for a reason that made sense to whoever set it up two years ago. The client, when they eventually see the dashboard, has their own expectation of what the number should be, based on the contract they signed.</p>
+<p>The pattern is always the same. Finance has a number. Operations has a slightly different number, calculated a slightly different way, for a reason that made sense to whoever set it up two years ago. The client, when they eventually see the dashboard, has their own expectation of what the number should be, based on the contract they signed.</p>
 
 <p>Build the dashboard before reconciling those three numbers, and you haven't solved anything. You've just given three parties a much faster way to discover they disagree, in front of each other, in a demo.</p>
 
@@ -151,11 +241,11 @@
 <h2>Why "just show the data" is the wrong instinct</h2>
 <p>The instinct on most teams is to treat a dashboard as a transparency project: expose the numbers, let people see reality, trust follows. That's backwards in a regulated, multi-party context. Transparency without agreement doesn't build trust. It just makes disagreement visible faster, to more people, usually a client.</p>
 
-<p>What actually builds trust is boring: a documented, versioned definition of every metric, agreed to by finance, operations, and compliance before a single pixel gets designed. Once that exists, the dashboard is just a rendering layer. Before it exists, the dashboard is a live argument with a UI.</p>
+<p>What builds trust is boring: a documented, versioned definition of every metric, agreed to by finance, operations, and compliance before a single pixel gets designed. Once that exists, the dashboard is just a rendering layer. Before it exists, the dashboard is a live argument with a UI.</p>
 
 <blockquote>A dashboard is a claim. Every claim needs an owner who'll defend it when a client asks "where did this number come from?" If nobody can answer that in one sentence, you don't have a dashboard. You have a very convincing-looking guess.</blockquote>
 
-<h2>How I actually ran this</h2>
+<h2>How I ran this</h2>
 <ol>
 <li><b>Collect every existing definition of the metric first.</b> Before designing anything, ask each stakeholder how they currently calculate the number, on paper, no chart. You will find at least two answers. That's the real backlog item.</li>
 <li><b>Force the reconciliation into a document, not a meeting.</b> Meetings let people nod along to an ambiguous sentence. A written definition with a worked example doesn't allow that. Make people approve the arithmetic, not the vibe.</li>
@@ -186,7 +276,7 @@
 </div>
 </main>
 <footer class="f">
-  © <span id="y"></span> Ahmed Mostafa · <a href="../index.html">Portfolio</a> · <a href="mailto:ahmed.mostafa.works@gmail.com">Email</a> · <a href="https://linkedin.com/in/eng-ahmedmostafa" target="_blank" rel="noopener">LinkedIn</a>
+  © <span id="y"></span> Ahmed Mostafa · <a href="/">Home</a> · <a href="/writing/">Writing</a> · <a href="mailto:ahmed.mostafa.works@gmail.com">Email</a> · <a href="https://linkedin.com/in/eng-ahmedmostafa" target="_blank" rel="noopener">LinkedIn</a>
   <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
 </footer>
 <script>

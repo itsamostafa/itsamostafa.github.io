@@ -12,6 +12,16 @@
 <meta charset="UTF-8">
 <script>
 (function(){
+  // Flag JS availability so reveal animations never hide content without it
+  document.documentElement.classList.add('js');
+
+  // Never show /index.html in the address bar
+  try{
+    if(location.pathname.slice(-11) === '/index.html'){
+      history.replaceState(null, '', location.pathname.slice(0, -10) + location.search + location.hash);
+    }
+  }catch(e){}
+
   try{
     var t = localStorage.getItem('theme');
     if(t === 'light' || t === 'dark'){ document.documentElement.setAttribute('data-theme', t); }
@@ -19,19 +29,20 @@
 })();
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ahmed Mostafa</title>
+<title>Ahmed Mostafa — Product Owner &amp; Product Manager | Fintech &amp; SaaS</title>
 <meta name="description" content="Ahmed Mostafa is a Product Owner and Product Manager (PSPO) in Cairo, Egypt, specializing in fintech, enterprise SaaS, and regulated products: backlog, BRDs, PRDs, and Agile delivery. أحمد مصطفى، برودكت أونر وبرودكت مانجر متخصص في إدارة المنتجات الرقمية والفينتك.">
 <meta name="keywords" content="Ahmed Mostafa, Ahmed Mostafa Product Owner, Ahmed Mostafa Product Manager, أحمد مصطفى, product owner, product manager, product management, إدارة منتجات, برودكت أونر, برودكت مانجر, PSPO, Scrum, Agile, fintech product owner, SaaS product manager, Cairo, Egypt">
 <meta name="author" content="Ahmed Mostafa">
 <meta name="theme-color" content="#1f3b57">
 
-<link rel="alternate" type="application/rss+xml" title="Ahmed Mostafa — Notes on product thinking" href="https://itsamostafa.github.io/feed.xml">
+<link rel="alternate" type="application/rss+xml" title="Ahmed Mostafa: Notes on product thinking" href="https://itsamostafa.github.io/feed.xml">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
 <link rel="canonical" href="https://itsamostafa.github.io/">
 
 <!-- Open Graph (WhatsApp, LinkedIn, Facebook link previews) -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Ahmed Mostafa">
-<meta property="og:title" content="Ahmed Mostafa, Product Owner (PSPO I)">
+<meta property="og:title" content="Ahmed Mostafa — Product Owner &amp; Product Manager (PSPO I)">
 <meta property="og:description" content="Product Owner bridging engineering, compliance, and business to ship regulated fintech and AI-native SaaS products.">
 <meta property="og:url" content="https://itsamostafa.github.io/">
 <meta property="og:image" content="https://itsamostafa.github.io/og-image.png">
@@ -39,463 +50,24 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Ahmed Mostafa, Product Owner">
 <meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ar_EG">
 
 <!-- Twitter / X card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Ahmed Mostafa, Product Owner (PSPO I)">
+<meta name="twitter:title" content="Ahmed Mostafa — Product Owner &amp; Product Manager (PSPO I)">
 <meta name="twitter:description" content="Product Owner bridging engineering, compliance, and business to ship regulated fintech and AI-native SaaS products.">
 <meta name="twitter:image" content="https://itsamostafa.github.io/og-image.png">
 
-<link rel="icon" type="image/x-icon" href="favicon.ico">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
-<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-<style>
-  :root{
-    --bg:#faf8f4;
-    --surface:#ffffff;
-    --ink:#1e2a33;
-    --muted:#5c6770;
-    --body-text:#3d4750;
-    --line:rgba(30,42,51,0.10);
-    --line-strong:rgba(30,42,51,0.18);
-    --accent:#1f3b57;
-    --accent-text:#1f3b57;
-    --accent-soft:rgba(31,59,87,0.07);
-    --gold:#b8863b;
-    --gold-soft:rgba(184,134,59,0.12);
-    --gold-text:#8a611f;
-    --serif:'Fraunces', Georgia, serif;
-    --mono:'IBM Plex Mono', ui-monospace, monospace;
-    --sans:'IBM Plex Sans', system-ui, sans-serif;
-    --maxw:1040px;
-  }
-  :root[data-theme="dark"]{
-    --bg:#15171a; --surface:#1c1f23; --ink:#eef0f2; --muted:#9aa4ac; --body-text:#c9ced3;
-    --line:rgba(255,255,255,0.10); --line-strong:rgba(255,255,255,0.18);
-    --accent:#2f5578; --accent-text:#7fb0e6; --accent-soft:rgba(127,176,230,0.16);
-    --gold:#c99a52; --gold-soft:rgba(230,189,118,0.18); --gold-text:#e6bd76;
-  }
-
-  *{ box-sizing:border-box; }
-  @media (prefers-reduced-motion: reduce){ *{ animation:none !important; transition:none !important; } }
-
-  body{
-    margin:0; background:var(--bg); color:var(--ink);
-    font-family:var(--sans); line-height:1.65; -webkit-font-smoothing:antialiased;
-    transition:background-color .2s ease, color .2s ease;
-  }
-  a{ color:inherit; }
-  em, i{ font-family:var(--serif); font-style:italic; color:var(--accent-text); }
-  a:focus-visible, button:focus-visible{ outline:2px solid var(--accent-text); outline-offset:3px; border-radius:2px; }
-
-  .skip-link{
-    position:fixed; top:-60px; left:16px; z-index:999;
-    background:var(--accent); color:#fff; font-family:var(--mono); font-size:12.5px;
-    text-decoration:none; padding:12px 20px; border-radius:8px; transition:top .15s ease;
-  }
-  .skip-link:focus{ top:16px; }
-
-  .wrap{ max-width:var(--maxw); margin:0 auto; padding:0 24px; }
-  section{ padding:66px 24px; }
-  section:first-child{ padding-top:44px; }
-  .eyebrow{
-    font-family:var(--mono); font-size:12px; letter-spacing:.14em; text-transform:uppercase;
-    color:var(--gold-text); margin:0 0 14px; display:block;
-  }
-  h2.head{ font-family:var(--serif); font-weight:600; font-size:clamp(28px,4vw,38px); margin:0 0 40px; }
-
-  /* ---------- Floating island nav ---------- */
-  .island{
-    position:fixed; top:16px; left:50%; transform:translateX(-50%);
-    z-index:200; display:flex; align-items:center; gap:4px;
-    background:rgba(255,255,255,0.72); backdrop-filter:blur(18px) saturate(1.5); -webkit-backdrop-filter:blur(18px) saturate(1.5);
-    border:1px solid rgba(30,42,51,0.08); border-radius:100px;
-    padding:7px 10px 7px 20px; box-shadow:0 14px 38px -16px rgba(30,42,51,0.34);
-    max-width:calc(100vw - 24px);
-  }
-  .island .brand{ font-family:var(--serif); font-weight:600; font-size:16px; white-space:nowrap; letter-spacing:.01em; }
-  .island .divider{ width:1px; height:22px; background:var(--line-strong); margin:0 10px 0 14px; }
-  .island .tabs{ display:flex; gap:2px; }
-  .tab{
-    font-family:var(--mono); font-size:11.5px; letter-spacing:.05em; text-transform:uppercase;
-    color:var(--muted); background:none; border:none; cursor:pointer;
-    padding:9px 15px; border-radius:100px; transition:color .15s ease, background .15s ease, transform .15s ease; white-space:nowrap;
-    text-decoration:none; display:inline-flex; align-items:center;
-  }
-  .tab:hover{ color:var(--accent-text); background:var(--accent-soft); }
-  .tab.active{ color:#fff; background:var(--accent); }
-  .burger{ display:none; background:none; border:none; font-size:20px; cursor:pointer; color:var(--ink); line-height:1; width:44px; height:44px; align-items:center; justify-content:center; }
-
-  .theme-toggle{ background:none; border:none; cursor:pointer; color:var(--muted); padding:4px; width:32px; height:32px; display:flex; align-items:center; justify-content:center; border-radius:50%; transition:color .15s ease, background .15s ease; flex:0 0 auto; }
-  .theme-toggle:hover{ color:var(--accent-text); background:var(--accent-soft); }
-  .theme-toggle svg{ display:block; }
-  .theme-toggle .sun{ display:none; }
-  :root[data-theme="dark"] .theme-toggle .moon{ display:none; }
-  :root[data-theme="dark"] .theme-toggle .sun{ display:block; }
-
-  @media (max-width:820px){
-    .island{
-      left:12px; right:12px; transform:none; max-width:none;
-      border-radius:20px; padding:12px 12px 12px 20px; justify-content:space-between;
-    }
-    .island .divider{ display:none; }
-    .burger{ display:flex; }
-    .island .tabs{
-      position:absolute; top:calc(100% + 8px); left:0; right:0;
-      flex-direction:column; gap:4px;
-      background:rgba(255,255,255,0.97); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px);
-      border:1px solid var(--line); border-radius:16px; padding:10px;
-      box-shadow:0 22px 44px -18px rgba(30,42,51,0.4);
-      transform:translateY(-8px); opacity:0; pointer-events:none; transition:transform .2s ease, opacity .2s ease;
-    }
-    .island .tabs.open{ transform:translateY(0); opacity:1; pointer-events:auto; }
-    .tab{ text-align:left; font-size:12.5px; padding:14px; min-height:44px; display:flex; align-items:center; }
-  }
-
-  /* ---------- Single-scroll sections ---------- */
-  main{ padding-top:86px; }
-  html{ scroll-behavior:smooth; }
-  @media (prefers-reduced-motion: reduce){ html{ scroll-behavior:auto; } }
-  .panel{ display:block; scroll-margin-top:92px; }
-
-  /* ---------- Named framework ---------- */
-  .fw-def{ font-family:var(--serif); font-size:clamp(19px,2.6vw,23px); line-height:1.5; color:var(--body-text); max-width:60ch; margin:-18px 0 40px; }
-  .fw-def b{ color:var(--ink); }
-  .fw-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
-  @media (max-width:820px){ .fw-grid{ grid-template-columns:1fr; } }
-  .fw-card{ border:1px solid var(--line); border-radius:12px; padding:26px 22px; background:var(--surface); transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
-  .fw-card:hover{ transform:translateY(-4px); border-color:var(--gold); box-shadow:0 16px 32px -18px rgba(30,42,51,0.28); }
-  .fw-k{ font-family:var(--mono); font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--gold-text); display:block; margin-bottom:10px; }
-  .fw-card h3{ font-family:var(--serif); font-weight:600; font-size:19px; margin:0 0 8px; }
-  .fw-card p{ font-size:14px; color:var(--muted); margin:0; }
-  .fw-rule{ margin-top:26px; border-left:3px solid var(--gold); background:var(--gold-soft); border-radius:0 12px 12px 0; padding:24px 26px; }
-  .fw-rule p{ margin:0 0 14px; font-size:15.5px; color:var(--body-text); max-width:68ch; }
-  .fw-rule p b{ font-family:var(--serif); font-size:18px; color:var(--ink); }
-  .fw-more{ font-family:var(--mono); font-size:11.5px; letter-spacing:.05em; text-transform:uppercase; color:var(--gold-text); text-decoration:none; border-bottom:1px solid transparent; transition:border-color .15s ease; }
-  .fw-more:hover{ border-bottom-color:var(--gold-text); }
-
-  /* ---------- Hero ---------- */
-  .hero{ padding:20px 24px 28px; }
-  .hero + section{ padding-top:40px; }
-  .hero-grid{
-    display:grid; grid-template-columns:1.2fr 0.8fr; gap:56px; align-items:center;
-    max-width:var(--maxw); margin:0 auto;
-  }
-  @media (max-width:820px){ .hero-grid{ grid-template-columns:1fr; } .hero-photo{ order:-1; max-width:200px; margin:0 auto; } }
-  .kicker{ font-family:var(--mono); font-size:13px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin-bottom:18px; }
-  h1.hero-title{ font-family:var(--serif); font-weight:500; font-size:clamp(31px,5vw,48px); line-height:1.18; margin:0 0 24px; }
-  p.hero-bio{ color:var(--body-text); font-size:16px; max-width:56ch; margin:0 0 32px; }
-  p.hero-bio b{ color:var(--ink); }
-  .hero-ctas{ display:flex; gap:14px; flex-wrap:wrap; }
-  .btn{
-    font-family:var(--mono); font-size:12.5px; letter-spacing:.05em; text-transform:uppercase;
-    text-decoration:none; padding:13px 24px; border-radius:6px; display:inline-flex; align-items:center; gap:8px;
-    cursor:pointer; border:none;
-    transition:transform .15s ease, background .15s ease, border-color .15s ease, color .15s ease;
-  }
-  .btn.primary{ background:var(--accent); color:#fff; font-weight:600; }
-  .btn.primary:hover{ transform:translateY(-1px); background:#16293c; }
-  .btn.ghost{ border:1px solid var(--line-strong); color:var(--ink); background:none; }
-  .btn.ghost:hover{ border-color:var(--accent-text); color:var(--accent-text); }
-
-  .hero-photo{
-    position:relative; border-radius:50%; overflow:hidden;
-    box-shadow:0 30px 60px -28px rgba(30,42,51,0.35); border:1px solid var(--line);
-    width:100%; max-width:320px; margin:0 auto; aspect-ratio:1/1;
-  }
-  .hero-photo img{ display:block; width:100%; height:100%; object-fit:cover; border-radius:50%; }
-
-  /* ---------- Nutshell stats strip (floating cards) ---------- */
-  .stats{
-    max-width:var(--maxw); margin:44px auto 0; padding:0 24px;
-    display:grid; grid-template-columns:repeat(4,1fr); gap:18px;
-  }
-  @media (max-width:760px){ .stats{ grid-template-columns:repeat(2,1fr); margin-top:38px; row-gap:24px; } }
-
-  .stat.float{
-    background:var(--surface); border:1px solid var(--line); border-radius:12px;
-    padding:14px 16px; box-shadow:0 16px 34px -18px rgba(30,42,51,0.32);
-    animation:cardFloat 6s ease-in-out infinite;
-    transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
-  }
-  .stat.float:nth-child(1){ animation-delay:0s; }
-  .stat.float:nth-child(2){ animation-delay:.7s; }
-  .stat.float:nth-child(3){ animation-delay:1.4s; }
-  .stat.float:nth-child(4){ animation-delay:2.1s; }
-  .stat.float:hover{ animation-play-state:paused; transform:translateY(-6px) scale(1.03); box-shadow:0 22px 44px -18px rgba(30,42,51,0.4); border-color:var(--gold); }
-  .stat.float .n{ font-family:var(--serif); font-weight:600; font-size:19px; display:block; line-height:1.25; }
-  .stat.float .l{ font-family:var(--mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); }
-  @keyframes cardFloat{ 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-8px); } }
-
-  /* ---------- Surface / About ---------- */
-  .surface{ background:var(--surface); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
-  .about-grid{ display:grid; grid-template-columns:1fr 1fr; gap:48px; margin-bottom:52px; }
-  @media (max-width:820px){ .about-grid{ grid-template-columns:1fr; } }
-  .about-grid h3{ font-family:var(--serif); font-weight:600; font-size:20px; margin:0 0 12px; }
-  .about-grid p{ color:var(--body-text); font-size:15px; margin:0; }
-
-  .feature-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
-  @media (max-width:900px){ .feature-grid{ grid-template-columns:repeat(2,1fr); } }
-  @media (max-width:520px){ .feature-grid{ grid-template-columns:1fr; } }
-  .feature{
-    border:1px solid var(--line); border-radius:10px; padding:24px 20px; background:var(--bg);
-    transition:transform .25s ease, box-shadow .25s ease;
-    animation:cardFloat 6s ease-in-out infinite;
-  }
-  .feature:nth-child(1){ animation-delay:0s; }
-  .feature:nth-child(2){ animation-delay:.7s; }
-  .feature:nth-child(3){ animation-delay:1.4s; }
-  .feature:nth-child(4){ animation-delay:2.1s; }
-  .feature h4{ font-family:var(--serif); font-weight:600; font-size:16px; margin:0 0 8px; }
-  .feature p{ font-size:13.5px; color:var(--muted); margin:0; }
-
-  /* ---------- Timeline ---------- */
-  .timeline{ display:flex; flex-direction:column; }
-  .tl-item{ display:grid; grid-template-columns:180px 1fr; gap:28px; padding:32px 0; border-top:1px solid var(--line); }
-  .tl-item:last-child{ border-bottom:1px solid var(--line); }
-  @media (max-width:680px){ .tl-item{ grid-template-columns:1fr; gap:6px; } }
-  .tl-when{ font-family:var(--mono); font-size:12.5px; color:var(--muted); padding-top:3px; }
-  .tl-when .current{
-    display:inline-block; margin-top:8px; font-size:10.5px; letter-spacing:.08em; text-transform:uppercase;
-    background:var(--gold-soft); color:var(--gold-text); padding:3px 9px; border-radius:100px;
-  }
-  .tl-body h3{ font-family:var(--serif); font-weight:600; font-size:19px; margin:0 0 2px; }
-  .tl-body .org{ font-size:13.5px; color:var(--muted); margin-bottom:14px; }
-  .tl-body ul{ margin:0; padding-left:18px; }
-  .tl-body li{ font-size:14.5px; color:var(--body-text); margin-bottom:8px; }
-  .tl-body li:last-child{ margin-bottom:0; }
-  .tl-body li b{ color:var(--ink); }
-
-  /* ---------- Cards grid ---------- */
-  .hl-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
-  @media (max-width:900px){ .hl-grid{ grid-template-columns:1fr 1fr; } }
-  @media (max-width:620px){ .hl-grid{ grid-template-columns:1fr; } }
-  .hl-card{
-    border:1px solid var(--line); border-radius:12px; padding:26px 22px; background:var(--surface);
-    display:flex; flex-direction:column; gap:14px;
-    transition:transform .25s ease, box-shadow .25s ease;
-    animation:cardFloat 6s ease-in-out infinite;
-  }
-  .hl-card:nth-child(1){ animation-delay:0s; }
-  .hl-card:nth-child(2){ animation-delay:.7s; }
-  .hl-card:nth-child(3){ animation-delay:1.4s; }
-  .hl-card:nth-child(4){ animation-delay:2.1s; }
-  .hl-tags{ display:flex; flex-wrap:wrap; gap:6px; }
-  .hl-tags span{
-    font-family:var(--mono); font-size:10.5px; letter-spacing:.03em; text-transform:uppercase;
-    background:var(--accent-soft); color:var(--accent-text); padding:4px 9px; border-radius:100px;
-  }
-  .hl-card h3{ font-family:var(--serif); font-weight:600; font-size:18px; margin:0; }
-  .hl-card p{ font-size:14px; color:var(--muted); margin:0; }
-  .subhead{ font-family:var(--serif); font-weight:600; font-size:22px; margin:56px 0 24px; }
-  .subhead:first-of-type{ margin-top:0; }
-
-  /* ---------- Featured case study ---------- */
-  .case{ border:1px solid var(--line); border-radius:16px; overflow:hidden; background:var(--surface); margin-bottom:44px; }
-  .case-top{ padding:30px 30px 26px; }
-  .case-badge{ font-family:var(--mono); font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--gold-text); background:var(--gold-soft); padding:5px 11px; border-radius:100px; display:inline-block; margin-bottom:14px; }
-  .case-top h3{ font-family:var(--serif); font-weight:600; font-size:clamp(21px,3vw,25px); margin:0 0 10px; }
-  .case-top p{ margin:0; color:var(--muted); font-size:14.5px; max-width:72ch; }
-  .case-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); }
-  @media (max-width:760px){ .case-grid{ grid-template-columns:1fr 1fr; } }
-  @media (max-width:460px){ .case-grid{ grid-template-columns:1fr; } }
-  .case-cell{ background:var(--surface); padding:22px 24px; }
-  .case-cell h4{ font-family:var(--mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--gold-text); margin:0 0 9px; }
-  .case-cell p{ margin:0; font-size:13.5px; color:var(--body-text); }
-  .case-cell .metric{ font-family:var(--serif); font-weight:600; font-size:21px; color:var(--accent-text); display:block; margin-bottom:4px; }
-  .case-cell.result{ background:var(--accent-soft); }
-  .case-cell.result h4{ color:var(--accent-text); }
-  .case-cell.result .metric{ font-size:24px; }
-  .case-open{ display:flex; align-items:center; gap:10px; padding:18px 30px; border-top:1px solid var(--line); background:var(--surface); font-family:var(--mono); font-size:11.5px; letter-spacing:.05em; text-transform:uppercase; color:var(--gold-text); text-decoration:none; transition:background .18s ease, color .18s ease; }
-  .case-open:hover{ background:var(--gold-soft); }
-  .case-open .arrow{ transition:transform .18s ease; }
-  .case-open:hover .arrow{ transform:translateX(4px); }
-
-  /* ---------- Process ---------- */
-  .process-list{ display:flex; flex-direction:column; }
-  .p-item{ display:grid; grid-template-columns:70px 1fr; gap:24px; padding:26px 0; border-top:1px solid var(--line); }
-  .p-item:last-child{ border-bottom:1px solid var(--line); }
-  @media (max-width:600px){ .p-item{ grid-template-columns:44px 1fr; gap:16px; } }
-  .p-num{ font-family:var(--serif); font-style:italic; font-size:26px; color:var(--gold); }
-  .p-item h3{ font-family:var(--serif); font-weight:600; font-size:17px; margin:0 0 6px; }
-  .p-item p{ font-size:14px; color:var(--muted); margin:0; max-width:62ch; }
-
-  /* ---------- Education ---------- */
-  .edu-card{ border:1px solid var(--line); border-radius:12px; padding:28px 26px; background:var(--surface); }
-  .edu-card h3{ font-family:var(--serif); font-weight:600; font-size:19px; margin:0 0 4px; }
-  .edu-card .org{ font-size:13.5px; color:var(--muted); margin-bottom:4px; }
-  .edu-card .degree{ font-size:14.5px; color:var(--body-text); margin-bottom:16px; }
-  .edu-card ul{ margin:0; padding-left:18px; }
-  .edu-card li{ font-size:14px; color:var(--body-text); margin-bottom:7px; }
-  .edu-card li b{ color:var(--ink); }
-
-  /* ---------- Skills ---------- */
-  .skill-block{ margin-bottom:34px; animation:cardFloat 6s ease-in-out infinite; }
-  .skill-block:nth-of-type(1){ animation-delay:0s; }
-  .skill-block:nth-of-type(2){ animation-delay:.9s; }
-  .skill-block:nth-of-type(3){ animation-delay:1.8s; }
-  .skill-block:hover{ animation-play-state:paused; }
-  .skill-block:last-child{ margin-bottom:0; }
-  .skill-block h4{ font-family:var(--mono); font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin:0 0 14px; }
-  .pill-row{ display:flex; flex-wrap:wrap; gap:10px; }
-  .pill{ font-size:13.5px; padding:8px 15px; border-radius:100px; background:var(--surface); border:1px solid var(--line-strong); }
-  .pill.cert{ background:var(--gold-soft); border-color:transparent; color:var(--gold-text); font-family:var(--mono); font-size:12.5px; }
-
-  /* ---------- Training / Community lists ---------- */
-  .vol-list{ display:flex; flex-direction:column; gap:18px; }
-  .vol-item{ display:flex; gap:18px; padding:18px 0; border-top:1px solid var(--line); }
-  .vol-item:last-child{ border-bottom:1px solid var(--line); }
-  @media (max-width:600px){ .vol-item{ flex-direction:column; gap:6px; } }
-  .vol-when{ font-family:var(--mono); font-size:12px; color:var(--muted); min-width:150px; padding-top:2px; }
-  .vol-body h4{ margin:0 0 3px; font-size:15px; font-family:var(--serif); font-weight:600; }
-  .vol-body .org{ font-size:12.5px; color:var(--muted); margin-bottom:6px; }
-  .vol-body p{ margin:0; font-size:13.5px; color:var(--body-text); }
-
-  /* ---------- Contact card ---------- */
-  .contact-card{
-    position:relative; overflow:hidden; isolation:isolate;
-    max-width:var(--maxw); margin:0 auto; background:var(--accent); color:#fff;
-    border-radius:24px; padding:72px 32px 44px; text-align:center;
-    transition:transform .4s ease, box-shadow .4s ease;
-    animation:cardFloat 6s ease-in-out infinite;
-  }
-  .contact-card.in:hover{ animation-play-state:paused; transform:translateY(-4px); box-shadow:0 24px 60px -20px rgba(0,0,0,0.45); }
-  .contact-card::before{
-    content:''; position:absolute; inset:-40%; z-index:-1; pointer-events:none;
-    background:radial-gradient(circle at 30% 30%, rgba(231,201,138,0.25), transparent 55%),
-               radial-gradient(circle at 75% 70%, rgba(231,201,138,0.16), transparent 50%);
-    animation:contact-glow 12s ease-in-out infinite;
-  }
-  @keyframes contact-glow{
-    0%, 100%{ transform:translate(0,0) scale(1); }
-    50%{ transform:translate(3%,-3%) scale(1.08); }
-  }
-  .contact-card .eyebrow{ color:#e7c98a; display:inline-block; }
-  .contact-card h2{ font-family:var(--serif); font-weight:500; font-size:clamp(28px,4.5vw,42px); margin:0 0 18px; }
-  .contact-card h2 em{ color:#e7c98a; }
-  .contact-card p{ color:#c9d3da; max-width:52ch; margin:0 auto 34px; font-size:15.5px; }
-  .contact-links{ display:flex; gap:16px; justify-content:center; flex-wrap:wrap; margin-bottom:40px; }
-  .contact-card .btn.primary{ background:#e7c98a; color:#1f3b57; animation:contact-pulse 2.8s ease-in-out infinite; }
-  .contact-card .btn.primary:hover{ background:#f2d9a3; transform:translateY(-2px) scale(1.03); animation-play-state:paused; }
-  .contact-card .btn.ghost{ border-color:rgba(255,255,255,0.35); color:#fff; }
-  .contact-card .btn.ghost:hover{ border-color:#fff; transform:translateY(-2px); }
-  @keyframes contact-pulse{
-    0%, 100%{ box-shadow:0 0 0 0 rgba(231,201,138,0.45); }
-    50%{ box-shadow:0 0 0 10px rgba(231,201,138,0); }
-  }
-  .foot-meta{
-    font-family:var(--mono); font-size:11.5px; color:#9fb0bb;
-    border-top:1px solid rgba(255,255,255,0.15); padding-top:24px;
-    display:flex; justify-content:center; gap:20px; flex-wrap:wrap;
-  }
-  .foot-meta a{
-    color:inherit; text-decoration:none;
-    border-bottom:1px dotted rgba(159,176,187,0.55);
-    transition:color .2s ease, border-color .2s ease;
-  }
-  .foot-meta a:hover, .foot-meta a:focus-visible{ color:#e7c98a; border-bottom-color:#e7c98a; }
-  .contact-panel{ padding:40px 24px 70px; }
-
-  /* ---------- Site footer ---------- */
-  .site-footer{ border-top:1px solid var(--line); padding:26px 24px; }
-  .footer-inner{
-    max-width:var(--maxw); margin:0 auto; display:flex; align-items:center; justify-content:space-between;
-    gap:20px; flex-wrap:wrap;
-  }
-  .footer-note{ font-size:13.5px; color:var(--muted); }
-  .footer-actions{ display:flex; align-items:center; gap:18px; flex-wrap:wrap; }
-  .footer-link{ font-family:var(--mono); font-size:12px; letter-spacing:.04em; color:var(--muted); text-decoration:none; }
-  .footer-link:hover{ color:var(--accent-text); }
-  .footer-cta{ padding:9px 18px; font-size:13px; }
-  @media (max-width:520px){ .footer-inner{ justify-content:center; text-align:center; } }
-
-  /* ---------- Writing / Notes ---------- */
-  .note-list{ display:flex; flex-direction:column; }
-  .note{ display:grid; grid-template-columns:120px 1fr; gap:28px; padding:28px 0; border-top:1px solid var(--line); text-decoration:none; transition:opacity .15s ease; }
-  .note:last-child{ border-bottom:1px solid var(--line); }
-  .note:hover{ opacity:.7; }
-  @media (max-width:640px){ .note{ grid-template-columns:1fr; gap:6px; } }
-  .note-when{ font-family:var(--mono); font-size:12px; color:var(--muted); padding-top:5px; }
-  .note h3{ font-family:var(--serif); font-weight:600; font-size:19px; margin:0 0 6px; color:var(--ink); }
-  .note p{ margin:0; font-size:14px; color:var(--muted); max-width:66ch; }
-  .note .readmore{ font-family:var(--mono); font-size:11.5px; letter-spacing:.05em; text-transform:uppercase; color:var(--gold-text); margin-top:10px; display:inline-block; }
-  .writing-note{ font-size:13.5px; color:var(--muted); margin:26px 0 0; font-style:italic; }
-
-  /* ---------- Now ---------- */
-  .now-card{ border:1px solid var(--line); border-radius:14px; padding:30px 28px; background:var(--surface); }
-  .now-card ul{ margin:0; padding:0; list-style:none; }
-  .now-card li{ display:grid; grid-template-columns:120px 1fr; gap:20px; padding:16px 0; border-top:1px solid var(--line); font-size:14.5px; color:var(--body-text); }
-  .now-card li:first-child{ border-top:none; padding-top:0; }
-  @media (max-width:600px){ .now-card li{ grid-template-columns:1fr; gap:4px; } }
-  .now-card li b{ color:var(--ink); }
-  .now-label{ font-family:var(--mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--gold-text); padding-top:2px; }
-
-  /* ---------- Scroll reveal ---------- */
-  .reveal{ opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease; }
-  .reveal.in{ opacity:1; transform:none; }
-  @media (prefers-reduced-motion: reduce){ .reveal{ opacity:1 !important; transform:none !important; } }
-
-  /* ---------- Stagger reveal: children cascade in one after another ---------- */
-  .stagger > *{ opacity:0; transform:translateY(14px); transition:opacity .5s ease, transform .5s ease; }
-  .stagger.in > *, .in .stagger > *{ opacity:1; transform:none; }
-  .stagger > *:nth-child(1){ transition-delay:.02s; }
-  .stagger > *:nth-child(2){ transition-delay:.08s; }
-  .stagger > *:nth-child(3){ transition-delay:.14s; }
-  .stagger > *:nth-child(4){ transition-delay:.2s; }
-  .stagger > *:nth-child(5){ transition-delay:.26s; }
-  .stagger > *:nth-child(6){ transition-delay:.32s; }
-  .stagger > *:nth-child(7){ transition-delay:.38s; }
-  .stagger > *:nth-child(8){ transition-delay:.44s; }
-  .stagger > *:nth-child(9){ transition-delay:.5s; }
-  .stagger > *:nth-child(10){ transition-delay:.56s; }
-
-  /* ---------- Card & pill micro-interactions ---------- */
-  .feature:hover{ animation-play-state:paused; transform:translateY(-4px); box-shadow:0 16px 32px -18px rgba(30,42,51,0.28); }
-  .hl-card:hover{ animation-play-state:paused; transform:translateY(-4px); box-shadow:0 16px 32px -18px rgba(30,42,51,0.28); }
-  .case{ transition:box-shadow .3s ease; }
-  .case:hover{ box-shadow:0 20px 44px -24px rgba(30,42,51,0.3); }
-  .case-cell{ transition:background .2s ease; }
-  .case-cell:hover{ background:var(--accent-soft); }
-  .stat{ transition:border-color .2s ease; }
-  .stat:hover{ border-color:var(--gold); }
-  .pill{ transition:transform .2s ease, background .2s ease, border-color .2s ease, color .2s ease; }
-  .pill:hover{ animation-play-state:paused; transform:translateY(-2px); border-color:var(--accent-text); color:var(--accent-text); background:var(--accent-soft); }
-  .pill.cert:hover{ border-color:var(--gold); color:var(--gold-text); background:var(--gold-soft); }
-  .note .readmore{ display:inline-block; transition:transform .2s ease; }
-  .note:hover .readmore{ transform:translateX(4px); }
-
-  /* ---------- Press feedback ---------- */
-  .btn.primary:active{ transform:scale(.96); }
-  .btn.ghost:active{ transform:scale(.96); }
-  .tab:active{ transform:scale(.95); }
-  .burger{ transition:transform .15s ease; }
-  .burger:active{ transform:scale(.9); }
-
-  /* ---------- Nav entrance ---------- */
-  @keyframes navIn{ from{ opacity:0; } to{ opacity:1; } }
-  .island{ animation:navIn .5s ease; }
-
-  /* ---------- Custom cursor trail (comet) ---------- */
-  .cur-comet-dot{
-    position:fixed; top:0; left:0; pointer-events:none; z-index:9998; will-change:transform;
-    width:8px; height:8px; border-radius:50%; background:var(--gold); transition:background .15s ease;
-  }
-  .cur-comet-dot.hover{ background:var(--accent-text); }
-  @media (hover:none), (pointer:coarse){ .cur-comet-dot{ display:none; } }
-  @media (prefers-reduced-motion: reduce){ .cur-comet-dot{ display:none; } }
-
-  @media (max-width:640px){
-    section{ padding:48px 18px; }
-    .hero{ padding:8px 18px 20px; }
-    .hero + section{ padding-top:28px; }
-  }
-</style><script type="application/ld+json">
+<link rel="stylesheet" href="/styles.css">
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
@@ -503,27 +75,97 @@
       "@type": "Person",
       "@id": "https://itsamostafa.github.io/#person",
       "name": "Ahmed Mostafa",
-      "alternateName": ["أحمد مصطفى", "Ahmed Mostafa Product Owner", "Ahmed Mostafa Product Manager"],
+      "givenName": "Ahmed",
+      "familyName": "Mostafa",
+      "alternateName": ["أحمد مصطفى", "Ahmed Mostafa Product Owner", "Ahmed Mostafa Product Manager", "Ahmed Mostafa PSPO"],
       "url": "https://itsamostafa.github.io/",
-      "image": "https://itsamostafa.github.io/og-image.png",
+      "mainEntityOfPage": { "@id": "https://itsamostafa.github.io/#webpage" },
+      "image": {
+        "@type": "ImageObject",
+        "@id": "https://itsamostafa.github.io/#primaryimage",
+        "url": "https://itsamostafa.github.io/photo.jpg",
+        "contentUrl": "https://itsamostafa.github.io/photo.jpg",
+        "caption": "Ahmed Mostafa, Product Owner and Product Manager"
+      },
       "jobTitle": ["Product Owner", "Product Manager"],
-      "description": "Product Owner and Product Manager (PSPO) specializing in fintech, enterprise SaaS, and regulated products.",
+      "description": "Ahmed Mostafa is a Product Owner and Product Manager (PSPO I) based in Cairo, Egypt, working on regulated fintech and enterprise SaaS products: backlogs, BRDs, PRDs, and Agile delivery across multiple squads.",
+      "disambiguatingDescription": "Product Owner at Areeb Technology in Cairo, Egypt, specializing in regulated fintech and enterprise SaaS. Engineer by training (Electronics & Communications), PSPO I and SFPC certified.",
       "email": "mailto:ahmed.mostafa.works@gmail.com",
       "address": { "@type": "PostalAddress", "addressLocality": "Cairo", "addressCountry": "EG" },
-      "worksFor": { "@type": "Organization", "name": "Areeb Technology" },
+      "workLocation": { "@type": "Place", "name": "Cairo, Egypt" },
+      "nationality": { "@type": "Country", "name": "Egypt" },
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Areeb Technology",
+        "url": "https://areebgroup.com/"
+      },
+      "hasOccupation": [
+        {
+          "@type": "Occupation",
+          "name": "Product Owner",
+          "occupationLocation": { "@type": "City", "name": "Cairo, Egypt" },
+          "skills": "Backlog management, PRD and BRD authoring, requirements engineering, acceptance criteria, stakeholder alignment, Scrum and Nexus, regulated fintech delivery"
+        },
+        {
+          "@type": "Occupation",
+          "name": "Product Manager",
+          "occupationLocation": { "@type": "City", "name": "Cairo, Egypt" },
+          "skills": "Product discovery, roadmapping, pricing and packaging, multi-tenant SaaS, retention analysis, API-driven product design"
+        }
+      ],
+      "hasCredential": [
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "Professional Scrum Product Owner I (PSPO I)",
+          "credentialCategory": "Professional Certification",
+          "recognizedBy": { "@type": "Organization", "name": "Scrum.org" }
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "Scrum Fundamentals Professional Certificate (SFPC)",
+          "credentialCategory": "Professional Certification",
+          "recognizedBy": { "@type": "Organization", "name": "CertiProf" }
+        }
+      ],
       "alumniOf": { "@type": "CollegeOrUniversity", "name": "CIC Canadian International College" },
-      "knowsAbout": ["Product Management", "Product Ownership", "إدارة المنتجات", "Fintech", "Agile", "Scrum", "Business Analysis", "Requirements Engineering", "SaaS"],
-      "knowsLanguage": ["en", "ar"],
-      "sameAs": ["https://linkedin.com/in/eng-ahmedmostafa"]
+      "knowsAbout": ["Product Management", "Product Ownership", "إدارة المنتجات", "برودكت أونر", "Fintech", "Agile", "Scrum", "Nexus", "Business Analysis", "Requirements Engineering", "PRD", "BRD", "SaaS", "Multi-tenant SaaS", "Product Discovery"],
+      "knowsLanguage": [
+        { "@type": "Language", "name": "English", "alternateName": "en" },
+        { "@type": "Language", "name": "Arabic", "alternateName": "ar" }
+      ],
+      "sameAs": [
+        "https://linkedin.com/in/eng-ahmedmostafa",
+        "https://github.com/itsamostafa"
+      ]
+    },
+    {
+      "@type": "ProfilePage",
+      "@id": "https://itsamostafa.github.io/#webpage",
+      "url": "https://itsamostafa.github.io/",
+      "name": "Ahmed Mostafa — Product Owner & Product Manager",
+      "description": "Ahmed Mostafa is a Product Owner and Product Manager (PSPO I) in Cairo, Egypt, specializing in fintech, enterprise SaaS, and regulated products.",
+      "inLanguage": "en",
+      "isPartOf": { "@id": "https://itsamostafa.github.io/#website" },
+      "about": { "@id": "https://itsamostafa.github.io/#person" },
+      "mainEntity": { "@id": "https://itsamostafa.github.io/#person" },
+      "primaryImageOfPage": { "@id": "https://itsamostafa.github.io/#primaryimage" },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://itsamostafa.github.io/" }
+        ]
+      }
     },
     {
       "@type": "WebSite",
       "@id": "https://itsamostafa.github.io/#website",
       "url": "https://itsamostafa.github.io/",
       "name": "Ahmed Mostafa, Product Owner & Product Manager",
+      "alternateName": "Ahmed Mostafa",
       "inLanguage": "en",
       "about": { "@id": "https://itsamostafa.github.io/#person" },
-      "publisher": { "@id": "https://itsamostafa.github.io/#person" }
+      "publisher": { "@id": "https://itsamostafa.github.io/#person" },
+      "copyrightHolder": { "@id": "https://itsamostafa.github.io/#person" }
     }
   ]
 }
@@ -536,12 +178,12 @@
 <header class="island">
   <span class="brand">Ahmed Mostafa</span>
   <span class="divider"></span>
-  <nav class="tabs" id="tabs" aria-label="Site sections">
-    <a class="tab active" href="#about" data-target="about">About</a>
-    <a class="tab" href="#work" data-target="work">Work</a>
-    <a class="tab" href="#writing" data-target="writing">Writing</a>
-    <a class="tab" href="#experience" data-target="experience">Experience</a>
-    <a class="tab" href="#contact" data-target="contact">Contact</a>
+  <nav class="tabs" id="tabs" aria-label="Primary">
+    <a class="tab active" href="/" data-path="/">About</a>
+    <a class="tab" href="/work/" data-path="/work/">Work</a>
+    <a class="tab" href="/writing/" data-path="/writing/">Writing</a>
+    <a class="tab" href="/experience/" data-path="/experience/">Experience</a>
+    <a class="tab" href="/contact/" data-path="/contact/">Contact</a>
   </nav>
   <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" type="button">
     <svg class="sun" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
@@ -552,26 +194,23 @@
 
 <main id="main-content">
 
-  <!-- ========== ABOUT ========== -->
-  <div class="panel" id="about">
     <div class="hero">
       <div class="hero-grid reveal stagger">
         <div>
-          <span class="kicker">Ahmed Mostafa · Product Owner · PSPO™ I</span>
-          <h1 class="hero-title">I write requirements that survive an <em>audit</em>.</h1>
+          <h1 class="hero-title"><span class="kicker">Ahmed Mostafa · Product Owner &amp; Product Manager · PSPO™ I</span>I write requirements that survive an <em>audit</em>.</h1>
           <p class="hero-bio">
             Product Owner at <b>Areeb Technology</b>, unifying <b>2 legal and financial investment systems</b>
-            into one regulated fintech platform across <b>6 delivery squads</b>. Engineer first — Electronics
-            &amp; Communications, then hands-on software testing — which is why feasibility arguments don't get
-            past me. Open to Product Owner / PM roles.
+            into one regulated fintech platform across <b>6 delivery squads</b>. Engineer first: Electronics
+            and Communications, then hands-on software testing. That is why feasibility arguments don't get
+            past me. Open to Product Owner / Product Manager roles.
           </p>
           <div class="hero-ctas">
-            <a class="btn primary" href="#work">See the work →</a>
-            <a class="btn ghost" href="work/meta-wizard-prd/">Read a real PRD</a>
+            <a class="btn primary" href="/work/">See the work →</a>
+            <a class="btn ghost" href="/work/meta-wizard-prd/">Read a real PRD</a>
           </div>
         </div>
         <div class="hero-photo">
-          <img src="photo.jpg" alt="Portrait of Ahmed Mostafa">
+          <img src="/photo.jpg" width="400" height="400" fetchpriority="high" decoding="async" alt="Ahmed Mostafa, Product Owner and Product Manager based in Cairo, Egypt">
         </div>
       </div>
       <div class="reveal stats stagger">
@@ -591,7 +230,7 @@
             <li><span class="now-label">Building</span><span>Owning fintech and enterprise SaaS products end to end as Product Owner at <b>Areeb Technology</b>: approval flows, transaction logic, and operational dashboards.</span></li>
             <li><span class="now-label">Exploring</span><span>How <b>AI-native workflows</b> change the way products get specced and built. I'm prototyping my own concept, <b>Productology</b>, a workspace for PMs.</span></li>
             <li><span class="now-label">Learning</span><span>Going deeper on <b>multi-tenant SaaS architecture</b> and pricing design: tenant isolation, access control, and modular packaging.</span></li>
-            <li><span class="now-label">Open to</span><span>Full-time Product Owner / PM roles and select freelance PRD engagements. Cairo-based, remote-friendly, willing to relocate.</span></li>
+            <li><span class="now-label">Open to</span><span>Full-time Product Owner / Product Manager roles and select freelance PRD engagements. Cairo-based, remote-friendly, willing to relocate.</span></li>
           </ul>
         </div>
       </div>
@@ -602,7 +241,7 @@
       <div class="wrap">
         <span class="eyebrow">The framework I use</span>
         <h2 class="head">The <em>Backlog Contract</em></h2>
-        <p class="fw-def">A backlog item is not a task. It's an agreement, and every agreement has counterparties. <b>Rework is what happens when one of them never actually signed.</b></p>
+        <p class="fw-def">A backlog item is not a task. It's an agreement, and every agreement has counterparties. <b>Rework is what happens when one of them never signed.</b></p>
         <div class="reveal fw-grid stagger">
           <div class="fw-card">
             <span class="fw-k">Counterparty 01</span>
@@ -622,8 +261,8 @@
         </div>
         <div class="reveal fw-rule">
           <span class="fw-k">The rule</span>
-          <p><b>Silence isn't a signature.</b> A story with no objection from compliance is not an approved story. It's an unread one. Nearly every change request I've received traced back to a counterparty who was never actually asked.</p>
-          <a class="fw-more" href="writing/backlog-is-a-contract/">Read the full argument &rarr;</a>
+          <p><b>Silence isn't a signature.</b> A story with no objection from compliance is not an approved story. It's an unread one. Nearly every change request I've received traced back to a counterparty who was never asked.</p>
+          <a class="fw-more" href="/writing/backlog-is-a-contract/">Read the full argument &rarr;</a>
         </div>
       </div>
     </section>
@@ -663,463 +302,31 @@
         </div>
       </div>
     </section>
-  </div>
 
-  <!-- ========== WORK ========== -->
-  <div class="panel" id="work">
-    <section>
-      <div class="wrap">
-        <span class="eyebrow">Work</span>
-        <h2 class="head">Problems I've <em>worked on</em></h2>
-
-        <div class="case reveal">
-          <div class="case-top">
-            <span class="case-badge">Featured Case Study</span>
-            <h3>Unifying a Regulated Fintech Platform</h3>
-            <p>Bringing 2 legal and financial investment systems onto one enterprise SaaS platform, across 6 delivery squads. This is the core of my current product work.</p>
-          </div>
-          <div class="case-grid stagger">
-            <div class="case-cell result"><h4>Result</h4><p><span class="metric">30% less rework</span>Predictable delivery across 6 squads, with compliance-ready features carried all the way through UAT and rollout.</p></div>
-            <div class="case-cell"><h4>Context</h4><p>2 investment and approval systems ran as separate workflows for one enterprise client base, with no single source of truth.</p></div>
-            <div class="case-cell"><h4>Problem</h4><p>Fragmented approval chains and transaction flows slowed delivery and made every release harder to audit.</p></div>
-            <div class="case-cell"><h4>What I did</h4><p>Authored the BRDs and PRDs for approval chains, transaction flows, and dashboards, and ran Scrum / Nexus ceremonies to align legal, compliance, delivery, and operations.</p></div>
-          </div>
-        </div>
-
-        <div class="reveal hl-grid stagger">
-          <div class="hl-card"><div class="hl-tags"><span>BRD / PRD</span><span>Approval Chains</span><span>Dashboards</span></div><h3>Documenting Core Fintech Features</h3><p>Authoring BRDs and PRDs covering approval chains, transaction flows, and pricing &amp; operational dashboards for engineering to build against.</p></div>
-          <div class="hl-card"><div class="hl-tags"><span>Business Analysis</span><span>CRM / ERP</span><span>Gap Analysis</span></div><h3>Structuring Requirements for CRM &amp; ERP</h3><p>Running discovery sessions, mapping workflows, and turning complex client needs into prioritized specs technical teams could build against.</p></div>
-          <div class="hl-card"><div class="hl-tags"><span>Multi-Tenant SaaS</span><span>Access Control</span><span>Pricing</span></div><h3>Designing for Multi-Tenancy</h3><p>Shaping tenant isolation, access control, and modular pricing so one platform can serve multiple corporate clients across distinct business lines.</p></div>
-          <div class="hl-card"><div class="hl-tags"><span>Sprint Data</span><span>Nexus</span><span>Reporting</span></div><h3>Making Multi-Squad Delivery Legible</h3><p>Turning six squads' sprint data into one operational picture leadership could act on, so scope trade-offs got made on evidence instead of on whoever spoke loudest.</p></div>
-        </div>
-
-        <h3 class="subhead">Take-home product work</h3>
-
-        <div class="case reveal">
-          <div class="case-top">
-            <span class="case-badge">Case Study &middot; Product Manager Take-Home</span>
-            <h3>Why Users Stop Coming Back</h3>
-            <p>Daleel Store's brief called it a retention problem. The first thing I did was argue with the brief.</p>
-          </div>
-          <div class="case-grid stagger">
-            <div class="case-cell result"><h4>Result</h4><p><span class="metric">2 user types, not 1</span>Splitting "churn" into users who were failed and users who simply finished changed the metrics, the initiatives, and what got deferred.</p></div>
-            <div class="case-cell"><h4>Context</h4><p>Signups growing, retention collapsing after the first purchase. No access to internal data, so every claim had to be written as a testable hypothesis.</p></div>
-            <div class="case-cell"><h4>Problem</h4><p>A churned user and a finished user look identical on a retention chart. Optimising them the same way builds re-engagement machinery for people who were never coming back.</p></div>
-            <div class="case-cell"><h4>What I did</h4><p>Named <b>the Finished/Churned Split</b>, separated three diagnoses that all look like falling retention, then built three initiatives and a 90-day plan on top of the distinction &mdash; plus an explicit list of what I deferred.</p></div>
-          </div>
-          <a class="case-open" href="work/retention-teardown/">Read the full teardown <span class="arrow">&rarr;</span></a>
-        </div>
-
-        <div class="case reveal">
-          <div class="case-top">
-            <span class="case-badge">Case Study &middot; Product Owner Assessment</span>
-            <h3>Shipping a Live Classroom in 10 Weeks</h3>
-            <p>An interactive live-classroom product for MENA EdTech platforms. Five engineers, remote, two-week sprints.</p>
-          </div>
-          <div class="case-grid stagger">
-            <div class="case-cell result"><h4>Result</h4><p><span class="metric">5 sprints to MVP</span>Four scoped stories with acceptance criteria and edge cases, a teacher flow with its failure branch drawn, and a named owner for every kind of decision.</p></div>
-            <div class="case-cell"><h4>Context</h4><p>Zon Net Digital Solutions. Mid-to-large platforms with an existing LMS, wanting a live-classroom layer they could integrate over API. Mixed devices, mixed bandwidth.</p></div>
-            <div class="case-cell"><h4>Problem</h4><p>Five developers and a short window. Everything hinges on cutting an MVP that is genuinely small, and on knowing who decides what before the team disagrees.</p></div>
-            <div class="case-cell"><h4>What I did</h4><p>Wrote the assumptions down first, built two personas, listed the questions worth asking each stakeholder, scoped four stories, and set <b>the Decision Owner Rule</b>: value decisions to the PO, execution to the Tech Lead.</p></div>
-          </div>
-          <a class="case-open" href="work/live-classroom-po/">Read the full assessment <span class="arrow">&rarr;</span></a>
-        </div>
-
-        <h3 class="subhead">Things I've built myself</h3>
-
-        <div class="case reveal">
-          <div class="case-top">
-            <span class="case-badge">Featured Case Study &middot; Product Spec</span>
-            <h3>The Zero-Friction Amazon Listing Wizard</h3>
-            <p>A 26-page PRD taking a first-time seller from "I have a product" to a live Amazon listing, specified against the Selling Partner API and written to be built without a meeting attached.</p>
-          </div>
-          <div class="case-grid stagger">
-            <div class="case-cell result"><h4>Result</h4><p><span class="metric">&le; 25 keystrokes</span>A measured typing ceiling, 11 steps, 23 specified edge cases, and a Definition of Done written as conditions you can check rather than adjectives.</p></div>
-            <div class="case-cell"><h4>Context</h4><p>Listing on Amazon means understanding product-type taxonomies, per-category attribute schemas that differ by marketplace, image specs, and Seller Central itself. First-time sellers have none of that.</p></div>
-            <div class="case-cell"><h4>Problem</h4><p>Amazon's requirements change per category, per marketplace, and over time. Any spec that hardcodes them is correct the day it ships and quietly wrong afterwards.</p></div>
-            <div class="case-cell"><h4>What I did</h4><p>Opened with <b>Rule Zero</b> &mdash; eight system rules that outrank the rest of the document, and a stated tiebreaker. Made validation schema-driven at runtime, used Amazon's own dry-run mode as the source of truth, and listed the <b>out-of-code prerequisites</b> with a named owner each.</p></div>
-          </div>
-          <a class="case-open" href="work/amazon-listing-wizard/">Read the PRD excerpt <span class="arrow">&rarr;</span></a>
-        </div>
-
-        <div class="case reveal">
-          <div class="case-top">
-            <span class="case-badge">Featured Case Study · Freelance</span>
-            <h3>Client PRD: Meta Business Profile Wizard</h3>
-            <p>A production-ready PRD delivered to a client, that also opened the door to a larger engagement. The excerpt is published, matrix and acceptance criteria included.</p>
-          </div>
-          <div class="case-grid stagger">
-            <div class="case-cell result"><h4>Result</h4><p><span class="metric">6-wizard roadmap</span>Delivered on spec, then pitched the client an architecture-aligned roadmap of six further onboarding wizards.</p></div>
-            <div class="case-cell"><h4>Context</h4><p>A client needed founders to self-serve their Meta Business Profile setup instead of relying on manual, error-prone onboarding.</p></div>
-            <div class="case-cell"><h4>Problem</h4><p>Meta's setup spans several capabilities and prerequisites. Hard to turn into a clean, foolproof flow engineers could build without guesswork.</p></div>
-            <div class="case-cell"><h4>What I did</h4><p>Applied <b>the Decision-Point Rule</b> &mdash; a wizard has as many steps as there are decisions only the user can make &mdash; and wrote it up against Graph API v25.0: capability matrix, phased UX, acceptance criteria.</p></div>
-          </div>
-          <a class="case-open" href="work/meta-wizard-prd/">Read the redacted PRD excerpt <span class="arrow">&rarr;</span></a>
-        </div>
-
-        <div class="case reveal">
-          <div class="case-top">
-            <span class="case-badge">Featured Case Study · Personal Project</span>
-            <h3>Productology: An AI-Native Workspace for PMs</h3>
-            <p>Prototyping the tool I wish existed, while writing specs for it the same way I write them for work.</p>
-          </div>
-          <div class="case-grid stagger">
-            <div class="case-cell result"><h4>Result</h4><p><span class="metric">4 systems specced</span>Prompt libraries, file management, caching, and rate limiting, each its own release spec instead of one big-bang launch.</p></div>
-            <div class="case-cell"><h4>Context</h4><p>PM tooling is still spreadsheets, docs, and switching between chat windows for every spec. Nothing treats prompt libraries or file context as first-class.</p></div>
-            <div class="case-cell"><h4>Problem</h4><p>Every AI-native workflow I wanted for my own product work meant re-inventing structure that should already live in the tool, not the process.</p></div>
-            <div class="case-cell"><h4>What I did</h4><p>Wrote the full technical blueprint end to end, then broke it into incremental release specs the same way I'd hand off to engineering at work: BRD discipline, applied to my own product.</p></div>
-          </div>
-        </div>
-
-        <div class="reveal hl-grid stagger">
-          <div class="hl-card"><div class="hl-tags"><span>Spec Craft</span><span>Edge Cases</span><span>Handoff</span></div><h3>Specs Engineering Can Build Without a Meeting</h3><p>The through-line across every PRD here: name the tiebreaker rule, pin the API version, and give the failure paths more pages than the happy path.</p></div>
-          <div class="hl-card"><div class="hl-tags"><span>Reporting</span><span>Delivery Metrics</span><span>Automation</span></div><h3>Executive Sprint Reporting</h3><p>Turned raw sprint data into executive-ready reports covering cost, efficiency, and commit metrics, then rebuilt the workflow as a repeatable script instead of a manual ritual.</p></div>
-          <div class="hl-card"><div class="hl-tags"><span>E-commerce</span><span>Django</span><span>End-to-End Build</span></div><h3>SheGlow: E-commerce Storefront</h3><p>A women's accessories storefront for the Egyptian market, taken from spec to working Django site. Product thinking and implementation, done by the same pair of hands.</p></div>
-          <div class="hl-card"><div class="hl-tags"><span>IoT / Fleet Tech</span><span>ITIDA &amp; ASRT</span><span>Team of 4</span></div><h3>FleetX: Smart Fleet Management System</h3><p>Graduation project supported by ITIDA and ASRT. Led a team of four from concept to working system, my first step from engineering into building products people actually operate.</p></div>
-        </div>
-      </div>
-    </section>
-  </div>
-
-  <!-- ========== WRITING ========== -->
-  <div class="panel" id="writing">
-    <section class="surface">
-      <div class="wrap">
-        <span class="eyebrow">Writing</span>
-        <h2 class="head">Notes on <em>product thinking</em></h2>
-        <div class="reveal note-list stagger">
-          <a class="note" href="writing/backlog-is-a-contract/">
-            <div class="note-when"><time datetime="2026-08-11">Aug 11, 2026</time><br>7 min read</div>
-            <div>
-              <h3>Your backlog is a contract, not a to-do list</h3>
-              <p>Every user story is an agreement between compliance, engineering, and the business. Treating it that way is what cuts rework.</p>
-              <span class="readmore">Read &rarr;</span>
-            </div>
-          </a>
-          <a class="note" href="writing/meta-api-to-wizard/">
-            <div class="note-when"><time datetime="2026-07-06">Jul 6, 2026</time><br>8 min read</div>
-            <div>
-              <h3>Turning a sprawling API into a five-step wizard</h3>
-              <p>A real client PRD, reverse-engineered: turning a prerequisite-heavy API into a flow a non-technical founder can finish alone.</p>
-              <span class="readmore">Read &rarr;</span>
-            </div>
-          </a>
-          <a class="note" href="writing/engineer-to-product-owner/">
-            <div class="note-when"><time datetime="2026-05-19">May 19, 2026</time><br>6 min read</div>
-            <div>
-              <h3>What an engineering background actually changes about product work</h3>
-              <p>Not the cliches. The specific ways it helps, the ways it doesn't, and the trap it sets.</p>
-              <span class="readmore">Read &rarr;</span>
-            </div>
-          </a>
-        </div>
-        <p class="writing-note"><a href="writing/" style="color:var(--accent-text);text-decoration:none;">See all 8 notes →</a> · <a href="feed.xml" style="color:var(--accent-text);text-decoration:none;">RSS</a></p>
-      </div>
-    </section>
-  </div>
-
-  <!-- ========== EXPERIENCE ========== -->
-  <div class="panel" id="experience">
-    <section>
-      <div class="wrap">
-        <span class="eyebrow">Experience</span>
-        <h2 class="head">Where I've <em>built</em></h2>
-        <div class="timeline">
-          <div class="reveal tl-item">
-            <div class="tl-when">Jul 2025–Present<br><span class="current">Current</span></div>
-            <div class="tl-body">
-              <h3>Product Owner</h3>
-              <div class="org">Areeb Technology</div>
-              <ul>
-                <li>Directed product planning and commercial requirements for a regulated <b>FinTech SaaS platform</b>, unifying <b>2 legal and financial investment systems</b> into one product across <b>6 delivery squads</b>.</li>
-                <li>Authored the <b>BRDs and PRDs</b> for approval chains, transaction flows, and pricing &amp; operational dashboards, written to be handed to engineering without a meeting attached and to hold up under regulatory review.</li>
-                <li>Cut rework by <b>30%</b> by running Scrum and Nexus across the squads and carrying features through <b>UAT and rollout</b> rather than stopping at "dev complete".</li>
-              </ul>
-            </div>
-          </div>
-          <div class="reveal tl-item">
-            <div class="tl-when">Jan 2024–Jun 2024</div>
-            <div class="tl-body">
-              <h3>Business Analyst</h3>
-              <div class="org">NEXT Expand</div>
-              <ul>
-                <li>Conducted discovery sessions with business stakeholders to uncover pain points, map business workflows, and translate complex requirements into prioritized functional specifications for <b>CRM and ERP</b> solutions.</li>
-                <li>Aligned product capabilities with business objectives by validating requirements, managing stakeholder expectations, and identifying <b>scope gaps early</b> to reduce delivery risks.</li>
-                <li>Performed gap analysis and feasibility assessments to recommend solutions that balanced business goals with technical constraints and strengthened solution quality.</li>
-              </ul>
-            </div>
-          </div>
-          <div class="reveal tl-item">
-            <div class="tl-when">Apr 2023–Dec 2023</div>
-            <div class="tl-body">
-              <h3>Operations &amp; Business Developer Lead</h3>
-              <div class="org">Genius Minds</div>
-              <ul>
-                <li>Led program design, operations, and business development for a <b>STEM education provider</b> delivering coding and robotics programs to K-12 learners.</li>
-                <li>Designed and launched a structured coding and robotics curriculum, defining learning outcomes and scoping content by age group, then iterating on feedback from students, parents, and instructors.</li>
-                <li>Managed <b>B2B partnerships</b> with schools, sports clubs, and corporate clients, and owned budget, staffing, and resource planning across concurrent programs under tight capital constraints.</li>
-              </ul>
-            </div>
-          </div>
-          <div class="reveal tl-item">
-            <div class="tl-when">Feb 2022–Apr 2023</div>
-            <div class="tl-body">
-              <h3>Business Development Associate</h3>
-              <div class="org">CIC Canadian International College</div>
-              <ul>
-                <li>Identified, evaluated, and recommended technology training programs aligned with student career needs, early experience in <b>learning product selection and program-market fit</b>.</li>
-                <li>Developed and maintained partnerships with government ministries and private sector businesses, negotiating access to certifications, internship pipelines, and industry resources for students.</li>
-                <li>Coordinated between academic departments and external partners to ensure program delivery matched student expectations and institutional goals.</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="surface">
-      <div class="wrap">
-        <span class="eyebrow">Foundation</span>
-        <h2 class="head">Education</h2>
-        <div class="reveal edu-card">
-          <h3>CIC Canadian International College</h3>
-          <div class="org">Sep 2020 – Jun 2025</div>
-          <div class="degree">BSc, Electronics and Communications Engineering</div>
-          <ul>
-            <li>Graduation Project: <b>FleetX</b> Smart Fleet Management System, supported by <b>ITIDA</b> and <b>ASRT</b>.</li>
-            <li>1st Rank at CIC Scientific Engineering Day, 2023 &amp; 2024.</li>
-            <li>Founder &amp; Lead of the Google Developer Student Club (2022–2023), ranked Top 50 globally and Top 20 MENA at the Google Solution Challenge.</li>
-            <li>Nominated as Huawei Academy Ambassador for two academic years in a row (2022–2024), winning the Top University 2022 Award and the Ambassador Award.</li>
-            <li>Participated in various student activities such as IEEE and Radix.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="wrap">
-        <span class="eyebrow">Training</span>
-        <h2 class="head">Where I <em>sharpened</em> the craft</h2>
-        <div class="reveal vol-list stagger">
-          <div class="vol-item"><div class="vol-when">Nov 2022</div><div class="vol-body"><h4>Agile Scrum Trainee</h4><div class="org">Orange Digital Center</div><p>Agile vs. Waterfall, Scrum theory, artifacts, pillars, methodologies, and Jira, completed with the Scrum Foundation Professional Certificate (SFPC™).</p></div></div>
-          <div class="vol-item"><div class="vol-when">Aug 2024</div><div class="vol-body"><h4>Software Testing Trainee</h4><div class="org">ITI (Information Technology Institute)</div><p>Hands-on software testing: test case design, mobile and API testing (Postman, APIdog), requirement analysis, and bug reporting.</p></div></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="surface">
-      <div class="wrap">
-        <span class="eyebrow">Skills &amp; Expertise</span>
-        <h2 class="head">What I <em>bring</em></h2>
-        <div class="reveal skill-block">
-          <h4>Core Product Skills</h4>
-          <div class="pill-row stagger">
-            <span class="pill">BRDs &amp; PRDs</span>
-            <span class="pill">User Stories &amp; Acceptance Criteria</span>
-            <span class="pill">Backlog Management</span>
-            <span class="pill">Scrum &amp; Nexus</span>
-            <span class="pill">Stakeholder Alignment</span>
-          </div>
-        </div>
-        <div class="reveal skill-block">
-          <h4>Domain Expertise</h4>
-          <div class="pill-row stagger">
-            <span class="pill">Fintech &amp; Investment Operations</span>
-            <span class="pill">Regulatory Compliance</span>
-            <span class="pill">Enterprise SaaS / B2B</span>
-            <span class="pill">AI-Native Product Thinking</span>
-          </div>
-        </div>
-        <div class="reveal skill-block">
-          <h4>Certifications</h4>
-          <div class="pill-row stagger">
-            <span class="pill cert">PSPO™ I: Professional Scrum Product Owner I (Scrum.org)</span>
-            <span class="pill cert">SFPC™: Scrum Foundation Professional Certificate</span>
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
-
-  <!-- ========== CONTACT ========== -->
-  <div class="panel contact-panel" id="contact">
-    <div class="reveal contact-card">
-      <span class="eyebrow">Contact</span>
-      <h2>Let's build something <em>great!</em></h2>
-      <p>I'm open to full-time Product Owner roles and select freelance engagements. Cairo-based, remote-friendly, and willing to relocate.</p>
-      <div class="contact-links">
-        <a class="btn primary" href="mailto:ahmed.mostafa.works@gmail.com">Email me</a>
-        <a class="btn ghost" href="https://linkedin.com/in/eng-ahmedmostafa" target="_blank" rel="noopener">in linkedin.com/in/eng-ahmedmostafa</a>
-      </div>
-      <div class="foot-meta">
-        <span>Cairo, Egypt · Willing to Relocate</span>
-        <span>Military Status: Exempted</span>
+  <section>
+    <div class="wrap">
+      <div class="page-nav">
+        <span></span>
+        <a href="/work/">See the work &rarr;</a>
       </div>
     </div>
-  </div>
+  </section>
 
 </main>
 
 <footer class="site-footer">
   <div class="footer-inner">
-    <span class="footer-note">Open to Product Owner / PM roles — let's talk.</span>
+    <span class="footer-note">Open to Product Owner / Product Manager roles. Let's talk.</span>
     <div class="footer-actions">
       <a class="footer-link" href="mailto:ahmed.mostafa.works@gmail.com">Email</a>
       <a class="footer-link" href="https://linkedin.com/in/eng-ahmedmostafa" target="_blank" rel="noopener">LinkedIn</a>
-      <a class="btn primary footer-cta" href="#contact">Contact</a>
+      <a class="footer-link" href="/feed.xml">RSS</a>
+      <a class="btn primary footer-cta" href="/contact/">Contact</a>
     </div>
   </div>
 </footer>
 
-<script>
-  const navLinks = Array.from(document.querySelectorAll('.tab[data-target]'));
-  const targets  = navLinks.map(a => document.getElementById(a.dataset.target)).filter(Boolean);
-  const tabsNav  = document.getElementById('tabs');
-  const burger   = document.getElementById('burger');
-
-  function closeMenu(){
-    tabsNav.classList.remove('open');
-    burger.setAttribute('aria-expanded', 'false');
-    burger.textContent = '\u2630';
-  }
-
-  // ---- Scroll spy: highlight the section currently under the nav ----
-  let ticking = false;
-  function syncNav(){
-    ticking = false;
-    const line = 140;
-    let current = targets[0];
-    for(const el of targets){
-      if(el.getBoundingClientRect().top <= line) current = el;
-    }
-    // pin the last link when the page is scrolled to the bottom
-    if(window.innerHeight + window.scrollY >= document.body.offsetHeight - 4){
-      current = targets[targets.length - 1];
-    }
-    navLinks.forEach(a => a.classList.toggle('active', current && a.dataset.target === current.id));
-  }
-  window.addEventListener('scroll', () => {
-    if(!ticking){ ticking = true; requestAnimationFrame(syncNav); }
-  }, { passive: true });
-  window.addEventListener('resize', syncNav, { passive: true });
-
-  navLinks.forEach(a => a.addEventListener('click', closeMenu));
-
-  // ---- Scroll reveal ----
-  const io = ('IntersectionObserver' in window)
-    ? new IntersectionObserver((entries) => {
-        entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
-      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' })
-    : null;
-
-  function armReveals(scope){
-    const els = (scope || document).querySelectorAll('.reveal');
-    els.forEach(t => {
-      if(io){ io.observe(t); } else { t.classList.add('in'); }
-    });
-    requestAnimationFrame(() => {
-      els.forEach(t => {
-        if(t.getBoundingClientRect().top < window.innerHeight * 0.9){
-          t.classList.add('in');
-          if(io) io.unobserve(t);
-        }
-      });
-    });
-  }
-
-  burger.addEventListener('click', () => {
-    const open = tabsNav.classList.toggle('open');
-    burger.setAttribute('aria-expanded', open);
-    burger.textContent = open ? '\u2715' : '\u2630';
-  });
-
-  document.addEventListener('click', (e) => {
-    if(!tabsNav.classList.contains('open')) return;
-    if(e.target === burger || burger.contains(e.target)) return;
-    if(tabsNav.contains(e.target)) return;
-    closeMenu();
-  });
-  document.addEventListener('keydown', (e) => {
-    if(e.key === 'Escape' && tabsNav.classList.contains('open')){
-      closeMenu();
-      burger.focus();
-    }
-  });
-
-  const themeToggle = document.getElementById('themeToggle');
-  themeToggle.addEventListener('click', () => {
-    const root = document.documentElement;
-    const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-    root.setAttribute('data-theme', next);
-    try{ localStorage.setItem('theme', next); }catch(e){}
-  });
-
-  // ---- Legacy /work, /writing, ... paths land on the right section ----
-  const SECTIONS = targets.map(t => t.id);
-  let jumpTo = null;
-  try{
-    const redirectPath = sessionStorage.getItem('redirectPath');
-    if(redirectPath){
-      sessionStorage.removeItem('redirectPath');
-      const slug = redirectPath.replace(/^\/|\/$/g, '');
-      if(SECTIONS.includes(slug)) jumpTo = slug;
-    }
-  }catch(e){}
-  if(!jumpTo && location.hash && SECTIONS.includes(location.hash.slice(1))){
-    jumpTo = location.hash.slice(1);
-  }
-
-  armReveals();
-  syncNav();
-  if(jumpTo){
-    const el = document.getElementById(jumpTo);
-    if(el) requestAnimationFrame(() => { el.scrollIntoView(); syncNav(); });
-  }
-</script>
-
-<script>
-  (function(){
-    if(window.matchMedia('(hover: none), (pointer: coarse)').matches) return;
-    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-    const HOVER_SEL = 'a, button, .tab, .btn, .pill, .feature, .hl-card, .case-cell, .stat';
-    let mx = -100, my = -100;
-    let hoverTarget = null;
-
-    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
-    document.addEventListener('mouseover', e => {
-      const t = e.target.closest(HOVER_SEL);
-      if(t) hoverTarget = t;
-    });
-    document.addEventListener('mouseout', e => {
-      const t = e.target.closest(HOVER_SEL);
-      if(t && t === hoverTarget) hoverTarget = null;
-    });
-
-    const N = 8;
-    const dots = Array.from({ length: N }, () => {
-      const d = document.createElement('div');
-      d.className = 'cur-comet-dot';
-      document.body.appendChild(d);
-      return d;
-    });
-    const hist = Array.from({ length: N }, () => ({ x: mx, y: my }));
-    let tick = 0;
-
-    (function frame(){
-      tick++;
-      if(tick % 2 === 0){ hist.pop(); hist.unshift({ x: mx, y: my }); }
-      dots.forEach((d, i) => {
-        const p = hist[i];
-        const scale = 1 - i / N;
-        d.style.transform = `translate(${p.x}px,${p.y}px) translate(-50%,-50%) scale(${scale})`;
-        d.style.opacity = (1 - i / N) * 0.8;
-        d.classList.toggle('hover', !!hoverTarget);
-      });
-      requestAnimationFrame(frame);
-    })();
-  })();
-</script>
+<script src="/site.js" defer></script>
 
 </body>
 </html>
