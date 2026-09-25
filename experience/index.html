@@ -23,7 +23,7 @@
   }catch(e){}
 
   try{
-    var t = localStorage.getItem('theme');
+    var t = localStorage.getItem('theme-v2');
     if(t === 'light' || t === 'dark'){ document.documentElement.setAttribute('data-theme', t); }
   }catch(e){}
 })();
@@ -64,6 +64,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/glass.css">
 <script type="application/ld+json">{
   "@context": "https://schema.org",
   "@type": "ProfilePage",
@@ -112,6 +113,7 @@
     <a class="tab" href="/work/" data-path="/work/">Work</a>
     <a class="tab" href="/writing/" data-path="/writing/">Writing</a>
     <a class="tab active" href="/experience/" data-path="/experience/">Experience</a>
+    <a class="tab" href="/cv/" data-path="/cv/">CV</a>
     <a class="tab" href="/contact/" data-path="/contact/">Contact</a>
   </nav>
   <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" type="button">
@@ -243,38 +245,11 @@
       </div>
     </section>
 
-    <section id="cv" class="cv-section">
-      <div class="wrap">
-        <span class="eyebrow">Résumé</span>
-        <h2 class="head">The whole story on <em>one page</em></h2>
-        <div class="reveal cv-glass">
-          <div class="cv-bar">
-            <div class="cv-file">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg>
-              <span class="cv-name">Ahmed Mostafa · Product</span>
-              <span class="cv-meta">PDF</span>
-            </div>
-            <div class="cv-actions">
-              <a class="cv-btn" href="/ahmed-mostafa-product.pdf" target="_blank" rel="noopener">Open</a>
-              <a class="cv-btn solid" href="/ahmed-mostafa-product.pdf" download="Ahmed Mostafa - Product.pdf">
-                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>
-                Download
-              </a>
-            </div>
-          </div>
-          <div class="cv-frame">
-            <iframe src="/ahmed-mostafa-product.pdf#view=FitH&amp;toolbar=0&amp;navpanes=0" title="Ahmed Mostafa CV preview" loading="lazy"></iframe>
-          </div>
-          <p class="cv-fallback">Preview isn't available on this device. Use <b>Open</b> or <b>Download</b> above.</p>
-        </div>
-      </div>
-    </section>
-
   <section>
     <div class="wrap">
       <div class="page-nav">
         <a href="/writing/">&larr; Writing</a>
-        <a href="/contact/">Contact &rarr;</a>
+        <a href="/cv/">CV &rarr;</a>
       </div>
     </div>
   </section>
@@ -287,6 +262,7 @@
     <div class="footer-actions">
       <a class="footer-link" href="mailto:ahmed.mostafa.works@gmail.com">Email</a>
       <a class="footer-link" href="https://linkedin.com/in/eng-ahmedmostafa" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="footer-link" href="/ahmed-mostafa-product.pdf" download="Ahmed Mostafa - Product.pdf">CV (PDF)</a>
       <a class="btn primary footer-cta" href="/contact/">Contact</a>
     </div>
   </div>

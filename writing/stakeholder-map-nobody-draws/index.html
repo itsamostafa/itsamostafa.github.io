@@ -15,7 +15,7 @@
   }catch(e){}
 
   try{
-    var t = localStorage.getItem('theme');
+    var t = localStorage.getItem('theme-v2');
     if(t === 'light' || t === 'dark'){ document.documentElement.setAttribute('data-theme', t); }
   }catch(e){}
 })();
@@ -208,6 +208,7 @@
   :root[data-theme="dark"] .share-btn.fb:hover{ border-color:#6ea8ff; color:#6ea8ff; background:rgba(110,168,255,.12); }
   :root[data-theme="dark"] .share-btn.x:hover{ border-color:#e8eaed; color:#e8eaed; background:rgba(232,234,237,.10); }
 </style>
+<link rel="stylesheet" href="/glass.css">
 </head>
 <body>
 <header class="island">
@@ -299,7 +300,7 @@
     var isDark = current === 'dark';
     var next = isDark ? 'light' : 'dark';
     root.setAttribute('data-theme', next);
-    try{ localStorage.setItem('theme', next); }catch(e){}
+    try{ localStorage.setItem('theme-v2', next); }catch(e){}
   });
 })();
 </script>

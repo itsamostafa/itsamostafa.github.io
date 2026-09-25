@@ -15,7 +15,7 @@
   }catch(e){}
 
   try{
-    var t = localStorage.getItem('theme');
+    var t = localStorage.getItem('theme-v2');
     if(t === 'light' || t === 'dark'){ document.documentElement.setAttribute('data-theme', t); }
   }catch(e){}
 
@@ -31,7 +31,7 @@
     'about': '/', 'home': '/', 'index': '/',
     'work': '/work/', 'projects': '/work/', 'portfolio': '/work/', 'case-studies': '/work/',
     'writing': '/writing/', 'blog': '/writing/', 'notes': '/writing/',
-    'experience': '/experience/', 'resume': '/experience/', 'cv': '/experience/',
+    'experience': '/experience/', 'resume': '/cv/', 'cv': '/cv/',
     'contact': '/contact/', 'hire': '/contact/'
   };
   if(MAP[slug]){ location.replace(MAP[slug]); }
@@ -45,6 +45,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/glass.css">
 <style>
   .nf{ min-height:70vh; display:flex; align-items:center; justify-content:center; text-align:center; padding:120px 24px 60px; }
   .nf-code{ font-family:var(--mono); font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--gold-text); display:block; margin-bottom:14px; }
@@ -62,6 +63,7 @@
     <a class="tab" href="/work/" data-path="/work/">Work</a>
     <a class="tab" href="/writing/" data-path="/writing/">Writing</a>
     <a class="tab" href="/experience/" data-path="/experience/">Experience</a>
+    <a class="tab" href="/cv/" data-path="/cv/">CV</a>
     <a class="tab" href="/contact/" data-path="/contact/">Contact</a>
   </nav>
   <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" type="button">

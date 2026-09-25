@@ -15,7 +15,7 @@
   }catch(e){}
 
   try{
-    var t = localStorage.getItem('theme');
+    var t = localStorage.getItem('theme-v2');
     if(t === 'light' || t === 'dark'){ document.documentElement.setAttribute('data-theme', t); }
   }catch(e){}
 })();
@@ -169,6 +169,7 @@
   .flow-label{ font-family:var(--mono); font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--gold-text); text-align:center; margin-bottom:10px; }
   .gutter{ display:flex; align-items:center; justify-content:center; font-family:var(--mono); font-size:10px; color:var(--muted); writing-mode:vertical-rl; padding-top:120px; }
 </style>
+<link rel="stylesheet" href="/glass.css">
 <script type="application/ld+json">{
   "@context": "https://schema.org",
   "@graph": [
@@ -508,7 +509,7 @@
     var root = document.documentElement;
     var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
     root.setAttribute('data-theme', next);
-    try{ localStorage.setItem('theme', next); }catch(e){}
+    try{ localStorage.setItem('theme-v2', next); }catch(e){}
   });
 })();
 </script>

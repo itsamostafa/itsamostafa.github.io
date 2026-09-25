@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LCK4RZ2K12"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-LCK4RZ2K12');
+</script>
+<meta charset="UTF-8">
+<script>
+(function(){
+  // Flag JS availability so reveal animations never hide content without it
+  document.documentElement.classList.add('js');
+
+  // Never show /index.html in the address bar
+  try{
+    if(location.pathname.slice(-11) === '/index.html'){
+      history.replaceState(null, '', location.pathname.slice(0, -10) + location.search + location.hash);
+    }
+  }catch(e){}
+
+  try{
+    var t = localStorage.getItem('theme-v2');
+    if(t === 'light' || t === 'dark'){ document.documentElement.setAttribute('data-theme', t); }
+  }catch(e){}
+})();
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CV · Ahmed Mostafa</title>
+<meta name="description" content="Ahmed Mostafa's CV: preview it online or download the PDF. Product Owner &amp; Builder with an engineering background in FinTech and SaaS.">
+<meta name="author" content="Ahmed Mostafa">
+<meta name="theme-color" content="#1f3b57">
+
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<link rel="canonical" href="https://itsamostafa.github.io/cv/">
+
+<!-- Open Graph (WhatsApp, LinkedIn, Facebook link previews) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ahmed Mostafa">
+<meta property="og:title" content="CV · Ahmed Mostafa, Product Owner &amp; Builder">
+<meta property="og:description" content="Product Owner &amp; Builder with an engineering background. Unifying complex Fintech &amp; SaaS systems into simple, high-impact products.">
+<meta property="og:url" content="https://itsamostafa.github.io/cv/">
+<meta property="og:image" content="https://itsamostafa.github.io/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Ahmed Mostafa, Product Owner">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter / X card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="CV · Ahmed Mostafa, Product Owner &amp; Builder">
+<meta name="twitter:description" content="Product Owner &amp; Builder with an engineering background. Unifying complex Fintech &amp; SaaS systems into simple, high-impact products.">
+<meta name="twitter:image" content="https://itsamostafa.github.io/og-image.png">
+
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/glass.css">
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  "@id": "https://itsamostafa.github.io/cv/#webpage",
+  "url": "https://itsamostafa.github.io/cv/",
+  "name": "CV | Ahmed Mostafa",
+  "description": "Ahmed Mostafa's CV as a PDF to preview or download.",
+  "isPartOf": {
+    "@id": "https://itsamostafa.github.io/#website"
+  },
+  "about": {
+    "@id": "https://itsamostafa.github.io/#person"
+  },
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://itsamostafa.github.io/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "CV",
+        "item": "https://itsamostafa.github.io/cv/"
+      }
+    ]
+  },
+  "inLanguage": "en",
+  "mainEntity": {
+    "@id": "https://itsamostafa.github.io/#person"
+  }
+}</script>
+
+</head>
+<body>
+
+<a class="skip-link" href="#main-content">Skip to content</a>
+<header class="island">
+  <a class="brand" href="/">Ahmed Mostafa</a>
+  <span class="divider"></span>
+  <nav class="tabs" id="tabs" aria-label="Primary">
+    <a class="tab" href="/" data-path="/">About</a>
+    <a class="tab" href="/work/" data-path="/work/">Work</a>
+    <a class="tab" href="/writing/" data-path="/writing/">Writing</a>
+    <a class="tab" href="/experience/" data-path="/experience/">Experience</a>
+    <a class="tab active" href="/cv/" data-path="/cv/">CV</a>
+    <a class="tab" href="/contact/" data-path="/contact/">Contact</a>
+  </nav>
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" type="button">
+    <svg class="sun" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+    <svg class="moon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+  </button>
+  <button class="burger" id="burger" aria-label="Toggle menu" aria-expanded="false">☰</button>
+</header>
+
+<main id="main-content">
+
+    <section id="cv" class="cv-section">
+      <div class="wrap">
+        <span class="eyebrow">Ahmed Mostafa · Résumé</span>
+        <h1 class="head">The whole story on <em>one page</em></h1>
+        <div class="reveal cv-glass">
+          <div class="cv-bar">
+            <div class="cv-file">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg>
+              <span class="cv-name">Ahmed Mostafa · Product</span>
+              <span class="cv-meta">PDF</span>
+            </div>
+            <div class="cv-actions">
+              <a class="cv-btn" href="/ahmed-mostafa-product.pdf" target="_blank" rel="noopener">Preview</a>
+              <a class="cv-btn solid" href="/ahmed-mostafa-product.pdf" download="Ahmed Mostafa - Product.pdf">
+                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>
+                Download
+              </a>
+            </div>
+          </div>
+          <div class="cv-frame">
+            <iframe src="/ahmed-mostafa-product.pdf#view=FitH&amp;toolbar=0&amp;navpanes=0" title="Ahmed Mostafa CV preview" loading="lazy"></iframe>
+          </div>
+          <p class="cv-fallback">Your browser can't show the CV here. Use <b>Preview</b> to open it in a new tab, or <b>Download</b> it.</p>
+        </div>
+      </div>
+    </section>
+
+  <section>
+    <div class="wrap">
+      <div class="page-nav">
+        <a href="/experience/">&larr; Experience</a>
+        <a href="/contact/">Contact &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <span class="footer-note">Open to Product Owner / Product Manager roles. Let's talk.</span>
+    <div class="footer-actions">
+      <a class="footer-link" href="mailto:ahmed.mostafa.works@gmail.com">Email</a>
+      <a class="footer-link" href="https://linkedin.com/in/eng-ahmedmostafa" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="footer-link" href="/ahmed-mostafa-product.pdf" download="Ahmed Mostafa - Product.pdf">CV (PDF)</a>
+      <a class="btn primary footer-cta" href="/contact/">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script src="/site.js" defer></script>
+
+</body>
+</html>
