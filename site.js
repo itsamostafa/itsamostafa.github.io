@@ -64,6 +64,9 @@
     });
   }
 
+  // ---- CV preview: fall back to buttons where the browser can't show PDFs inline ----
+  if(navigator.pdfViewerEnabled === false){ document.documentElement.classList.add('no-pdf'); }
+
   // ---- Scroll reveal ----
   var io = ('IntersectionObserver' in window)
     ? new IntersectionObserver(function(entries){
