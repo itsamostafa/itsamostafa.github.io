@@ -1,1 +1,1 @@
-This is my potofolio as a Product Owner.
+This is my potofolio.
